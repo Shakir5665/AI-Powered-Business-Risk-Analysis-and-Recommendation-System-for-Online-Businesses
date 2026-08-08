@@ -1,0 +1,2883 @@
+## Environment
+
+This template is structured for a React.js project with the App Router:
+
+- File paths use /components/... and /app/page.tsx
+- Components use the "use client" directive
+- Imports use the @/components/... path alias
+- Tailwind CSS for styling
+- framer-motion for animations
+- lucide-react for icons
+
+If you support this exact structure, apply the files below as written.
+
+If your builder uses a different structure (e.g. /src directory, Pages
+Router, or Vite + React), adapt the file paths and entry point — but
+keep every component file's CODE 100% IDENTICAL to what's provided
+below. Do not rewrite, refactor, or reinterpret any component.
+
+The only adaptations allowed are:
+- File paths (e.g. /src/components/... instead of /components/...)
+- Entry point file (e.g. src/App.tsx instead of app/page.tsx)
+- Removing "use client" directives if your builder doesn't use Next.js
+- Replacing the @/components/... alias with the correct relative path
+- Replacing Next.js-specific imports (e.g. next/image, next/link) with
+  standard equivalents (<img>, <a>) — only if your builder doesn't
+  support Next.js
+- Installing any missing dependencies via your builder's package manager
+  before applying the files
+
+Everything else — JSX, hooks, component names, default exports, props,
+className values, animations, styling, logic — stays exactly as written.
+The output must run without any errors.
+
+If your builder cannot support React + JSX at all, stop and tell the user
+before proceeding.
+
+## Add Template: Finance Management Landing Page - Finsyc
+
+### File 1 of 10: /components/templates/finance-management-landing-page-finsyc/Header 01 Finsyc.tsx
+
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, Sparkles, Menu, X } from "lucide-react";
+
+export default function FinsycOriginalHeader({ className }: { className?: string }) {
+  const [isNavHovered, setIsNavHovered] = useState(false);
+  const [isCTAHovered, setIsCTAHovered] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
+
+  const navItems = ["Home", "Features", "Pricing", "About", "Blogs"];
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" as const }}
+        className={"relative w-full overflow-hidden min-h-[800px] lg:min-h-[900px] " + (className || "")}
+      >
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          {isMounted && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source
+                src="https://cdn.jiro.build/Amox/All%20Images/P01-Header-01-BG.mp4"
+                type="video/mp4"
+              />
+            </video>
+          )}
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8 pb-12">
+          {/* Navigation */}
+          <motion.nav
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" as const }}
+            className="flex items-center justify-between"
+          >
+            <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <img
+                src="https://cdn.jiro.build/Amox/All%20SVG/Logo%20with%20Brand%20name.svg"
+                alt="Finsyc Logo"
+                className="h-7 lg:h-8 w-auto"
+              />
+            </a>
+
+            {/* Desktop Menu */}
+            <ul className="hidden lg:flex items-center gap-8">
+              {navItems.map((item: string) => (
+                <li key={item}>
+                  <a
+                    href="#"
+                    className={
+                      "font-inter text-base leading-6 tracking-[-0.3px] text-[#042718] transition-all " +
+                      (item === "Home"
+                        ? "font-bold opacity-100"
+                        : "font-normal opacity-80 hover:opacity-100 hover:font-bold")
+                    }
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex items-center gap-4">
+              <motion.button
+                onMouseEnter={() => setIsNavHovered(true)}
+                onMouseLeave={() => setIsNavHovered(false)}
+                layout
+                className={
+                  "hidden sm:flex items-center gap-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 group cursor-pointer relative h-11 transition-all duration-300 " +
+                  (isNavHovered ? "flex-row-reverse pl-1.5 pr-[18px]" : "flex-row pl-[18px] pr-1.5")
+                }
+              >
+                <motion.span
+                  layout
+                  className="font-inter text-base font-medium leading-6 tracking-[-0.3px] text-[#042718]"
+                >
+                  Get Started
+                </motion.span>
+
+                <motion.div
+                  layout
+                  className="w-8 h-8 rounded-full bg-white flex items-center justify-center relative overflow-hidden shrink-0"
+                >
+                  <motion.div
+                    animate={{
+                      x: isNavHovered ? [-20, 0] : 0,
+                      opacity: isNavHovered ? [0, 1] : 1
+                    }}
+                    transition={{ duration: 0.3, delay: isNavHovered ? 0.1 : 0 }}
+                  >
+                    <ArrowUpRight className="w-3 h-3 text-[#042718]" />
+                  </motion.div>
+                </motion.div>
+              </motion.button>
+
+              {/* Mobile Menu Toggle */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 text-[#042718] bg-white/20 backdrop-blur-md rounded-full"
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
+          </motion.nav>
+
+          {/* Mobile Navigation Drawer */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                key="mobile-menu"
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring" as const, damping: 25, stiffness: 200 }}
+                className="fixed inset-0 z-[100] lg:hidden bg-white px-6 py-8 flex flex-col gap-8"
+              >
+                <div className="flex items-center justify-between">
+                  <img
+                    src="https://cdn.jiro.build/Amox/All%20SVG/Logo%20with%20Brand%20name.svg"
+                    alt="Finsyc Logo"
+                    className="h-8 w-auto"
+                  />
+                  <button
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-2 text-[#042718] bg-[#042718]/5 rounded-full"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
+
+                <ul className="flex flex-col gap-6">
+                  {navItems.map((item: string, idx: number) => (
+                    <motion.li
+                      key={item}
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 * idx, ease: "easeOut" as const }}
+                    >
+                      <a
+                        href="#"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="font-inter text-2xl font-semibold text-[#042718]"
+                      >
+                        {item}
+                      </a>
+                    </motion.li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto">
+                  <button className="w-full py-4 rounded-full bg-[#042718] text-white font-inter font-medium text-lg">
+                    Get Started
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Hero Content */}
+          <div className="flex flex-col items-center mt-12 lg:mt-[80px]">
+            {/* Rating Box */}
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" as const }}
+              className="flex flex-row items-center gap-1.5 sm:gap-2 px-3 sm:px-[14px] py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 mb-6 whitespace-nowrap"
+            >
+              <div className="flex items-center gap-1 shrink-0">
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#042718] text-[#042718]" />
+                <span className="font-inter text-sm sm:text-base lg:text-[18px] font-medium leading-[28px] text-[#042718]">
+                  4.9 rating
+                </span>
+              </div>
+              <span className="font-inter text-sm sm:text-base lg:text-[18px] font-normal leading-[28px] text-[#000000] opacity-60 shrink-0">
+                from 18.3k+ users
+              </span>
+            </motion.div>
+
+            {/* Heading */}
+            <motion.h1
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" as const }}
+              className="max-w-[750px] w-full text-center font-onest text-[40px] sm:text-[50px] lg:text-[66px] font-semibold leading-tight lg:leading-[72px] tracking-tight lg:tracking-[-3px] text-[#042718]"
+            >
+              Control Your Money with{" "}
+              <span className="font-playfair italic font-semibold text-[#000000] opacity-50 tracking-normal lg:tracking-[-3.566px]">
+                AI-Powered
+              </span>{" "}
+              Insights
+            </motion.h1>
+
+            {/* Subheading */}
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" as const }}
+              className="max-w-[630px] w-full text-center mt-5 font-inter text-lg lg:text-[20px] font-normal leading-relaxed lg:leading-[30px] tracking-[-0.4px] text-[#042718]"
+            >
+              Automatically track your spending, predict upcoming expenses, and make smarter financial decisions without lifting a finger.
+            </motion.p>
+
+            {/* CTA Button */}
+            <motion.button
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1, duration: 0.8, ease: "easeOut" as const }}
+              onMouseEnter={() => setIsCTAHovered(true)}
+              onMouseLeave={() => setIsCTAHovered(false)}
+              layout
+              className={
+                "flex items-center gap-3 py-2 rounded-full bg-[#042718] mt-8 lg:mt-12 group cursor-pointer relative h-14 border border-white/20 transition-all duration-300 " +
+                (isCTAHovered ? "flex-row-reverse pl-2 pr-5" : "flex-row pl-5 pr-2")
+              }
+            >
+              <motion.span
+                layout
+                className="font-inter text-base lg:text-[18px] font-medium leading-[28px] text-white"
+              >
+                Get 14-days free trial
+              </motion.span>
+
+              <motion.div
+                layout
+                className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative overflow-hidden shrink-0"
+              >
+                <motion.div
+                  animate={{
+                    x: isCTAHovered ? [-24, 0] : 0,
+                    opacity: isCTAHovered ? [0, 1] : 1
+                  }}
+                  transition={{ duration: 0.3, delay: isCTAHovered ? 0.1 : 0 }}
+                >
+                  <ArrowUpRight className="w-4 h-4 text-[#042718]" />
+                </motion.div>
+              </motion.div>
+            </motion.button>
+
+            {/* Bottom Branding Section */}
+            <motion.div
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 1, ease: "easeOut" as const }}
+              className="mt-20 lg:mt-[220px] flex flex-col items-center gap-10 w-full"
+            >
+              <div className="px-[16px] py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/20">
+                <p className="font-inter text-sm lg:text-base font-medium leading-6 tracking-[-0.3px] text-white text-center">
+                  Collaborating with leading fintech innovators worldwide
+                </p>
+              </div>
+
+              <div className="w-full mt-4 overflow-hidden" style={{ maskImage: "linear-gradient(to right, transparent, black 20%, black 80%, transparent)" } as React.CSSProperties}>
+                <motion.div
+                  animate={{ x: ["0%", "-50%"] }}
+                  transition={{
+                    duration: 25,
+                    ease: "linear" as const,
+                    repeat: Infinity as number
+                  }}
+                  className="flex items-center gap-12 sm:gap-16 lg:gap-24 w-fit"
+                >
+                  {[...Array(2)].map((_: unknown, i: number) => (
+                    <React.Fragment key={i}>
+                      <img src="https://cdn.jiro.build/Amox/All%20SVG/Horizon.svg" alt="Horizon" className="h-6 sm:h-7 lg:h-9 w-auto hover:opacity-80 transition-opacity" />
+                      <img src="https://cdn.jiro.build/Amox/All%20SVG/Naxus.svg" alt="Naxus" className="h-6 sm:h-7 lg:h-9 w-auto hover:opacity-80 transition-opacity" />
+                      <img src="https://cdn.jiro.build/Amox/All%20SVG/Lumassa.svg" alt="Lumassa" className="h-6 sm:h-7 lg:h-9 w-auto hover:opacity-80 transition-opacity" />
+                      <img src="https://cdn.jiro.build/Amox/All%20SVG/Cyborg.svg" alt="Cyborg" className="h-6 sm:h-7 lg:h-9 w-auto hover:opacity-80 transition-opacity" />
+                      <img src="https://cdn.jiro.build/Amox/All%20SVG/Catalyst.svg" alt="Catalyst" className="h-6 sm:h-7 lg:h-9 w-auto hover:opacity-80 transition-opacity" />
+                    </React.Fragment>
+                  ))}
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+    </>
+  );
+}
+
+### File 2 of 10: /components/templates/finance-management-landing-page-finsyc/Metrics with logo 01 Finsyc.tsx
+
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion, animate } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+
+function Counter({ value, duration = 2 }: { value: number; duration?: number }) {
+  const [displayValue, setDisplayValue] = useState(0);
+
+  useEffect(() => {
+    const controls = animate(0, value, {
+      duration: duration,
+      onUpdate: (latest: number) => setDisplayValue(Math.round(latest)),
+      ease: "easeOut" as const,
+    });
+    return () => controls.stop();
+  }, [value, duration]);
+
+  return <span>{displayValue}%</span>;
+}
+
+interface FeatureCardProps {
+  logo: React.ReactNode;
+  brandName: string;
+  description: string;
+  percentage: number;
+  statLabel: string;
+  bgColor: string;
+  delay?: number;
+}
+
+function FeatureCard({
+  logo,
+  brandName,
+  description,
+  percentage,
+  statLabel,
+  bgColor,
+  delay = 0,
+}: FeatureCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] as const }}
+      style={{ backgroundColor: bgColor }}
+      className="flex w-full lg:w-[400px] p-6 md:p-8 flex-col items-start rounded-[24px]"
+    >
+      <div className="flex items-center gap-[12px] mb-[20px]">
+        <div
+          className="h-[36px] flex items-center"
+          style={{
+            filter: "brightness(0) saturate(100%) invert(11%) sepia(21%) saturate(2304%) hue-rotate(111deg) brightness(91%) contrast(100%)",
+          } as React.CSSProperties}
+        >
+          {logo}
+        </div>
+      </div>
+
+      <p className="font-sans text-[16px] md:text-[18px] font-medium leading-[24px] md:leading-[28px] text-[#042718] opacity-80 min-h-0 md:min-h-[112px]">
+        {description}
+      </p>
+
+      <div className="mt-12 md:mt-[80px]">
+        <h2 className="font-heading text-[40px] md:text-[52px] font-semibold leading-[46px] md:leading-[58px] tracking-[-1.2px] md:tracking-[-1.8px] text-[#042718]">
+          <Counter value={percentage} />
+        </h2>
+        <p className="mt-[12px] md:mt-[16px] font-sans text-[16px] md:text-[18px] font-normal leading-[24px] md:leading-[28px] text-[#042718] opacity-80">
+          {statLabel}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function MetricsWithLogo01Finsyc({ className }: { className?: string }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <>
+      <section
+        className={"w-full bg-[#F6FDFF] py-20 lg:py-32 flex justify-center " + (className || "")}
+      >
+        <div className="w-full max-w-[1440px] px-6 lg:px-[96px]">
+          <div className="w-full max-w-[1248px] mx-auto">
+            {/* Header Row */}
+            <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 md:mb-[64px] gap-8">
+              <motion.h1
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, ease: "easeOut" as const }}
+                className="max-w-[584px] text-[36px] md:text-[52px] font-heading font-semibold leading-[42px] md:leading-[58px] tracking-[-1.2px] md:tracking-[-1.8px] text-[#042718]"
+              >
+                Smarter financial setup for scaling <i className="text-[rgba(0,0,0,0.40)]">growth</i>
+              </motion.h1>
+
+              <motion.button
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                animate={{
+                  paddingLeft: isHovered ? 8 : 20,
+                  paddingRight: isHovered ? 20 : 8,
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.22, 1, 0.36, 1] as const,
+                  opacity: { duration: 0.8 },
+                  x: { duration: 0.8 },
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center h-[56px] min-w-fit w-max bg-[#042718] rounded-full group cursor-pointer transition-colors duration-300 hover:bg-[#063b25] overflow-hidden gap-[12px]"
+              >
+                <motion.div
+                  layout="position" 
+                  style={{ order: isHovered ? 2 : 1 } as React.CSSProperties}
+                  transition={{ type: "spring" as const, stiffness: 400, damping: 35 }}
+                  className="font-sans text-[18px] font-medium leading-[28px] text-white whitespace-nowrap"
+                >
+                  Try for Free
+                </motion.div>
+                <motion.div
+                  layout="position" 
+                  style={{ order: isHovered ? 1 : 2 } as React.CSSProperties}
+                  transition={{ type: "spring" as const, stiffness: 400, damping: 35 }}
+                  className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center shrink-0"
+                >
+                  <ArrowUpRight className="w-[16px] h-[16px] text-[#042718]" />
+                </motion.div>
+              </motion.button>
+            </div>
+
+            {/* Cards Grid */}
+            <div className="flex flex-col lg:flex-row gap-[24px]">
+              <FeatureCard
+                delay={0.1}
+                bgColor="#D2DDEA"
+                brandName="Lumassa"
+                logo={
+                  <img
+                    src="https://cdn.jiro.build/Amox/All%20SVG/Lumassa.svg"
+                    alt="Lumassa"
+                    className="h-[36px] w-auto"
+                    referrerPolicy="no-referrer"
+                  />
+                }
+                description="Advanced infrastructure to automate transactions, streamline operations, and scale your financial services with confidence."
+                percentage={42}
+                statLabel="Increase in financial efficiency per year"
+              />
+              <FeatureCard
+                delay={0.2}
+                bgColor="#EBE3D2"
+                brandName="Catalyst"
+                logo={
+                  <img
+                    src="https://cdn.jiro.build/Amox/All%20SVG/Catalyst.svg"
+                    alt="Catalyst"
+                    className="h-[36px] w-auto"
+                    referrerPolicy="no-referrer"
+                  />
+                }
+                description="Real-time payment processing, intelligent routing, and seamless integrations to accelerate your business growth."
+                percentage={34}
+                statLabel="Faster transaction processing"
+              />
+              <FeatureCard
+                delay={0.3}
+                bgColor="#D4E5CD"
+                brandName="Naxus"
+                logo={
+                  <img
+                    src="https://cdn.jiro.build/Amox/All%20SVG/Naxus.svg"
+                    alt="Naxus"
+                    className="h-[36px] w-auto"
+                    referrerPolicy="no-referrer"
+                  />
+                }
+                description="Enterprise-grade security, risk management, and compliance tools to protect your customers and your brand."
+                percentage={26}
+                statLabel="Reduction in operational costs"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+### File 3 of 10: /components/templates/finance-management-landing-page-finsyc/Feature 01 Finsyc.tsx
+
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { PieChart, Zap, Shield, BarChart3, Sparkles } from "lucide-react";
+
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  uiSrc: string;
+  width: string;
+  className?: string;
+  delay?: number;
+  isMounted?: boolean;
+}
+
+function FeatureCard({ title, description, icon: Icon, uiSrc, width: _width, className = "", delay = 0, isMounted = false }: FeatureCardProps) {
+  return (
+    <motion.div
+      initial={{ y: 40, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay, ease: [0.21, 0.45, 0.32, 0.9] as const }}
+      className={"flex flex-col items-start shrink-0 border border-[#042718]/10 overflow-hidden bg-white group w-full rounded-[24px] sm:rounded-[32px] " + (className || "")}
+    >
+      <div className="relative w-full h-[320px] sm:h-[400px] lg:h-[440px] overflow-hidden flex items-center justify-center p-6 sm:p-8 bg-[#F9FAFB]">
+        {isMounted && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
+          >
+            <source
+              src="https://cdn.jiro.build/Amox/All%20Images/P01-Header-01-BG.mp4"
+              type="video/mp4"
+            />
+          </video>
+        )}
+        <div className="relative z-10 w-full h-full flex items-center justify-center">
+          <img
+            src={uiSrc}
+            alt={title}
+            className="h-full w-full object-contain pointer-events-none select-none transition-all duration-500 group-hover:translate-y-[-10px]"
+          />
+        </div>
+      </div>
+
+      <div className="p-6 sm:p-10 flex flex-col sm:flex-row items-start gap-5 self-stretch bg-white">
+        <div className="w-10 h-10 p-2 flex items-center justify-center border border-[#198F38]/20 bg-[#198F38]/5 rounded-lg shrink-0">
+          <Icon className="w-6 h-6 text-[#198F38] stroke-[3px]" />
+        </div>
+        <div className="flex flex-col gap-[10px]">
+          <h3 className="text-[#042718] font-onest text-xl sm:text-2xl font-semibold leading-tight sm:leading-[30px] tracking-[-0.8px]">
+            {title}
+          </h3>
+          <p className="text-[#042718] font-inter text-base sm:text-lg font-normal leading-relaxed sm:leading-[28px] opacity-80">
+            {description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function OriginaFinsycFeature({ className }: { className?: string }) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const cards: Array<{ title: string; description: string; icon: React.ElementType; uiSrc: string; width: string }> = [
+    {
+      title: "Smart Expense Tracking",
+      description: "Automatically categorize every transaction and see where your money really goes with AI.",
+      icon: PieChart,
+      uiSrc: "https://cdn.jiro.build/Amox/All%20SVG/P01-Feature-UI-01.svg",
+      width: "676px"
+    },
+    {
+      title: "Predictive Analytics",
+      description: "Stay ahead of your bills and know your balance before the month starts.",
+      icon: BarChart3,
+      uiSrc: "https://cdn.jiro.build/Amox/All%20SVG/P01-Feature-UI-02.svg",
+      width: "548px"
+    },
+    {
+      title: "Security By Design",
+      description: "Your data is encrypted with military-grade protocols and never stored on our servers.",
+      icon: Shield,
+      uiSrc: "https://cdn.jiro.build/Amox/All%20SVG/P01-Feature-UI-03.svg",
+      width: "548px"
+    },
+    {
+      title: "Instant Fast Transfers",
+      description: "Send money to anyone, anywhere, instantly with zero hidden fees or processing delays.",
+      icon: Zap,
+      uiSrc: "https://cdn.jiro.build/Amox/All%20SVG/P01-Feature-UI-04.svg",
+      width: "676px"
+    }
+  ];
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+
+      <section className={"w-full bg-[#FFFFFF] py-20 lg:py-32 overflow-hidden " + (className || "")}>
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center">
+
+            <div className="flex flex-col items-center">
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#198F38]/10 bg-[#198F38]/5 whitespace-nowrap"
+              >
+                <Sparkles className="w-4 h-4 text-[#198F38]" />
+                <span className="text-[#198F38] text-center font-inter text-base font-normal leading-6 tracking-[-0.3px]">
+                  Our Powerful Features
+                </span>
+              </motion.div>
+
+              <motion.h2
+                initial={{ y: 24, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="mt-6 w-full max-w-[686px] text-[#042718] text-center font-onest text-[32px] sm:text-[40px] lg:text-[52px] font-semibold leading-tight lg:leading-[58px] tracking-[-1.2px] sm:tracking-[-1.8px]"
+              >
+                Master Your Money
+                <br className="block sm:hidden" />
+                {" with Smart "}
+                <span className="text-black/40 font-playfair italic font-semibold">
+                  features
+                </span>
+              </motion.h2>
+
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="mt-3 w-full max-w-[514px] text-[#042718] text-center font-inter text-base sm:text-lg font-normal leading-relaxed sm:leading-7 opacity-80"
+              >
+                Everything you need to take control of your financial future in one simple, powerful application.
+              </motion.p>
+            </div>
+
+            <div className="mt-12 lg:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+              {cards.map((card, idx) => (
+                <FeatureCard
+                  key={idx}
+                  title={card.title}
+                  description={card.description}
+                  icon={card.icon}
+                  uiSrc={card.uiSrc}
+                  width={card.width}
+                  isMounted={isMounted}
+                  delay={0.2 + idx * 0.1}
+                  className="w-full"
+                />
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+### File 4 of 10: /components/templates/finance-management-landing-page-finsyc/How it Works 01 Finsyc.tsx
+
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import type { Variants } from "framer-motion";
+import {
+  Sparkles,
+  ArrowUpRight,
+  Check,
+  Wallet,
+  PieChart,
+  Target,
+  Zap,
+  type LucideIcon
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface ProcessStep {
+  id: number;
+  label: string;
+  icon: LucideIcon;
+  heading: string;
+  subheading: string;
+  list: string[];
+  imgSrc: string;
+}
+
+const steps: ProcessStep[] = [
+  {
+    id: 1,
+    label: "Connect your account",
+    icon: Wallet,
+    heading: "Connect Your Accounts",
+    subheading: "Securely link your bank accounts, cards, and wallets in seconds — and get a complete, real-time view of your finances in one place.",
+    list: [
+      "Seamless and secure account integration",
+      "Supports multiple banks and cards",
+      "Real-time balance synchronization"
+    ],
+    imgSrc: "https://cdn.jiro.build/Amox/All%20Images/P01-Process-img-01.png"
+  },
+  {
+    id: 2,
+    label: "Track your spending",
+    icon: PieChart,
+    heading: "Monitor Every Transaction",
+    subheading: "Our AI automatically categorizes your spending habits, helping you identify areas where you can save and improve your financial health.",
+    list: [
+      "Auto-categorization of expenses",
+      "Detailed monthly spending reports",
+      "Identify subscription leaks instantly"
+    ],
+    imgSrc: "https://cdn.jiro.build/Amox/All%20Images/P01-Process-img-01.png"
+  },
+  {
+    id: 3,
+    label: "Set budgets & goals",
+    icon: Target,
+    heading: "Smart Budgeting Goals",
+    subheading: "Define your financial targets and let our system guide you towards achieving them with personalized recommendations and alerts.",
+    list: [
+      "Custom rules for savings goals",
+      "Visual progress tracking bars",
+      "Smart alerts for budget limits"
+    ],
+    imgSrc: "https://cdn.jiro.build/Amox/All%20Images/P01-Process-img-01.png"
+  },
+  {
+    id: 4,
+    label: "Optimize with AI insights",
+    icon: Zap,
+    heading: "AI-Powered Optimization",
+    subheading: "Get actionable advice powered by machine learning to optimize your wealth growth and minimize unnecessary financial risks.",
+    list: [
+      "Wealth growth predictions",
+      "Personalized investment tips",
+      "Weekly financial health scores"
+    ],
+    imgSrc: "https://cdn.jiro.build/Amox/All%20Images/P01-Process-img-01.png"
+  }
+];
+
+export default function FinsycOriginal4step({ className }: { className?: string }) {
+  const [activeTab, setActiveTab] = useState(1);
+  const [isHoveringBtn, setIsHoveringBtn] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const activeStep = steps.find((s: ProcessStep) => s.id === activeTab) || steps[0];
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+
+      <section className={"w-full bg-[#F6FDFF] py-20 lg:py-32 overflow-hidden " + (className || "")}>
+        <div className="w-full max-w-[1248px] mx-auto relative px-4 md:px-6">
+          <div className="flex flex-col items-start gap-12 lg:gap-16">
+
+            {/* Header Area */}
+            <div className="flex flex-col items-start">
+              <motion.div
+                initial={{ x: -20, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#198F38]/10 bg-[#198F38]/5 whitespace-nowrap mb-6"
+              >
+                <Sparkles className="w-4 h-4 text-[#198F38]" strokeWidth={2.5} />
+                <span className="text-[#198F38] text-center font-inter text-base font-normal leading-6 tracking-[-0.3px]">
+                  Process
+                </span>
+              </motion.div>
+
+              <motion.h2
+                initial={{ x: -30, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-[#042718] font-onest text-[32px] sm:text-[44px] lg:text-[52px] font-semibold leading-tight lg:leading-[58px] tracking-[-1.2px] lg:tracking-[-1.8px] w-full lg:max-w-[556px] text-left"
+              >
+                Manage your finances
+                <br className="block lg:hidden" />
+                {" "}in{" "}
+                <span className="text-black/40 font-playfair italic font-semibold">
+                  4 simple
+                </span>{" "}
+                steps
+              </motion.h2>
+            </div>
+
+            {/* Tabs and Card Container */}
+            <div className="w-full flex flex-col gap-6">
+              {/* Tab Selection Row */}
+              <div className="w-full">
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="w-full bg-white p-4 lg:px-6 lg:py-4 rounded-2xl shadow-[0_1px_20px_0_rgba(4,39,24,0.04)] flex items-center lg:justify-between gap-2 overflow-x-auto overflow-y-hidden scrollbar-hide snap-x"
+                >
+                  {steps.map((step: ProcessStep) => {
+                    const isActive = activeTab === step.id;
+                    return (
+                      <button
+                        key={step.id}
+                        onClick={() => setActiveTab(step.id)}
+                        className={cn(
+                          "flex items-center gap-3 px-4 sm:px-6 py-2.5 rounded-xl transition-all duration-300 shrink-0 snap-start",
+                          isActive ? "bg-white" : "hover:bg-[#F6FDFF]"
+                        )}
+                      >
+                        <step.icon
+                          className={cn("w-[22px] h-[22px]", isActive ? "text-[#198F38]" : "text-[#042718]/60")}
+                          strokeWidth={2.5}
+                        />
+                        <span className={cn(
+                          "font-inter text-base sm:text-[18px] leading-[28px] whitespace-nowrap",
+                          isActive ? "text-[#198F38] font-medium" : "text-[#042718]/60 font-normal"
+                        )}>
+                          {step.label}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </motion.div>
+              </div>
+
+              {/* Main Content Card */}
+              <div className="w-full">
+                <div className="w-full bg-white rounded-[32px] border border-[#042718]/[0.04] shadow-[0_0_20px_0_rgba(4,39,24,0.04)] flex flex-col lg:flex-row items-center justify-between p-6 lg:pt-4 lg:pr-4 lg:pb-4 lg:pl-16 gap-12 lg:gap-0 overflow-hidden">
+
+                  {/* Left Column: Text Info */}
+                  <div className="w-full lg:w-[534px] flex flex-col items-start text-left">
+                    <motion.div
+                      key={"icon-" + activeTab}
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-16 h-16 rounded-xl border border-[#042718]/10 bg-white shadow-sm flex items-center justify-center p-4 mb-3"
+                    >
+                      <activeStep.icon className="w-8 h-8 text-[#198F38]" strokeWidth={2.5} />
+                    </motion.div>
+
+                    <motion.h3
+                      key={"h3-" + activeTab}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-[#042718] font-onest text-[28px] lg:text-[34px] font-semibold leading-tight lg:leading-[38px] tracking-[-1px] mb-4"
+                    >
+                      {activeStep.heading}
+                    </motion.h3>
+
+                    <motion.p
+                      key={"p-" + activeTab}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ delay: 0.1, duration: 0.3 }}
+                      className="text-[#042718] font-inter text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] opacity-80 mb-8"
+                    >
+                      {activeStep.subheading}
+                    </motion.p>
+
+                    <div className="flex flex-col gap-3 mb-12">
+                      {activeStep.list.map((item: string, i: number) => (
+                        <motion.div
+                          key={"li-" + activeTab + "-" + i}
+                          initial={{ x: -10, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{ delay: 0.2 + i * 0.1, duration: 0.3 }}
+                          className="flex items-center gap-3"
+                        >
+                          <div className="w-5 h-5 rounded-full bg-[#198F38]/10 flex items-center justify-center shrink-0">
+                            <Check className="w-3 h-3 text-[#198F38] stroke-[3px]" />
+                          </div>
+                          <span className="text-[#042718] font-inter text-base font-medium leading-6 tracking-[-0.3px]">
+                            {item}
+                          </span>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Action Button */}
+                    <motion.button
+                      onMouseEnter={() => setIsHoveringBtn(true)}
+                      onMouseLeave={() => setIsHoveringBtn(false)}
+                      layout
+                      className={cn(
+                        "flex items-center gap-3 py-2 rounded-full bg-[#042718] group cursor-pointer relative h-14 transition-all duration-300",
+                        isHoveringBtn ? "flex-row-reverse pl-2 pr-5" : "flex-row pl-5 pr-2"
+                      )}
+                    >
+                      <motion.span
+                        layout
+                        className="font-inter text-base lg:text-[18px] font-medium leading-[28px] text-white"
+                      >
+                        Try for Free
+                      </motion.span>
+
+                      <motion.div
+                        layout
+                        className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative overflow-hidden"
+                      >
+                        <motion.div
+                          animate={{
+                            x: isHoveringBtn ? [-20, 0] : 0,
+                            opacity: isHoveringBtn ? [0, 1] : 1
+                          }}
+                          transition={{ duration: 0.3, delay: isHoveringBtn ? 0.1 : 0 }}
+                        >
+                          <ArrowUpRight className="w-4 h-4 text-[#042718]" />
+                        </motion.div>
+                      </motion.div>
+                    </motion.button>
+                  </div>
+
+                  {/* Right Column: UI Card */}
+                  <div className="w-full lg:w-[516px] h-[400px] sm:h-[500px] lg:h-[560px] relative rounded-[24px] overflow-hidden flex items-center justify-center">
+                    {/* Video BG */}
+                    <div className="absolute inset-0 z-0">
+                      {isMounted && (
+                        <video
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-cover opacity-60"
+                        >
+                          <source src="https://cdn.jiro.build/Amox/All%20Images/P01-Header-01-BG.mp4" type="video/mp4" />
+                        </video>
+                      )}
+                    </div>
+
+                    {/* Dynamic Image */}
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={"img-" + activeTab}
+                        initial={{ scale: 0.9, opacity: 0, y: 30 }}
+                        animate={{ scale: 1, opacity: 1, y: 0 }}
+                        exit={{ scale: 1.1, opacity: 0, y: -30 }}
+                        transition={{ duration: 0.5 }}
+                        className="relative z-10 w-full flex items-center justify-center p-6 lg:p-0"
+                      >
+                        <img
+                          src={activeStep.imgSrc}
+                          alt={activeStep.heading}
+                          className="w-full max-w-[384px] h-auto object-contain drop-shadow-2xl"
+                        />
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+### File 5 of 10: /components/templates/finance-management-landing-page-finsyc/Why Choose us 01 Finsyc.tsx
+
+"use client";
+
+import React from "react";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { Sparkles, Lightbulb, Zap, User, TrendingUp, MousePointer2, ShieldCheck, Globe, PieChart, Bell, Users } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface BenefitItemProps {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  delay?: number;
+}
+
+function BenefitItem({ title, description, icon: Icon, delay = 0 }: BenefitItemProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay, ease: "easeOut" as const }}
+      className="flex gap-6"
+    >
+      <div className="flex-shrink-0 w-10 h-10 bg-[#f9fafb] border border-[#F8F8FC] rounded-lg flex items-center justify-center">
+        <Icon className="w-5 h-5 text-[#138E5F]" strokeWidth={2.5} />
+      </div>
+      <div className="flex flex-col gap-1">
+        <h3 className="text-[#042718] font-onest text-[20px] md:text-[24px] font-semibold leading-[26px] md:leading-[30px] tracking-[-0.6px] md:tracking-[-0.8px]">
+          {title}
+        </h3>
+        <p className="text-[#042718] font-sans text-base md:text-[18px] font-normal leading-[24px] md:leading-[28px] opacity-80">
+          {description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function WhyChooseUs01Finsyc({ className }: { className?: string }) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const listRef = React.useRef<HTMLDivElement>(null);
+  const [isLargeScreen, setIsLargeScreen] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1024);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
+  const scaleY = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const yTranslate = useTransform(scrollYProgress, [0, 1], ["0%", "-65%"]);
+  const y = isLargeScreen ? yTranslate : 0;
+
+  const tags = [
+    "Automated Finance",
+    "Smart Security",
+    "AI Insights",
+    "Real-time Tracking",
+    "Unified Dashboard",
+  ];
+
+  const benefits: Array<{ title: string; description: string; icon: LucideIcon }> = [
+    {
+      title: "Smart financial insights",
+      description: "Get real-time visibility into your spending, income, and financial trends to make better faster.",
+      icon: Lightbulb
+    },
+    {
+      title: "Fast and seamless tracking",
+      description: "Automatically track all transactions across accounts without manual input or delays.",
+      icon: Zap
+    },
+    {
+      title: "Personalized for you",
+      description: "Customize budgets, goals, and insights based on your unique financial behavior",
+      icon: User
+    },
+    {
+      title: "Maximum financial efficiency",
+      description: "Reduce unnecessary expenses and optimize your cash flow with intelligent recommendations.",
+      icon: TrendingUp
+    },
+    {
+      title: "Simple and user friendly",
+      description: "Enjoy a clean, intuitive interface designed to make managing money easy for everyone.",
+      icon: MousePointer2
+    },
+    {
+      title: "Advanced data security",
+      description: "Your financial data is protected with military-grade encryption and secure protocols.",
+      icon: ShieldCheck
+    },
+    {
+      title: "Global connectivity",
+      description: "Sync your accounts from thousands of financial institutions around the world instantly.",
+      icon: Globe
+    },
+    {
+      title: "Customized analytics",
+      description: "Create deep-dive reports and visualizations that matter most to your financial goals.",
+      icon: PieChart
+    },
+    {
+      title: "Instant smart alerts",
+      description: "Stay ahead with real-time notifications about unusual spending or budget limits.",
+      icon: Bell
+    },
+    {
+      title: "Collaborative finance",
+      description: "Share budgets and track goals with family members or business partners seamlessly.",
+      icon: Users
+    },
+  ];
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+
+      <section className={cn("w-full bg-white py-16 md:py-24 lg:py-[120px] flex justify-center", className)}>
+        <div className="w-full max-w-[1440px] px-6 lg:px-[96px]">
+          <div className="w-full max-w-[1248px] mx-auto">
+            <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-[48px] justify-between">
+
+              {/* Left Column - Sticky */}
+              <div className="w-full lg:max-w-[622px] flex flex-col items-start lg:sticky lg:top-[120px] self-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="px-4 py-2 bg-[#F2FBF6] border border-[#138E5F]/15 rounded-full flex items-center gap-2 mb-8"
+                >
+                  <Sparkles className="w-4 h-4 text-[#138E5F] fill-[#138E5F]" />
+                  <span className="text-[#138E5F] font-sans text-sm font-medium">Benefits</span>
+                </motion.div>
+
+                <motion.h2
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" as const }}
+                  className="text-[#042718] font-onest text-[32px] sm:text-[42px] md:text-[52px] font-semibold leading-[38px] sm:leading-[48px] md:leading-[58px] tracking-[-1.2px] md:tracking-[-1.8px] mb-3"
+                >
+                  Take full control of your financial growth with <i className="text-[rgba(0,0,0,0.40)]">intelligent</i> tools
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" as const }}
+                  className="text-[#042718] font-sans text-lg md:text-[20px] font-normal leading-[24px] md:leading-[30px] opacity-80 mb-16 max-w-[560px]"
+                >
+                  Manage your money smarter with powerful tools designed to simplify tracking, optimize spending, and drive better financial decisions.
+                </motion.p>
+
+                <div className="flex flex-wrap gap-3">
+                  {tags.map((tag: string, idx: number) => (
+                    <motion.span
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.3 + idx * 0.1, ease: "easeOut" as const }}
+                      className="px-6 py-3 border border-[#042718]/10 rounded-full text-[#042718] font-sans text-[16px] md:text-[18px] font-normal hover:bg-[#F6FDFF] transition-colors cursor-default"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column - Scrollable List */}
+              <div ref={containerRef} className="flex-1 lg:max-w-[578px] flex items-start pr-0 lg:h-[300vh] h-auto relative w-full">
+                <div className="lg:sticky lg:top-[120px] lg:h-[800px] h-auto flex items-start w-full lg:overflow-hidden overflow-visible">
+                  <div className="hidden lg:block absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-white via-white/95 to-transparent z-10 pointer-events-none" />
+
+                  <div className="hidden lg:flex flex-col items-center mr-10 xl:mr-12 relative w-[2px] bg-[#138E5F]/10 self-stretch">
+                    <motion.div
+                      style={{ scaleY, originY: 0 }}
+                      className="w-full bg-[#138E5F] absolute top-0 left-0 h-full"
+                    />
+                  </div>
+
+                  <motion.div
+                    ref={listRef}
+                    style={{ y }}
+                    className="w-full lg:w-[514px] flex flex-col gap-10 md:gap-12 lg:gap-16 lg:pt-28 lg:pb-40 pt-0 pb-0"
+                  >
+                    {benefits.map((benefit: { title: string; description: string; icon: LucideIcon }, idx: number) => (
+                      <BenefitItem
+                        key={idx}
+                        title={benefit.title}
+                        description={benefit.description}
+                        icon={benefit.icon}
+                        delay={0.4 + idx * 0.1}
+                      />
+                    ))}
+                  </motion.div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+### File 6 of 10: /components/templates/finance-management-landing-page-finsyc/Metrics with Testimonial Finsyc.tsx
+
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useSpring, useTransform, useInView } from "framer-motion";
+import { Sparkles, ArrowLeft, ArrowRight, Star } from "lucide-react";
+
+// --- Counter Component ---
+
+interface CounterProps {
+  value: number;
+  suffix: string;
+}
+
+function Counter({ value, suffix }: CounterProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const spring = useSpring(0, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const display = useTransform(spring, (current: number) => Math.floor(current).toString());
+
+  useEffect(() => {
+    if (isInView) {
+      spring.set(value);
+    }
+  }, [isInView, spring, value]);
+
+  return (
+    <div ref={ref} className="flex justify-center items-baseline gap-[2px]">
+      <motion.span className="text-[#042718] text-[52px] font-semibold leading-[58px] tracking-[-1.8px]">
+        {display}
+      </motion.span>
+      <span className="text-black/40 text-[42px] font-semibold leading-[48px] tracking-[-2px]">
+        {suffix}
+      </span>
+    </div>
+  );
+}
+
+// --- MetricCard Component ---
+
+function MetricCard({
+  number,
+  suffix,
+  title,
+  description,
+  delay,
+}: {
+  number: number;
+  suffix: string;
+  title: string;
+  description: string;
+  delay: number;
+}) {
+  return (
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8, delay }}
+      className="flex flex-col items-start w-full sm:w-[400px]"
+    >
+      <div className="flex flex-col items-start w-full sm:w-[294px] p-[20px_24px] gap-2.5 rounded-[24px] bg-white/40 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(4,39,24,0.06)]">
+        <Counter value={number} suffix={suffix} />
+        <p className="text-[#042718] text-[18px] font-medium leading-[28px]">
+          {title}
+        </p>
+      </div>
+      <p className="mt-4 text-[#042718] text-[16px] font-normal leading-[24px] tracking-[-0.3px] opacity-80 line-clamp-2 pr-[20px]">
+        {description}
+      </p>
+    </motion.div>
+  );
+}
+
+// --- Testimonial Data ---
+
+interface Testimonial {
+  id: number;
+  text: string;
+  name: string;
+  role: string;
+  avatar: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    id: 1,
+    text: "Finsyc completely changed how I manage my money. The real-time insights and smart budgeting features helped me cut unnecessary spending.",
+    name: "Michael Reynolds",
+    role: "Product manager, Fintech startup",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
+  },
+  {
+    id: 2,
+    text: "The AI insights are incredibly accurate. It not only tracks my spending but also suggests smarter ways to manage my finances and save.",
+    name: "Sarah Jenkins",
+    role: "Digital Nomad & Designer",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
+  },
+  {
+    id: 3,
+    text: "I used to struggle with tracking my expenses, but Finsyc makes it so simple. Now I always know where my money goes and feel more in control.",
+    name: "Daniel Carter",
+    role: "Marketing Specialist",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
+  },
+  {
+    id: 4,
+    text: "The automated categorization is a lifesaver. I don't have to manually input anything, and my financial reports are always ready.",
+    name: "Emily Watson",
+    role: "Software Engineer",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
+  },
+  {
+    id: 5,
+    text: "Security was my top priority, and Finsyc delivers. I feel safe knowing my data is protected while I track my investment growth.",
+    name: "James Wilson",
+    role: "Investment Analyst",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
+  },
+];
+
+const displayTestimonials: Testimonial[] = [...testimonials, ...testimonials, ...testimonials];
+
+// --- Main Component ---
+
+export default function MetricAndTestimonials({ className }: { className?: string }) {
+  const metrics = [
+    {
+      number: 250,
+      suffix: "K+",
+      title: "Transactions Tracked",
+      description: "Seamlessly managing thousands of transactions every day with real-time accuracy.",
+    },
+    {
+      number: 84,
+      suffix: "%",
+      title: "Better financial decisions",
+      description: "Users improve their financial decisions with AI-powered insights and smarter analysis.",
+    },
+    {
+      number: 500,
+      suffix: "M+",
+      title: "Active users worldwide",
+      description: "Trusted by hundreds of thousands of users to manage and grow their finances.",
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(testimonials.length);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const [carouselWidth, setCarouselWidth] = useState(0);
+  const carouselTrackRef = useRef<HTMLDivElement>(null);
+  const [cardWidth, setCardWidth] = useState(660);
+  const gap = 24;
+
+  const resetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!carouselTrackRef.current) return;
+    const observer = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+      if (entries[0]) {
+        setCarouselWidth(entries[0].contentRect.width);
+      }
+    });
+    observer.observe(carouselTrackRef.current);
+    return () => observer.disconnect();
+  }, [isMounted]);
+
+  useEffect(() => {
+    if (isAutoPlaying && isMounted) {
+      resetTimeout();
+      timeoutRef.current = setTimeout(() => {
+        setIsTransitioning(true);
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+      }, 5000);
+    }
+    return () => resetTimeout();
+  }, [currentIndex, isAutoPlaying, isMounted]);
+
+  useEffect(() => {
+    if (currentIndex >= testimonials.length * 2) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(currentIndex % testimonials.length + testimonials.length);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+    if (currentIndex < testimonials.length) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(currentIndex + testimonials.length);
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex]);
+
+  useEffect(() => {
+    const handleResizeWidth = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setCardWidth(width - 48);
+      } else if (width < 1024) {
+        setCardWidth(500);
+      } else {
+        setCardWidth(660);
+      }
+    };
+    handleResizeWidth();
+    window.addEventListener("resize", handleResizeWidth);
+    return () => window.removeEventListener("resize", handleResizeWidth);
+  }, []);
+
+  const handleNext = () => {
+    setIsAutoPlaying(false);
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    setIsAutoPlaying(false);
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev - 1);
+  };
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+
+      <div className={"flex flex-col w-full " + (className || "")}>
+        {/* Metrics Section */}
+        <section className="w-full bg-[#F6FDFF] py-16 lg:pt-32 lg:pb-16 overflow-hidden flex justify-center">
+          <div className="w-full max-w-[1248px] px-6 lg:px-0 flex flex-col items-center">
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E5F2ED] border border-[#042718]/[0.08]"
+            >
+              <Sparkles size={14} strokeWidth={3} className="text-[#15803D]" />
+              <span className="text-sm font-medium text-[#15803D]">Key Metrics</span>
+            </motion.div>
+
+            <motion.h2
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={{
+                hidden: { opacity: 1 },
+                visible: {
+                  transition: {
+                    staggerChildren: 0.015,
+                  },
+                },
+              }}
+              className="mt-6 sm:mt-8 w-full max-w-[970px] text-center text-[30px] sm:text-[36px] lg:text-[42px] font-semibold leading-[1.2] sm:leading-[44px] lg:leading-[48px] tracking-[-1.5px] sm:tracking-[-2px]"
+            >
+              {"Managing money smarter, saving more efficiently, and making better financial decisions. Let's take control of your finances together."
+                .split("")
+                .map((char: string, index: number) => (
+                  <motion.span
+                    key={index}
+                    variants={{
+                      hidden: { color: "#E4E4E4" },
+                      visible: {
+                        color: "#042718",
+                        transition: { duration: 0.5, ease: "easeOut" as const },
+                      },
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+            </motion.h2>
+
+            <div className="mt-12 sm:mt-16 lg:mt-20 flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start items-center sm:items-start gap-10 sm:gap-x-6 lg:gap-[24px] w-full">
+              {metrics.map((metric, index: number) => (
+                <MetricCard
+                  key={index}
+                  number={metric.number}
+                  suffix={metric.suffix}
+                  title={metric.title}
+                  description={metric.description}
+                  delay={0.2 + index * 0.1}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonial Section */}
+        <section className="w-full bg-[#F6FDFF] py-16 lg:pt-16 lg:pb-32 overflow-hidden flex justify-center">
+          <div className="w-full max-w-[1440px] flex flex-col items-center overflow-hidden">
+
+            <div className="w-full max-w-[1248px] px-6 lg:px-0 flex flex-col items-center text-center mt-0 mb-16">
+              <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#138E5F]/[0.05] border border-[#138E5F]/10 mb-4">
+                <Star className="w-3.5 h-3.5 text-[#138E5F] fill-[#138E5F]" />
+                <span className="text-[14px] font-medium text-[#138E5F] tracking-tight">Testimonials</span>
+              </div>
+
+              <h2 className="text-[#042718] text-[28px] sm:text-[36px] md:text-[52px] font-semibold leading-tight tracking-tight max-w-[690px] mb-4 lg:mb-6">
+                Trusted by people <i className="text-[rgba(0,0,0,0.40)]">who take</i> control of their finances
+              </h2>
+
+              <p className="text-[#042718] opacity-80 text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] max-w-[576px]">
+                See how users are simplifying money management, saving more, and making smarter financial decisions with Finsyc.
+              </p>
+            </div>
+
+            <div ref={carouselTrackRef} className="relative w-full overflow-visible">
+              <div className="relative flex justify-start items-center overflow-visible min-h-[400px] md:min-h-[500px]">
+                <motion.div
+                  className="flex gap-6 items-center flex-nowrap"
+                  animate={{
+                    x: (carouselWidth / 2) - (cardWidth / 2) - (currentIndex * (cardWidth + gap)),
+                  }}
+                  transition={isTransitioning ? { type: "spring" as const, stiffness: 300, damping: 30 } : { duration: 0 }}
+                >
+                  {displayTestimonials.map((item: Testimonial, idx: number) => {
+                    const isActive = idx === currentIndex;
+                    return (
+                      <div
+                        key={item.id + "-" + idx}
+                        className={
+                          "relative flex flex-col items-center shrink-0 rounded-[24px] md:rounded-[30px] transition-all duration-500 overflow-hidden " +
+                          "p-[32px] md:p-[48px_48px_40px_48px] " +
+                          (isActive
+                            ? "border border-[rgba(255,255,255,0.1)] shadow-[0_20px_50px_rgba(4,39,24,0.1)]"
+                            : "border border-[rgba(4,39,24,0.08)] bg-[rgba(255,255,255,0.20)]")
+                        }
+                        style={{ width: cardWidth + "px" }}
+                      >
+                        {isActive && isMounted && (
+                          <div className="absolute inset-0 z-0">
+                            <video
+                              autoPlay
+                              loop
+                              muted
+                              playsInline
+                              className="w-full h-full object-cover"
+                            >
+                              <source src="https://cdn.jiro.build/Amox/All%20Images/P01-Header-01-BG.mp4" type="video/mp4" />
+                            </video>
+                            <div className="absolute inset-0 bg-black/20" />
+                          </div>
+                        )}
+
+                        {isActive && (
+                          <div className="absolute bottom-0 left-0 right-0 h-[140px] bg-white/[0.05] backdrop-blur-md z-[5] pointer-events-none [mask-image:linear-gradient(to_top,black_40%,transparent)]" />
+                        )}
+
+                        <div className="relative z-10 flex flex-col items-center w-full h-full justify-center">
+                          <div className="flex items-center justify-center min-h-[90px] md:min-h-[102px] mb-[48px]">
+                            <p
+                              className={
+                                "font-medium text-center transition-colors duration-500 " +
+                                (isActive ? "text-white " : "text-[#042718] ") +
+                                (isActive
+                                  ? "text-[20px] md:text-[26px] leading-[28px] md:leading-[34px] line-clamp-4"
+                                  : "text-[18px] md:text-[22px] leading-[24px] md:leading-[30px] line-clamp-3")
+                              }
+                            >
+                              {"\u201c" + item.text + "\u201d"}
+                            </p>
+                          </div>
+
+                          <div className="flex flex-col items-center">
+                            <div className="w-[48px] h-[48px] rounded-full overflow-hidden mb-[12px] border-2 border-white/20">
+                              <img src={item.avatar} alt={item.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                            </div>
+
+                            <p
+                              className={
+                                "font-medium text-[16px] md:text-[18px] leading-[28px] text-center mb-[4px] transition-colors duration-500 " +
+                                (isActive ? "text-white" : "text-[#042718]")
+                              }
+                            >
+                              {item.name}
+                            </p>
+
+                            <p
+                              className={
+                                "text-[12px] md:text-[14px] leading-[20px] text-center transition-colors duration-500 " +
+                                (isActive ? "text-white/80" : "text-[#042718] opacity-80")
+                              }
+                            >
+                              {item.role}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </motion.div>
+              </div>
+
+              <div className="absolute inset-y-0 left-0 w-[100px] md:w-[180px] z-20 pointer-events-none bg-gradient-to-r from-[#F6FDFF] via-[#F6FDFF]/70 to-transparent" />
+              <div className="absolute inset-y-0 right-0 w-[100px] md:w-[180px] z-20 pointer-events-none bg-gradient-to-l from-[#F6FDFF] via-[#F6FDFF]/70 to-transparent" />
+            </div>
+
+            <div className="w-full max-w-[1248px] flex items-center justify-center gap-3 mt-12">
+              <button
+                onClick={() => handlePrev()}
+                className="w-[48px] h-[48px] md:w-[60px] md:h-[60px] rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer border-[rgba(4,39,24,0.08)] bg-white/5 hover:bg-white/20"
+              >
+                <ArrowLeft className="w-5 h-5 md:w-6 md:h-6 text-[#042718]" />
+              </button>
+              <button
+                onClick={() => handleNext()}
+                className="w-[48px] h-[48px] md:w-[60px] md:h-[60px] rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer bg-[#042718] hover:bg-[#042718]/90 shadow-lg"
+              >
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </>
+  );
+}
+
+### File 7 of 10: /components/templates/finance-management-landing-page-finsyc/Pricing 01 Finsyc.tsx
+
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, ArrowUpRight, Check } from "lucide-react";
+
+interface PricingPlan {
+  name: string;
+  description: string;
+  monthlyPrice: number;
+  yearlyPrice: number;
+  features: string[];
+}
+
+const plans: PricingPlan[] = [
+  {
+    name: "Starter Plan",
+    description: "Perfect for individuals getting started",
+    monthlyPrice: 19,
+    yearlyPrice: 15,
+    features: [
+      "Basic expense tracking",
+      "Real-time transaction updates",
+      "Smart budgeting tools",
+      "Monthly financial summary",
+      "Secure account integration",
+    ],
+  },
+  {
+    name: "Pro Plan",
+    description: "Best for growing financial control",
+    monthlyPrice: 49,
+    yearlyPrice: 38,
+    features: [
+      "Everything in Starter Plan",
+      "AI-powered insights",
+      "Unlimited transactions tracking",
+      "Advanced financial reports",
+      "Custom budget planning",
+    ],
+  },
+  {
+    name: "Business Plan",
+    description: "Built for professionals & teams",
+    monthlyPrice: 99,
+    yearlyPrice: 77,
+    features: [
+      "Everything in Pro Plan",
+      "Multi-account management",
+      "Team access & permissions",
+      "Advanced analytics dashboard",
+      "Dedicated support",
+    ],
+  },
+];
+
+function PricingCard({
+  plan,
+  isVisualActive,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+  isMonthly,
+}: {
+  plan: PricingPlan;
+  isVisualActive: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  isMonthly: boolean;
+}) {
+  const [isBtnHovered, setIsBtnHovered] = useState(false);
+  const price = isMonthly ? plan.monthlyPrice : plan.yearlyPrice;
+
+  return (
+    <motion.div
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={"relative flex flex-col items-start w-full lg:w-[404px] p-[32px] rounded-[30px] border transition-all duration-500 overflow-hidden cursor-pointer group " + (isVisualActive ? "border-transparent shadow-2xl" : "border-[#042718]/08 bg-white")}
+      animate={{
+        y: isVisualActive ? -10 : 0,
+      }}
+      transition={{ duration: 0.5, ease: [0.21, 0.45, 0.32, 0.9] as const }}
+    >
+      <AnimatePresence>
+        {isVisualActive && (
+          <motion.div
+            key="active-bg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0 z-0"
+          >
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+              suppressHydrationWarning
+            >
+              <source
+                src="https://cdn.jiro.build/Amox/All%20Images/P01-Header-01-BG.mp4"
+                type="video/mp4"
+              />
+            </video>
+            <div className="absolute inset-0 bg-[#D4E8E1]/15 backdrop-blur-[4px]" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative z-10 w-full flex flex-col">
+        <div className="flex flex-col gap-[6px]">
+          <h3 className="text-[#042718] font-onest text-[28px] font-semibold leading-[34px] tracking-[-0.8px]">
+            {plan.name}
+          </h3>
+          <p className="text-[#042718] font-inter text-[16px] font-normal leading-[24px] tracking-[-0.3px] opacity-80">
+            {plan.description}
+          </p>
+        </div>
+
+        <div className={"mt-[16px] border-t w-full transition-colors duration-300 " + (isVisualActive ? "border-[#042718]/20" : "border-[#042718]/08")} />
+
+        <div className="mt-[16px] flex flex-col">
+          <div className="flex items-baseline">
+            <span className="text-[#042718] font-onest text-[56px] font-semibold leading-[64px] tracking-[-2px]">
+              ${price}
+            </span>
+          </div>
+          <p className="mt-[16px] text-[#042718] font-inter text-[18px] font-normal leading-[28px] tracking-[-0.3px] opacity-80">
+            Monthly subscription
+          </p>
+        </div>
+
+        <button
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+            e.stopPropagation();
+            onClick();
+          }}
+          onMouseEnter={() => setIsBtnHovered(true)}
+          onMouseLeave={() => setIsBtnHovered(false)}
+          className={"mt-[24px] flex items-center justify-between self-stretch rounded-full border transition-all duration-500 relative overflow-hidden " + (isBtnHovered || isVisualActive ? "bg-[#042718] border-[#042718] text-white" : "bg-white border-[#042718]/10 text-[#042718]") + " " + (isBtnHovered ? "p-[8px_20px_8px_8px] flex-row-reverse" : "p-[8px_8px_8px_20px] flex-row")}
+        >
+          <motion.span
+            layout
+            className="font-inter text-[18px] font-medium leading-[28px] z-10"
+          >
+            Get 14-days free trial
+          </motion.span>
+          <motion.div
+            layout
+            className={"flex items-center justify-center w-10 h-10 rounded-full transition-all duration-500 z-10 " + (isBtnHovered || isVisualActive ? "bg-white" : "bg-[#042718]")}
+          >
+            <ArrowUpRight
+              size={18}
+              strokeWidth={2.5}
+              className={"transition-colors duration-300 " + (isBtnHovered || isVisualActive ? "text-[#042718]" : "text-white")}
+            />
+          </motion.div>
+        </button>
+
+        <div className="mt-[24px] flex flex-col">
+          <p
+            className={"font-inter text-[14px] font-medium leading-[20px] uppercase transition-colors duration-300 " + (isVisualActive ? "text-white opacity-70" : "text-[#042718]/40")}
+          >
+            FEATURES
+          </p>
+
+          <ul className="mt-[16px] flex flex-col gap-[12px]">
+            {plan.features.map((feature: string, idx: number) => (
+              <li key={idx} className="flex items-start gap-3">
+                <div
+                  className={"mt-1 flex items-center justify-center w-6 h-6 rounded-full transition-all duration-500 " + (isVisualActive ? "bg-white" : "bg-transparent")}
+                >
+                  <Check
+                    size={14}
+                    strokeWidth={3.5}
+                    className={isVisualActive ? "text-[#042718]" : "text-[#15803D]"}
+                  />
+                </div>
+                <span
+                  className={"font-inter text-[18px] font-normal leading-[28px] tracking-[-0.3px] transition-colors duration-300 " + (isVisualActive ? "text-white" : "text-[#042718]/80")}
+                >
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function Pricing01Finsyc({ className }: { className?: string }) {
+  const [isMonthly, setIsMonthly] = useState(true);
+  const [activePlan, setActivePlan] = useState("Pro Plan");
+  const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet" />
+
+      <section
+        id="pricing"
+        className={"w-full bg-[#ffffff] py-20 lg:py-32 overflow-hidden flex justify-center " + (className || "")}
+      >
+        <div className="w-full max-w-[1248px] lg:px-0 px-6 flex flex-col items-center">
+
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#E5F2ED] border border-[#042718]/08"
+          >
+            <Sparkles size={14} strokeWidth={3} className="text-[#15803D]" />
+            <span className="font-inter text-sm font-medium text-[#15803D]">Pricing Plan</span>
+          </motion.div>
+
+          <motion.h2
+            initial={{ y: 24, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mt-6 w-full max-w-[800px] text-center text-[#042718] font-onest text-[36px] sm:text-[48px] lg:text-[64px] font-semibold leading-[1.1] tracking-[-2px] sm:tracking-[-3px]"
+          >
+            Choose the <span className="font-playfair italic font-medium text-black/40">plan</span> that fits your financial goals
+          </motion.h2>
+
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-6 w-full max-w-[600px] text-center font-inter text-[16px] sm:text-[18px] font-normal leading-[24px] sm:leading-[28px] text-[#042718] opacity-80"
+          >
+            Simple, transparent pricing to help you track, manage, and grow your finances with confidence.
+          </motion.p>
+
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-10 flex items-center p-1.5 bg-white border border-[#042718]/08 rounded-full shadow-sm mb-16"
+          >
+            <button
+              onClick={() => setIsMonthly(true)}
+              className={"px-8 py-2 h-11 flex items-center justify-center rounded-full text-[15px] font-medium transition-all duration-300 " + (isMonthly ? "bg-[#042718] text-white shadow-md shadow-[#042718]/10" : "text-[#042718]/60 hover:text-[#042718]")}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setIsMonthly(false)}
+              className={"px-8 py-2 h-11 flex items-center justify-center rounded-full text-[15px] font-medium transition-all duration-300 gap-2 " + (!isMonthly ? "bg-[#042718] text-white shadow-md shadow-[#042718]/10" : "text-[#042718]/60 hover:text-[#042718]")}
+            >
+              Yearly
+              <span className="px-2 py-0.5 rounded-full bg-[#22C55E] text-[10px] text-white font-bold whitespace-nowrap">
+                Save 23%
+              </span>
+            </button>
+          </motion.div>
+
+          <div className="flex flex-col lg:flex-row gap-6 w-full justify-center">
+            {plans.map((plan: PricingPlan, idx: number) => {
+              const isVisualActive = hoveredPlan ? hoveredPlan === plan.name : activePlan === plan.name;
+              return (
+                <motion.div
+                  key={plan.name}
+                  initial={{ y: 40, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 + idx * 0.1, ease: [0.21, 0.45, 0.32, 0.9] as const }}
+                  className="w-full lg:w-auto"
+                >
+                  <PricingCard
+                    plan={plan}
+                    isMonthly={isMonthly}
+                    isVisualActive={mounted && isVisualActive}
+                    onClick={() => setActivePlan(plan.name)}
+                    onMouseEnter={() => setHoveredPlan(plan.name)}
+                    onMouseLeave={() => setHoveredPlan(null)}
+                  />
+                </motion.div>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+    </>
+  );
+}
+
+### File 8 of 10: /components/templates/finance-management-landing-page-finsyc/Integration 01 Finsyc.tsx
+
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ShieldCheck, Star } from "lucide-react";
+
+interface IntegrationItem {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+}
+
+const leftIntegrations: IntegrationItem[] = [
+  {
+    id: "plaid",
+    name: "Plaid",
+    description: "Connect banks securely",
+    icon: "https://cdn.jiro.build/Amox/All%20Images/Plaid-icon-01.png",
+  },
+  {
+    id: "stripe",
+    name: "Stripe",
+    description: "Payments made simple",
+    icon: "https://cdn.jiro.build/Amox/All%20Images/Stripe-icon-02.png",
+  },
+  {
+    id: "paypal",
+    name: "PayPal",
+    description: "Send and receive money",
+    icon: "https://cdn.jiro.build/Amox/All%20Images/PayPal-icon-03.png",
+  },
+  {
+    id: "visa",
+    name: "Visa",
+    description: "Card transactions sync",
+    icon: "https://cdn.jiro.build/Amox/All%20Images/Visa-icon-04.png",
+  },
+];
+
+const rightIntegrations: IntegrationItem[] = [
+  {
+    id: "mastercard",
+    name: "Mastercard",
+    description: "Track credit & debit cards",
+    icon: "https://cdn.jiro.build/Amox/All%20Images/Mastercard-icon-05.png",
+  },
+  {
+    id: "quickbooks",
+    name: "QuickBooks",
+    description: "Accounting made easy",
+    icon: "https://cdn.jiro.build/Amox/All%20Images/QuickBooks-icon-06.png",
+  },
+  {
+    id: "xero",
+    name: "Xero",
+    description: "Sync your business data",
+    icon: "https://cdn.jiro.build/Amox/All%20Images/Xero-icon-07.png",
+  },
+  {
+    id: "coinbase",
+    name: "Coinbase",
+    description: "Track your investments",
+    icon: "https://cdn.jiro.build/Amox/All%20Images/Coinbase-icon-08.png",
+  },
+];
+
+const topValues: Record<number, string> = { 0: "0px", 1: "96px", 2: "192px", 3: "288px" };
+
+export default function Integration01Finsyc({ className }: { className?: string }) {
+  const [isMounted, setIsMounted] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+      setWindowWidth(window.innerWidth);
+    }, 0);
+
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const isLargeScreen = isMounted && windowWidth >= 1024;
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
+
+      <section className={"w-full bg-[#F4FAFB] py-16 md:py-[100px] overflow-hidden relative flex justify-center " + (className || "")}>
+        <div className="w-full max-w-[1440px] px-6 lg:px-[96px]">
+          <div className="w-full max-w-[1248px] mx-auto">
+
+            {/* Header Content */}
+            <div className="flex flex-col items-center text-center mb-12 md:mb-[80px]">
+              {/* Tag */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#138E5F]/5 border border-[#138E5F]/10 mb-6"
+              >
+                <Star className="w-4 h-4 text-[#138E5F] fill-[#138E5F]" />
+                <span className="text-[#138E5F] text-[14px] font-medium font-sans">Integrations</span>
+              </motion.div>
+
+              {/* Heading */}
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-[32px] sm:text-[40px] md:text-[52px] font-semibold text-[#042718] leading-[1.2] md:leading-[58px] tracking-tight md:tracking-[-1.8px] mb-6 max-w-2xl text-center"
+              >
+                Connect all your financial tools in{" "}
+                <span className="italic text-[rgba(0,0,0,0.40)]">one place</span>
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-[15px] md:text-[18px] text-[#042718] leading-[1.6] md:leading-[28px] max-w-[612px] font-sans font-normal opacity-80 text-center"
+              >
+                Seamlessly integrate your bank accounts, cards, and financial apps to get a complete, real-time view of your finances.
+              </motion.p>
+            </div>
+
+            {/* Integration Visualization */}
+            <div className="relative w-full max-w-[1240px] mx-auto min-h-[400px] lg:h-[368px] flex items-center justify-center">
+
+              {/* Desktop Only SVG Visualization */}
+              <svg
+                className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block"
+                viewBox="0 0 1240 368"
+              >
+                <defs>
+                  <linearGradient id="line-gradient-left" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#138E5F" stopOpacity="0.02" />
+                    <stop offset="100%" stopColor="#138E5F" stopOpacity="0.4" />
+                  </linearGradient>
+                  <linearGradient id="line-gradient-right" x1="100%" y1="0%" x2="0%" y2="0%">
+                    <stop offset="0%" stopColor="#138E5F" stopOpacity="0.02" />
+                    <stop offset="100%" stopColor="#138E5F" stopOpacity="0.4" />
+                  </linearGradient>
+                </defs>
+
+                {/* Left Connection Paths */}
+                {[225, 195, 165, 135].map((angle, i) => {
+                  const rad = (angle * Math.PI) / 180;
+                  const startX = 620 + 84 * Math.cos(rad);
+                  const startY = 184 + 84 * Math.sin(rad);
+                  const cardY = [40, 136, 232, 328][i];
+                  const dPath = "M " + startX + " " + startY + " Q " + (startX - 150) + " " + startY + " 280 " + cardY;
+                  return (
+                    <React.Fragment key={"path-left-" + i}>
+                      <path
+                        d={dPath}
+                        stroke="url(#line-gradient-left)"
+                        fill="none"
+                        strokeWidth="1.8"
+                        strokeDasharray="4 4"
+                        opacity="0.9"
+                      />
+                      <motion.circle r="3.5" fill="#138E5F">
+                        <animateMotion
+                          dur="3.5s"
+                          repeatCount="indefinite"
+                          path={dPath}
+                          begin={i * 0.4 + "s"}
+                        />
+                      </motion.circle>
+                    </React.Fragment>
+                  );
+                })}
+
+                {/* Right Connection Paths */}
+                {[-45, -15, 15, 45].map((angle, i) => {
+                  const rad = (angle * Math.PI) / 180;
+                  const startX = 620 + 84 * Math.cos(rad);
+                  const startY = 184 + 84 * Math.sin(rad);
+                  const cardY = [40, 136, 232, 328][i];
+                  const dPath = "M " + startX + " " + startY + " Q " + (startX + 150) + " " + startY + " 960 " + cardY;
+                  return (
+                    <React.Fragment key={"path-right-" + i}>
+                      <path
+                        d={dPath}
+                        stroke="url(#line-gradient-right)"
+                        fill="none"
+                        strokeWidth="1.8"
+                        strokeDasharray="4 4"
+                        opacity="0.9"
+                      />
+                      <motion.circle r="3.5" fill="#138E5F">
+                        <animateMotion
+                          dur="3.5s"
+                          repeatCount="indefinite"
+                          path={dPath}
+                          begin={(i * 0.4 + 0.2) + "s"}
+                        />
+                      </motion.circle>
+                    </React.Fragment>
+                  );
+                })}
+
+                {/* Static Connection Dots at Seal */}
+                {[225, 195, 165, 135, -45, -15, 15, 45].map((angle, i) => {
+                  const rad = (angle * Math.PI) / 180;
+                  return (
+                    <motion.circle
+                      key={"seal-dot-" + i}
+                      cx={620 + 84 * Math.cos(rad)}
+                      cy={184 + 84 * Math.sin(rad)}
+                      r="5"
+                      fill="#138E5F"
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.9, 1, 0.9] }}
+                      transition={{ duration: 2.5, repeat: Infinity as number, delay: i * 0.2 }}
+                    />
+                  );
+                })}
+              </svg>
+
+              {/* Visualization Container */}
+              <div className="w-full flex flex-col lg:block relative z-10 lg:h-full">
+
+                {/* Left column items */}
+                <div className="flex flex-wrap lg:grid justify-center gap-4 lg:absolute lg:left-0 lg:top-0 lg:h-full lg:w-[280px] mb-8 lg:mb-0">
+                  {leftIntegrations.map((item, idx) => (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.1 + idx * 0.1 }}
+                      viewport={{ once: true }}
+                      className={"w-[240px] sm:w-[260px] lg:w-[280px] h-[72px] lg:h-[80px] bg-white rounded-[16px] lg:rounded-[20px] p-3 lg:p-[16px] flex items-center gap-3 lg:gap-4 shadow-[0_4px_20px_rgba(4,39,24,0.02)] group hover:shadow-[0_12px_40px_rgba(4,39,24,0.06)] transition-all cursor-default border border-black/[0.02] lg:absolute"}
+                      style={{ top: isLargeScreen ? topValues[idx] : undefined }}
+                    >
+                      <div className="w-[48px] h-[48px] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <img src={item.icon} alt={item.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[#042718] font-semibold text-[14px] lg:text-[16px] leading-tight">{item.name}</span>
+                        <span className="text-[#042718]/40 text-[12px] lg:text-[13px] font-sans mt-0.5">{item.description}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Center Seal */}
+                <div className="flex items-center justify-center py-8 lg:py-0 lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2">
+                  <div className="relative w-[100px] lg:w-[124px] h-[100px] lg:h-[124px] flex items-center justify-center">
+                    <motion.div
+                      animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
+                      transition={{ duration: 4, repeat: Infinity as number, ease: "easeInOut" as const }}
+                      className="absolute inset-0 -m-8 lg:-m-[58px] rounded-full bg-[#E4F3EB]/60 shadow-[inset_0_0_40px_rgba(19,142,95,0.03)]"
+                    />
+                    <div className="absolute inset-0 -m-4 lg:-m-[32px] rounded-full bg-white/40 backdrop-blur-[1px]" />
+
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ type: "spring" as const, stiffness: 260, damping: 22 }}
+                      viewport={{ once: true }}
+                      className="w-full h-full rounded-full bg-white shadow-[0_12px_48px_rgba(19,142,95,0.12)] flex items-center justify-center relative z-10"
+                    >
+                      <div className="w-[84px] lg:w-[104px] h-[84px] lg:h-[104px] rounded-full bg-[#FAFFFD] flex items-center justify-center">
+                        <img
+                          src="https://cdn.jiro.build/Amox/All%20SVG/only%20loto-%20Finsyc.svg"
+                          alt="Finsyc Logo"
+                          className="w-[50px] lg:w-[64px] h-[50px] lg:h-[64px] object-contain opacity-95"
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+
+                {/* Right column items */}
+                <div className="flex flex-wrap lg:grid justify-center gap-4 lg:absolute lg:right-0 lg:top-0 lg:h-full lg:w-[280px] mt-8 lg:mt-0">
+                  {rightIntegrations.map((item, idx) => (
+                    <motion.div
+                      key={item.id}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.1 + idx * 0.1 }}
+                      viewport={{ once: true }}
+                      className={"w-[240px] sm:w-[260px] lg:w-[280px] h-[72px] lg:h-[80px] bg-white rounded-[16px] lg:rounded-[20px] p-3 lg:p-[16px] flex items-center gap-3 lg:gap-4 shadow-[0_4px_20px_rgba(4,39,24,0.02)] group hover:shadow-[0_12px_40px_rgba(4,39,24,0.06)] transition-all cursor-default border border-black/[0.02] lg:absolute"}
+                      style={{ top: isLargeScreen ? topValues[idx] : undefined }}
+                    >
+                      <div className="w-[48px] h-[48px] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                        <img src={item.icon} alt={item.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[#042718] font-semibold text-[14px] lg:text-[16px] leading-tight">{item.name}</span>
+                        <span className="text-[#042718]/40 text-[12px] lg:text-[13px] font-sans mt-0.5">{item.description}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Footer Info */}
+            <div className="flex flex-col items-center mt-12 md:mt-[80px] gap-6 md:gap-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 px-5 md:px-[24px] py-2 md:py-[11px] rounded-full border border-[#138E5F]/15 bg-white/50 shadow-[0_4px_24px_rgba(19,142,95,0.03)]"
+              >
+                <ShieldCheck className="w-5 h-5 text-[#138E5F]" />
+                <p className="text-[13px] md:text-[15px] font-sans">
+                  <span className="text-[#138E5F] font-semibold">Bank-level security.</span>{" "}
+                  <span className="text-[#042718]/40">Your data is encrypted and never shared.</span>
+                </p>
+              </motion.div>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                viewport={{ once: true }}
+                className="text-[13px] md:text-[15px] text-[#042718]/40 font-sans tracking-tight text-center px-4"
+              >
+                Trusted by{" "}
+                <span className="font-semibold text-[#138E5F]">100,000+</span>{" "}
+                users. Connect with{" "}
+                <span className="font-semibold text-[#138E5F]">10,000+</span>{" "}
+                financial institutions worldwide.
+              </motion.p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+### File 9 of 10: /components/templates/finance-management-landing-page-finsyc/Blog 01 Finsyc.tsx
+
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
+
+const getTagStyles = (tag: string): string => {
+  const t = tag.toLowerCase();
+  if (t === "ai") return "bg-[#E0F2FE] text-[#0369A1]";
+  if (t === "innovation") return "bg-[#DCFCE7] text-[#15803D]";
+  if (t === "tech") return "bg-[#FEF3C7] text-[#B45309]";
+  return "bg-[#F4FAFB] text-[#042718]/60";
+};
+
+interface BlogCardProps {
+  image: string;
+  date: string;
+  title: string;
+  description: string;
+  tags: string[];
+  imageTop?: boolean;
+  delay?: number;
+}
+
+function BlogCard({ image, date, title, description, tags, imageTop = true, delay = 0 }: BlogCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      viewport={{ once: true }}
+      className="group cursor-pointer flex flex-col items-start bg-white hover:bg-[#F6FDFF] rounded-[24px] overflow-hidden border border-[#042718]/10 shadow-[0_4px_24px_rgba(4,39,24,0.02)] hover:shadow-[0_20px_60px_rgba(4,39,24,0.08)] transition-all duration-500 w-full lg:w-[612px]"
+    >
+      {imageTop && (
+        <div className="w-full h-[300px] md:h-[440px] overflow-hidden">
+          <motion.img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+      )}
+
+      <div className="flex flex-col p-6 md:p-[40px] gap-4 w-full self-stretch lg:w-[612px]">
+        <span className="text-[#042718] font-sans text-base md:text-[18px] leading-[28px] opacity-80">
+          {date}
+        </span>
+        <h3 className="text-[#042718] font-onest text-[28px] md:text-[34px] font-semibold leading-[1.1] md:leading-[38px] tracking-[-1px]">
+          {title}
+        </h3>
+        <p className="text-[#042718] font-sans text-base md:text-[18px] leading-[28px] opacity-80">
+          {description}
+        </p>
+        <div className="flex flex-wrap gap-4">
+          {tags.map((tag: string, i: number) => (
+            <div
+              key={i}
+              className={"px-[10px] py-[3px] rounded-[6px] text-center font-sans text-[14px] font-medium leading-[20px] " + getTagStyles(tag)}
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {!imageTop && (
+        <div className="w-full h-[300px] md:h-[440px] overflow-hidden">
+          <motion.img
+            src={image}
+            alt={title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
+export default function Blog01Finsyc({ className }: { className?: string }) {
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+      <section className={"w-full bg-[#FFFFFF] py-16 md:py-[100px] flex justify-center " + (className || "")}>
+        <div className="w-full max-w-[1440px] px-6 lg:px-[96px]">
+          <div className="w-full max-w-[1248px] mx-auto">
+            {/* Header Content */}
+            <div className="flex flex-col items-center text-center mb-12 md:mb-[80px]">
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E4F3EB] border border-[#138E5F]/10 mb-6"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#138E5F]" />
+                <span className="text-[#138E5F] text-[13px] font-sans font-medium uppercase tracking-wider">Latest posts</span>
+              </motion.div>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-[32px] sm:text-[40px] md:text-[52px] font-onest font-semibold text-[#042718] leading-[1.1] md:leading-[58px] tracking-tight md:tracking-[-2px] mb-6 max-w-3xl"
+              >
+                Insights to help you <span className="italic text-[rgba(4,39,24,0.40)]">manage</span> money smarter
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-[15px] md:text-[18px] text-[#042718] leading-[1.6] md:leading-[28px] max-w-[612px] font-sans opacity-60"
+              >
+                Learn how to save more, spend wisely, and make better financial decisions with expert tips.
+              </motion.p>
+            </div>
+
+            {/* Blog Cards Grid */}
+            <div className="flex flex-col lg:flex-row gap-6 justify-center">
+              <BlogCard
+                image="https://cdn.jiro.build/Amox/All%20Images/blogs-img-01.jpg"
+                date="19 Feb 2026"
+                title="How to take control of your monthly spending"
+                description="Discover simple strategies to track expenses, reduce unnecessary costs, and build better financial habits."
+                tags={["AI", "Innovation", "Tech"]}
+                imageTop={true}
+                delay={0.3}
+              />
+              <BlogCard
+                image="https://cdn.jiro.build/Amox/All%20Images/blogs-img-02.jpg"
+                date="13 May 2026"
+                title="How AI is changing personal finance management"
+                description="Explore how AI-powered tools can help you predict expenses and make smarter financial decisions."
+                tags={["AI", "Innovation", "Tech"]}
+                imageTop={false}
+                delay={0.4}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+### File 10 of 10: /components/templates/finance-management-landing-page-finsyc/CTA with Footer 01 Finsyc.tsx
+
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Facebook, Twitter, Linkedin, Instagram, Sparkles, ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+interface CTAButtonProps {
+  text: string;
+  variant?: 'primary' | 'secondary';
+}
+
+function CTAButton({ text, variant = 'primary' }: CTAButtonProps) {
+  const isPrimary = variant === 'primary';
+  const [isHovered, setIsHovered] = React.useState(false);
+
+  return (
+    <motion.button
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileTap={{ scale: 0.98 }}
+      className={cn(
+        "relative flex items-center h-[56px] rounded-full transition-all duration-500 overflow-hidden gap-3",
+        isPrimary
+          ? "bg-[#042718] text-white shadow-[0_8px_32px_rgba(4,39,24,0.15)]"
+          : "bg-white/20 backdrop-blur-xl border border-white/60 text-[#042718] w-full sm:w-[232px] justify-between shadow-[0_8px_32px_rgba(255,255,255,0.1)]",
+        isHovered ? "pl-[8px] pr-[20px] flex-row-reverse" : "pl-[20px] pr-[8px] flex-row"
+      )}
+    >
+      <motion.span
+        layout
+        transition={{ type: "spring" as const, stiffness: 400, damping: 30 }}
+        className="font-sans font-medium text-[18px] leading-[28px] whitespace-nowrap z-10"
+      >
+        {text}
+      </motion.span>
+
+      <motion.div
+        layout
+        transition={{ type: "spring" as const, stiffness: 400, damping: 30 }}
+        className={cn(
+          "flex items-center justify-center w-10 h-10 rounded-full shrink-0 z-20",
+          isPrimary ? "bg-white" : "bg-[#042718]"
+        )}
+      >
+        <ArrowUpRight className={cn("w-4 h-4", isPrimary ? "text-[#042718]" : "text-white")} />
+      </motion.div>
+    </motion.button>
+  );
+}
+
+export default function CtaWithFooter01Finsyc({ className }: { className?: string }) {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: [0.21, 0.45, 0.32, 0.9] as const,
+      },
+    },
+  };
+
+  return (
+    <>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+      <footer className={"relative w-full overflow-hidden flex flex-col items-center " + (className || "")}>
+        {/* Background Video for the entire footer */}
+        <div className="absolute inset-0 z-0">
+          {isMounted && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source
+                src="https://cdn.jiro.build/Amox/All%20Images/P01-Header-01-BG.mp4"
+                type="video/mp4"
+              />
+            </video>
+          )}
+          {/* Soft overlay */}
+          <div className="absolute inset-0 bg-white/20" />
+          {/* Glass effect at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-[400px] bg-white/2 backdrop-blur-[2px] [mask-image:linear-gradient(to_top,black_40%,transparent)]" />
+        </div>
+
+        {/* CTA SECTION */}
+        <section className="w-full relative pt-[120px] pb-0 overflow-hidden flex flex-col items-center">
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 z-0 bg-gradient-to-b from-white via-white/40 to-transparent" />
+
+          <div className="max-w-[1440px] w-full mx-auto px-6 lg:px-[96px] relative z-10 flex flex-col items-center">
+            <div className="max-w-[1248px] w-full flex flex-col items-center">
+
+              {/* Tag */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E4F3EB] border border-[#138E5F]/10 mb-[30px]"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#138E5F]" />
+                <span className="text-[#138E5F] text-[13px] font-sans font-medium uppercase tracking-wider">Built for serious money</span>
+              </motion.div>
+
+              {/* Heading */}
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="w-full max-w-[742px] text-center text-[#042718] font-semibold text-[42px] md:text-[68px] leading-[1.1] md:leading-[80px] tracking-tight md:tracking-[-2.2px] mb-[12px]"
+                style={{ fontFamily: "'Onest', sans-serif" }}
+              >
+                Take full control of your <span className="italic text-[rgba(0,0,0,0.40)]">finances</span> today
+              </motion.h2>
+
+              {/* Subheading */}
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="w-full max-w-[660px] text-center text-[#042718] font-sans text-lg md:text-[20px] leading-[1.5] md:leading-[30px] tracking-tight md:tracking-[-0.4px] opacity-80 mb-[64px]"
+              >
+                Track your spending, manage budgets, and make smarter financial decisions — all in one powerful and intuitive app.
+              </motion.p>
+
+              {/* Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="flex flex-col sm:flex-row items-center gap-4"
+              >
+                <CTAButton text="Get 14-days free trial" variant="primary" />
+                <CTAButton text="Book a demo" variant="secondary" />
+              </motion.div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* FOOTER LINKS SECTION */}
+        <div className="relative w-full flex flex-col items-center">
+          <div className="relative z-10 w-full max-w-[1440px] px-6 lg:px-[96px] pt-[64px] pb-[32px] flex flex-col items-start bg-transparent">
+
+            {/* Content Row */}
+            <motion.div
+              className="w-full lg:w-[1248px] pt-[60px] lg:pt-[120px] pb-[60px] lg:pb-[96px] flex flex-col lg:flex-row items-start gap-[60px] lg:gap-[130px]"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={containerVariants}
+            >
+              {/* Left Column */}
+              <div className="w-full lg:w-[440px] flex flex-col gap-6">
+                <motion.h3
+                  variants={itemVariants}
+                  className="text-[#042718] text-[24px] font-semibold leading-[30px] tracking-[-0.8px]"
+                  style={{ fontFamily: "'Onest', sans-serif" }}
+                >
+                  Stay tuned for more updates
+                </motion.h3>
+                <motion.p
+                  variants={itemVariants}
+                  className="text-[#042718] font-sans text-[18px] font-normal leading-[28px] opacity-80"
+                >
+                  Get smarter with your money — tips, insights, and updates straight to your inbox.
+                </motion.p>
+
+                {/* Subscribe Box */}
+                <motion.div
+                  variants={itemVariants}
+                  className="mt-2 relative w-full lg:w-[440px] flex flex-col sm:flex-row items-stretch sm:items-center p-3 sm:p-[6px] gap-3 sm:gap-0 rounded-[28px] sm:rounded-full border border-white/60 bg-white/15 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.05)]"
+                >
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 bg-transparent border-none outline-none px-4 py-2 sm:py-0 font-sans text-[18px] text-[#042718] placeholder:text-[#042718]/60"
+                  />
+                  <button className="flex items-center justify-between sm:justify-start gap-3 bg-white pl-6 pr-2 py-2 sm:pl-[24px] sm:pr-[8px] sm:py-[8px] rounded-full shadow-sm hover:shadow-md transition-all duration-300 group">
+                    <span className="font-sans text-[18px] font-medium text-[#042718]">Subscribe</span>
+                    <div className="w-[36px] h-[36px] bg-[#042718] rounded-full flex items-center justify-center transition-colors duration-300 shrink-0">
+                      <ArrowRight size={18} strokeWidth={2.5} className="text-white" />
+                    </div>
+                  </button>
+                </motion.div>
+              </div>
+
+              {/* Right Column (Link Lists) */}
+              <div className="lg:ml-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:flex lg:flex-nowrap gap-y-12 gap-x-8 lg:gap-[64px] w-full lg:w-auto">
+                {/* Product */}
+                <div className="lg:w-[152px] flex flex-col gap-[20px] relative">
+                  <motion.h4
+                    variants={itemVariants}
+                    className="text-[#042718] text-[24px] font-semibold leading-[30px] tracking-[-0.8px]"
+                    style={{ fontFamily: "'Onest', sans-serif" }}
+                  >Product</motion.h4>
+                  <ul className="flex flex-col gap-[16px]">
+                    {["Features", "Integrations", "Pricing", "Security"].map((link: string) => (
+                      <motion.li key={link} variants={itemVariants}>
+                        <a href="#" className="text-[#042718] font-sans text-[18px] font-normal leading-[28px] opacity-80 hover:opacity-100 hover:font-medium transition-all">{link}</a>
+                      </motion.li>
+                    ))}
+                  </ul>
+                  <div className="absolute top-0 -right-[32px] h-full w-[1px] bg-[#042718]/10 hidden lg:block" />
+                </div>
+
+                {/* Company */}
+                <div className="lg:w-[152px] flex flex-col gap-[20px] relative">
+                  <motion.h4
+                    variants={itemVariants}
+                    className="text-[#042718] text-[24px] font-semibold leading-[30px] tracking-[-0.8px]"
+                    style={{ fontFamily: "'Onest', sans-serif" }}
+                  >Company</motion.h4>
+                  <ul className="flex flex-col gap-[16px]">
+                    {["About us", "Careers", "Blog", "Contact"].map((link: string) => (
+                      <motion.li key={link} variants={itemVariants}>
+                        <a href="#" className="text-[#042718] font-sans text-[18px] font-normal leading-[28px] opacity-80 hover:opacity-100 hover:font-medium transition-all">{link}</a>
+                      </motion.li>
+                    ))}
+                  </ul>
+                  <div className="absolute top-0 -right-[32px] h-full w-[1px] bg-[#042718]/10 hidden lg:block" />
+                </div>
+
+                {/* Social */}
+                <div className="lg:w-[220px] flex flex-col gap-[20px]">
+                  <motion.h4
+                    variants={itemVariants}
+                    className="text-[#042718] text-[24px] font-semibold leading-[30px] tracking-[-0.8px]"
+                    style={{ fontFamily: "'Onest', sans-serif" }}
+                  >Social</motion.h4>
+                  <ul className="flex flex-col gap-[16px]">
+                    {[
+                      { name: "Facebook", icon: Facebook },
+                      { name: "Twitter", icon: Twitter },
+                      { name: "Linkedin", icon: Linkedin },
+                      { name: "Instagram", icon: Instagram }
+                    ].map((social: { name: string; icon: React.ElementType }) => (
+                      <motion.li key={social.name} variants={itemVariants}>
+                        <a href="#" className="flex items-center gap-3 text-[#042718] font-sans text-[18px] font-normal leading-[28px] opacity-80 hover:opacity-100 hover:font-medium transition-all">
+                          <social.icon size={18} fill="currentColor" strokeWidth={0} className="opacity-100" />
+                          {social.name}
+                        </a>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Big Text Finsyc */}
+            <div className="w-[342px] h-[120px] md:w-[720px] md:h-[250px] lg:w-[1248px] lg:h-[430px] flex flex-col justify-center items-center select-none mx-auto lg:mx-0">
+              <motion.h1
+                initial={{ y: "100%" }}
+                whileInView={{ y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: [0.21, 0.45, 0.32, 0.9] as const }}
+                className="w-full text-center text-[#042718] text-[116px] md:text-[244px] lg:text-[424px] font-bold leading-none tracking-[-3.8px] md:tracking-[-8px] lg:tracking-[-14px]"
+                style={{ fontFamily: "'Onest', sans-serif" }}
+              >
+                Finsyc
+              </motion.h1>
+            </div>
+
+            {/* Bottom Text Row */}
+            <motion.div
+              className="w-full lg:w-[1248px] mt-[24px] pt-8 flex flex-col lg:flex-row items-center justify-between gap-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <div className="flex items-center gap-8 text-white font-sans text-[18px] font-normal leading-[28px] opacity-80">
+                <a href="#" className="hover:opacity-100 hover:font-medium transition-all">Terms & Conditions</a>
+                <a href="#" className="hover:opacity-100 hover:font-medium transition-all">Privacy Policy</a>
+              </div>
+
+              <div className="text-white font-sans text-[18px] font-normal leading-[28px] opacity-80 text-center lg:text-left">
+                &copy; 2026 Finsyc. All rights reserved.
+              </div>
+
+              <div className="text-white font-sans text-[18px] font-normal leading-[28px] opacity-80">
+                Design by <a href="https://yscale.studio/" target="_blank" className="underline underline-offset-4 hover:opacity-100 hover:font-medium transition-all">Yscale.studio</a>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
+
+### Install Dependencies:
+npm install framer-motion lucide-react
+
+### Update /app/page.tsx:
+
+Replace the contents of /app/page.tsx with:
+
+"use client";
+
+import Header01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/Header 01 Finsyc";
+import MetricsWithLogo01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/Metrics with logo 01 Finsyc";
+import Feature01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/Feature 01 Finsyc";
+import HowItWorks01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/How it Works 01 Finsyc";
+import WhyChooseUs01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/Why Choose us 01 Finsyc";
+import MetricsWithTestimonialFinsyc from "@/components/templates/finance-management-landing-page-finsyc/Metrics with Testimonial Finsyc";
+import Pricing01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/Pricing 01 Finsyc";
+import Integration01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/Integration 01 Finsyc";
+import Blog01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/Blog 01 Finsyc";
+import CTAWithFooter01Finsyc from "@/components/templates/finance-management-landing-page-finsyc/CTA with Footer 01 Finsyc";
+
+export default function Home() {
+  return (
+    <main className="min-h-screen">
+      <Header01Finsyc />
+      <MetricsWithLogo01Finsyc />
+      <Feature01Finsyc />
+      <HowItWorks01Finsyc />
+      <WhyChooseUs01Finsyc />
+      <MetricsWithTestimonialFinsyc />
+      <Pricing01Finsyc />
+      <Integration01Finsyc />
+      <Blog01Finsyc />
+      <CTAWithFooter01Finsyc />
+    </main>
+  );
+}
+
+### Rules:
+- Copy each file EXACTLY as provided
+- Do NOT modify, refactor, or rename anything
+- Do NOT change any Tailwind classes
+- Do NOT add features or "improvements"
+- Just create the 10 files and update page.tsx
