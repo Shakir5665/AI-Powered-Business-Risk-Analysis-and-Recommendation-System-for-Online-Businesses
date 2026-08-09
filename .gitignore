@@ -77,7 +77,19 @@ Thumbs.db
 
 build/
 dist/
+dist-ssr/
 *.egg-info/
+
+# =====================================================
+# Node / Frontend
+# =====================================================
+
+node_modules/
+.pnpm-store/
+.vite/
+.oxlint_cache/
+.eslintcache/
+
 
 # =====================================================
 # Python Packaging
