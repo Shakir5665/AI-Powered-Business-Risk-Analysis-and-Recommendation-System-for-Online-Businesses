@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ShieldCheck, Star } from "lucide-react";
+import darazLogo from "../../assets/darazLogo.png";
+import amazonLogo from "../../assets/amazonLogo.png";
+import ebayLogo from "../../assets/ebayLogo.png";
+import shopifyLogo from "../../assets/shopifyLogo.png";
+import RiskAiLogo2 from "../../assets/RiskAiLogo2.png";
 
 const leftIntegrations = [
   {
     id: "daraz",
     name: "Daraz",
     description: "Analyze Daraz product reviews",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Daraz.svg/200px-Daraz.svg.png",
+    icon: darazLogo,
   },
   {
     id: "amazon",
     name: "Amazon",
     description: "E-commerce review scraping",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png",
+    icon: amazonLogo,
   },
   {
     id: "ebay",
     name: "eBay",
     description: "Marketplace risk detection",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/EBay_logo.svg/200px-EBay_logo.svg.png",
+    icon: ebayLogo,
   },
   {
     id: "shopify",
     name: "Shopify",
     description: "Store product analysis",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Shopify_logo_2018.svg/200px-Shopify_logo_2018.svg.png",
+    icon: shopifyLogo,
   },
 ];
 
@@ -234,13 +239,8 @@ export default function IntegrationSection({ className }) {
                       viewport={{ once: true }}
                       className="w-full h-full rounded-full bg-white shadow-[0_12px_48px_rgba(19,142,95,0.12)] flex items-center justify-center relative z-10"
                     >
-                      <div className="w-[84px] lg:w-[104px] h-[84px] lg:h-[104px] rounded-full bg-[#FAFFFD] flex items-center justify-center">
-                        <span
-                          className="text-[#198F38] font-bold text-[22px] lg:text-[28px] tracking-tight"
-                          style={{ fontFamily: "'Onest', sans-serif" }}
-                        >
-                          RA
-                        </span>
+                      <div className="w-[84px] lg:w-[104px] h-[84px] lg:h-[104px] rounded-full bg-[#FAFFFD] flex items-center justify-center p-2">
+                        <img src={RiskAiLogo2} alt="RiskAI Seal" className="w-[60px] lg:w-[75px] h-auto object-contain" />
                       </div>
                     </motion.div>
                   </div>

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import RiskAiLogo1 from "../../assets/RiskAiLogo1.png";
 
 function CTAButton({ text, variant = "primary", onClick }) {
   const isPrimary = variant === "primary";
@@ -269,18 +270,17 @@ export default function CTAFooter({ className }) {
               </div>
             </motion.div>
 
-            {/* Big Text RiskAI */}
-            <div className="w-[342px] h-[120px] md:w-[720px] md:h-[250px] lg:w-[1248px] lg:h-[430px] flex flex-col justify-center items-center select-none mx-auto lg:mx-0">
-              <motion.h1
-                initial={{ y: "100%" }}
-                whileInView={{ y: 0 }}
+            {/* Big Logo RiskAI */}
+            <div className="w-full max-w-[1248px] py-6 sm:py-10 lg:py-14 flex justify-center items-center select-none mx-auto overflow-hidden">
+              <motion.img
+                src={RiskAiLogo1}
+                alt="RiskAI Logo"
+                initial={{ y: "100%", opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, ease: [0.21, 0.45, 0.32, 0.9] }}
-                className="w-full text-center text-[#042718] text-[116px] md:text-[244px] lg:text-[424px] font-bold leading-none tracking-[-3.8px] md:tracking-[-8px] lg:tracking-[-14px]"
-                style={{ fontFamily: "'Onest', sans-serif" }}
-              >
-                RiskAI
-              </motion.h1>
+                className="max-h-[140px] md:max-h-[240px] lg:max-h-[320px] w-auto object-contain"
+              />
             </div>
 
             {/* Bottom Text Row */}

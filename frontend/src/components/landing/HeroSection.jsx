@@ -2,6 +2,20 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, Menu, X } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import amazonLogo from "../../assets/amazonLogo.png";
+import darazLogo from "../../assets/darazLogo.png";
+import ebayLogo from "../../assets/ebayLogo.png";
+import shopifyLogo from "../../assets/shopifyLogo.png";
+import aliexpressLogo from "../../assets/aliexpressLogo.png";
+import RiskAiLogo1 from "../../assets/RiskAiLogo1.png";
+
+const brandLogos = [
+  { name: "Daraz", logo: darazLogo },
+  { name: "Amazon", logo: amazonLogo },
+  { name: "eBay", logo: ebayLogo },
+  { name: "Shopify", logo: shopifyLogo },
+  { name: "AliExpress", logo: aliexpressLogo },
+];
 
 export default function HeroSection({ className }) {
   const [isNavHovered, setIsNavHovered] = useState(false);
@@ -75,12 +89,7 @@ export default function HeroSection({ className }) {
             className="flex items-center justify-between"
           >
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <span
-                className="font-bold text-[#042718] text-xl tracking-tight"
-                style={{ fontFamily: "'Onest', sans-serif" }}
-              >
-                Risk<span className="text-[#198F38]">AI</span>
-              </span>
+              <img src={RiskAiLogo1} alt="RiskAI Logo" className="h-9 sm:h-10 w-auto object-contain" />
             </a>
 
             {/* Desktop Menu */}
@@ -158,12 +167,7 @@ export default function HeroSection({ className }) {
                 className="fixed inset-0 z-[100] lg:hidden bg-white px-6 py-8 flex flex-col gap-8"
               >
                 <div className="flex items-center justify-between">
-                  <span
-                    className="font-bold text-[#042718] text-xl tracking-tight"
-                    style={{ fontFamily: "'Onest', sans-serif" }}
-                  >
-                    Risk<span className="text-[#198F38]">AI</span>
-                  </span>
+                  <img src={RiskAiLogo1} alt="RiskAI Logo" className="h-9 w-auto object-contain" />
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="p-2 text-[#042718] bg-[#042718]/5 rounded-full"
@@ -316,14 +320,13 @@ export default function HeroSection({ className }) {
                 >
                   {[...Array(2)].map((_, i) => (
                     <React.Fragment key={i}>
-                      {["Daraz", "Amazon", "eBay", "Shopify", "WooCommerce"].map((brand) => (
-                        <span
-                          key={brand}
-                          className="text-white/70 font-semibold text-lg lg:text-2xl tracking-tight whitespace-nowrap hover:text-white/90 transition-opacity"
-                          style={{ fontFamily: "'Onest', sans-serif" }}
-                        >
-                          {brand}
-                        </span>
+                      {brandLogos.map((brand) => (
+                        <img
+                          key={brand.name}
+                          src={brand.logo}
+                          alt={brand.name}
+                          className="h-7 lg:h-9 max-w-[120px] object-contain brightness-0 invert opacity-75 hover:opacity-100 transition-opacity"
+                        />
                       ))}
                     </React.Fragment>
                   ))}
