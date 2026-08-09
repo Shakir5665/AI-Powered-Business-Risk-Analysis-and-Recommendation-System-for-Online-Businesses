@@ -1,0 +1,8 @@
+{
+  "id": "mock-user-001",
+  "email": "user@example.com",
+  "username": "businessowner",
+  "fullName": "Alex Johnson",
+  "isActive": true,
+  "createdAt": "2025-01-15T10:00:00.000Z"
+}
