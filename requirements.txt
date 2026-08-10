@@ -8,6 +8,7 @@ adapters
 accelerate
 evaluate
 scikit-learn
+scikit-fuzzy
 numpy
 pandas
 matplotlib
