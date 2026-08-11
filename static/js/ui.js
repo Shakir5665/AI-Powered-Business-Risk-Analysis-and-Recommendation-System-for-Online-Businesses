@@ -465,10 +465,10 @@ const UI = {
 
     getRiskBadgeClass(level) {
         const lvl = String(level || '').toUpperCase();
-        if (lvl === 'VERY_LOW' || lvl === 'LOW') return 'bg-success text-white';
-        if (lvl === 'MEDIUM') return 'bg-warning text-dark';
-        if (lvl === 'HIGH' || lvl === 'CRITICAL') return 'bg-danger text-white';
-        return 'bg-secondary text-white';
+        if (lvl === 'VERY_LOW' || lvl === 'LOW') return 'bg-risk-low';
+        if (lvl === 'MEDIUM') return 'bg-risk-medium';
+        if (lvl === 'HIGH' || lvl === 'CRITICAL') return 'bg-risk-high';
+        return 'badge-saas-light';
     },
 
     renderCharts(stats, metrics = {}) {

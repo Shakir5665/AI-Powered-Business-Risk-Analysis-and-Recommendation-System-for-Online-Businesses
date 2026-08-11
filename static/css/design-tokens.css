@@ -1,0 +1,70 @@
+/* ==========================================================================
+   AI Business Risk Analysis - Modern SaaS Design System Tokens
+   ========================================================================== */
+
+:root {
+    /* Color Palette */
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #F7F8F5;
+    --color-surface-card: #FFFFFF;
+    --color-surface-subtle: #F3F5F0;
+    
+    /* Typography Colors */
+    --color-text-primary: #171A17;
+    --color-text-secondary: #626861;
+    --color-text-muted: #8A918A;
+    --color-text-inverse: #FFFFFF;
+
+    /* Primary Accent Palette (Sophisticated Olive/Green) */
+    --color-accent-primary: #667A45;
+    --color-accent-dark: #4F6135;
+    --color-accent-hover: #5A6D3C;
+    --color-accent-light: #E8EDDF;
+    --color-accent-subtle: #F2F5EC;
+
+    /* Neutral Borders & Dividers */
+    --color-border-subtle: #E7EAE4;
+    --color-border-medium: #D8DDD4;
+    --color-border-strong: #C4CBC0;
+
+    /* Status Color Palette */
+    --color-status-success: #4F7A55;
+    --color-status-success-bg: #EFF6F1;
+    --color-status-success-border: #CBE3D2;
+    
+    --color-status-warning: #B58A3A;
+    --color-status-warning-bg: #FDF9EE;
+    --color-status-warning-border: #F3E4BE;
+    
+    --color-status-error: #B85C5C;
+    --color-status-error-bg: #FDF2F2;
+    --color-status-error-border: #F5C6C6;
+
+    --color-status-info: #4C7B8B;
+    --color-status-info-bg: #F0F7F9;
+    --color-status-info-border: #C8E1E7;
+
+    /* Typography System */
+    --font-sans-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-sans-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+
+    /* Elevation & Shadows */
+    --shadow-xs: 0 1px 2px rgba(23, 26, 23, 0.03);
+    --shadow-sm: 0 1px 3px rgba(23, 26, 23, 0.04), 0 1px 2px rgba(23, 26, 23, 0.02);
+    --shadow-card: 0 4px 20px -2px rgba(23, 26, 23, 0.04), 0 2px 6px -1px rgba(23, 26, 23, 0.02);
+    --shadow-hover: 0 12px 28px -4px rgba(23, 26, 23, 0.07), 0 4px 12px -2px rgba(23, 26, 23, 0.03);
+    --shadow-lg: 0 20px 40px -8px rgba(23, 26, 23, 0.10);
+
+    /* Border Radii */
+    --radius-xs: 6px;
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    /* Transitions & Micro-interactions */
+    --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-slow: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}

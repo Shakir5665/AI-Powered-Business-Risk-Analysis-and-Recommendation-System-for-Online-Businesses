@@ -37,8 +37,9 @@ const ChartManager = {
                     labels: ['Positive Sentiment', 'Negative Sentiment', 'Neutral Sentiment'],
                     datasets: [{
                         data: [posCount, negCount, neuCount],
-                        backgroundColor: ['#198754', '#dc3545', '#ffc107'],
+                        backgroundColor: ['#4F7A55', '#B85C5C', '#B58A3A'],
                         borderWidth: 2,
+                        borderColor: '#FFFFFF',
                         hoverOffset: 4
                     }]
                 },
@@ -46,7 +47,7 @@ const ChartManager = {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'bottom', labels: { boxWidth: 12 } }
+                        legend: { position: 'bottom', labels: { boxWidth: 12, font: { family: "'Plus Jakarta Sans', sans-serif" } } }
                     }
                 }
             });
@@ -79,8 +80,8 @@ const ChartManager = {
                     {
                         label: 'Delivery Risk',
                         data: deliveryData,
-                        borderColor: '#0dcaf0',
-                        backgroundColor: 'rgba(13, 202, 240, 0.1)',
+                        borderColor: '#4C7B8B',
+                        backgroundColor: 'rgba(76, 123, 139, 0.1)',
                         tension: 0.3,
                         pointRadius: 5,
                         hidden: false
@@ -88,8 +89,8 @@ const ChartManager = {
                     {
                         label: 'Quality Risk',
                         data: qualityData,
-                        borderColor: '#0d6efd',
-                        backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                        borderColor: '#667A45',
+                        backgroundColor: 'rgba(102, 122, 69, 0.1)',
                         tension: 0.3,
                         pointRadius: 5,
                         hidden: false
@@ -97,8 +98,8 @@ const ChartManager = {
                     {
                         label: 'Trust Risk',
                         data: trustData,
-                        borderColor: '#ffc107',
-                        backgroundColor: 'rgba(255, 193, 7, 0.1)',
+                        borderColor: '#B58A3A',
+                        backgroundColor: 'rgba(181, 138, 58, 0.1)',
                         tension: 0.3,
                         pointRadius: 5,
                         hidden: false
@@ -106,8 +107,8 @@ const ChartManager = {
                     {
                         label: 'BRI Index',
                         data: briData,
-                        borderColor: '#dc3545',
-                        backgroundColor: 'rgba(220, 53, 69, 0.15)',
+                        borderColor: '#B85C5C',
+                        backgroundColor: 'rgba(184, 92, 92, 0.15)',
                         borderDash: [5, 5],
                         borderWidth: 3,
                         tension: 0.3,
