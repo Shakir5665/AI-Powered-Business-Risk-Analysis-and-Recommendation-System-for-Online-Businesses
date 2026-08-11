@@ -37,15 +37,28 @@ export function AuthProvider({ children }) {
   const login = useCallback(async (credentials) => {
     const response = await authAPI.login(credentials);
     const data = response.data?.data;
-    // Backend returns: { accessToken, tokenType, user: { id, email, username, fullName } }
-    persistSession(data.accessToken, data.user);
+    // Backend TokenDataResponse: { accessToken, tokenType, userId, username, email, role }
+    const userData = {
+      id: data.userId,
+      username: data.username,
+      email: data.email,
+      role: data.role,
+    };
+    persistSession(data.accessToken, userData);
     return data;
   }, []);
 
   const register = useCallback(async (userData) => {
     const response = await authAPI.register(userData);
     const data = response.data?.data;
-    persistSession(data.accessToken, data.user);
+    // Same flat TokenDataResponse structure
+    const userObj = {
+      id: data.userId,
+      username: data.username,
+      email: data.email,
+      role: data.role,
+    };
+    persistSession(data.accessToken, userObj);
     return data;
   }, []);
 
