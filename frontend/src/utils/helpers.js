@@ -29,7 +29,7 @@ export function parseError(err) {
   // HTTP status fallbacks
   const statusMessages = {
     400: "Bad request. Please check your input.",
-    401: "Unauthorized. Please log in again.",
+    401: "Incorrect email/username or password. Please check your credentials.",
     403: "You do not have permission to perform this action.",
     404: "The requested resource was not found.",
     409: "A conflict occurred. This resource may already exist.",

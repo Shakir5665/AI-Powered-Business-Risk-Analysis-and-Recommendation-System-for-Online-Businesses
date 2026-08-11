@@ -194,7 +194,12 @@ export default function Login() {
                   </p>
                 </div>
 
-                <form onSubmit={handleLogin} className="flex flex-col gap-5">
+                <motion.form
+                  onSubmit={handleLogin}
+                  animate={error ? { x: [-8, 8, -6, 6, -3, 3, 0] } : {}}
+                  transition={{ duration: 0.4 }}
+                  className="flex flex-col gap-5"
+                >
                   {/* Email / Username */}
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[#042718] text-sm font-medium">Email or Username</label>
@@ -204,8 +209,15 @@ export default function Login() {
                       autoComplete="username"
                       placeholder="you@example.com or username"
                       value={loginForm.emailOrUsername}
-                      onChange={(e) => setLoginForm((p) => ({ ...p, emailOrUsername: e.target.value }))}
-                      className="w-full px-4 py-3 rounded-xl border border-[#042718]/10 bg-white text-[#042718] placeholder:text-[#042718]/30 text-base outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/10 transition-all"
+                      onChange={(e) => {
+                        if (error) clearMessages();
+                        setLoginForm((p) => ({ ...p, emailOrUsername: e.target.value }));
+                      }}
+                      className={`w-full px-4 py-3 rounded-xl border text-[#042718] placeholder:text-[#042718]/30 text-base outline-none transition-all ${
+                        error
+                          ? "border-red-400 bg-red-50/20 focus:border-red-500 focus:ring-2 focus:ring-red-500/10"
+                          : "border-[#042718]/10 bg-white focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/10"
+                      }`}
                     />
                   </div>
 
@@ -228,8 +240,15 @@ export default function Login() {
                         autoComplete="current-password"
                         placeholder="••••••••"
                         value={loginForm.password}
-                        onChange={(e) => setLoginForm((p) => ({ ...p, password: e.target.value }))}
-                        className="w-full px-4 py-3 pr-12 rounded-xl border border-[#042718]/10 bg-white text-[#042718] placeholder:text-[#042718]/30 text-base outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/10 transition-all"
+                        onChange={(e) => {
+                          if (error) clearMessages();
+                          setLoginForm((p) => ({ ...p, password: e.target.value }));
+                        }}
+                        className={`w-full px-4 py-3 pr-12 rounded-xl border text-[#042718] placeholder:text-[#042718]/30 text-base outline-none transition-all ${
+                          error
+                            ? "border-red-500 bg-red-50/30 focus:border-red-600 focus:ring-2 focus:ring-red-500/20"
+                            : "border-[#042718]/10 bg-white focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/10"
+                        }`}
                       />
                       <button
                         type="button"
@@ -239,17 +258,40 @@ export default function Login() {
                         {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                       </button>
                     </div>
+                    {error && (
+                      <motion.p
+                        initial={{ opacity: 0, y: -4 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex items-center gap-1.5 text-red-500 text-xs font-medium mt-0.5"
+                      >
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{error}</span>
+                      </motion.p>
+                    )}
                   </div>
 
                   {/* Feedback */}
                   <AnimatePresence>
                     {error && (
                       <motion.div
-                        initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-                        className="flex items-start gap-2.5 p-3 rounded-xl bg-red-50 border border-red-100"
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="flex items-start justify-between gap-2.5 p-3.5 rounded-xl bg-red-50 border border-red-200/80 text-red-700 shadow-sm"
                       >
-                        <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
-                        <p className="text-red-600 text-sm">{error}</p>
+                        <div className="flex items-start gap-2.5">
+                          <AlertCircle className="w-4.5 h-4.5 text-red-500 mt-0.5 shrink-0" />
+                          <div className="flex flex-col text-sm">
+                            <span className="font-semibold text-red-700">{error}</span>
+                            <button
+                              type="button"
+                              onClick={() => { clearMessages(); setView("forgot"); }}
+                              className="text-[#198F38] hover:text-[#14732d] font-semibold text-xs underline text-left mt-1"
+                            >
+                              Forgot your password? Reset it here →
+                            </button>
+                          </div>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -266,7 +308,7 @@ export default function Login() {
                       <ArrowRight className="w-4 h-4 text-[#042718] group-hover:translate-x-0.5 transition-transform" />
                     </div>
                   </button>
-                </form>
+                </motion.form>
               </motion.div>
             )}
 
