@@ -32,17 +32,12 @@ import pandas as pd
 import numpy as np
 
 # ------------------------------------------------------------------------------
-# Core AI and Risk Pipeline Imports
+# Core AI Pipeline Imports (Sentiment & Aspect Multi-Task Model)
 # ------------------------------------------------------------------------------
 try:
     from core.ai.inference.model_loader import ModelLoader
     from core.ai.inference.inference_engine import InferenceEngine
     from core.ai.inference.prediction_formatter import PredictionFormatter
-    from core.business_risk.aggregation.statistical_aggregator import StatisticalAggregator
-    from core.business_risk.fuzzy.quality_fis import QualityFIS
-    from core.business_risk.fuzzy.delivery_fis import DeliveryFIS
-    from core.business_risk.fuzzy.trust_fis import TrustFIS
-    from core.business_risk.calculator.business_risk_calculator import BusinessRiskCalculator
 except ImportError as err:
     print(f"\n❌ Error: Failed to import internal modules: {err}")
     print("Please ensure you are running predictor.py from the repository root directory.")
@@ -231,11 +226,6 @@ class BatchPredictorRunner:
             
             self.inference_engine = InferenceEngine(self.loader)
             self.formatter = PredictionFormatter(self.loader)
-            self.aggregator = StatisticalAggregator()
-            self.quality_fis = QualityFIS()
-            self.delivery_fis = DeliveryFIS()
-            self.trust_fis = TrustFIS()
-            self.risk_calculator = BusinessRiskCalculator()
             print(f" ✅ ({self.device_label})")
         except Exception as e:
             print(f"\n❌ Error loading AI model: {e}")
@@ -273,7 +263,7 @@ class BatchPredictorRunner:
 
     def run_prediction_pipeline(self, df: pd.DataFrame) -> Tuple[pd.DataFrame, List[Dict[str, Any]], Dict[str, Any]]:
         """
-        Runs batch prediction over entire DataFrame and evaluates Business Risk Index.
+        Runs batch prediction over entire DataFrame for Sentiment and Aspect detection.
         """
         total_reviews = len(df)
         all_texts = df["text"].tolist()
@@ -309,57 +299,55 @@ class BatchPredictorRunner:
         sentiment_col = []
         aspects_col = []
 
+        pos_count = 0
+        neg_count = 0
+        neu_count = 0
+
+        aspect_counts = {
+            "Quality": 0,
+            "Delivery": 0,
+            "Trust": 0
+        }
+
         for pred in predictions:
             # Sentiment: Title Case (Positive, Negative, Neutral)
             raw_sentiment = str(pred.get("sentiment", "Neutral")).strip().capitalize()
             sentiment_col.append(raw_sentiment)
 
+            if raw_sentiment == "Positive":
+                pos_count += 1
+            elif raw_sentiment == "Negative":
+                neg_count += 1
+            else:
+                neu_count += 1
+
             # Aspects: Comma-separated list from [Quality, Delivery, Trust]
             detected = pred.get("detected_aspects", [])
-            formatted_aspects = [str(a).strip().capitalize() for a in detected if a]
+            formatted_aspects = []
+            for a in detected:
+                if a:
+                    aspect_title = str(a).strip().capitalize()
+                    formatted_aspects.append(aspect_title)
+                    if aspect_title in aspect_counts:
+                        aspect_counts[aspect_title] += 1
+                    else:
+                        aspect_counts[aspect_title] = 1
+
             aspects_str = ", ".join(formatted_aspects)
             aspects_col.append(aspects_str)
 
         df["sentiment"] = sentiment_col
         df["aspects"] = aspects_col
 
-        # ----------------------------------------------------------------------
-        # Evaluate Business Risk Index & Statistics
-        # ----------------------------------------------------------------------
-        aggregation = self.aggregator.aggregate(predictions)
-        stats = getattr(aggregation, "aspect_statistics", {})
-
-        quality_eval = self.quality_fis.evaluate(
-            mention_ratio=stats.get("quality", {}).get("mention_ratio", 0.0),
-            average_negative_strength=stats.get("quality", {}).get("average_negative_strength", 0.0),
-        )
-        delivery_eval = self.delivery_fis.evaluate(
-            mention_ratio=stats.get("delivery", {}).get("mention_ratio", 0.0),
-            average_negative_strength=stats.get("delivery", {}).get("average_negative_strength", 0.0),
-        )
-        trust_eval = self.trust_fis.evaluate(
-            mention_ratio=stats.get("trust", {}).get("mention_ratio", 0.0),
-            average_negative_strength=stats.get("trust", {}).get("average_negative_strength", 0.0),
-        )
-
-        business_risk = self.risk_calculator.calculate(
-            aggregation=aggregation,
-            quality=quality_eval,
-            delivery=delivery_eval,
-            trust=trust_eval,
-        )
-
         summary_metrics = {
             "total_reviews": total_reviews,
-            "positive_count": aggregation.review_statistics.get("positive_reviews", 0),
-            "negative_count": aggregation.review_statistics.get("negative_reviews", 0),
-            "neutral_count": aggregation.review_statistics.get("neutral_reviews", 0),
-            "positive_ratio": aggregation.sentiment_statistics.get("positive_ratio", 0.0) * 100,
-            "negative_ratio": aggregation.sentiment_statistics.get("negative_ratio", 0.0) * 100,
-            "neutral_ratio": aggregation.sentiment_statistics.get("neutral_ratio", 0.0) * 100,
-            "aspect_stats": stats,
-            "bri_score": business_risk.business_risk_index,
-            "bri_level": business_risk.business_risk_level,
+            "positive_count": pos_count,
+            "negative_count": neg_count,
+            "neutral_count": neu_count,
+            "positive_ratio": (pos_count / total_reviews * 100) if total_reviews > 0 else 0.0,
+            "negative_ratio": (neg_count / total_reviews * 100) if total_reviews > 0 else 0.0,
+            "neutral_ratio": (neu_count / total_reviews * 100) if total_reviews > 0 else 0.0,
+            "aspect_counts": aspect_counts,
         }
 
         return df, predictions, summary_metrics
@@ -371,7 +359,7 @@ class BatchPredictorRunner:
 
 def display_summary(metrics: Dict[str, Any], output_path: Path):
     """
-    Renders executive console summary matching the required visual spec.
+    Renders executive console summary for Sentiment & Aspect predictions.
     """
     total = metrics["total_reviews"]
     pos = metrics["positive_count"]
@@ -380,30 +368,17 @@ def display_summary(metrics: Dict[str, Any], output_path: Path):
     pos_pct = metrics["positive_ratio"]
     neg_pct = metrics["negative_ratio"]
     neu_pct = metrics["neutral_ratio"]
-    
-    # Identify top aspect
-    aspect_stats = metrics.get("aspect_stats", {})
-    top_aspect = "None"
-    top_aspect_pct = 0.0
-    for aspect_name, a_data in aspect_stats.items():
-        m_ratio = a_data.get("mention_ratio", 0.0) * 100
-        if m_ratio > top_aspect_pct:
-            top_aspect_pct = m_ratio
-            top_aspect = aspect_name.capitalize()
-
-    bri_level = str(metrics.get("bri_level", "MEDIUM")).upper()
-    bri_score = float(metrics.get("bri_score", 0.0))
+    aspect_counts = metrics.get("aspect_counts", {})
 
     print(f"\n💾 Results saved to: {output_path}")
     print("📈 Summary:")
     print(f"   - Positive: {pos:,} ({pos_pct:.1f}%)")
     print(f"   - Negative: {neg:,} ({neg_pct:.1f}%)")
-    print(f"   - Neutral: {neu:,} ({neu_pct:.1f}%)")
-    if top_aspect != "None":
-        print(f"   - Top Aspect: {top_aspect} ({top_aspect_pct:.1f}% mentions)")
-    else:
-        print("   - Top Aspect: N/A")
-    print(f"   - Business Risk Index: {bri_level} ({bri_score:.1f})")
+    print(f"   - Neutral:  {neu:,} ({neu_pct:.1f}%)")
+    print("   - Aspect Mentions:")
+    for aspect_name, count in aspect_counts.items():
+        pct = (count / total * 100) if total > 0 else 0.0
+        print(f"      • {aspect_name}: {count:,} ({pct:.1f}%)")
     print("\n✅ Analysis complete! View results in Google Drive or outputs folder.")
 
 
