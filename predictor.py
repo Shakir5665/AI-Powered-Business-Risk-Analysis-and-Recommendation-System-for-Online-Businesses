@@ -16,6 +16,7 @@ Usage:
 
 import os
 import sys
+import io
 import time
 import math
 from pathlib import Path
@@ -59,19 +60,32 @@ def setup_google_drive() -> Optional[Path]:
     Returns the target output directory in Google Drive or a local fallback.
     """
     if is_google_colab():
-        try:
-            print("\n🔄 Google Colab environment detected. Mounting Google Drive...")
-            from google.colab import drive
-            drive.mount("/content/drive", force_remount=False)
-            reports_dir = Path("/content/drive/MyDrive/AI_Reports")
+        # Check if already mounted
+        drive_path = Path("/content/drive/MyDrive")
+        if drive_path.exists():
+            reports_dir = drive_path / "AI_Reports"
             reports_dir.mkdir(parents=True, exist_ok=True)
-            print(f"✅ Google Drive mounted successfully. Reports destination: {reports_dir}")
+            print(f"📁 Google Drive destination: {reports_dir}")
             return reports_dir
-        except Exception as e:
-            print(f"⚠️ Warning: Could not mount Google Drive ({e}). Falling back to local directory.")
-            local_fallback = Path("/content/AI_Reports")
-            local_fallback.mkdir(parents=True, exist_ok=True)
-            return local_fallback
+
+        try:
+            from google.colab import drive
+            import IPython
+            if IPython.get_ipython() is not None:
+                print("\n🔄 Mounting Google Drive...")
+                drive.mount("/content/drive", force_remount=False)
+                if drive_path.exists():
+                    reports_dir = drive_path / "AI_Reports"
+                    reports_dir.mkdir(parents=True, exist_ok=True)
+                    print(f"✅ Google Drive mounted successfully. Reports destination: {reports_dir}")
+                    return reports_dir
+        except Exception:
+            pass  # Subprocess or headless execution
+
+        # Fallback directory in Colab
+        local_fallback = Path("/content/AI_Reports")
+        local_fallback.mkdir(parents=True, exist_ok=True)
+        return local_fallback
     else:
         local_reports = PROJECT_ROOT / "outputs" / "reports"
         local_reports.mkdir(parents=True, exist_ok=True)
@@ -390,8 +404,8 @@ def resolve_input_file(arg_path: Optional[str] = None) -> Path:
     """
     Resolves input file path from:
     1. CLI argument (if provided and valid)
-    2. Google Colab interactive file upload widget (when in Colab)
-    3. Auto-detected Excel/CSV file in working directory
+    2. Google Colab interactive file upload widget (when in Colab notebook)
+    3. Auto-detected Excel/CSV files in /content/ or current directory
     4. Interactive prompt
     """
     if arg_path:
@@ -400,57 +414,89 @@ def resolve_input_file(arg_path: Optional[str] = None) -> Path:
             return p
         print(f"⚠️ Warning: Specified file '{arg_path}' not found.")
 
-    # 1. Google Colab: Trigger native file upload widget
+    # 1. Google Colab: Try native file upload widget (works when executed inside notebook)
     if is_google_colab():
         try:
-            print("\n📤 Google Colab detected: Please upload your Excel (.xlsx) file...")
-            from google.colab import files
-            uploaded = files.upload()
-            if not uploaded:
-                raise ValueError("❌ Error: No file was uploaded. Please re-run and select an Excel file.")
-            
-            uploaded_filename = list(uploaded.keys())[0]
-            uploaded_path = Path(uploaded_filename)
-            print(f"✅ Upload complete: '{uploaded_path.name}' received successfully.")
-            return uploaded_path
-        except ImportError:
-            pass  # Fallback to standard input if colab files module is unavailable
-        except Exception as e:
-            print(f"⚠️ Colab upload notice: {e}. Falling back to manual path entry.")
+            import IPython
+            if IPython.get_ipython() is not None:
+                print("\n📤 Google Colab: Please upload your Excel (.xlsx) file...")
+                from google.colab import files
+                uploaded = files.upload()
+                if uploaded:
+                    uploaded_filename = list(uploaded.keys())[0]
+                    uploaded_path = Path(uploaded_filename)
+                    print(f"✅ Upload complete: '{uploaded_path.name}' received successfully.")
+                    return uploaded_path
+        except Exception:
+            pass  # Fallback to file scan if running as subshell (!python)
 
-    # 2. Local / Standard Scan: Check working directory for .xlsx files
+        # In Colab subshell: Check /content/ directory for user uploaded files
+        content_files = [
+            f for f in list(Path("/content").glob("*.xlsx")) + list(Path("/content").glob("*.csv"))
+            if not f.name.startswith("~$") and "dataset" not in f.name.lower()
+        ]
+        if content_files:
+            # Sort by latest modification time
+            latest_file = max(content_files, key=os.path.getmtime)
+            print(f"📁 Auto-detected uploaded file in /content/: '{latest_file.name}'")
+            return latest_file
+
+    # 2. Local / Standard Scan: Check current working directory for .xlsx files
     xlsx_files = list(Path(".").glob("*.xlsx"))
     csv_files = list(Path(".").glob("*.csv"))
     all_files = [f for f in xlsx_files + csv_files if not f.name.startswith("~$") and "dataset" not in f.name.lower()]
 
     if all_files:
-        default_file = all_files[0]
-        print(f"📁 Auto-detected input file: {default_file}")
-        user_input = input(f"Press Enter to process '{default_file}' or enter path to Excel file: ").strip()
+        latest_local = max(all_files, key=os.path.getmtime)
+        print(f"📁 Auto-detected file: {latest_local.name}")
+        try:
+            user_input = input(f"Press Enter to process '{latest_local.name}' or enter file path: ").strip()
+            if user_input:
+                p = Path(user_input)
+                if p.exists():
+                    return p
+                else:
+                    raise FileNotFoundError(f"❌ Error: File not found at '{user_input}'.")
+            return latest_local
+        except (EOFError, io.UnsupportedOperation):
+            return latest_local
+
+    # 3. Prompt user directly
+    try:
+        user_input = input("📁 Enter the path to your Excel (.xlsx) file: ").strip()
         if user_input:
             p = Path(user_input)
             if p.exists():
                 return p
-            else:
-                raise FileNotFoundError(f"❌ Error: File not found at '{user_input}'.")
-        return default_file
+    except (EOFError, Exception):
+        pass
 
-    # 3. Prompt user directly
-    user_input = input("📁 Enter the path to your Excel (.xlsx) file: ").strip()
-    if not user_input:
-        raise ValueError("❌ Error: No input file specified.")
-    
-    p = Path(user_input)
-    if not p.exists():
-        raise FileNotFoundError(f"❌ Error: File not found at '{user_input}'. Please check the path.")
-    return p
+    raise ValueError(
+        "❌ Error: No Excel file found.\n"
+        "💡 In Google Colab, you can either:\n"
+        "   1. Drag & drop your .xlsx file into the left 'Files' folder in Colab, then re-run.\n"
+        "   2. Pass the file path: !python predictor.py your_file.xlsx\n"
+        "   3. Run directly in a notebook cell:\n"
+        "      import predictor\n"
+        "      predictor.run()\n"
+    )
 
 
 # ==============================================================================
-# Main Entry Point
+# Main & Python Cell Runner
 # ==============================================================================
 
-def main():
+def run(file_path: Optional[str] = None):
+    """
+    Direct Python execution function for Google Colab and Jupyter Notebook cells.
+    Usage in Colab:
+        import predictor
+        predictor.run()
+    """
+    main(file_path)
+
+
+def main(file_arg: Optional[str] = None):
     print("\n" + "=" * 60)
     print("🚀 RiskAI Predictor v2.0 Initialized")
     print("=" * 60)
@@ -458,8 +504,8 @@ def main():
     # 1. Google Drive / Target Directory Setup
     reports_dir = setup_google_drive()
 
-    # 2. Resolve Input File (CLI argument or Colab Upload Widget)
-    cli_arg = sys.argv[1] if len(sys.argv) > 1 else None
+    # 2. Resolve Input File
+    cli_arg = file_arg or (sys.argv[1] if len(sys.argv) > 1 else None)
     try:
         input_file = resolve_input_file(cli_arg)
     except Exception as e:
@@ -483,7 +529,7 @@ def main():
         print(f"❌ Fatal Error: Could not initialize AI engine: {e}")
         sys.exit(1)
 
-    # 5. Run Batch Predictions & Risk Analysis
+    # 5. Run Batch Predictions
     try:
         updated_df, predictions, metrics = runner.run_prediction_pipeline(df)
     except Exception as e:
@@ -513,13 +559,16 @@ def main():
     # 8. If on Colab, offer automatic direct download
     if is_google_colab():
         try:
-            from google.colab import files
-            print("📥 Initiating automatic browser download for your updated Excel report...")
-            files.download(str(output_path))
+            import IPython
+            if IPython.get_ipython() is not None:
+                from google.colab import files
+                print("📥 Initiating automatic browser download for your updated Excel report...")
+                files.download(str(output_path))
         except Exception:
             pass
 
 
 if __name__ == "__main__":
     main()
+
 
