@@ -408,19 +408,42 @@ def display_summary(metrics: Dict[str, Any], output_path: Path):
 
 
 # ==============================================================================
-# Interactive File Selection (CLI / Colab)
+# Interactive File Selection & Colab Upload
 # ==============================================================================
 
 def resolve_input_file(arg_path: Optional[str] = None) -> Path:
     """
-    Resolves input file path from CLI argument, prompt, or automatic scan.
+    Resolves input file path from:
+    1. CLI argument (if provided and valid)
+    2. Google Colab interactive file upload widget (when in Colab)
+    3. Auto-detected Excel/CSV file in working directory
+    4. Interactive prompt
     """
     if arg_path:
         p = Path(arg_path)
         if p.exists():
             return p
+        print(f"⚠️ Warning: Specified file '{arg_path}' not found.")
 
-    # If no argument or invalid, scan working directory for .xlsx files
+    # 1. Google Colab: Trigger native file upload widget
+    if is_google_colab():
+        try:
+            print("\n📤 Google Colab detected: Please upload your Excel (.xlsx) file...")
+            from google.colab import files
+            uploaded = files.upload()
+            if not uploaded:
+                raise ValueError("❌ Error: No file was uploaded. Please re-run and select an Excel file.")
+            
+            uploaded_filename = list(uploaded.keys())[0]
+            uploaded_path = Path(uploaded_filename)
+            print(f"✅ Upload complete: '{uploaded_path.name}' received successfully.")
+            return uploaded_path
+        except ImportError:
+            pass  # Fallback to standard input if colab files module is unavailable
+        except Exception as e:
+            print(f"⚠️ Colab upload notice: {e}. Falling back to manual path entry.")
+
+    # 2. Local / Standard Scan: Check working directory for .xlsx files
     xlsx_files = list(Path(".").glob("*.xlsx"))
     csv_files = list(Path(".").glob("*.csv"))
     all_files = [f for f in xlsx_files + csv_files if not f.name.startswith("~$") and "dataset" not in f.name.lower()]
@@ -437,7 +460,7 @@ def resolve_input_file(arg_path: Optional[str] = None) -> Path:
                 raise FileNotFoundError(f"❌ Error: File not found at '{user_input}'.")
         return default_file
 
-    # Prompt user directly
+    # 3. Prompt user directly
     user_input = input("📁 Enter the path to your Excel (.xlsx) file: ").strip()
     if not user_input:
         raise ValueError("❌ Error: No input file specified.")
@@ -460,7 +483,7 @@ def main():
     # 1. Google Drive / Target Directory Setup
     reports_dir = setup_google_drive()
 
-    # 2. Resolve Input File
+    # 2. Resolve Input File (CLI argument or Colab Upload Widget)
     cli_arg = sys.argv[1] if len(sys.argv) > 1 else None
     try:
         input_file = resolve_input_file(cli_arg)
@@ -512,6 +535,16 @@ def main():
     # 7. Print Final Visual Summary
     display_summary(metrics, output_path)
 
+    # 8. If on Colab, offer automatic direct download
+    if is_google_colab():
+        try:
+            from google.colab import files
+            print("📥 Initiating automatic browser download for your updated Excel report...")
+            files.download(str(output_path))
+        except Exception:
+            pass
+
 
 if __name__ == "__main__":
     main()
+
