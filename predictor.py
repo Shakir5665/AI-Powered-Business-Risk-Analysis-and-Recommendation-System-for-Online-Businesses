@@ -318,19 +318,19 @@ class BatchPredictorRunner:
         neu_count = 0
 
         aspect_counts = {
-            "Quality": 0,
-            "Delivery": 0,
-            "Trust": 0
+            "quality": 0,
+            "delivery": 0,
+            "trust": 0
         }
 
         for pred in predictions:
             # Sentiment: Title Case (Positive, Negative, Neutral)
-            raw_sentiment = str(pred.get("sentiment", "Neutral")).strip().capitalize()
+            raw_sentiment = str(pred.get("sentiment", "neutral")).strip().capitalize()
             sentiment_col.append(raw_sentiment)
 
-            if raw_sentiment == "Positive":
+            if raw_sentiment == "positive":
                 pos_count += 1
-            elif raw_sentiment == "Negative":
+            elif raw_sentiment == "negative":
                 neg_count += 1
             else:
                 neu_count += 1
