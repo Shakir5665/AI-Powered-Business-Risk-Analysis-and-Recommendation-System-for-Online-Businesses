@@ -17,6 +17,12 @@ import logging
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import (
+    StaleElementReferenceException,
+    NoSuchElementException,
+    TimeoutException,
+    WebDriverException
+)
 
 from core.scraper.interfaces.scraper_interface import ScraperInterface
 from core.scraper.dto.product import Product
@@ -35,7 +41,7 @@ logger = logging.getLogger(__name__)
 
 
 class ScraperEngine(ScraperInterface):
-    """Daraz scraper with manual filter mode"""
+    """Daraz scraper with progressive lazy-load auto-scroll and robust pagination sync"""
     
     def __init__(self, job_state=None, auto_start: bool = True):
         """
@@ -114,6 +120,96 @@ class ScraperEngine(ScraperInterface):
                     pass
         return False
     
+    def _progressive_scroll_to_content(
+        self,
+        max_scrolls: int = 15,
+        scroll_step: int = 700,
+        interval: float = 1.0,
+        target_selectors: List[str] = None
+    ) -> bool:
+        """
+        Progressively scroll down the page in small increments (e.g. 700px) with 1-second intervals
+        to trigger lazy-loaded content, continuously polling for content containers (review items,
+        comment sections, pagination).
+        When detected, smoothly scrolls the container into center view.
+        Includes timeout handling with warnings if content fails to load.
+        """
+        if not self._driver:
+            return False
+
+        if target_selectors is None:
+            target_selectors = [
+                '#module_product_review',
+                '.pdp-mod-review',
+                '.pdp-review-summary',
+                '.mod-reviews',
+                '[data-spm="reviews"]',
+                '.pdp-review-item',
+                '.review-item',
+                '.review-content',
+                '.item-content',
+                '.next-pagination',
+                '.pagination'
+            ]
+
+        logger.info(f"Starting progressive auto-scroll (step: {scroll_step}px, interval: {interval}s, max_scrolls: {max_scrolls})...")
+        
+        try:
+            for scroll_idx in range(1, max_scrolls + 1):
+                if self._check_stop():
+                    logger.info("Auto-scroll interrupted by stop request.")
+                    return False
+
+                # Continuous poll for review containers/items
+                for selector in target_selectors:
+                    try:
+                        elements = self._driver.find_elements(By.CSS_SELECTOR, selector)
+                        for elem in elements:
+                            if elem.is_displayed():
+                                # Smoothly scroll detected element into center view
+                                self._driver.execute_script(
+                                    "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",
+                                    elem
+                                )
+                                time.sleep(1.0)
+                                logger.info(
+                                    f"Detected lazy-loaded content container ('{selector}') at scroll step {scroll_idx}. Centered in view."
+                                )
+                                return True
+                    except (StaleElementReferenceException, NoSuchElementException):
+                        continue
+                    except Exception:
+                        continue
+
+                # Scroll progressively by increment
+                self._driver.execute_script(f"window.scrollBy({{top: {scroll_step}, behavior: 'smooth'}});")
+                time.sleep(interval)
+
+            # Final check after completing scroll steps
+            for selector in target_selectors:
+                try:
+                    elements = self._driver.find_elements(By.CSS_SELECTOR, selector)
+                    for elem in elements:
+                        if elem.is_displayed():
+                            self._driver.execute_script(
+                                "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",
+                                elem
+                            )
+                            time.sleep(1.0)
+                            logger.info(f"Detected content container ('{selector}') after progressive scrolls. Centered in view.")
+                            return True
+                except Exception:
+                    continue
+
+            logger.warning(
+                f"Progressive auto-scroll warning: Lazy-loaded content container not detected after {max_scrolls} scrolls ({max_scrolls * scroll_step}px)."
+            )
+            return False
+
+        except Exception as e:
+            logger.warning(f"Error during progressive auto-scroll: {e}")
+            return False
+
     def _wait_for_manual_filter(self):
         """
         Wait for user to manually apply the star filter or auto-continue if called via API.
@@ -153,12 +249,13 @@ class ScraperEngine(ScraperInterface):
                 print("Invalid command. Please type 'start' or 'quit'")
     
     def _get_total_pages(self) -> int:
-        """Get total number of review pages"""
+        """Get total number of review pages after ensuring content is mounted"""
         try:
-            # Wait for pagination to load
-            time.sleep(3)
+            # Ensure review container / pagination is mounted and in view
+            self._progressive_scroll_to_content(max_scrolls=5, scroll_step=500, interval=0.5)
+            time.sleep(1.5)
             
-            # Try to find total pages from pagination
+            # Try to find total pages from pagination selectors
             pagination_selectors = [
                 '.next-pagination-item',
                 '.pagination-item',
@@ -182,15 +279,14 @@ class ScraperEngine(ScraperInterface):
                             continue
                     
                     if max_page > 1:
-                        logger.info(f"Found {max_page} total pages")
+                        logger.info(f"Found {max_page} total pages via pagination buttons")
                         return max_page
                 except:
                     continue
             
-            # Alternative: Try to find total from text
+            # Alternative: Try to find total from text patterns
             try:
                 page_source = self._driver.page_source
-                # Look for patterns like "Page 1 of 138" or "1-20 of 4978"
                 patterns = [
                     r'Page\s+(\d+)\s+of\s+(\d+)',
                     r'(\d+)-(\d+)\s+of\s+(\d+)',
@@ -200,10 +296,9 @@ class ScraperEngine(ScraperInterface):
                 for pattern in patterns:
                     match = re.search(pattern, page_source, re.IGNORECASE)
                     if match:
-                        # Get the last number (total pages)
-                        total = int(match.group(-1))
+                        total = int(match.group(match.lastindex or 1))
                         if total > 1:
-                            logger.info(f"Found {total} total pages")
+                            logger.info(f"Found {total} total pages via text pattern matching")
                         return total
             except:
                 pass
@@ -215,12 +310,13 @@ class ScraperEngine(ScraperInterface):
             return 1
     
     def _extract_reviews_from_page(self) -> List[str]:
-        """Extract reviews from current page"""
+        """Extract reviews from current page, ensuring lazy-loaded elements are mounted in the DOM"""
         comments = []
         
         try:
-            # Wait for content to load
-            time.sleep(2)
+            # Ensure content is mounted and visible
+            self._progressive_scroll_to_content(max_scrolls=4, scroll_step=400, interval=0.5)
+            time.sleep(1)
             
             # Try multiple selectors for review content
             selectors = [
@@ -240,18 +336,23 @@ class ScraperEngine(ScraperInterface):
                 try:
                     elements = self._driver.find_elements(By.CSS_SELECTOR, selector)
                     for element in elements:
-                        text = element.text.strip()
-                        if text and len(text) > 3:
-                            # Clean the text
-                            text = ' '.join(text.split())
-                            # Skip if it's just metadata
-                            skip_words = ['stars', 'star', 'rating', 'verified', 'purchase']
-                            if not any(word in text.lower() for word in skip_words):
-                                comments.append(text)
+                        try:
+                            text = element.text.strip()
+                            if text and len(text) > 3:
+                                # Clean whitespace
+                                text = ' '.join(text.split())
+                                # Skip metadata tags
+                                skip_words = ['stars', 'star', 'rating', 'verified', 'purchase']
+                                if not any(word in text.lower() for word in skip_words):
+                                    comments.append(text)
+                        except (StaleElementReferenceException, NoSuchElementException):
+                            continue
+                        except Exception:
+                            continue
                     if comments:
                         logger.info(f"Found {len(comments)} comments with selector: {selector}")
                         break
-                except:
+                except Exception:
                     continue
             
             return comments
@@ -260,45 +361,171 @@ class ScraperEngine(ScraperInterface):
             logger.error(f"Error extracting comments: {e}")
             return []
     
-    def _go_to_page(self, page_num: int) -> bool:
-        """Navigate to a specific page using JavaScript"""
+    def _go_to_page(self, page_num: int, sync_timeout: float = 8.0) -> bool:
+        """
+        Navigate to a specific page using a robust multi-strategy pagination synchronization:
+        1. Capture current content fingerprint (visible item texts) & active indicator before clicking.
+        2. Execute click on target page or next button.
+        3. Synchronize by waiting for:
+           - Old elements to become stale
+           - Content text to change from pre-click snapshot
+           - Active page indicator to update
+        4. Fallback timeout for slower DOM mutations.
+        """
         try:
-            # Try to find and click the page number
-            page_buttons = self._driver.find_elements(By.CSS_SELECTOR, 
-                '.next-pagination-item, .pagination-item, button[class*="pagination-item"]')
+            # Step 1: Capture pre-click fingerprint & visible elements
+            review_item_selectors = [
+                '.review-content',
+                '.pdp-review-item .content',
+                '.item-content .content',
+                '.review-item .content',
+                '.pdp-review-item',
+                '.review-item'
+            ]
+            old_elements = []
+            pre_click_texts = []
+            for sel in review_item_selectors:
+                try:
+                    found = self._driver.find_elements(By.CSS_SELECTOR, sel)
+                    if found:
+                        old_elements = found
+                        pre_click_texts = [e.text.strip() for e in found if e.text.strip()][:5]
+                        if pre_click_texts:
+                            break
+                except Exception:
+                    continue
+
+            # Capture current active page indicator text if present
+            old_active_indicator = None
+            try:
+                active_elems = self._driver.find_elements(
+                    By.CSS_SELECTOR,
+                    '.next-pagination-item.next-current, .next-pagination-item.current, .pagination-item.active, button[aria-current="page"], .next-pagination-list .current'
+                )
+                if active_elems:
+                    old_active_indicator = active_elems[0].text.strip()
+            except Exception:
+                pass
+
+            # Step 2: Locate target page button or Next button
+            target_button = None
+            page_buttons = self._driver.find_elements(
+                By.CSS_SELECTOR, 
+                '.next-pagination-item, .pagination-item, button[class*="pagination-item"], .next-pagination-list button'
+            )
             
             for button in page_buttons:
                 try:
                     if button.text.strip() == str(page_num):
                         if button.is_displayed() and button.is_enabled():
-                            # Use JavaScript to click (bypasses interception)
-                            self._driver.execute_script("arguments[0].scrollIntoView(true);", button)
-                            time.sleep(0.5)
-                            self._driver.execute_script("arguments[0].click();", button)
-                            time.sleep(3)
-                            logger.info(f"Navigated to page {page_num}")
-                            return True
-                except:
+                            target_button = button
+                            break
+                except Exception:
                     continue
             
-            # Alternative: Try to use next button
-            try:
-                next_buttons = self._driver.find_elements(By.CSS_SELECTOR, 
-                    '.next-pagination-item.next, .pagination-next, button[class*="next"]:not([disabled])')
-                
+            if not target_button:
+                # Try next button
+                next_buttons = self._driver.find_elements(
+                    By.CSS_SELECTOR, 
+                    '.next-pagination-item.next, .pagination-next, button[class*="next"]:not([disabled])'
+                )
                 for btn in next_buttons:
-                    if btn.is_displayed() and btn.is_enabled():
-                        self._driver.execute_script("arguments[0].scrollIntoView(true);", btn)
-                        time.sleep(0.5)
-                        self._driver.execute_script("arguments[0].click();", btn)
-                        time.sleep(3)
-                        logger.info(f"Clicked next button")
-                        return True
-            except:
-                pass
-            
-            return False
-            
+                    try:
+                        if btn.is_displayed() and btn.is_enabled():
+                            target_button = btn
+                            break
+                    except Exception:
+                        continue
+
+            if not target_button:
+                logger.warning(f"Could not locate pagination button for page {page_num}")
+                return False
+
+            # Scroll button into center view and click
+            self._driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", target_button)
+            time.sleep(0.3)
+            self._driver.execute_script("arguments[0].click();", target_button)
+
+            # Step 3: Multi-strategy synchronization wait loop
+            start_time = time.time()
+            poll_interval = 0.4
+            page_synchronized = False
+
+            while time.time() - start_time < sync_timeout:
+                if self._check_stop():
+                    return False
+
+                # Strategy A: Staleness detection of old elements
+                if old_elements:
+                    try:
+                        _ = old_elements[0].is_enabled()
+                    except StaleElementReferenceException:
+                        logger.info(f"Pagination sync [Strategy A - Staleness]: DOM refreshed for page {page_num}")
+                        page_synchronized = True
+                        break
+                    except Exception:
+                        pass
+
+                # Strategy B: Content fingerprint change
+                for sel in review_item_selectors:
+                    try:
+                        current_elems = self._driver.find_elements(By.CSS_SELECTOR, sel)
+                        current_texts = [e.text.strip() for e in current_elems if e.text.strip()][:5]
+                        if current_texts and pre_click_texts:
+                            if current_texts != pre_click_texts:
+                                logger.info(f"Pagination sync [Strategy B - Content Fingerprint]: Review text updated for page {page_num}")
+                                page_synchronized = True
+                                break
+                    except Exception:
+                        continue
+                if page_synchronized:
+                    break
+
+                # Strategy C: Active page indicator update
+                try:
+                    active_elems = self._driver.find_elements(
+                        By.CSS_SELECTOR,
+                        '.next-pagination-item.next-current, .next-pagination-item.current, .pagination-item.active, button[aria-current="page"], .next-pagination-list .current'
+                    )
+                    if active_elems:
+                        current_active = active_elems[0].text.strip()
+                        if current_active == str(page_num) or (old_active_indicator and current_active != old_active_indicator):
+                            logger.info(f"Pagination sync [Strategy C - Active Indicator]: Active page updated to {current_active}")
+                            page_synchronized = True
+                            break
+                except Exception:
+                    pass
+
+                time.sleep(poll_interval)
+
+            # Step 4: Fallback timeout handling for slower DOM mutations
+            if not page_synchronized:
+                logger.warning(
+                    f"Pagination sync timeout ({sync_timeout}s) reached for page {page_num}. Checking fallback DOM state."
+                )
+                reviews_present = False
+                for sel in review_item_selectors:
+                    try:
+                        elems = self._driver.find_elements(By.CSS_SELECTOR, sel)
+                        if any(e.is_displayed() for e in elems):
+                            reviews_present = True
+                            break
+                    except Exception:
+                        continue
+
+                if reviews_present:
+                    logger.info(f"Fallback check confirmed review content is visible for page {page_num}.")
+                    page_synchronized = True
+                else:
+                    logger.warning(f"Fallback check failed: No reviews detected after navigation to page {page_num}.")
+                    return False
+
+            # Ensure reviews container is cleanly centered after page transition
+            time.sleep(0.5)
+            self._progressive_scroll_to_content(max_scrolls=3, scroll_step=400, interval=0.5)
+            logger.info(f"Successfully navigated to page {page_num}")
+            return True
+
         except Exception as e:
             logger.error(f"Error navigating to page {page_num}: {e}")
             return False
@@ -319,13 +546,17 @@ class ScraperEngine(ScraperInterface):
             # Open product page
             logger.info(f"Opening product page: {product_url}")
             self._driver.get(product_url)
-            time.sleep(4)
+            time.sleep(3)
 
             metadata = self._extract_metadata_from_driver(product_url)
             if self.job_state:
                 self.job_state.product_preview = metadata
 
-            # Wait for user to apply filter manually
+            # Progressive Auto-Scroll to trigger lazy-loaded review components
+            logger.info("Executing progressive auto-scroll to trigger lazy-loading content...")
+            self._progressive_scroll_to_content(max_scrolls=15, scroll_step=700, interval=1.0)
+
+            # Wait for user to apply filter manually (or auto-continue in API mode)
             if not self._wait_for_manual_filter():
                 self._driver.quit()
                 self._driver = None
@@ -341,6 +572,9 @@ class ScraperEngine(ScraperInterface):
                     platform=metadata.get("platform", "Daraz"),
                     reviews=reviews
                 )
+
+            # After filter selection, ensure review container and pagination are mounted
+            self._progressive_scroll_to_content(max_scrolls=5, scroll_step=500, interval=0.5)
 
             # Get total pages
             total_pages = self._get_total_pages()
