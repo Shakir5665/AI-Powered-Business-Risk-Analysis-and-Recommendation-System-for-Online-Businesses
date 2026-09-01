@@ -62,7 +62,7 @@ export default function HeroSection({ className }) {
         transition={{ duration: 1, ease: "easeOut" }}
         className={"relative w-full overflow-hidden min-h-[800px] lg:min-h-[900px] " + (className || "")}
       >
-        {/* Background Video */}
+        {/* Background Video — Cloudinary CDN */}
         <div className="absolute inset-0 z-0">
           {isMounted && (
             <video
@@ -72,8 +72,9 @@ export default function HeroSection({ className }) {
               playsInline
               className="w-full h-full object-cover"
             >
+              {/* WebM (smaller) served first to browsers that support it, MP4 fallback */}
               <source
-                src="https://cdn.jiro.build/Amox/All%20Images/P01-Header-01-BG.mp4"
+                src="https://res.cloudinary.com/rgj4dgir/video/upload/f_auto,q_auto:low/v1788274252/bg.mp4"
                 type="video/mp4"
               />
             </video>

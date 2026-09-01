@@ -15,6 +15,7 @@ import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
+import Layout from "./components/common/Layout";
 
 // ─── Route Guards ────────────────────────────────────────────────────────────
 
@@ -69,7 +70,7 @@ function AppRoutes() {
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <Layout><Dashboard /></Layout>
           </ProtectedRoute>
         }
       />
@@ -77,7 +78,7 @@ function AppRoutes() {
         path="/analyze"
         element={
           <ProtectedRoute>
-            <AnalyzeProduct />
+            <Layout><AnalyzeProduct /></Layout>
           </ProtectedRoute>
         }
       />
@@ -85,7 +86,7 @@ function AppRoutes() {
         path="/analysis-result/:id"
         element={
           <ProtectedRoute>
-            <AnalysisResult />
+            <Layout><AnalysisResult /></Layout>
           </ProtectedRoute>
         }
       />
@@ -93,7 +94,7 @@ function AppRoutes() {
         path="/history"
         element={
           <ProtectedRoute>
-            <History />
+            <Layout><History /></Layout>
           </ProtectedRoute>
         }
       />
@@ -101,7 +102,7 @@ function AppRoutes() {
         path="/profile"
         element={
           <ProtectedRoute>
-            <Profile />
+            <Layout><Profile /></Layout>
           </ProtectedRoute>
         }
       />
@@ -109,7 +110,7 @@ function AppRoutes() {
         path="/settings"
         element={
           <ProtectedRoute>
-            <Settings />
+            <Layout><Settings /></Layout>
           </ProtectedRoute>
         }
       />
