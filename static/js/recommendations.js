@@ -94,15 +94,15 @@ const RecommendationManager = {
         // Render Panel HTML
         panelElem.innerHTML = `
             <div class="card border-0 shadow-sm rounded-4 mb-4 fade-in">
-                <div class="card-header bg-dark text-white rounded-top-4 py-3 d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0 font-weight-bold d-flex align-items-center">
-                        <i class="fa-solid fa-lightbulb text-warning me-2"></i> Recommendation Engine Report
+                <div class="card-header bg-white border-bottom py-3 d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0 font-weight-bold d-flex align-items-center gap-2 text-dark">
+                        <i class="fa-solid fa-lightbulb text-primary"></i> Recommendation Engine Report
                     </h5>
                     <div class="d-flex align-items-center gap-2">
                         <span class="badge ${this.getPriorityBadgeClass(highestPriority)} px-3 py-2 text-uppercase fs-6">
                             Highest Priority: ${highestPriority}
                         </span>
-                        <span class="badge bg-secondary px-2 py-2 fs-6">Engine ${version} (${procTime}ms)</span>
+                        <span class="badge badge-saas-light px-2 py-2 fs-6">Engine ${version} (${procTime}ms)</span>
                     </div>
                 </div>
                 <div class="card-body p-4">
