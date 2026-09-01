@@ -266,11 +266,11 @@ export default function AnalyzeProduct() {
           >
             {/* Product image banner */}
             {(preview.imageUrl || preview.image_url) && (
-              <div className="h-40 bg-[#F6FDFF] overflow-hidden">
+              <div className="h-64 sm:h-72 bg-[#F6FDFF] overflow-hidden flex items-center justify-center">
                 <img
                   src={preview.imageUrl || preview.image_url}
                   alt={preview.title || preview.productTitle}
-                  className="w-full h-full object-contain p-4"
+                  className="max-h-full max-w-full object-contain p-6"
                 />
               </div>
             )}
