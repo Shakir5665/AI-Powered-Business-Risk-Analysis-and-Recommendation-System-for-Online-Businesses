@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { useAuth } from "../../hooks/useAuth";
+import { useAnalysis } from "../../context/AnalysisContext";
 import RiskAiLogo1 from "../../assets/RiskAiLogo1.png";
 import RiskAiLogo2 from "../../assets/RiskAiLogo2.png";
 
@@ -110,6 +111,8 @@ function SidebarContent({
   onClose,
   isMobile = false,
 }) {
+  const { step, analysisId } = useAnalysis();
+  const isAnalysisRunning = step === 3 && !!analysisId;
   return (
     <div className="flex flex-col h-full" style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Logo */}
@@ -173,19 +176,31 @@ function SidebarContent({
           >
             {({ isActive }) => (
               <>
-                <item.icon
-                  size={20}
-                  className={`shrink-0 ${isActive ? "text-white" : "text-white/60 group-hover:text-white"}`}
-                />
+                <span className="relative shrink-0">
+                  <item.icon
+                    size={20}
+                    className={`${isActive ? "text-white" : "text-white/60 group-hover:text-white"}`}
+                  />
+                  {/* Running indicator dot — only on Analyze Product item */}
+                  {item.to === "/analyze" && isAnalysisRunning && (
+                    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#4ade80] ring-2 ring-[#042718] animate-pulse" />
+                  )}
+                </span>
                 <AnimatePresence>
                   {(!collapsed || isMobile) && (
                     <motion.span
                       initial={{ opacity: 0, width: 0 }}
                       animate={{ opacity: 1, width: "auto" }}
                       exit={{ opacity: 0, width: 0 }}
-                      className="text-sm font-medium whitespace-nowrap overflow-hidden"
+                      className="text-sm font-medium whitespace-nowrap overflow-hidden flex-1 flex items-center justify-between"
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      {/* Text label indicator when expanded */}
+                      {item.to === "/analyze" && isAnalysisRunning && (
+                        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-[#198F38]/30 text-[#4ade80] ml-1">
+                          LIVE
+                        </span>
+                      )}
                     </motion.span>
                   )}
                 </AnimatePresence>

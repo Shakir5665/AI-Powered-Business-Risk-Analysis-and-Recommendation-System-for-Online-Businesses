@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
   Link2, Search, CheckCircle, ChevronRight, X,
-  Loader2, Star, Package, ScanSearch, AlertCircle, StopCircle,
+  Loader2, Star, Package, ScanSearch, AlertCircle, StopCircle, Terminal,
 } from "lucide-react";
 import { analysisAPI } from "../api/endpoints";
 import { parseError } from "../utils/helpers";
+import { useAnalysis } from "../context/AnalysisContext";
 
 // ── Step indicator ────────────────────────────────────────────────────────────
 
@@ -61,28 +62,180 @@ function detectPlatform(url) {
   return null;
 }
 
+// ── Terminal log color mapping ────────────────────────────────────────────────
+
+function getLogColor(line) {
+  const upper = line.toUpperCase();
+  if (upper.includes("[ERROR]"))     return "#ff5f5f";
+  if (upper.includes("[SCRAPER]"))   return "#67e8f9";   // cyan
+  if (upper.includes("[AI_ENGINE]")) return "#fde047";   // yellow
+  if (upper.includes("[FIS]"))       return "#d8b4fe";   // purple
+  if (upper.includes("[DATABASE]"))  return "#60a5fa";   // blue
+  if (upper.includes("[COMPLETED]")) return "#4ade80";   // bright green
+  if (upper.includes("[USER]"))      return "#fb923c";   // orange
+  if (upper.includes("[SYSTEM]"))    return "#e2e8f0";   // near-white
+  return "#86efac";                                      // default soft green
+}
+
+function TerminalLine({ line, animate }) {
+  const color = getLogColor(line);
+  // Split at the category tag for bold highlighting
+  const match = line.match(/^(\[\d{2}:\d{2}:\d{2}\]\s)?(\[[A-Z_]+\])(.*)/);
+  if (match) {
+    return (
+      <motion.div
+        initial={animate ? { opacity: 0, x: -6 } : false}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.2 }}
+        className="flex gap-2 leading-relaxed"
+        style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace", fontSize: "12px" }}
+      >
+        {match[1] && <span style={{ color: "#6b7280" }}>{match[1]}</span>}
+        <span style={{ color, fontWeight: 700, flexShrink: 0 }}>{match[2]}</span>
+        <span style={{ color: "#d1fae5" }}>{match[3]}</span>
+      </motion.div>
+    );
+  }
+  return (
+    <motion.div
+      initial={animate ? { opacity: 0, x: -6 } : false}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.2 }}
+      style={{ color: "#86efac", fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace", fontSize: "12px", lineHeight: "1.6" }}
+    >
+      {line}
+    </motion.div>
+  );
+}
+
+// ── Terminal panel ────────────────────────────────────────────────────────────
+
+function TerminalPanel({ logs, jobStatus }) {
+  const bottomRef = useRef(null);
+  const containerRef = useRef(null);
+  const prevLogCountRef = useRef(0);
+
+  // Auto-scroll only when new lines arrive
+  useEffect(() => {
+    if (logs.length > prevLogCountRef.current) {
+      prevLogCountRef.current = logs.length;
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [logs]);
+
+  const isRunning = !["COMPLETED", "DONE", "FINISHED", "SUCCESS", "FAILED", "ERROR"].includes(
+    String(jobStatus?.status || "").toUpperCase()
+  );
+
+  return (
+    <div
+      ref={containerRef}
+      className="w-full rounded-xl overflow-hidden border"
+      style={{ borderColor: "#198F38/30", background: "#0a1a0f" }}
+    >
+      {/* Terminal title bar */}
+      <div
+        className="flex items-center gap-2 px-4 py-2.5 border-b"
+        style={{ borderColor: "#1a3a1f", background: "#071210" }}
+      >
+        <div className="flex gap-1.5">
+          <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+          <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+          <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+        </div>
+        <Terminal size={12} className="ml-2 text-[#198F38]" />
+        <span
+          className="text-xs text-[#4ade80]/60"
+          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+        >
+          analysis-log — riskAI
+        </span>
+        <div className="ml-auto flex items-center gap-1.5">
+          {isRunning && (
+            <>
+              <span className="w-2 h-2 rounded-full bg-[#198F38] animate-pulse" />
+              <span className="text-[10px] text-[#4ade80]/60" style={{ fontFamily: "monospace" }}>
+                LIVE
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+
+      {/* Log body */}
+      <div
+        className="p-4 overflow-y-auto flex flex-col gap-0.5"
+        style={{ height: "280px", maxHeight: "280px" }}
+      >
+        {logs.length === 0 ? (
+          <span style={{ color: "#4ade80/40", fontFamily: "monospace", fontSize: "12px" }}>
+            Waiting for logs...
+          </span>
+        ) : (
+          logs.map((line, i) => (
+            <TerminalLine
+              key={`${i}-${line.slice(0, 20)}`}
+              line={line}
+              animate={i >= logs.length - 5}
+            />
+          ))
+        )}
+        {/* Blinking cursor */}
+        {isRunning && (
+          <motion.span
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 1, repeat: Infinity }}
+            style={{
+              color: "#4ade80",
+              fontFamily: "monospace",
+              fontSize: "14px",
+              lineHeight: 1,
+              display: "inline-block",
+              marginTop: "2px",
+            }}
+          >
+            █
+          </motion.span>
+        )}
+        <div ref={bottomRef} />
+      </div>
+    </div>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function AnalyzeProduct() {
   const navigate = useNavigate();
 
-  const [step, setStep] = useState(1);
-  const [url, setUrl] = useState("");
+  const {
+    step, setStep,
+    url, setUrl,
+    preview,
+    analysisId,
+    jobStatus,
+    logs,
+    error, setError,
+    setProductPreview,
+    startAnalysis,
+    stopScraping,
+    reset,
+  } = useAnalysis();
+
   const [platform, setPlatform] = useState(null);
-  const [preview, setPreview] = useState(null);
-  const [analysisId, setAnalysisId] = useState(null);
-  const [jobStatus, setJobStatus] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const pollingRef = useRef(null);
 
   // Detect platform on URL change
   useEffect(() => {
     setPlatform(detectPlatform(url));
   }, [url]);
 
-  // Clear polling on unmount
-  useEffect(() => () => clearInterval(pollingRef.current), []);
+  const progressPct = Math.min(
+    100,
+    jobStatus?.progress ?? (jobStatus?.reviewsCollected && jobStatus?.totalPages
+      ? Math.round((jobStatus.reviewsCollected / Math.max(1, jobStatus.totalPages * 5)) * 100)
+      : 30)
+  );
 
   // ── Step 1: Check product ─────────────────────────────────────────────────
   const handleCheckProduct = async (e) => {
@@ -92,8 +245,7 @@ export default function AnalyzeProduct() {
     try {
       setLoading(true);
       const res = await analysisAPI.checkProduct(url.trim());
-      setPreview(res.data?.data);
-      setStep(2);
+      setProductPreview(res.data?.data, url.trim());
     } catch (err) {
       setError(parseError(err) || "Could not fetch product. Please check the URL.");
     } finally {
@@ -106,78 +258,13 @@ export default function AnalyzeProduct() {
     setError("");
     try {
       setLoading(true);
-      const res = await analysisAPI.startAnalysis(url.trim());
-      const data = res.data?.data;
-      setAnalysisId(data.analysisId);
-      setJobStatus({ status: "STARTED", progress: 0, message: "Starting analysis job..." });
-      setStep(3);
-      startPolling(data.analysisId);
+      await startAnalysis(url.trim());
     } catch (err) {
       setError(parseError(err) || "Failed to start analysis.");
     } finally {
       setLoading(false);
     }
   };
-
-  // ── Polling ───────────────────────────────────────────────────────────────
-  const startPolling = useCallback((id) => {
-    clearInterval(pollingRef.current);
-    pollingRef.current = setInterval(async () => {
-      try {
-        const res = await analysisAPI.getStatus(id);
-        const statusData = res.data?.data;
-        setJobStatus(statusData);
-
-        const completed = ["COMPLETED", "DONE", "FINISHED", "SUCCESS"].includes(
-          String(statusData?.status || "").toUpperCase()
-        );
-        const failed = ["FAILED", "ERROR"].includes(
-          String(statusData?.status || "").toUpperCase()
-        );
-
-        if (completed) {
-          clearInterval(pollingRef.current);
-          setTimeout(() => navigate(`/analysis-result/${id}`), 800);
-        }
-        if (failed) {
-          clearInterval(pollingRef.current);
-          setError("Analysis failed. Please try again.");
-          setStep(1);
-        }
-      } catch {
-        // Silently ignore polling errors
-      }
-    }, 2500);
-  }, [navigate]);
-
-  // ── Stop scraping ─────────────────────────────────────────────────────────
-  const handleStop = async () => {
-    if (!analysisId) return;
-    try {
-      await analysisAPI.stopScraping(analysisId);
-      setJobStatus((p) => ({ ...p, message: "Finishing scraping... Processing collected reviews..." }));
-    } catch {
-      // Ignore
-    }
-  };
-
-  // ── Reset ─────────────────────────────────────────────────────────────────
-  const reset = () => {
-    clearInterval(pollingRef.current);
-    setStep(1);
-    setUrl("");
-    setPreview(null);
-    setAnalysisId(null);
-    setJobStatus(null);
-    setError("");
-  };
-
-  const progressPct = Math.min(
-    100,
-    jobStatus?.progress ?? (jobStatus?.reviewsScraped && jobStatus?.totalExpected
-      ? Math.round((jobStatus.reviewsScraped / jobStatus.totalExpected) * 100)
-      : 30)
-  );
 
   return (
     <div className="flex flex-col items-center max-w-2xl mx-auto" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -348,63 +435,77 @@ export default function AnalyzeProduct() {
           </motion.div>
         )}
 
-        {/* ── Step 3: Live Progress ── */}
+        {/* ── Step 3: Live Progress + Terminal ── */}
         {step === 3 && (
           <motion.div
             key="step3"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35 }}
-            className="w-full bg-white rounded-2xl border border-[#042718]/08 shadow-sm p-6 sm:p-8 text-center"
+            className="w-full bg-white rounded-2xl border border-[#042718]/08 shadow-sm p-6 sm:p-8"
           >
-            {/* Animated icon */}
-            <motion.div
-              animate={{ scale: [1, 1.08, 1] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-20 h-20 rounded-full bg-[#198F38]/10 flex items-center justify-center mx-auto mb-6"
-            >
-              <ScanSearch size={36} className="text-[#198F38]" />
-            </motion.div>
-
-            <h2 className="text-[#042718] text-2xl font-semibold mb-2" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Analyzing Product
-            </h2>
-            <p className="text-[#042718]/60 text-sm mb-6">
-              {jobStatus?.message || "Our AI is scraping and analyzing customer reviews..."}
-            </p>
+            {/* Header row */}
+            <div className="flex items-center gap-4 mb-5">
+              <motion.div
+                animate={{ scale: [1, 1.08, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="w-14 h-14 rounded-2xl bg-[#198F38]/10 flex items-center justify-center shrink-0"
+              >
+                <ScanSearch size={26} className="text-[#198F38]" />
+              </motion.div>
+              <div className="flex-1 min-w-0">
+                <h2 className="text-[#042718] text-xl font-semibold" style={{ fontFamily: "'Onest', sans-serif" }}>
+                  Analyzing Product
+                </h2>
+                <p className="text-[#042718]/55 text-sm truncate">
+                  {jobStatus?.currentStep || jobStatus?.message || "AI is scraping and analyzing reviews..."}
+                </p>
+              </div>
+              {/* Status badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#042718]/05 text-[#042718]/60 text-xs shrink-0">
+                {["COMPLETED", "DONE", "FINISHED", "SUCCESS"].includes(String(jobStatus?.status || "").toUpperCase())
+                  ? <CheckCircle size={11} className="text-[#198F38]" />
+                  : <Loader2 size={11} className="animate-spin text-[#198F38]" />
+                }
+                <span>{jobStatus?.status || "Processing"}</span>
+              </div>
+            </div>
 
             {/* Progress bar */}
-            <div className="w-full h-2 rounded-full bg-[#042718]/08 mb-2 overflow-hidden">
+            <div className="w-full h-2 rounded-full bg-[#042718]/08 mb-1.5 overflow-hidden">
               <motion.div
                 animate={{ width: `${progressPct}%` }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="h-full rounded-full bg-gradient-to-r from-[#198F38] to-[#4ade80]"
               />
             </div>
-
-            {/* Stats row */}
-            {jobStatus?.reviewsScraped !== undefined && (
-              <p className="text-[#042718]/50 text-xs mb-6">
-                {jobStatus.reviewsScraped} reviews collected
-              </p>
-            )}
-
-            {/* Status badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#042718]/05 text-[#042718]/60 text-xs mb-8">
-              <Loader2 size={12} className="animate-spin text-[#198F38]" />
-              <span>{jobStatus?.status || "Processing..."}</span>
+            <div className="flex items-center justify-between text-[#042718]/40 text-xs mb-5">
+              <span>
+                {jobStatus?.reviewsCollected !== undefined
+                  ? `${jobStatus.reviewsCollected} reviews collected`
+                  : "Collecting reviews..."}
+              </span>
+              <span>
+                {jobStatus?.currentPage && jobStatus?.totalPages
+                  ? `Page ${jobStatus.currentPage}/${jobStatus.totalPages}`
+                  : ""}
+              </span>
+              <span>{progressPct}%</span>
             </div>
 
+            {/* ── Terminal log panel ── */}
+            <TerminalPanel logs={logs} jobStatus={jobStatus} />
+
             {/* Stop button */}
-            <div>
+            <div className="mt-5 flex flex-col items-center gap-1.5">
               <button
                 id="stopScrapingBtn"
-                onClick={handleStop}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#042718]/12 text-[#042718]/60 text-sm font-medium hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all mx-auto"
+                onClick={() => stopScraping(analysisId)}
+                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#042718]/12 text-[#042718]/60 text-sm font-medium hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all"
               >
                 <StopCircle size={14} />
                 Finish Scraping Early
               </button>
-              <p className="text-[#042718]/30 text-xs mt-2">
+              <p className="text-[#042718]/30 text-xs">
                 Stops collecting reviews and processes what was gathered so far
               </p>
             </div>

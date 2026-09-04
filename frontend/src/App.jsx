@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { AuthProvider } from "./context/AuthContext";
+import { AnalysisProvider } from "./context/AnalysisContext";
 import { useAuth } from "./hooks/useAuth";
 
 import LandingPage from "./pages/LandingPage";
@@ -127,18 +128,20 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <AppRoutes />
-        <ToastContainer
-          position="top-right"
-          autoClose={4000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
+        <AnalysisProvider>
+          <AppRoutes />
+          <ToastContainer
+            position="top-right"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
+        </AnalysisProvider>
       </AuthProvider>
     </BrowserRouter>
   );
