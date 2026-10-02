@@ -61,7 +61,7 @@ function MetricCard({ number, suffix, title, description, delay }) {
 const testimonials = [
   {
     id: 1,
-    text: "RiskAI completely changed how I evaluate new products. The BRI score gave me an immediate picture of risk areas I never would have spotted from reading reviews manually.",
+    text: "Riskora AI completely changed how I evaluate new products. The BRI score gave me an immediate picture of risk areas I never would have spotted from reading reviews manually.",
     name: "Ahmed Al-Rashid",
     role: "E-commerce Entrepreneur, Daraz Seller",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
@@ -75,7 +75,7 @@ const testimonials = [
   },
   {
     id: 3,
-    text: "As a researcher studying e-commerce quality, RiskAI gave me structured, quantitative data from customer reviews that would have taken weeks to compile manually.",
+    text: "As a researcher studying e-commerce quality, Riskora AI gave me structured, quantitative data from customer reviews that would have taken weeks to compile manually.",
     name: "Dr. James Carter",
     role: "University Research Lead",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop",
@@ -89,7 +89,7 @@ const testimonials = [
   },
   {
     id: 5,
-    text: "I used to rely on gut feeling when selecting products to stock. Now with RiskAI, I have actual data-backed risk scores to guide my purchasing decisions. Game-changer.",
+    text: "I used to rely on gut feeling when selecting products to stock. Now with Riskora AI, I have actual data-backed risk scores to guide my purchasing decisions. Game-changer.",
     name: "Michael Osei",
     role: "Inventory & Procurement Analyst",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
@@ -111,7 +111,7 @@ export default function TestimonialsSection({ className }) {
       number: 87,
       suffix: "%",
       title: "Better product decisions",
-      description: "Users report significantly improved product and stocking decisions after using RiskAI.",
+      description: "Users report significantly improved product and stocking decisions after using Riskora AI.",
     },
     {
       number: 5,
@@ -284,7 +284,7 @@ export default function TestimonialsSection({ className }) {
               </h2>
 
               <p className="text-[#042718] opacity-80 text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] max-w-[576px]">
-                See how business owners, entrepreneurs, and researchers are using RiskAI to make smarter, data-driven product decisions.
+                See how business owners, entrepreneurs, and researchers are using Riskora AI to make smarter, data-driven product decisions.
               </p>
             </div>
 

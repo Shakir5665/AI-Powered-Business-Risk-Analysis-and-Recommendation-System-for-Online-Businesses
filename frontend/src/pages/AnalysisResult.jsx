@@ -4,31 +4,31 @@ import { motion } from "framer-motion";
 import {
   ArrowLeft, Star, Package, ExternalLink,
   ShieldAlert, ThumbsUp, ThumbsDown, Minus,
-  CheckCircle, TrendingUp, Loader2, AlertCircle,
+  CheckCircle, TrendingUp, Loader2, AlertCircle, Info, HelpCircle
 } from "lucide-react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { analysisAPI } from "../api/endpoints";
 import { parseError, formatDate } from "../utils/helpers";
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Plain-English Risk Definitions ──────────────────────────────────────────
 
 const RISK_CONFIG = {
-  VERY_LOW: { label: "Very Low",  color: "#10B981", bg: "bg-emerald-50", text: "text-emerald-700" },
-  LOW:      { label: "Low",       color: "#22C55E", bg: "bg-green-50",   text: "text-green-700"   },
-  MEDIUM:   { label: "Medium",    color: "#EAB308", bg: "bg-yellow-50",  text: "text-yellow-700"  },
-  HIGH:     { label: "High",      color: "#F97316", bg: "bg-orange-50",  text: "text-orange-700"  },
-  CRITICAL: { label: "Critical",  color: "#EF4444", bg: "bg-red-50",     text: "text-red-700"     },
+  VERY_LOW: { label: "Safe · Very Low Risk", color: "#059669", bg: "bg-emerald-50", text: "text-emerald-800", border: "border-emerald-200" },
+  LOW:      { label: "Good · Low Risk",      color: "#16a34a", bg: "bg-green-50",   text: "text-green-800",   border: "border-green-200" },
+  MEDIUM:   { label: "Caution · Moderate",   color: "#d97706", bg: "bg-amber-50",   text: "text-amber-800",   border: "border-amber-200" },
+  HIGH:     { label: "Warning · High Risk",  color: "#ea580c", bg: "bg-orange-50",  text: "text-orange-800",  border: "border-orange-200" },
+  CRITICAL: { label: "Critical · Action Needed", color: "#dc2626", bg: "bg-red-50", text: "text-red-800",    border: "border-red-200" },
 };
 
 function getRiskCfg(level) {
-  const key = String(level || "").toUpperCase().replace(" ", "_");
-  return RISK_CONFIG[key] || { label: level || "N/A", color: "#6B7280", bg: "bg-gray-50", text: "text-gray-600" };
+  const key = String(level || "").toUpperCase().replace(/\s+/g, "_");
+  return RISK_CONFIG[key] || { label: level || "Unknown", color: "#475569", bg: "bg-slate-100", text: "text-slate-800", border: "border-slate-300" };
 }
 
 function RiskBadge({ level }) {
   const cfg = getRiskCfg(level);
   return (
-    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold ${cfg.bg} ${cfg.text}`}>
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold border ${cfg.bg} ${cfg.text} ${cfg.border}`}>
       <span className="w-2 h-2 rounded-full" style={{ background: cfg.color }} />
       {cfg.label}
     </span>
@@ -36,31 +36,46 @@ function RiskBadge({ level }) {
 }
 
 function ScoreBar({ score, color }) {
+  const numScore = parseFloat(score || 0);
   return (
     <div className="flex items-center gap-3">
-      <div className="flex-1 h-2 rounded-full bg-[#042718]/08 overflow-hidden">
+      <div className="flex-1 h-2.5 rounded-full bg-slate-200 overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
-          animate={{ width: `${Math.min(100, score)}%` }}
+          animate={{ width: `${Math.min(100, numScore)}%` }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
           className="h-full rounded-full"
           style={{ background: color }}
         />
       </div>
-      <span className="text-[#042718] text-sm font-bold w-12 text-right">
-        {parseFloat(score || 0).toFixed(1)}
+      <span className="text-slate-900 text-sm font-bold w-12 text-right">
+        {numScore.toFixed(0)} <span className="text-slate-500 font-normal text-xs">/100</span>
       </span>
     </div>
   );
 }
 
-const SENTIMENT_COLORS = ["#22C55E", "#EF4444", "#EAB308"];
+const SENTIMENT_COLORS = ["#16a34a", "#dc2626", "#d97706"];
 
 function SentimentIcon({ sentiment }) {
   const s = String(sentiment || "").toUpperCase();
-  if (s.includes("POS")) return <ThumbsUp size={12} className="text-green-500" />;
-  if (s.includes("NEG")) return <ThumbsDown size={12} className="text-red-500" />;
-  return <Minus size={12} className="text-yellow-500" />;
+  if (s.includes("POS")) return <ThumbsUp size={14} className="text-emerald-600" />;
+  if (s.includes("NEG")) return <ThumbsDown size={14} className="text-rose-600" />;
+  return <Minus size={14} className="text-amber-600" />;
+}
+
+// Convert technical aspect names into friendly, non-technical titles
+function formatAspectTitle(aspectKey) {
+  const map = {
+    product_quality: "Product Quality & Durability",
+    delivery_experience: "Shipping & Delivery Speed",
+    merchant_trust: "Seller Reliability & Trust",
+    customer_service: "Customer Support & Returns",
+    value_for_money: "Value for Money & Pricing",
+    packaging: "Packaging & Item Condition",
+    authenticity: "Product Authenticity",
+  };
+  return map[aspectKey] || aspectKey.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 const fadeUp = (delay = 0) => ({
@@ -85,7 +100,7 @@ export default function AnalysisResult() {
         const res = await analysisAPI.getResult(id);
         setResult(res.data?.data);
       } catch (err) {
-        setError(parseError(err) || "Could not load analysis result.");
+        setError(parseError(err) || "Could not load the analysis report for this product.");
       } finally {
         setLoading(false);
       }
@@ -97,20 +112,24 @@ export default function AnalysisResult() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
         <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: "linear" }}>
-          <Loader2 size={36} className="text-[#198F38]" />
+          <Loader2 size={36} className="text-emerald-700" />
         </motion.div>
-        <p className="text-[#042718]/60 text-sm">Loading analysis result...</p>
+        <p className="text-slate-700 text-sm font-medium">Preparing your AI Risk Report...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4">
-        <AlertCircle size={40} className="text-red-400" />
-        <p className="text-[#042718] font-medium">{error}</p>
-        <button onClick={() => navigate(-1)} className="px-5 py-2.5 rounded-full bg-[#042718] text-white text-sm">
-          Go Back
+      <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-center max-w-md mx-auto">
+        <AlertCircle size={44} className="text-red-500" />
+        <h3 className="text-slate-900 font-bold text-lg">Unable to Load Report</h3>
+        <p className="text-slate-600 font-medium text-sm">{error}</p>
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="mt-2 px-6 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 transition-colors shadow-sm"
+        >
+          Return to Dashboard
         </button>
       </div>
     );
@@ -118,23 +137,45 @@ export default function AnalysisResult() {
 
   if (!result) return null;
 
-  const { product, risks, statistics, recommendation, reviews, negativeReviews } = result;
+  const { product, risks, statistics, recommendation, reviews } = result;
 
   const bri = parseFloat(risks?.businessRiskIndex || 0);
   const overallLevel = risks?.overallRiskLevel || "MEDIUM";
   const briCfg = getRiskCfg(overallLevel);
 
   const stats = statistics?.sentimentStatistics || statistics?.reviewStatistics || {};
+  const positiveCount = stats.positive_reviews ?? stats.positive ?? 0;
+  const negativeCount = stats.negative_reviews ?? stats.negative ?? 0;
+  const neutralCount = stats.neutral_reviews ?? stats.neutral ?? 0;
+
   const sentimentData = [
-    { name: "Positive", value: stats.positive_reviews || stats.positive || 0 },
-    { name: "Negative", value: stats.negative_reviews || stats.negative || 0 },
-    { name: "Neutral",  value: stats.neutral_reviews  || stats.neutral  || 0 },
+    { name: "Positive Reviews", value: positiveCount },
+    { name: "Negative Reviews", value: negativeCount },
+    { name: "Neutral Reviews",  value: neutralCount },
   ].filter((d) => d.value > 0);
 
   const RISK_CARDS = [
-    { label: "Quality Risk",  score: risks?.qualityRisk?.score,  level: risks?.qualityRisk?.level,  icon: "🏭" },
-    { label: "Delivery Risk", score: risks?.deliveryRisk?.score, level: risks?.deliveryRisk?.level, icon: "🚚" },
-    { label: "Trust Risk",    score: risks?.trustRisk?.score,    level: risks?.trustRisk?.level,    icon: "🤝" },
+    {
+      label: "Product Quality Risk",
+      explanation: "Defects, durability issues, missing parts or inaccurate description",
+      score: risks?.qualityRisk?.score,
+      level: risks?.qualityRisk?.level,
+      icon: "📦",
+    },
+    {
+      label: "Shipping & Delivery Risk",
+      explanation: "Late packages, damaged parcels, transit delays or shipping fees",
+      score: risks?.deliveryRisk?.score,
+      level: risks?.deliveryRisk?.level,
+      icon: "🚚",
+    },
+    {
+      label: "Seller Trust & Service Risk",
+      explanation: "Customer support responsiveness, return handling & buyer trust",
+      score: risks?.trustRisk?.score,
+      level: risks?.trustRisk?.level,
+      icon: "🤝",
+    },
   ];
 
   const report = recommendation?.report;
@@ -147,53 +188,60 @@ export default function AnalysisResult() {
       <motion.button
         {...fadeUp(0)}
         onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-[#042718]/50 hover:text-[#042718] text-sm transition-colors w-fit"
+        className="flex items-center gap-2 text-slate-700 hover:text-slate-900 font-semibold text-sm transition-colors w-fit"
       >
-        <ArrowLeft size={16} /> Back
+        <ArrowLeft size={16} /> Back to Dashboard
       </motion.button>
 
       {/* ── Product Info Bar ── */}
       <motion.div
         {...fadeUp(0.05)}
-        className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+        className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4"
       >
         {(product?.imageUrl || product?.image_url) ? (
           <img
             src={product.imageUrl || product.image_url}
-            alt={product.title}
-            className="w-16 h-16 rounded-xl object-contain border border-[#042718]/08 shrink-0"
+            alt={product.title || "Product"}
+            className="w-18 h-18 rounded-xl object-contain border border-slate-200 bg-slate-50 p-1 shrink-0"
           />
         ) : (
-          <div className="w-16 h-16 rounded-xl bg-[#042718]/05 flex items-center justify-center shrink-0">
-            <Package size={24} className="text-[#042718]/30" />
+          <div className="w-18 h-18 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center shrink-0">
+            <Package size={28} className="text-slate-500" />
           </div>
         )}
 
         <div className="flex-1 min-w-0">
-          <div className="flex flex-wrap items-center gap-2 mb-1">
+          <div className="flex flex-wrap items-center gap-2 mb-1.5">
             {product?.platform && (
-              <span className="px-2 py-0.5 rounded-full bg-[#198F38]/10 text-[#198F38] text-xs font-semibold">
+              <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold uppercase tracking-wider">
                 {product.platform}
               </span>
             )}
             {product?.category && (
-              <span className="text-[#042718]/40 text-xs">{product.category}</span>
+              <span className="text-slate-600 text-xs font-medium bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200">
+                {product.category}
+              </span>
             )}
           </div>
-          <h2 className="text-[#042718] font-semibold text-base sm:text-lg leading-snug mb-1 truncate" style={{ fontFamily: "'Onest', sans-serif" }}>
-            {product?.title || product?.productTitle || "Product"}
-          </h2>
-          <div className="flex flex-wrap items-center gap-4 text-sm text-[#042718]/50">
+          <h1 className="text-slate-900 font-bold text-base sm:text-xl leading-snug mb-1.5" style={{ fontFamily: "'Onest', sans-serif" }}>
+            {product?.title || product?.productTitle || "Analyzed Product"}
+          </h1>
+          <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-700 font-medium">
             {(product?.seller || product?.sellerName) && (
-              <span>{product.seller || product.sellerName}</span>
+              <span className="flex items-center gap-1">
+                <span className="text-slate-500">Seller:</span>
+                <span className="text-slate-900 font-bold">{product.seller || product.sellerName}</span>
+              </span>
             )}
             {(product?.rating || product?.overallRating) > 0 && (
-              <span className="flex items-center gap-1">
-                <Star size={12} className="text-yellow-400 fill-yellow-400" />
+              <span className="flex items-center gap-1 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200 text-amber-900 font-bold">
+                <Star size={13} className="text-amber-500 fill-amber-500" />
                 {product.rating || product.overallRating}
               </span>
             )}
-            <span>{product?.reviewCount || product?.totalReviews || 0} reviews analyzed</span>
+            <span className="text-slate-700">
+              <strong className="text-slate-900 font-bold">{product?.reviewCount || product?.totalReviews || reviewSamples.length || 0}</strong> reviews analyzed
+            </span>
           </div>
         </div>
 
@@ -202,148 +250,184 @@ export default function AnalysisResult() {
             href={product.url || product.productUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-full border border-[#042718]/12 text-[#042718]/60 text-xs hover:text-[#042718] transition-colors shrink-0"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-900 text-xs font-semibold transition-colors shrink-0 shadow-sm"
           >
-            View Product <ExternalLink size={12} />
+            Open Store Page <ExternalLink size={12} />
           </a>
         )}
       </motion.div>
 
-      {/* ── BRI Hero ── */}
+      {/* ── Overall Product Risk Score Hero ── */}
       <motion.div
         {...fadeUp(0.1)}
-        className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6"
+        className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6"
       >
         {/* Score gauge */}
-        <div className="flex flex-col items-center gap-2 shrink-0">
+        <div className="flex flex-col items-center gap-2.5 shrink-0">
           <div
-            className="w-32 h-32 rounded-full flex items-center justify-center border-8 shadow-lg"
-            style={{ borderColor: briCfg.color + "30", background: briCfg.color + "08" }}
+            className="w-32 h-32 rounded-full flex items-center justify-center border-8 shadow-sm"
+            style={{ borderColor: briCfg.color + "35", background: briCfg.color + "10" }}
           >
-            <div className="flex flex-col items-center">
-              <span className="font-bold text-3xl" style={{ color: briCfg.color, fontFamily: "'Onest', sans-serif" }}>
-                {bri.toFixed(1)}
+            <div className="flex flex-col items-center text-center">
+              <span className="font-extrabold text-3xl" style={{ color: briCfg.color, fontFamily: "'Onest', sans-serif" }}>
+                {bri.toFixed(0)}
               </span>
-              <span className="text-[#042718]/40 text-xs">/ 100</span>
+              <span className="text-slate-600 text-xs font-semibold">out of 100</span>
             </div>
           </div>
           <RiskBadge level={overallLevel} />
         </div>
 
-        {/* Details */}
+        {/* Details & Explanation */}
         <div className="flex flex-col gap-3 flex-1 w-full">
           <div>
-            <h3 className="text-[#042718] text-xl font-semibold mb-1" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Business Risk Index
-            </h3>
-            <p className="text-[#042718]/60 text-sm">
-              Overall risk assessment based on Quality, Delivery, and Trust dimensions.
+            <div className="flex items-center gap-2 mb-1">
+              <h2 className="text-slate-900 text-xl font-bold" style={{ fontFamily: "'Onest', sans-serif" }}>
+                Overall Product Risk Score
+              </h2>
+            </div>
+            <p className="text-slate-700 text-sm font-medium leading-relaxed">
+              This score calculates the risk of lost sales, customer complaints, returns, and negative reviews. A <strong>lower score is safer</strong>.
             </p>
           </div>
 
-          {/* Risk scale */}
-          <div className="flex items-center gap-1 mt-2">
-            {[
-              { l: "Very Low", c: "#10B981", range: "0–20" },
-              { l: "Low",      c: "#22C55E", range: "20–40" },
-              { l: "Medium",   c: "#EAB308", range: "40–60" },
-              { l: "High",     c: "#F97316", range: "60–80" },
-              { l: "Critical", c: "#EF4444", range: "80–100" },
-            ].map((r) => (
-              <div key={r.l} className="flex-1 text-center">
-                <div className="h-2 rounded-full mb-1" style={{ background: r.c }} />
-                <span className="text-[#042718]/40 text-[10px] hidden sm:block">{r.l}</span>
-              </div>
-            ))}
+          {/* Risk scale bar */}
+          <div className="mt-2 pt-2 border-t border-slate-100">
+            <div className="flex items-center justify-between text-xs font-bold text-slate-700 mb-1.5">
+              <span>Risk Scale (0 = Safe, 100 = Critical)</span>
+              <span style={{ color: briCfg.color }}>Current: {bri.toFixed(0)} / 100</span>
+            </div>
+            <div className="grid grid-cols-5 gap-1.5">
+              {[
+                { label: "0–20 Safe", color: "#059669", bg: "bg-emerald-500" },
+                { label: "21–40 Low", color: "#16a34a", bg: "bg-green-500" },
+                { label: "41–60 Moderate", color: "#d97706", bg: "bg-amber-500" },
+                { label: "61–80 High", color: "#ea580c", bg: "bg-orange-500" },
+                { label: "81–100 Critical", color: "#dc2626", bg: "bg-red-500" },
+              ].map((r) => (
+                <div key={r.label} className="text-center">
+                  <div className={`h-2.5 rounded-full mb-1 ${r.bg}`} />
+                  <span className="text-slate-700 text-[11px] font-semibold block">{r.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Indicator */}
-          <div className="relative">
-            <div
-              className="w-3 h-3 rounded-full border-2 border-white shadow-md absolute -top-7"
-              style={{ left: `${Math.min(98, bri)}%`, transform: "translateX(-50%)", background: briCfg.color }}
-            />
+          {/* Quick non-technical advice */}
+          <div className="mt-2 p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-start gap-2.5">
+            <Info size={16} className="text-slate-700 mt-0.5 shrink-0" />
+            <p className="text-slate-700 text-xs font-medium leading-normal">
+              {bri <= 40 ? (
+                <>This product is in <strong>safe standing</strong>. Reviews indicate high buyer satisfaction and low return risk.</>
+              ) : bri <= 60 ? (
+                <>This product has <strong>moderate issues</strong>. Pay attention to common buyer complaints below to avoid losing sales.</>
+              ) : (
+                <>This product is at <strong>high risk</strong> of returns, refund requests, or seller rating penalties. Immediate action recommended.</>
+              )}
+            </p>
           </div>
         </div>
       </motion.div>
 
-      {/* ── Risk Breakdown Cards ── */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {RISK_CARDS.map((card, i) => {
-          const cfg = getRiskCfg(card.level);
-          return (
-            <motion.div
-              key={card.label}
-              {...fadeUp(0.15 + i * 0.05)}
-              className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-5"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-2xl">{card.icon}</span>
-                <RiskBadge level={card.level} />
-              </div>
-              <p className="text-[#042718]/60 text-xs font-medium mb-2">{card.label}</p>
-              <ScoreBar score={card.score || 0} color={cfg.color} />
-            </motion.div>
-          );
-        })}
+      {/* ── 3 Core Risk Breakdown Cards ── */}
+      <div>
+        <h3 className="text-slate-900 font-bold text-base mb-3" style={{ fontFamily: "'Onest', sans-serif" }}>
+          Risk Assessment by Area
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {RISK_CARDS.map((card, i) => {
+            const cfg = getRiskCfg(card.level);
+            return (
+              <motion.div
+                key={card.label}
+                {...fadeUp(0.15 + i * 0.05)}
+                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-2xl p-2 bg-slate-50 rounded-xl border border-slate-100">{card.icon}</span>
+                    <RiskBadge level={card.level} />
+                  </div>
+                  <h4 className="text-slate-900 text-sm font-bold mb-1">{card.label}</h4>
+                  <p className="text-slate-600 text-xs font-normal mb-4 leading-relaxed">{card.explanation}</p>
+                </div>
+                <div>
+                  <ScoreBar score={card.score || 0} color={cfg.color} />
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
 
       {/* ── Sentiment + Aspect Row ── */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
         {/* Sentiment Donut */}
-        <motion.div {...fadeUp(0.3)} className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-5">
-          <h4 className="text-[#042718] font-semibold mb-4" style={{ fontFamily: "'Onest', sans-serif" }}>
-            Sentiment Distribution
-          </h4>
+        <motion.div {...fadeUp(0.3)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <div className="mb-3">
+            <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
+              Customer Feelings Breakdown
+            </h4>
+            <p className="text-slate-600 text-xs font-medium">How buyers generally feel based on written feedback</p>
+          </div>
           {sentimentData.length > 0 ? (
-            <div className="flex items-center gap-4">
-              <ResponsiveContainer width={130} height={130}>
-                <PieChart>
-                  <Pie data={sentimentData} cx="50%" cy="50%" innerRadius={38} outerRadius={58} dataKey="value" paddingAngle={3}>
-                    {sentimentData.map((_, i) => (
-                      <Cell key={i} fill={SENTIMENT_COLORS[i]} />
-                    ))}
-                  </Pie>
-                  <Tooltip formatter={(v) => [v, "Reviews"]} />
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="flex flex-col gap-2">
+            <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
+              <div className="w-[140px] h-[140px] shrink-0">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie data={sentimentData} cx="50%" cy="50%" innerRadius={42} outerRadius={65} dataKey="value" paddingAngle={3}>
+                      {sentimentData.map((_, i) => (
+                        <Cell key={i} fill={SENTIMENT_COLORS[i]} />
+                      ))}
+                    </Pie>
+                    <Tooltip formatter={(v) => [`${v} reviews`, "Count"]} />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="flex flex-col gap-2.5 w-full">
                 {sentimentData.map((d, i) => (
-                  <div key={d.name} className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full shrink-0" style={{ background: SENTIMENT_COLORS[i] }} />
-                    <span className="text-[#042718]/70 text-sm">{d.name}</span>
-                    <span className="text-[#042718] font-semibold text-sm ml-auto">{d.value}</span>
+                  <div key={d.name} className="flex items-center justify-between p-2 rounded-xl bg-slate-50 border border-slate-100">
+                    <div className="flex items-center gap-2">
+                      <span className="w-3 h-3 rounded-full shrink-0" style={{ background: SENTIMENT_COLORS[i] }} />
+                      <span className="text-slate-800 font-semibold text-xs">{d.name}</span>
+                    </div>
+                    <span className="text-slate-900 font-extrabold text-sm">{d.value}</span>
                   </div>
                 ))}
               </div>
             </div>
           ) : (
-            <p className="text-[#042718]/40 text-sm">No sentiment data available.</p>
+            <p className="text-slate-500 text-sm font-medium py-6 text-center">No sentiment data recorded yet.</p>
           )}
         </motion.div>
 
         {/* Aspect Stats */}
-        <motion.div {...fadeUp(0.35)} className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-5">
-          <h4 className="text-[#042718] font-semibold mb-4" style={{ fontFamily: "'Onest', sans-serif" }}>
-            Aspect Analysis
-          </h4>
+        <motion.div {...fadeUp(0.35)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+          <div className="mb-3">
+            <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
+              Customer Feedback by Category
+            </h4>
+            <p className="text-slate-600 text-xs font-medium">Percentage of buyer mentions addressing each aspect</p>
+          </div>
           {statistics?.aspectStatistics && Object.keys(statistics.aspectStatistics).length > 0 ? (
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3.5 pt-1">
               {Object.entries(statistics.aspectStatistics).slice(0, 5).map(([aspect, val]) => {
                 const pct = typeof val === "number" ? val : val?.score || 0;
                 return (
-                  <div key={aspect} className="flex flex-col gap-1">
-                    <div className="flex justify-between text-xs">
-                      <span className="text-[#042718]/70 capitalize">{aspect.replace(/_/g, " ")}</span>
-                      <span className="text-[#042718] font-medium">{parseFloat(pct).toFixed(1)}%</span>
+                  <div key={aspect} className="flex flex-col gap-1.5">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-slate-800 font-bold">{formatAspectTitle(aspect)}</span>
+                      <span className="text-slate-900 font-extrabold bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                        {parseFloat(pct).toFixed(0)}%
+                      </span>
                     </div>
-                    <div className="h-1.5 rounded-full bg-[#042718]/08 overflow-hidden">
+                    <div className="h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${Math.min(100, pct)}%` }}
                         transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
-                        className="h-full rounded-full bg-[#198F38]"
+                        className="h-full rounded-full bg-emerald-600"
                       />
                     </div>
                   </div>
@@ -351,38 +435,46 @@ export default function AnalysisResult() {
               })}
             </div>
           ) : (
-            <p className="text-[#042718]/40 text-sm">No aspect data available.</p>
+            <p className="text-slate-500 text-sm font-medium py-6 text-center">No specific category breakdown available.</p>
           )}
         </motion.div>
       </div>
 
-      {/* ── AI Recommendations ── */}
+      {/* ── AI Action Plan to Protect Sales ── */}
       {report && (
-        <motion.div {...fadeUp(0.4)} className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-5 sm:p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-xl bg-[#198F38]/10 flex items-center justify-center">
-              <TrendingUp size={16} className="text-[#198F38]" />
+        <motion.div {...fadeUp(0.4)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
+          <div className="flex items-center gap-2.5 mb-4">
+            <div className="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-200 flex items-center justify-center">
+              <TrendingUp size={18} className="text-emerald-800" />
             </div>
-            <h4 className="text-[#042718] font-semibold" style={{ fontFamily: "'Onest', sans-serif" }}>
-              AI Recommendations
-            </h4>
+            <div>
+              <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
+                AI Action Plan to Protect Your Sales
+              </h4>
+              <p className="text-slate-600 text-xs font-medium">Direct findings and actionable steps tailored for your store</p>
+            </div>
           </div>
 
           {report.summary && (
-            <p className="text-[#042718]/70 text-sm leading-relaxed mb-5 p-4 rounded-xl bg-[#F6FDFF] border border-[#198F38]/10">
-              {report.summary}
-            </p>
+            <div className="mb-5 p-4 rounded-xl bg-emerald-50/70 border border-emerald-200">
+              <p className="text-emerald-950 text-sm font-medium leading-relaxed">
+                {report.summary}
+              </p>
+            </div>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {report.insights?.length > 0 && (
-              <div>
-                <p className="text-[#042718]/50 text-xs font-semibold uppercase tracking-wide mb-3">Key Insights</p>
-                <div className="flex flex-col gap-2">
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <p className="text-slate-900 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                  <AlertCircle size={14} className="text-amber-600" />
+                  What Customers Are Complaining About
+                </p>
+                <div className="flex flex-col gap-2.5">
                   {report.insights.map((insight, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <AlertCircle size={14} className="text-orange-400 mt-0.5 shrink-0" />
-                      <p className="text-[#042718]/70 text-sm">{insight}</p>
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
+                      <p className="text-slate-800 font-medium text-xs sm:text-sm leading-snug">{insight}</p>
                     </div>
                   ))}
                 </div>
@@ -390,13 +482,16 @@ export default function AnalysisResult() {
             )}
 
             {report.actions?.length > 0 && (
-              <div>
-                <p className="text-[#042718]/50 text-xs font-semibold uppercase tracking-wide mb-3">Action Items</p>
-                <div className="flex flex-col gap-2">
+              <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                <p className="text-slate-900 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                  <CheckCircle size={14} className="text-emerald-700" />
+                  Recommended Steps to Fix & Grow Sales
+                </p>
+                <div className="flex flex-col gap-2.5">
                   {report.actions.map((action, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <CheckCircle size={14} className="text-[#198F38] mt-0.5 shrink-0" />
-                      <p className="text-[#042718]/70 text-sm">{action}</p>
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 mt-1.5 shrink-0" />
+                      <p className="text-slate-800 font-medium text-xs sm:text-sm leading-snug">{action}</p>
                     </div>
                   ))}
                 </div>
@@ -408,32 +503,51 @@ export default function AnalysisResult() {
 
       {/* ── Sample Reviews ── */}
       {reviewSamples.length > 0 && (
-        <motion.div {...fadeUp(0.45)} className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-5 sm:p-6">
-          <h4 className="text-[#042718] font-semibold mb-4" style={{ fontFamily: "'Onest', sans-serif" }}>
-            Sample Reviews
-          </h4>
-          <div className="flex flex-col gap-3 max-h-[400px] overflow-y-auto pr-1">
-            {reviewSamples.map((rev, i) => (
-              <div key={rev.id || i} className="flex gap-3 p-3 rounded-xl bg-[#F6FDFF] border border-[#042718]/06">
-                <div className="mt-0.5 shrink-0"><SentimentIcon sentiment={rev.sentiment} /></div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-[#042718]/80 text-sm leading-relaxed">{rev.reviewText}</p>
-                  <div className="flex items-center gap-2 mt-1.5">
-                    <span className="text-[#042718]/40 text-xs capitalize">{(rev.sentiment || "").toLowerCase()}</span>
-                    {rev.confidenceScore > 0 && (
-                      <span className="text-[#042718]/30 text-xs">
-                        {(rev.confidenceScore * 100).toFixed(0)}% confidence
+        <motion.div {...fadeUp(0.45)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
+          <div className="mb-4">
+            <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
+              Verified Customer Comments & Quotes
+            </h4>
+            <p className="text-slate-600 text-xs font-medium">Actual customer reviews read and categorized by AI</p>
+          </div>
+          <div className="flex flex-col gap-3 max-h-[420px] overflow-y-auto pr-1">
+            {reviewSamples.map((rev, i) => {
+              const sentimentLabel = String(rev.sentiment || "").toUpperCase();
+              const isPos = sentimentLabel.includes("POS");
+              const isNeg = sentimentLabel.includes("NEG");
+              
+              return (
+                <div key={rev.id || i} className="flex gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="mt-1 shrink-0"><SentimentIcon sentiment={rev.sentiment} /></div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-slate-800 text-sm font-medium leading-relaxed">
+                      "{rev.reviewText}"
+                    </p>
+                    <div className="flex flex-wrap items-center gap-2 mt-2">
+                      <span className={`px-2 py-0.5 rounded text-xs font-bold border ${
+                        isPos
+                          ? "bg-emerald-50 text-emerald-800 border-emerald-200"
+                          : isNeg
+                          ? "bg-rose-50 text-rose-800 border-rose-200"
+                          : "bg-amber-50 text-amber-800 border-amber-200"
+                      }`}>
+                        {isPos ? "Positive Opinion" : isNeg ? "Critical Complaint" : "Neutral Feedback"}
                       </span>
-                    )}
-                    {rev.aspect && rev.aspect !== "GENERAL" && (
-                      <span className="px-1.5 py-0.5 rounded bg-[#042718]/05 text-[#042718]/50 text-xs capitalize">
-                        {rev.aspect.toLowerCase()}
-                      </span>
-                    )}
+                      {rev.confidenceScore > 0 && (
+                        <span className="text-slate-600 font-medium text-xs">
+                          {(rev.confidenceScore * 100).toFixed(0)}% AI confidence
+                        </span>
+                      )}
+                      {rev.aspect && rev.aspect !== "GENERAL" && (
+                        <span className="px-2 py-0.5 rounded bg-slate-200 text-slate-800 font-medium text-xs capitalize">
+                          {formatAspectTitle(rev.aspect.toLowerCase())}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
       )}

@@ -10,27 +10,31 @@ import {
   ExternalLink,
   Clock,
   Package,
+  Info,
+  CheckCircle2,
+  AlertTriangle,
+  HelpCircle,
 } from "lucide-react";
 import { historyAPI } from "../api/endpoints";
 import { useAuth } from "../hooks/useAuth";
-import { formatDate, getRiskColor } from "../utils/helpers";
+import { formatDate } from "../utils/helpers";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const RISK_BADGE = {
-  VERY_LOW:  { label: "Very Low",  bg: "bg-emerald-50", text: "text-emerald-700", dot: "bg-emerald-400" },
-  LOW:       { label: "Low",       bg: "bg-green-50",   text: "text-green-700",   dot: "bg-green-400"   },
-  MEDIUM:    { label: "Medium",    bg: "bg-yellow-50",  text: "text-yellow-700",  dot: "bg-yellow-400"  },
-  HIGH:      { label: "High",      bg: "bg-orange-50",  text: "text-orange-700",  dot: "bg-orange-400"  },
-  CRITICAL:  { label: "Critical",  bg: "bg-red-50",     text: "text-red-700",     dot: "bg-red-500"     },
+  VERY_LOW:  { label: "Safe · Very Low Risk", bg: "bg-emerald-100 border border-emerald-300", text: "text-emerald-900 font-bold", dot: "bg-emerald-600" },
+  LOW:       { label: "Good · Low Risk",      bg: "bg-green-100 border border-green-300",     text: "text-green-900 font-bold",   dot: "bg-green-600"   },
+  MEDIUM:    { label: "Caution · Moderate",   bg: "bg-amber-100 border border-amber-300",     text: "text-amber-950 font-bold",   dot: "bg-amber-600"   },
+  HIGH:      { label: "Warning · High Risk",  bg: "bg-orange-100 border border-orange-300",   text: "text-orange-950 font-bold",  dot: "bg-orange-600"  },
+  CRITICAL:  { label: "Danger · Critical",    bg: "bg-red-100 border border-red-300",         text: "text-red-950 font-bold",     dot: "bg-red-600"     },
 };
 
 function RiskBadge({ level }) {
   const key = String(level || "").toUpperCase().replace(" ", "_");
-  const cfg = RISK_BADGE[key] || { label: level || "N/A", bg: "bg-gray-50", text: "text-gray-600", dot: "bg-gray-400" };
+  const cfg = RISK_BADGE[key] || { label: level || "Unknown", bg: "bg-slate-100 border border-slate-300", text: "text-slate-800 font-bold", dot: "bg-slate-500" };
   return (
-    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${cfg.bg} ${cfg.text}`}>
-      <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs shadow-xs ${cfg.bg} ${cfg.text}`}>
+      <span className={`w-2 h-2 rounded-full ${cfg.dot} shrink-0`} />
       {cfg.label}
     </span>
   );
@@ -39,14 +43,50 @@ function RiskBadge({ level }) {
 function BriScore({ score }) {
   const s = parseFloat(score || 0);
   const color =
-    s < 20 ? "#10B981" :
-    s < 40 ? "#22C55E" :
-    s < 60 ? "#EAB308" :
-    s < 80 ? "#F97316" : "#EF4444";
+    s < 20 ? "#059669" :
+    s < 40 ? "#16a34a" :
+    s < 60 ? "#d97706" :
+    s < 80 ? "#ea580c" : "#dc2626";
+
+  const assessment =
+    s < 20 ? "Safe" :
+    s < 40 ? "Low Risk" :
+    s < 60 ? "Moderate" :
+    s < 80 ? "High Risk" : "Critical";
+
   return (
-    <span className="font-bold text-lg" style={{ color }}>
-      {s.toFixed(1)}
-    </span>
+    <div className="flex flex-col items-start">
+      <div className="flex items-baseline gap-1">
+        <span className="font-extrabold text-base sm:text-lg" style={{ color }}>
+          {s.toFixed(1)}
+        </span>
+        <span className="text-xs text-slate-500 font-medium">/ 100</span>
+      </div>
+      <span className="text-[11px] font-semibold text-slate-600">
+        {assessment}
+      </span>
+    </div>
+  );
+}
+
+function MetricPill({ score }) {
+  const num = parseFloat(score || 0);
+  // Scale is 0 to 10 where higher is more risk
+  const isGood = num < 3.5;
+  const isMed = num >= 3.5 && num < 6.5;
+
+  const bg = isGood ? "bg-emerald-50 text-emerald-800 border-emerald-200" : isMed ? "bg-amber-50 text-amber-900 border-amber-200" : "bg-red-50 text-red-900 border-red-200";
+  const label = isGood ? "Healthy" : isMed ? "Moderate" : "High Risk";
+
+  return (
+    <div className="inline-flex flex-col">
+      <div className="flex items-center gap-1.5">
+        <span className="text-sm font-bold text-slate-800">{num.toFixed(1)}</span>
+        <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded border ${bg}`}>
+          {label}
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -68,6 +108,7 @@ export default function Dashboard() {
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [showGuide, setShowGuide] = useState(true);
 
   useEffect(() => {
     const load = async () => {
@@ -77,7 +118,7 @@ export default function Dashboard() {
         setHistory(data?.items || []);
         setPagination(data?.pagination || null);
       } catch {
-        setError("Could not load history.");
+        setError("Could not load previous analyses. Please refresh the page.");
       } finally {
         setLoading(false);
       }
@@ -94,36 +135,65 @@ export default function Dashboard() {
   const platforms = [...new Set(history.map((h) => h.platform || "Daraz"))];
 
   const STATS = [
-    { label: "Total Analyses", value: totalAnalyses, icon: BarChart2, color: "#198F38" },
-    { label: "Avg. BRI Score", value: avgBri, icon: TrendingUp, color: "#F97316" },
-    { label: "Latest Risk Level", value: latestRisk, icon: ShieldAlert, color: "#EF4444", isRisk: true },
-    { label: "Platforms", value: platforms.length || "—", icon: Package, color: "#6366F1" },
+    {
+      label: "Products Checked",
+      subtitle: "Total items scanned",
+      value: totalAnalyses,
+      icon: BarChart2,
+      color: "#16a34a",
+    },
+    {
+      label: "Average Risk Score",
+      subtitle: "Lower score is safer (0–100)",
+      value: avgBri !== "—" ? `${avgBri} / 100` : "—",
+      icon: TrendingUp,
+      color: "#ea580c",
+    },
+    {
+      label: "Latest Product Status",
+      subtitle: "Most recent risk finding",
+      value: latestRisk,
+      icon: ShieldAlert,
+      color: "#dc2626",
+      isRisk: true,
+    },
+    {
+      label: "Supported Marketplaces",
+      subtitle: "Stores analyzed",
+      value: platforms.length ? `${platforms.length} Stores` : "—",
+      icon: Package,
+      color: "#4f46e5",
+    },
   ];
 
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
 
   return (
-    <div className="flex flex-col gap-6 max-w-[1200px]" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className="flex flex-col gap-6 max-w-[1240px]" style={{ fontFamily: "'Inter', sans-serif" }}>
 
       {/* ── Welcome Banner ── */}
       <motion.div
         {...fadeUp(0)}
-        className="relative rounded-2xl overflow-hidden p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+        className="relative rounded-2xl overflow-hidden p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-md"
         style={{ background: "linear-gradient(135deg, #042718 0%, #063b25 100%)" }}
       >
-        {/* Decorative circles */}
-        <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-[#198F38]/10 translate-x-24 -translate-y-20 pointer-events-none" />
-        <div className="absolute bottom-0 right-32 w-32 h-32 rounded-full bg-white/5 pointer-events-none" />
+        {/* Decorative background shapes */}
+        <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-[#198F38]/20 translate-x-20 -translate-y-20 pointer-events-none blur-2xl" />
+        <div className="absolute bottom-0 right-32 w-36 h-36 rounded-full bg-white/10 pointer-events-none blur-xl" />
 
         <div className="relative z-10">
-          <p className="text-white/60 text-sm mb-1">{greeting}!</p>
-          <h2 className="text-white text-2xl sm:text-3xl font-semibold mb-2" style={{ fontFamily: "'Onest', sans-serif" }}>
+          <p className="text-emerald-300 font-semibold text-sm mb-1 uppercase tracking-wider">
+            {greeting}
+          </p>
+          <h2 className="text-white text-2xl sm:text-3xl font-bold mb-2 tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
             Welcome back,{" "}
-            <span className="text-[#4ade80]">{user?.username || "User"}</span>
+            <span className="text-[#4ade80] underline decoration-[#4ade80]/40 underline-offset-4">
+              {user?.username || "Business Owner"}
+            </span>
           </h2>
-          <p className="text-white/60 text-sm max-w-md">
-            Ready to analyze your next product? Paste a URL and get your AI-powered Business Risk Index in minutes.
+          <p className="text-emerald-100/90 text-sm sm:text-base max-w-xl leading-relaxed">
+            Check product safety in seconds. Paste any e-commerce product link to detect customer complaints, fake reviews, delivery delays, and product quality risks before you buy or sell.
           </p>
         </div>
 
@@ -131,35 +201,42 @@ export default function Dashboard() {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => navigate("/analyze")}
-          className="relative z-10 flex items-center gap-2.5 px-5 py-3 rounded-full bg-[#198F38] text-white font-medium text-sm hover:bg-[#1aac44] transition-colors shrink-0"
+          className="relative z-10 flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#198F38] text-white font-semibold text-sm hover:bg-[#1aac44] shadow-lg shadow-[#198F38]/30 transition-all shrink-0 cursor-pointer"
         >
-          <ScanSearch size={16} />
-          Analyze Product
-          <ArrowRight size={14} />
+          <ScanSearch size={18} />
+          Analyze New Product
+          <ArrowRight size={16} />
         </motion.button>
       </motion.div>
 
       {/* ── Stats Cards ── */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {STATS.map((stat, i) => (
           <motion.div
             key={stat.label}
             {...fadeUp(0.05 * i + 0.1)}
-            className="bg-white rounded-2xl p-5 border border-[#042718]/06 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="flex items-center justify-between mb-3">
               <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center"
-                style={{ backgroundColor: stat.color + "15" }}
+                className="w-11 h-11 rounded-xl flex items-center justify-center shadow-xs"
+                style={{ backgroundColor: stat.color + "18" }}
               >
-                <stat.icon size={20} style={{ color: stat.color }} />
+                <stat.icon size={22} style={{ color: stat.color }} />
               </div>
             </div>
-            <p className="text-[#042718]/50 text-xs font-medium mb-1">{stat.label}</p>
+            <p className="text-slate-700 text-xs font-bold uppercase tracking-wider mb-0.5">
+              {stat.label}
+            </p>
+            <p className="text-slate-500 text-[11px] mb-2 font-medium">
+              {stat.subtitle}
+            </p>
             {stat.isRisk && stat.value !== "—" ? (
-              <RiskBadge level={stat.value} />
+              <div className="mt-1">
+                <RiskBadge level={stat.value} />
+              </div>
             ) : (
-              <p className="text-[#042718] text-2xl font-bold" style={{ fontFamily: "'Onest', sans-serif" }}>
+              <p className="text-slate-900 text-2xl font-extrabold tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
                 {stat.value}
               </p>
             )}
@@ -167,21 +244,63 @@ export default function Dashboard() {
         ))}
       </div>
 
+      {/* ── Plain-English Guide Banner for Non-Technical Users ── */}
+      {showGuide && (
+        <motion.div
+          {...fadeUp(0.2)}
+          className="bg-emerald-50/90 border border-emerald-200 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs"
+        >
+          <div className="flex items-start gap-3">
+            <div className="p-2 rounded-xl bg-emerald-100 text-emerald-800 shrink-0 mt-0.5">
+              <Info size={20} />
+            </div>
+            <div>
+              <h4 className="text-emerald-950 font-bold text-sm sm:text-base">
+                How to Read Your Risk Scores (Quick Guide)
+              </h4>
+              <p className="text-emerald-900/85 text-xs sm:text-sm mt-1 leading-relaxed">
+                Risk scores range from <strong>0 (Safest)</strong> to <strong>100 (Highest Risk)</strong>. A lower score means a better, more reliable product:
+              </p>
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-2.5 text-xs font-semibold">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 border border-emerald-300">
+                  <span className="w-2 h-2 rounded-full bg-emerald-600" /> 0–40: Safe &amp; Low Risk
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-100 text-amber-950 border border-amber-300">
+                  <span className="w-2 h-2 rounded-full bg-amber-600" /> 41–60: Caution (Moderate Risk)
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-red-100 text-red-950 border border-red-300">
+                  <span className="w-2 h-2 rounded-full bg-red-600" /> 61–100: Warning (High Customer Complaints)
+                </span>
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={() => setShowGuide(false)}
+            className="text-emerald-800 hover:text-emerald-950 text-xs font-semibold underline shrink-0 self-end md:self-center cursor-pointer"
+          >
+            Dismiss
+          </button>
+        </motion.div>
+      )}
+
       {/* ── Recent Analyses ── */}
-      <motion.div {...fadeUp(0.25)} className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm overflow-hidden">
+      <motion.div {...fadeUp(0.25)} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#042718]/06">
-          <div className="flex items-center gap-2">
-            <Clock size={16} className="text-[#042718]/40" />
-            <h3 className="text-[#042718] font-semibold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Recent Analyses
+        <div className="flex items-center justify-between px-6 py-4.5 bg-slate-50/80 border-b border-slate-200">
+          <div className="flex items-center gap-2.5">
+            <Clock size={18} className="text-emerald-700" />
+            <h3 className="text-slate-900 font-bold text-base sm:text-lg" style={{ fontFamily: "'Onest', sans-serif" }}>
+              Recent Product Checks
             </h3>
+            <span className="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full ml-1">
+              Latest {history.length}
+            </span>
           </div>
           <button
             onClick={() => navigate("/history")}
-            className="flex items-center gap-1 text-[#198F38] text-sm font-medium hover:underline"
+            className="flex items-center gap-1 text-emerald-700 hover:text-emerald-900 text-sm font-bold transition-colors cursor-pointer"
           >
-            View all <ArrowRight size={14} />
+            View Full History <ArrowRight size={14} />
           </button>
         </div>
 
@@ -189,31 +308,31 @@ export default function Dashboard() {
         {loading && (
           <div className="flex flex-col gap-3 p-6">
             {[...Array(3)].map((_, i) => (
-              <div key={i} className="h-16 rounded-xl bg-[#042718]/04 animate-pulse" />
+              <div key={i} className="h-16 rounded-xl bg-slate-100 animate-pulse" />
             ))}
           </div>
         )}
 
         {/* Error */}
         {!loading && error && (
-          <div className="p-8 text-center text-[#042718]/50 text-sm">{error}</div>
+          <div className="p-8 text-center text-red-700 font-medium text-sm bg-red-50/50">{error}</div>
         )}
 
         {/* Empty state */}
         {!loading && !error && history.length === 0 && (
           <div className="flex flex-col items-center justify-center py-16 gap-3">
-            <div className="w-16 h-16 rounded-2xl bg-[#198F38]/08 flex items-center justify-center">
-              <ScanSearch size={28} className="text-[#198F38]" />
+            <div className="w-16 h-16 rounded-2xl bg-emerald-100 flex items-center justify-center">
+              <ScanSearch size={28} className="text-emerald-700" />
             </div>
-            <p className="text-[#042718] font-medium">No analyses yet</p>
-            <p className="text-[#042718]/50 text-sm text-center max-w-xs">
-              Start your first product risk analysis to see results here.
+            <p className="text-slate-900 text-lg font-bold">No Products Checked Yet</p>
+            <p className="text-slate-600 text-sm text-center max-w-sm">
+              Paste your first product link to see detailed risk ratings, customer complaint areas, and actionable advice here.
             </p>
             <button
               onClick={() => navigate("/analyze")}
-              className="mt-2 px-5 py-2.5 rounded-full bg-[#042718] text-white text-sm font-medium hover:bg-[#063b25] transition-colors"
+              className="mt-2 px-6 py-2.5 rounded-full bg-[#042718] text-white text-sm font-semibold hover:bg-[#063b25] transition-colors cursor-pointer shadow-sm"
             >
-              Analyze Now
+              Analyze Your First Product
             </button>
           </div>
         )}
@@ -223,64 +342,117 @@ export default function Dashboard() {
           <>
             {/* Desktop table */}
             <div className="hidden sm:block overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-[#F6FDFF]">
-                    {["Product", "BRI Score", "Risk Level", "Reviews", "Quality", "Delivery", "Trust", "Date", ""].map((h) => (
-                      <th key={h} className="text-left px-4 py-3 text-[#042718]/40 text-xs font-medium uppercase tracking-wide whitespace-nowrap">
-                        {h}
-                      </th>
-                    ))}
+                  <tr className="bg-slate-100/90 border-b border-slate-200">
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
+                      Product Name
+                    </th>
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
+                      Risk Score
+                    </th>
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
+                      Safety Status
+                    </th>
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
+                      Reviews Scanned
+                    </th>
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
+                      Quality Risk
+                    </th>
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
+                      Delivery Risk
+                    </th>
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
+                      Seller Trust
+                    </th>
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
+                      Checked On
+                    </th>
+                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider text-right">
+                      Report
+                    </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#042718]/04">
+                <tbody className="divide-y divide-slate-200">
                   {history.map((item, idx) => (
                     <motion.tr
                       key={item.analysisId}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: idx * 0.04 }}
-                      className="hover:bg-[#F6FDFF] transition-colors"
+                      className="hover:bg-emerald-50/40 transition-colors"
                     >
                       {/* Product */}
-                      <td className="px-4 py-3">
-                        <div className="flex items-center gap-3 min-w-[180px] max-w-[220px]">
+                      <td className="px-4 py-3.5">
+                        <div className="flex items-center gap-3 min-w-[190px] max-w-[240px]">
                           {item.imageUrl ? (
                             <img
                               src={item.imageUrl}
                               alt=""
-                              className="w-10 h-10 rounded-lg object-cover shrink-0 border border-[#042718]/08"
+                              className="w-11 h-11 rounded-lg object-cover shrink-0 border border-slate-200 shadow-2xs"
                             />
                           ) : (
-                            <div className="w-10 h-10 rounded-lg bg-[#042718]/05 flex items-center justify-center shrink-0">
-                              <Package size={16} className="text-[#042718]/30" />
+                            <div className="w-11 h-11 rounded-lg bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200">
+                              <Package size={18} className="text-slate-500" />
                             </div>
                           )}
                           <div className="min-w-0">
-                            <p className="text-[#042718] text-sm font-medium truncate">{item.productTitle}</p>
-                            <p className="text-[#042718]/40 text-xs truncate">{item.sellerName || "—"}</p>
+                            <p className="text-slate-900 text-sm font-semibold truncate hover:text-emerald-700 transition-colors" title={item.productTitle}>
+                              {item.productTitle || "Untitled Product"}
+                            </p>
+                            <p className="text-slate-600 text-xs font-medium truncate mt-0.5">
+                              Store: {item.sellerName || "Marketplace"}
+                            </p>
                           </div>
                         </div>
                       </td>
+
                       {/* BRI */}
-                      <td className="px-4 py-3"><BriScore score={item.businessRiskIndex} /></td>
+                      <td className="px-4 py-3.5">
+                        <BriScore score={item.businessRiskIndex} />
+                      </td>
+
                       {/* Risk */}
-                      <td className="px-4 py-3"><RiskBadge level={item.businessRiskLevel} /></td>
+                      <td className="px-4 py-3.5">
+                        <RiskBadge level={item.businessRiskLevel} />
+                      </td>
+
                       {/* Reviews */}
-                      <td className="px-4 py-3 text-[#042718]/70 text-sm">{item.totalReviews}</td>
-                      {/* Q/D/T */}
-                      <td className="px-4 py-3 text-[#042718]/70 text-sm">{parseFloat(item.qualityRiskScore || 0).toFixed(1)}</td>
-                      <td className="px-4 py-3 text-[#042718]/70 text-sm">{parseFloat(item.deliveryRiskScore || 0).toFixed(1)}</td>
-                      <td className="px-4 py-3 text-[#042718]/70 text-sm">{parseFloat(item.trustRiskScore || 0).toFixed(1)}</td>
+                      <td className="px-4 py-3.5">
+                        <span className="text-slate-900 font-bold text-sm">
+                          {item.totalReviews ?? 0}
+                        </span>
+                        <span className="text-slate-500 text-xs ml-1">reviews</span>
+                      </td>
+
+                      {/* Quality Risk */}
+                      <td className="px-4 py-3.5">
+                        <MetricPill score={item.qualityRiskScore} />
+                      </td>
+
+                      {/* Delivery Risk */}
+                      <td className="px-4 py-3.5">
+                        <MetricPill score={item.deliveryRiskScore} />
+                      </td>
+
+                      {/* Seller Trust Risk */}
+                      <td className="px-4 py-3.5">
+                        <MetricPill score={item.trustRiskScore} />
+                      </td>
+
                       {/* Date */}
-                      <td className="px-4 py-3 text-[#042718]/40 text-xs whitespace-nowrap">{formatDate(item.createdAt)}</td>
+                      <td className="px-4 py-3.5 text-slate-600 text-xs font-medium whitespace-nowrap">
+                        {formatDate(item.createdAt)}
+                      </td>
+
                       {/* Actions */}
-                      <td className="px-4 py-3">
+                      <td className="px-4 py-3.5 text-right">
                         <button
                           onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
-                          className="flex items-center gap-1 text-[#198F38] text-xs font-medium hover:underline whitespace-nowrap"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-600 hover:text-white transition-all text-xs font-bold cursor-pointer whitespace-nowrap"
                         >
-                          View <ExternalLink size={12} />
+                          View Details <ExternalLink size={12} />
                         </button>
                       </td>
                     </motion.tr>
@@ -290,26 +462,35 @@ export default function Dashboard() {
             </div>
 
             {/* Mobile cards */}
-            <div className="sm:hidden flex flex-col divide-y divide-[#042718]/06">
+            <div className="sm:hidden flex flex-col divide-y divide-slate-200">
               {history.map((item) => (
-                <div key={item.analysisId} className="flex items-center gap-3 px-4 py-3">
-                  {item.imageUrl ? (
-                    <img src={item.imageUrl} alt="" className="w-12 h-12 rounded-xl object-cover shrink-0 border border-[#042718]/08" />
-                  ) : (
-                    <div className="w-12 h-12 rounded-xl bg-[#042718]/05 flex items-center justify-center shrink-0">
-                      <Package size={18} className="text-[#042718]/30" />
+                <div key={item.analysisId} className="flex flex-col gap-3 p-4 hover:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-3">
+                    {item.imageUrl ? (
+                      <img src={item.imageUrl} alt="" className="w-12 h-12 rounded-xl object-cover shrink-0 border border-slate-200" />
+                    ) : (
+                      <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200">
+                        <Package size={20} className="text-slate-500" />
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-slate-900 text-sm font-bold truncate">{item.productTitle}</p>
+                      <p className="text-slate-600 text-xs font-medium">{item.sellerName || "Marketplace"}</p>
                     </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-[#042718] text-sm font-medium truncate">{item.productTitle}</p>
-                    <div className="flex items-center gap-2 mt-0.5">
+                  </div>
+
+                  <div className="flex items-center justify-between pt-1">
+                    <div className="flex items-center gap-3">
                       <BriScore score={item.businessRiskIndex} />
                       <RiskBadge level={item.businessRiskLevel} />
                     </div>
+                    <button
+                      onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
+                      className="px-3 py-1.5 rounded-lg bg-emerald-100 text-emerald-900 text-xs font-bold hover:bg-emerald-200 transition-colors inline-flex items-center gap-1"
+                    >
+                      View Report <ExternalLink size={12} />
+                    </button>
                   </div>
-                  <button onClick={() => navigate(`/analysis-result/${item.analysisId}`)}>
-                    <ExternalLink size={16} className="text-[#198F38]" />
-                  </button>
                 </div>
               ))}
             </div>

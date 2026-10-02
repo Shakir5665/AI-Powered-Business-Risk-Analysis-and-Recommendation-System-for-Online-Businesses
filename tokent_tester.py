@@ -402,7 +402,7 @@ def trace_important_tokens(
 
 def main():
     print("=" * 80)
-    print("RiskAI Preprocessing & Tokenizer Diagnostic Test Suite")
+    print("Riskora AI Preprocessing & Tokenizer Diagnostic Test Suite")
     print("Exact Pipeline: ReviewPreprocessor + XLM-RoBERTa Tokenizer")
     print("=" * 80)
     print(f"Loading tokenizer from: {TOKENIZER_DIR}")

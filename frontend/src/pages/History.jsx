@@ -12,18 +12,18 @@ import { formatDate } from "../utils/helpers";
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const RISK_BADGE = {
-  VERY_LOW: { label: "Very Low",  bg: "bg-emerald-50", text: "text-emerald-700", dot: "bg-emerald-400" },
-  LOW:      { label: "Low",       bg: "bg-green-50",   text: "text-green-700",   dot: "bg-green-400"   },
-  MEDIUM:   { label: "Medium",    bg: "bg-yellow-50",  text: "text-yellow-700",  dot: "bg-yellow-400"  },
-  HIGH:     { label: "High",      bg: "bg-orange-50",  text: "text-orange-700",  dot: "bg-orange-400"  },
-  CRITICAL: { label: "Critical",  bg: "bg-red-50",     text: "text-red-700",     dot: "bg-red-500"     },
+  VERY_LOW: { label: "Safe · Very Low", bg: "bg-emerald-100 border border-emerald-300", text: "text-emerald-900 font-bold", dot: "bg-emerald-600" },
+  LOW:      { label: "Good · Low Risk", bg: "bg-green-100 border border-green-300",     text: "text-green-900 font-bold",   dot: "bg-green-600"   },
+  MEDIUM:   { label: "Caution · Moderate",bg: "bg-amber-100 border border-amber-300",  text: "text-amber-950 font-bold",   dot: "bg-amber-600"   },
+  HIGH:     { label: "Warning · High", bg: "bg-orange-100 border border-orange-300",  text: "text-orange-950 font-bold",  dot: "bg-orange-600"  },
+  CRITICAL: { label: "Danger · Critical",bg: "bg-red-100 border border-red-300",      text: "text-red-950 font-bold",     dot: "bg-red-600"     },
 };
 
 function RiskBadge({ level }) {
   const key = String(level || "").toUpperCase().replace(" ", "_");
-  const cfg = RISK_BADGE[key] || { label: level || "N/A", bg: "bg-gray-50", text: "text-gray-600", dot: "bg-gray-400" };
+  const cfg = RISK_BADGE[key] || { label: level || "Unknown", bg: "bg-slate-100 border border-slate-300", text: "text-slate-800 font-bold", dot: "bg-slate-500" };
   return (
-    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${cfg.bg} ${cfg.text}`}>
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs shadow-xs ${cfg.bg} ${cfg.text}`}>
       <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
       {cfg.label}
     </span>
@@ -32,14 +32,19 @@ function RiskBadge({ level }) {
 
 function BriScore({ score }) {
   const s = parseFloat(score || 0);
-  const color = s < 20 ? "#10B981" : s < 40 ? "#22C55E" : s < 60 ? "#EAB308" : s < 80 ? "#F97316" : "#EF4444";
-  return <span className="font-bold" style={{ color }}>{s.toFixed(1)}</span>;
+  const color = s < 20 ? "#059669" : s < 40 ? "#16a34a" : s < 60 ? "#d97706" : s < 80 ? "#ea580c" : "#dc2626";
+  return (
+    <div className="flex items-baseline gap-1">
+      <span className="font-extrabold text-sm" style={{ color }}>{s.toFixed(1)}</span>
+      <span className="text-[11px] text-slate-500 font-medium">/ 100</span>
+    </div>
+  );
 }
 
 const RISK_LEVELS = ["ALL", "VERY_LOW", "LOW", "MEDIUM", "HIGH", "CRITICAL"];
 const SORT_OPTIONS = [
-  { value: "created_at",         label: "Date" },
-  { value: "business_risk_index",label: "BRI Score" },
+  { value: "created_at",         label: "Date Analyzed" },
+  { value: "business_risk_index",label: "Risk Score (0–100)" },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -213,17 +218,17 @@ export default function History() {
           <>
             {/* Desktop table */}
             <div className="hidden sm:block overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-[#F6FDFF] border-b border-[#042718]/06">
-                    {["Product", "BRI", "Risk Level", "Reviews", "Quality", "Delivery", "Trust", "Date", ""].map((h) => (
-                      <th key={h} className="text-left px-4 py-3 text-[#042718]/40 text-xs font-medium uppercase tracking-wide whitespace-nowrap">
+                  <tr className="bg-slate-100/90 border-b border-slate-200">
+                    {["Product Name", "Risk Score", "Safety Status", "Reviews", "Quality Risk", "Delivery Risk", "Seller Trust", "Date", "Actions"].map((h) => (
+                      <th key={h} className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider whitespace-nowrap">
                         {h}
                       </th>
                     ))}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#042718]/04">
+                <tbody className="divide-y divide-slate-200">
                   <AnimatePresence>
                     {items.map((item, idx) => (
                       <motion.tr
@@ -231,39 +236,45 @@ export default function History() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: idx * 0.03 }}
-                        className="hover:bg-[#F6FDFF] transition-colors cursor-pointer"
+                        className="hover:bg-emerald-50/40 transition-colors cursor-pointer"
                         onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
                       >
-                        <td className="px-4 py-3">
-                          <div className="flex items-center gap-3 min-w-[180px] max-w-[240px]">
+                        <td className="px-4 py-3.5">
+                          <div className="flex items-center gap-3 min-w-[190px] max-w-[240px]">
                             {item.imageUrl ? (
-                              <img src={item.imageUrl} alt="" className="w-9 h-9 rounded-lg object-cover shrink-0 border border-[#042718]/08" />
+                              <img src={item.imageUrl} alt="" className="w-10 h-10 rounded-lg object-cover shrink-0 border border-slate-200" />
                             ) : (
-                              <div className="w-9 h-9 rounded-lg bg-[#042718]/05 flex items-center justify-center shrink-0">
-                                <Package size={14} className="text-[#042718]/30" />
+                              <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200">
+                                <Package size={16} className="text-slate-500" />
                               </div>
                             )}
                             <div className="min-w-0">
-                              <p className="text-[#042718] text-sm font-medium truncate">{item.productTitle}</p>
-                              <p className="text-[#042718]/40 text-xs truncate">{item.sellerName || "—"}</p>
+                              <p className="text-slate-900 text-sm font-semibold truncate hover:text-emerald-700 transition-colors">{item.productTitle}</p>
+                              <p className="text-slate-600 text-xs font-medium truncate mt-0.5">{item.sellerName || "Marketplace"}</p>
                             </div>
                           </div>
                         </td>
-                        <td className="px-4 py-3"><BriScore score={item.businessRiskIndex} /></td>
-                        <td className="px-4 py-3"><RiskBadge level={item.businessRiskLevel} /></td>
-                        <td className="px-4 py-3 text-[#042718]/70 text-sm">{item.totalReviews}</td>
-                        <td className="px-4 py-3 text-[#042718]/70 text-sm">{parseFloat(item.qualityRiskScore || 0).toFixed(1)}</td>
-                        <td className="px-4 py-3 text-[#042718]/70 text-sm">{parseFloat(item.deliveryRiskScore || 0).toFixed(1)}</td>
-                        <td className="px-4 py-3 text-[#042718]/70 text-sm">{parseFloat(item.trustRiskScore || 0).toFixed(1)}</td>
-                        <td className="px-4 py-3 text-[#042718]/40 text-xs whitespace-nowrap">{formatDate(item.createdAt)}</td>
-                        <td className="px-4 py-3">
+                        <td className="px-4 py-3.5"><BriScore score={item.businessRiskIndex} /></td>
+                        <td className="px-4 py-3.5"><RiskBadge level={item.businessRiskLevel} /></td>
+                        <td className="px-4 py-3.5 text-slate-900 font-bold text-sm">{item.totalReviews}</td>
+                        <td className="px-4 py-3.5 text-slate-800 font-medium text-sm">{parseFloat(item.qualityRiskScore || 0).toFixed(1)}</td>
+                        <td className="px-4 py-3.5 text-slate-800 font-medium text-sm">{parseFloat(item.deliveryRiskScore || 0).toFixed(1)}</td>
+                        <td className="px-4 py-3.5 text-slate-800 font-medium text-sm">{parseFloat(item.trustRiskScore || 0).toFixed(1)}</td>
+                        <td className="px-4 py-3.5 text-slate-600 text-xs font-medium whitespace-nowrap">{formatDate(item.createdAt)}</td>
+                        <td className="px-4 py-3.5">
                           <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
-                            <button onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
-                              className="text-[#198F38] hover:text-[#063b25] transition-colors">
+                            <button
+                              onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
+                              className="p-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-600 hover:text-white transition-all"
+                              title="View Full Report"
+                            >
                               <ExternalLink size={14} />
                             </button>
-                            <button onClick={(e) => handleDelete(item.analysisId, e)}
-                              className="text-[#042718]/20 hover:text-red-500 transition-colors">
+                            <button
+                              onClick={(e) => handleDelete(item.analysisId, e)}
+                              className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-all"
+                              title="Delete Analysis"
+                            >
                               <Trash2 size={14} />
                             </button>
                           </div>
