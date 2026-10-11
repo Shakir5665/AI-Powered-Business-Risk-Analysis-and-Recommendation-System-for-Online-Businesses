@@ -164,7 +164,7 @@ export default function Login() {
         initial={{ x: 60, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.21, 0.45, 0.32, 0.9] }}
-        className="flex-1 flex flex-col items-center justify-center px-6 sm:px-12 lg:px-16 xl:px-24 py-12 min-h-screen"
+        className="flex-1 flex flex-col items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-10 sm:py-12 min-h-screen min-h-[100dvh]"
       >
         {/* Mobile logo */}
         <div className="lg:hidden mb-8">

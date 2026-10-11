@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, Menu, X } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import amazonLogo from "../../assets/amazonLogo.png";
 import darazLogo from "../../assets/darazLogo.png";
 import ebayLogo from "../../assets/ebayLogo.png";
@@ -52,15 +52,11 @@ export default function HeroSection({ className }) {
 
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" crossOrigin="anonymous" />
-
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className={"relative w-full overflow-hidden min-h-[800px] lg:min-h-[900px] " + (className || "")}
+        className={"relative w-full overflow-hidden min-h-[100svh] sm:min-h-[720px] md:min-h-[800px] lg:min-h-[900px] " + (className || "")}
       >
         {/* Background Video — Cloudinary CDN */}
         <div className="absolute inset-0 z-0">
@@ -72,7 +68,6 @@ export default function HeroSection({ className }) {
               playsInline
               className="w-full h-full object-cover"
             >
-              {/* WebM (smaller) served first to browsers that support it, MP4 fallback */}
               <source
                 src="https://res.cloudinary.com/rgj4dgir/video/upload/f_auto,q_auto:low/v1788274252/bg.mp4"
                 type="video/mp4"
@@ -81,7 +76,7 @@ export default function HeroSection({ className }) {
           )}
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8 pb-12">
+        <div className="relative z-10 max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-6 lg:pt-8 pb-10 sm:pb-12">
           {/* Navigation */}
           <motion.nav
             initial={{ y: -20, opacity: 0 }}
@@ -165,13 +160,14 @@ export default function HeroSection({ className }) {
                 animate={{ x: 0 }}
                 exit={{ x: "100%" }}
                 transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="fixed inset-0 z-[100] lg:hidden bg-white px-6 py-8 flex flex-col gap-8"
+                className="fixed inset-0 z-[100] lg:hidden bg-white px-6 py-8 flex flex-col gap-8 h-[100dvh] overflow-y-auto"
               >
                 <div className="flex items-center justify-between">
                   <img src={RiskAiLogo1} alt="RiskAI Logo" className="h-9 w-auto object-contain" />
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="p-2 text-[#042718] bg-[#042718]/5 rounded-full"
+                    aria-label="Close menu"
                   >
                     <X size={24} />
                   </button>
@@ -196,10 +192,10 @@ export default function HeroSection({ className }) {
                   ))}
                 </ul>
 
-                <div className="mt-auto">
+                <div className="mt-auto pt-6">
                   <button
                     onClick={() => { setIsMobileMenuOpen(false); navigate("/register"); }}
-                    className="w-full py-4 rounded-full bg-[#042718] text-white font-inter font-medium text-lg"
+                    className="w-full py-4 rounded-full bg-[#042718] text-white font-inter font-medium text-lg shadow-lg hover:bg-[#063b25] transition-colors"
                   >
                     Get Started
                   </button>
@@ -209,21 +205,21 @@ export default function HeroSection({ className }) {
           </AnimatePresence>
 
           {/* Hero Content */}
-          <div className="flex flex-col items-center mt-12 lg:mt-[80px]">
+          <div className="flex flex-col items-center mt-10 sm:mt-14 md:mt-16 lg:mt-[80px]">
             {/* Badge */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-              className="flex flex-row items-center gap-1.5 sm:gap-2 px-3 sm:px-[14px] py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 mb-6 whitespace-nowrap"
+              className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 mb-5 sm:mb-6 max-w-[calc(100%-0.5rem)] text-center"
             >
               <div className="flex items-center gap-1 shrink-0">
                 <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#042718] text-[#042718]" />
-                <span className="font-inter text-sm sm:text-base lg:text-[18px] font-medium leading-[28px] text-[#042718]">
+                <span className="font-inter text-xs sm:text-sm md:text-base lg:text-[18px] font-medium leading-snug sm:leading-[28px] text-[#042718]">
                   AI-Powered Analysis
                 </span>
               </div>
-              <span className="font-inter text-sm sm:text-base lg:text-[18px] font-normal leading-[28px] text-[#000000] opacity-60 shrink-0">
+              <span className="font-inter text-xs sm:text-sm md:text-base lg:text-[18px] font-normal leading-snug sm:leading-[28px] text-[#000000] opacity-60">
                 for smarter business decisions
               </span>
             </motion.div>
@@ -233,7 +229,7 @@ export default function HeroSection({ className }) {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-              className="max-w-[750px] w-full text-center font-onest text-[40px] sm:text-[50px] lg:text-[66px] font-semibold leading-tight lg:leading-[72px] tracking-tight lg:tracking-[-3px] text-[#042718]"
+              className="max-w-[750px] 2xl:max-w-[920px] w-full text-center font-onest text-[28px] sm:text-[42px] md:text-[52px] lg:text-[66px] 2xl:text-[76px] font-semibold leading-[1.15] lg:leading-[72px] 2xl:leading-[82px] tracking-tight lg:tracking-[-3px] text-[#042718] px-1 sm:px-2"
               style={{ fontFamily: "'Onest', sans-serif" }}
             >
               Understand Your{" "}
@@ -251,7 +247,7 @@ export default function HeroSection({ className }) {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-              className="max-w-[630px] w-full text-center mt-5 font-inter text-lg lg:text-[20px] font-normal leading-relaxed lg:leading-[30px] tracking-[-0.4px] text-[#042718]"
+              className="max-w-[630px] 2xl:max-w-[760px] w-full text-center mt-4 sm:mt-5 font-inter text-sm sm:text-base md:text-lg lg:text-[20px] 2xl:text-[22px] font-normal leading-relaxed lg:leading-[30px] tracking-[-0.4px] text-[#042718] px-3 sm:px-4"
             >
               Paste a product URL and let our AI analyze customer reviews, detect risks, calculate your Business Risk Index, and deliver actionable recommendations — instantly.
             </motion.p>
@@ -298,10 +294,10 @@ export default function HeroSection({ className }) {
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.2, duration: 1, ease: "easeOut" }}
-              className="mt-20 lg:mt-[220px] flex flex-col items-center gap-10 w-full"
+              className="mt-12 sm:mt-16 md:mt-24 lg:mt-[140px] 2xl:mt-[180px] flex flex-col items-center gap-5 sm:gap-8 lg:gap-10 w-full px-2"
             >
-              <div className="px-[16px] py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/20">
-                <p className="font-inter text-sm lg:text-base font-medium leading-6 tracking-[-0.3px] text-white text-center">
+              <div className="px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/20 max-w-full">
+                <p className="font-inter text-xs sm:text-sm lg:text-base font-medium leading-6 tracking-[-0.3px] text-white text-center">
                   Trusted by businesses and researchers across e-commerce platforms
                 </p>
               </div>

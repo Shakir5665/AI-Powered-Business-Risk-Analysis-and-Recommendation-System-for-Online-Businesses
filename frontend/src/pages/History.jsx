@@ -113,10 +113,10 @@ export default function History() {
       {/* ── Filter Bar ── */}
       <motion.div
         initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
-        className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-4 flex flex-wrap items-center gap-3"
+        className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm p-3 sm:p-4 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3"
       >
         {/* Search */}
-        <div className="relative flex-1 min-w-[200px]">
+        <div className="relative flex-1 min-w-0 sm:min-w-[200px]">
           <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#042718]/30" />
           <input
             id="historySearch"
@@ -130,13 +130,13 @@ export default function History() {
 
         <div className="flex items-center gap-2 flex-wrap">
           {/* Risk level filter */}
-          <div className="flex items-center gap-1.5">
-            <SlidersHorizontal size={14} className="text-[#042718]/40" />
+          <div className="flex items-center gap-1.5 flex-1 sm:flex-initial min-w-0">
+            <SlidersHorizontal size={14} className="text-[#042718]/40 shrink-0 hidden sm:block" />
             <select
               id="riskFilter"
               value={riskFilter}
               onChange={(e) => setRiskFilter(e.target.value)}
-              className="px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm outline-none focus:border-[#198F38] cursor-pointer"
+              className="flex-1 sm:flex-initial min-w-0 px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm outline-none focus:border-[#198F38] cursor-pointer"
             >
               {RISK_LEVELS.map((lvl) => (
                 <option key={lvl} value={lvl}>
@@ -151,7 +151,7 @@ export default function History() {
             id="sortBy"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm outline-none focus:border-[#198F38] cursor-pointer"
+            className="flex-1 sm:flex-initial min-w-0 px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm outline-none focus:border-[#198F38] cursor-pointer"
           >
             {SORT_OPTIONS.map((s) => (
               <option key={s.value} value={s.value}>Sort by {s.label}</option>
@@ -161,7 +161,7 @@ export default function History() {
           {/* Order toggle */}
           <button
             onClick={() => setOrder((p) => (p === "desc" ? "asc" : "desc"))}
-            className="px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm hover:bg-[#042718]/04 transition-colors"
+            className="px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm hover:bg-[#042718]/04 transition-colors shrink-0"
           >
             {order === "desc" ? "↓ Newest" : "↑ Oldest"}
           </button>
@@ -211,8 +211,8 @@ export default function History() {
 
         {!loading && !error && items.length > 0 && (
           <>
-            {/* Desktop table */}
-            <div className="hidden sm:block overflow-x-auto">
+            {/* Desktop / tablet table */}
+            <div className="hidden md:block overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="bg-[#F6FDFF] border-b border-[#042718]/06">
@@ -275,8 +275,8 @@ export default function History() {
               </table>
             </div>
 
-            {/* Mobile cards */}
-            <div className="sm:hidden flex flex-col divide-y divide-[#042718]/06">
+            {/* Mobile / small tablet cards */}
+            <div className="md:hidden flex flex-col divide-y divide-[#042718]/06">
               {items.map((item) => (
                 <div
                   key={item.analysisId}

@@ -82,16 +82,12 @@ export default function HowItWorksSection({ className }) {
 
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" crossOrigin="anonymous" />
-
       <section
         id="how-it-works"
-        className={"w-full bg-[#F6FDFF] py-20 lg:py-32 overflow-hidden " + (className || "")}
+        className={"w-full bg-[#F6FDFF] py-16 sm:py-20 lg:py-32 overflow-hidden " + (className || "")}
       >
-        <div className="w-full max-w-[1248px] mx-auto relative px-4 md:px-6">
-          <div className="flex flex-col items-start gap-12 lg:gap-16">
+        <div className="w-full max-w-[1248px] 2xl:max-w-[1400px] mx-auto relative px-4 md:px-6">
+          <div className="flex flex-col items-start gap-8 sm:gap-12 lg:gap-16">
 
             {/* Header Area */}
             <div className="flex flex-col items-start">
@@ -102,7 +98,7 @@ export default function HowItWorksSection({ className }) {
                 className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#198F38]/10 bg-[#198F38]/5 whitespace-nowrap mb-6"
               >
                 <Sparkles className="w-4 h-4 text-[#198F38]" strokeWidth={2.5} />
-                <span className="text-[#198F38] text-center font-inter text-base font-normal leading-6 tracking-[-0.3px]">
+                <span className="text-[#198F38] text-center font-inter text-sm sm:text-base font-normal leading-6 tracking-[-0.3px]">
                   Process
                 </span>
               </motion.div>
@@ -112,7 +108,7 @@ export default function HowItWorksSection({ className }) {
                 whileInView={{ x: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="text-[#042718] text-[32px] sm:text-[44px] lg:text-[52px] font-semibold leading-tight lg:leading-[58px] tracking-[-1.2px] lg:tracking-[-1.8px] w-full lg:max-w-[556px] text-left"
+                className="text-[#042718] text-[28px] sm:text-[44px] lg:text-[52px] font-semibold leading-tight lg:leading-[58px] tracking-tight sm:tracking-[-1.2px] lg:tracking-[-1.8px] w-full lg:max-w-[556px] text-left"
                 style={{ fontFamily: "'Onest', sans-serif" }}
               >
                 Analyze business risk
@@ -137,7 +133,7 @@ export default function HowItWorksSection({ className }) {
                   whileInView={{ y: 0, opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4 }}
-                  className="w-full bg-white p-4 lg:px-6 lg:py-4 rounded-2xl shadow-[0_1px_20px_0_rgba(4,39,24,0.04)] flex items-center lg:justify-between gap-2 overflow-x-auto overflow-y-hidden snap-x"
+                  className="w-full bg-white p-2.5 sm:p-3 md:p-4 lg:px-6 lg:py-4 rounded-2xl shadow-[0_1px_20px_0_rgba(4,39,24,0.04)] flex items-center lg:justify-between gap-2 overflow-x-auto scrollbar-hide snap-x"
                 >
                   {steps.map((step) => {
                     const isActive = activeTab === step.id;
@@ -146,21 +142,22 @@ export default function HowItWorksSection({ className }) {
                         key={step.id}
                         onClick={() => setActiveTab(step.id)}
                         className={cn(
-                          "flex items-center gap-3 px-4 sm:px-6 py-2.5 rounded-xl transition-all duration-300 shrink-0 snap-start",
-                          isActive ? "bg-white" : "hover:bg-[#F6FDFF]"
+                          "flex items-center gap-2.5 sm:gap-3 px-3 sm:px-6 py-2.5 rounded-xl transition-all duration-300 shrink-0 snap-start cursor-pointer",
+                          isActive ? "bg-[#198F38]/10 text-[#198F38]" : "hover:bg-[#F6FDFF] text-[#042718]/60"
                         )}
                       >
                         <step.icon
-                          className={cn("w-[22px] h-[22px]", isActive ? "text-[#198F38]" : "text-[#042718]/60")}
+                          className={cn("w-5 h-5", isActive ? "text-[#198F38]" : "text-[#042718]/60")}
                           strokeWidth={2.5}
                         />
                         <span
                           className={cn(
-                            "font-inter text-base sm:text-[18px] leading-[28px] whitespace-nowrap",
+                            "font-inter text-xs sm:text-sm md:text-base lg:text-[18px] leading-snug sm:leading-[28px] whitespace-nowrap",
                             isActive ? "text-[#198F38] font-medium" : "text-[#042718]/60 font-normal"
                           )}
                         >
-                          {step.label}
+                          <span className="sm:hidden">{step.id}. {step.label.split(" ").slice(0, 2).join(" ")}</span>
+                          <span className="hidden sm:inline">{step.label}</span>
                         </span>
                       </button>
                     );
@@ -170,18 +167,18 @@ export default function HowItWorksSection({ className }) {
 
               {/* Main Content Card */}
               <div className="w-full">
-                <div className="w-full bg-white rounded-[32px] border border-[#042718]/[0.04] shadow-[0_0_20px_0_rgba(4,39,24,0.04)] flex flex-col lg:flex-row items-center justify-between p-6 lg:pt-4 lg:pr-4 lg:pb-4 lg:pl-16 gap-12 lg:gap-0 overflow-hidden">
+                <div className="w-full bg-white rounded-[24px] sm:rounded-[32px] border border-[#042718]/[0.04] shadow-[0_0_20px_0_rgba(4,39,24,0.04)] flex flex-col lg:flex-row items-center justify-between p-6 sm:p-8 lg:p-8 xl:p-12 gap-8 lg:gap-12 overflow-hidden">
 
                   {/* Left Column: Text Info */}
-                  <div className="w-full lg:w-[534px] flex flex-col items-start text-left">
+                  <div className="w-full lg:flex-1 min-w-0 flex flex-col items-start text-left">
                     <motion.div
                       key={"icon-" + activeTab}
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="w-16 h-16 rounded-xl border border-[#042718]/10 bg-white shadow-sm flex items-center justify-center p-4 mb-3"
+                      className="w-14 h-14 sm:w-16 sm:h-16 rounded-xl border border-[#042718]/10 bg-white shadow-sm flex items-center justify-center p-3 sm:p-4 mb-3"
                     >
-                      <activeStep.icon className="w-8 h-8 text-[#198F38]" strokeWidth={2.5} />
+                      <activeStep.icon className="w-7 h-7 sm:w-8 sm:h-8 text-[#198F38]" strokeWidth={2.5} />
                     </motion.div>
 
                     <motion.h3
@@ -189,7 +186,7 @@ export default function HowItWorksSection({ className }) {
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ duration: 0.3 }}
-                      className="text-[#042718] text-[28px] lg:text-[34px] font-semibold leading-tight lg:leading-[38px] tracking-[-1px] mb-4"
+                      className="text-[#042718] text-[24px] sm:text-[28px] lg:text-[34px] font-semibold leading-tight lg:leading-[38px] tracking-[-1px] mb-4"
                       style={{ fontFamily: "'Onest', sans-serif" }}
                     >
                       {activeStep.heading}
@@ -200,12 +197,12 @@ export default function HowItWorksSection({ className }) {
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.1, duration: 0.3 }}
-                      className="text-[#042718] font-inter text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] opacity-80 mb-8"
+                      className="text-[#042718] font-inter text-sm sm:text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] opacity-80 mb-6 sm:mb-8"
                     >
                       {activeStep.subheading}
                     </motion.p>
 
-                    <div className="flex flex-col gap-3 mb-12">
+                    <div className="flex flex-col gap-3 mb-8 sm:mb-12 w-full">
                       {activeStep.list.map((item, i) => (
                         <motion.div
                           key={"li-" + activeTab + "-" + i}
@@ -217,7 +214,7 @@ export default function HowItWorksSection({ className }) {
                           <div className="w-5 h-5 rounded-full bg-[#198F38]/10 flex items-center justify-center shrink-0">
                             <Check className="w-3 h-3 text-[#198F38]" strokeWidth={3} />
                           </div>
-                          <span className="text-[#042718] font-inter text-base font-medium leading-6 tracking-[-0.3px]">
+                          <span className="text-[#042718] font-inter text-sm sm:text-base font-medium leading-6 tracking-[-0.3px]">
                             {item}
                           </span>
                         </motion.div>
@@ -237,14 +234,14 @@ export default function HowItWorksSection({ className }) {
                     >
                       <motion.span
                         layout
-                        className="font-inter text-base lg:text-[18px] font-medium leading-[28px] text-white"
+                        className="font-inter text-sm sm:text-base lg:text-[18px] font-medium leading-[28px] text-white"
                       >
                         Analyze Product
                       </motion.span>
 
                       <motion.div
                         layout
-                        className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative overflow-hidden"
+                        className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative overflow-hidden shrink-0"
                       >
                         <motion.div
                           animate={{
@@ -260,7 +257,7 @@ export default function HowItWorksSection({ className }) {
                   </div>
 
                   {/* Right Column: UI Card */}
-                  <div className="w-full lg:w-[516px] h-[400px] sm:h-[500px] lg:h-[560px] relative rounded-[24px] overflow-hidden flex items-center justify-center">
+                  <div className="w-full lg:w-[420px] xl:w-[500px] 2xl:w-[540px] h-[260px] sm:h-[380px] md:h-[440px] lg:h-[500px] relative rounded-2xl sm:rounded-[24px] overflow-hidden flex items-center justify-center shrink-0">
                     {/* Video BG */}
                     <div className="absolute inset-0 z-0">
                       {isMounted && (

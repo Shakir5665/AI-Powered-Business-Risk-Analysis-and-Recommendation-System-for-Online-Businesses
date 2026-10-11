@@ -24,10 +24,10 @@ function Counter({ value, suffix }) {
 
   return (
     <div ref={ref} className="flex justify-center items-baseline gap-[2px]">
-      <motion.span className="text-[#042718] text-[52px] font-semibold leading-[58px] tracking-[-1.8px]">
+      <motion.span className="text-[#042718] text-[36px] sm:text-[44px] lg:text-[52px] font-semibold leading-none tracking-tight">
         {display}
       </motion.span>
-      <span className="text-black/40 text-[42px] font-semibold leading-[48px] tracking-[-2px]">
+      <span className="text-black/40 text-[28px] sm:text-[34px] lg:text-[42px] font-semibold leading-none tracking-tight">
         {suffix}
       </span>
     </div>
@@ -42,15 +42,15 @@ function MetricCard({ number, suffix, title, description, delay }) {
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay }}
-      className="flex flex-col items-start w-full sm:w-[400px]"
+      className="flex flex-col items-start w-full"
     >
-      <div className="flex flex-col items-start w-full sm:w-[294px] p-[20px_24px] gap-2.5 rounded-[24px] bg-white/40 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(4,39,24,0.06)]">
+      <div className="flex flex-col items-start w-full max-w-[294px] p-4 sm:p-5 gap-2 sm:gap-2.5 rounded-2xl sm:rounded-[24px] bg-white/40 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_rgba(4,39,24,0.06)]">
         <Counter value={number} suffix={suffix} />
-        <p className="text-[#042718] text-[18px] font-medium leading-[28px]">
+        <p className="text-[#042718] text-base sm:text-[18px] font-medium leading-snug sm:leading-[28px]">
           {title}
         </p>
       </div>
-      <p className="mt-4 text-[#042718] text-[16px] font-normal leading-[24px] tracking-[-0.3px] opacity-80 line-clamp-2 pr-[20px]">
+      <p className="mt-3 sm:mt-4 text-[#042718] text-sm sm:text-base font-normal leading-relaxed opacity-80 line-clamp-2 pr-2 sm:pr-5">
         {description}
       </p>
     </motion.div>
@@ -180,8 +180,9 @@ export default function TestimonialsSection({ className }) {
   useEffect(() => {
     const handleResizeWidth = () => {
       const width = window.innerWidth;
-      if (width < 640) setCardWidth(width - 48);
-      else if (width < 1024) setCardWidth(500);
+      if (width < 480) setCardWidth(Math.max(260, width - 40));
+      else if (width < 640) setCardWidth(width - 48);
+      else if (width < 1024) setCardWidth(Math.min(500, width - 64));
       else setCardWidth(660);
     };
     handleResizeWidth();
@@ -203,14 +204,10 @@ export default function TestimonialsSection({ className }) {
 
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
-
       <div className={"flex flex-col w-full " + (className || "")}>
         {/* Metrics Section */}
-        <section className="w-full bg-[#F6FDFF] py-16 lg:pt-32 lg:pb-16 overflow-hidden flex justify-center">
-          <div className="w-full max-w-[1248px] px-6 lg:px-0 flex flex-col items-center">
+        <section className="w-full bg-[#F6FDFF] py-14 sm:py-16 lg:pt-32 lg:pb-16 overflow-hidden flex justify-center">
+          <div className="w-full max-w-[1248px] 2xl:max-w-[1400px] px-4 sm:px-6 lg:px-8 flex flex-col items-center">
             <motion.div
               initial={{ y: 10, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
@@ -231,7 +228,7 @@ export default function TestimonialsSection({ className }) {
                   transition: { staggerChildren: 0.015 },
                 },
               }}
-              className="mt-6 sm:mt-8 w-full max-w-[970px] text-center text-[30px] sm:text-[36px] lg:text-[42px] font-semibold leading-[1.2] sm:leading-[44px] lg:leading-[48px] tracking-[-1.5px] sm:tracking-[-2px]"
+              className="mt-6 sm:mt-8 w-full max-w-[970px] text-center text-[24px] sm:text-[30px] md:text-[36px] lg:text-[42px] font-semibold leading-[1.25] sm:leading-[1.2] lg:leading-[48px] tracking-tight sm:tracking-[-1.5px] lg:tracking-[-2px] px-2"
             >
               {"Detecting risks faster, identifying opportunities sooner, and making better product decisions. Let's analyze your business together."
                 .split("")
@@ -251,7 +248,7 @@ export default function TestimonialsSection({ className }) {
                 ))}
             </motion.h2>
 
-            <div className="mt-12 sm:mt-16 lg:mt-20 flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start items-center sm:items-start gap-10 sm:gap-x-6 lg:gap-[24px] w-full">
+            <div className="mt-10 sm:mt-14 lg:mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-6 lg:gap-8 w-full">
               {metrics.map((metric, index) => (
                 <MetricCard
                   key={index}
@@ -267,31 +264,31 @@ export default function TestimonialsSection({ className }) {
         </section>
 
         {/* Testimonial Section */}
-        <section className="w-full bg-[#F6FDFF] py-16 lg:pt-16 lg:pb-32 overflow-hidden flex justify-center">
+        <section className="w-full bg-[#F6FDFF] py-14 sm:py-16 lg:pt-16 lg:pb-32 overflow-hidden flex justify-center">
           <div className="w-full max-w-[1440px] flex flex-col items-center overflow-hidden">
 
-            <div className="w-full max-w-[1248px] px-6 lg:px-0 flex flex-col items-center text-center mt-0 mb-16">
+            <div className="w-full max-w-[1248px] px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center mt-0 mb-10 sm:mb-14 lg:mb-16">
               <div className="inline-flex items-center gap-2 px-3 py-0.5 rounded-full bg-[#138E5F]/[0.05] border border-[#138E5F]/10 mb-4">
                 <Star className="w-3.5 h-3.5 text-[#138E5F] fill-[#138E5F]" />
-                <span className="text-[14px] font-medium text-[#138E5F] tracking-tight">Testimonials</span>
+                <span className="text-[13px] sm:text-[14px] font-medium text-[#138E5F] tracking-tight">Testimonials</span>
               </div>
 
               <h2
-                className="text-[#042718] text-[28px] sm:text-[36px] md:text-[52px] font-semibold leading-tight tracking-tight max-w-[690px] mb-4 lg:mb-6"
+                className="text-[#042718] text-[26px] sm:text-[32px] md:text-[42px] lg:text-[52px] font-semibold leading-tight tracking-tight max-w-[690px] mb-3 sm:mb-4 lg:mb-6 px-1"
                 style={{ fontFamily: "'Onest', sans-serif" }}
               >
                 Trusted by people <i className="text-[rgba(0,0,0,0.40)]">who take</i> control of their business
               </h2>
 
-              <p className="text-[#042718] opacity-80 text-[16px] md:text-[18px] leading-[24px] md:leading-[28px] max-w-[576px]">
+              <p className="text-[#042718] opacity-80 text-sm sm:text-base md:text-[18px] leading-relaxed md:leading-[28px] max-w-[576px] px-2">
                 See how business owners, entrepreneurs, and researchers are using RiskAI to make smarter, data-driven product decisions.
               </p>
             </div>
 
             <div ref={carouselTrackRef} className="relative w-full overflow-visible">
-              <div className="relative flex justify-start items-center overflow-visible min-h-[400px] md:min-h-[500px]">
+              <div className="relative flex justify-start items-center overflow-visible min-h-[340px] sm:min-h-[400px] md:min-h-[500px]">
                 <motion.div
-                  className="flex gap-6 items-center flex-nowrap"
+                  className="flex gap-4 sm:gap-6 items-center flex-nowrap"
                   animate={{
                     x: (carouselWidth / 2) - (cardWidth / 2) - (currentIndex * (cardWidth + gap)),
                   }}
@@ -303,8 +300,8 @@ export default function TestimonialsSection({ className }) {
                       <div
                         key={item.id + "-" + idx}
                         className={
-                          "relative flex flex-col items-center shrink-0 rounded-[24px] md:rounded-[30px] transition-all duration-500 overflow-hidden " +
-                          "p-[32px] md:p-[48px_48px_40px_48px] " +
+                          "relative flex flex-col items-center shrink-0 rounded-2xl md:rounded-[30px] transition-all duration-500 overflow-hidden " +
+                          "p-6 sm:p-8 md:p-12 " +
                           (isActive
                             ? "border border-[rgba(255,255,255,0.1)] shadow-[0_20px_50px_rgba(4,39,24,0.1)]"
                             : "border border-[rgba(4,39,24,0.08)] bg-[rgba(255,255,255,0.20)]")
@@ -323,14 +320,14 @@ export default function TestimonialsSection({ className }) {
                         )}
 
                         <div className="relative z-10 flex flex-col items-center w-full h-full justify-center">
-                          <div className="flex items-center justify-center min-h-[90px] md:min-h-[102px] mb-[48px]">
+                          <div className="flex items-center justify-center min-h-[80px] sm:min-h-[90px] md:min-h-[102px] mb-8 sm:mb-10 md:mb-12">
                             <p
                               className={
                                 "font-medium text-center transition-colors duration-500 " +
                                 (isActive ? "text-white " : "text-[#042718] ") +
                                 (isActive
-                                  ? "text-[20px] md:text-[26px] leading-[28px] md:leading-[34px] line-clamp-4"
-                                  : "text-[18px] md:text-[22px] leading-[24px] md:leading-[30px] line-clamp-3")
+                                  ? "text-base sm:text-xl md:text-[26px] leading-snug md:leading-[34px] line-clamp-4"
+                                  : "text-sm sm:text-lg md:text-[22px] leading-snug md:leading-[30px] line-clamp-3")
                               }
                             >
                               {"\u201c" + item.text + "\u201d"}
@@ -338,13 +335,13 @@ export default function TestimonialsSection({ className }) {
                           </div>
 
                           <div className="flex flex-col items-center">
-                            <div className="w-[48px] h-[48px] rounded-full overflow-hidden mb-[12px] border-2 border-white/20">
+                            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full overflow-hidden mb-3 border-2 border-white/20">
                               <img src={item.avatar} alt={item.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                             </div>
 
                             <p
                               className={
-                                "font-medium text-[16px] md:text-[18px] leading-[28px] text-center mb-[4px] transition-colors duration-500 " +
+                                "font-medium text-sm sm:text-base md:text-[18px] leading-snug text-center mb-1 transition-colors duration-500 " +
                                 (isActive ? "text-white" : "text-[#042718]")
                               }
                             >
@@ -353,7 +350,7 @@ export default function TestimonialsSection({ className }) {
 
                             <p
                               className={
-                                "text-[12px] md:text-[14px] leading-[20px] text-center transition-colors duration-500 " +
+                                "text-[11px] sm:text-xs md:text-sm leading-5 text-center transition-colors duration-500 " +
                                 (isActive ? "text-white/80" : "text-[#042718] opacity-80")
                               }
                             >
@@ -367,20 +364,22 @@ export default function TestimonialsSection({ className }) {
                 </motion.div>
               </div>
 
-              <div className="absolute inset-y-0 left-0 w-[100px] md:w-[180px] z-20 pointer-events-none bg-gradient-to-r from-[#F6FDFF] via-[#F6FDFF]/70 to-transparent" />
-              <div className="absolute inset-y-0 right-0 w-[100px] md:w-[180px] z-20 pointer-events-none bg-gradient-to-l from-[#F6FDFF] via-[#F6FDFF]/70 to-transparent" />
+              <div className="absolute inset-y-0 left-0 w-12 sm:w-[100px] md:w-[180px] z-20 pointer-events-none bg-gradient-to-r from-[#F6FDFF] via-[#F6FDFF]/70 to-transparent" />
+              <div className="absolute inset-y-0 right-0 w-12 sm:w-[100px] md:w-[180px] z-20 pointer-events-none bg-gradient-to-l from-[#F6FDFF] via-[#F6FDFF]/70 to-transparent" />
             </div>
 
-            <div className="w-full max-w-[1248px] flex items-center justify-center gap-3 mt-12">
+            <div className="w-full max-w-[1248px] flex items-center justify-center gap-3 mt-8 sm:mt-12 px-4">
               <button
                 onClick={handlePrev}
-                className="w-[48px] h-[48px] md:w-[60px] md:h-[60px] rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer border-[rgba(4,39,24,0.08)] bg-white/5 hover:bg-white/20"
+                aria-label="Previous testimonial"
+                className="w-11 h-11 sm:w-12 sm:h-12 md:w-[60px] md:h-[60px] rounded-full border transition-all duration-300 flex items-center justify-center cursor-pointer border-[rgba(4,39,24,0.08)] bg-white/5 hover:bg-white/20"
               >
                 <ArrowLeft className="w-5 h-5 md:w-6 md:h-6 text-[#042718]" />
               </button>
               <button
                 onClick={handleNext}
-                className="w-[48px] h-[48px] md:w-[60px] md:h-[60px] rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer bg-[#042718] hover:bg-[#042718]/90 shadow-lg"
+                aria-label="Next testimonial"
+                className="w-11 h-11 sm:w-12 sm:h-12 md:w-[60px] md:h-[60px] rounded-full transition-all duration-300 flex items-center justify-center cursor-pointer bg-[#042718] hover:bg-[#042718]/90 shadow-lg"
               >
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </button>

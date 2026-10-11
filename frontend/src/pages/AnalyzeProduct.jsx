@@ -19,28 +19,28 @@ const STEPS = [
 
 function StepBar({ current }) {
   return (
-    <div className="flex items-center justify-center gap-0 mb-8">
+    <div className="flex items-center justify-center gap-0 mb-6 sm:mb-8 w-full px-1 overflow-x-auto scrollbar-hide">
       {STEPS.map((step, i) => {
         const done = current > step.id;
         const active = current === step.id;
         return (
           <React.Fragment key={step.id}>
-            <div className="flex flex-col items-center gap-1">
+            <div className="flex flex-col items-center gap-1 min-w-[64px] sm:min-w-[80px]">
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
+                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm font-semibold transition-all duration-300 ${
                   done ? "bg-[#198F38] text-white" :
                   active ? "bg-[#042718] text-white ring-4 ring-[#042718]/15" :
                   "bg-[#042718]/08 text-[#042718]/40"
                 }`}
               >
-                {done ? <CheckCircle size={16} /> : step.id}
+                {done ? <CheckCircle size={14} className="sm:w-4 sm:h-4" /> : step.id}
               </div>
-              <span className={`text-xs font-medium ${active ? "text-[#042718]" : "text-[#042718]/40"}`}>
-                {step.label}
+              <span className={`text-[10px] sm:text-xs font-medium text-center leading-tight ${active ? "text-[#042718]" : "text-[#042718]/40"}`}>
+                {step.id === 1 ? "URL" : step.id === 2 ? "Preview" : "Analyze"}
               </span>
             </div>
             {i < STEPS.length - 1 && (
-              <div className={`h-px w-16 sm:w-24 mx-1 mb-4 transition-all duration-500 ${done ? "bg-[#198F38]" : "bg-[#042718]/10"}`} />
+              <div className={`h-px w-8 sm:w-16 md:w-24 mx-0.5 sm:mx-1 mb-4 transition-all duration-500 shrink-0 ${done ? "bg-[#198F38]" : "bg-[#042718]/10"}`} />
             )}
           </React.Fragment>
         );
@@ -164,8 +164,8 @@ function TerminalPanel({ logs, jobStatus }) {
 
       {/* Log body */}
       <div
-        className="p-4 overflow-y-auto flex flex-col gap-0.5"
-        style={{ height: "280px", maxHeight: "280px" }}
+        className="p-3 sm:p-4 overflow-y-auto flex flex-col gap-0.5"
+        style={{ height: "220px", maxHeight: "40vh" }}
       >
         {logs.length === 0 ? (
           <span style={{ color: "#4ade80/40", fontFamily: "monospace", fontSize: "12px" }}>
@@ -302,7 +302,7 @@ export default function AnalyzeProduct() {
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="https://www.daraz.lk/products/..."
-                  className="w-full px-4 py-3.5 pr-32 rounded-xl border border-[#042718]/12 bg-[#F6FDFF] text-[#042718] placeholder:text-[#042718]/30 text-sm outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/10 transition-all"
+                  className="w-full px-4 py-3.5 pr-28 sm:pr-32 rounded-xl border border-[#042718]/12 bg-[#F6FDFF] text-[#042718] placeholder:text-[#042718]/30 text-sm outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/10 transition-all"
                 />
                 {platform && (
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-full bg-[#198F38]/10 text-[#198F38] text-xs font-semibold">
@@ -444,24 +444,25 @@ export default function AnalyzeProduct() {
             className="w-full bg-white rounded-2xl border border-[#042718]/08 shadow-sm p-6 sm:p-8"
           >
             {/* Header row */}
-            <div className="flex items-center gap-4 mb-5">
-              <motion.div
-                animate={{ scale: [1, 1.08, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-14 h-14 rounded-2xl bg-[#198F38]/10 flex items-center justify-center shrink-0"
-              >
-                <ScanSearch size={26} className="text-[#198F38]" />
-              </motion.div>
-              <div className="flex-1 min-w-0">
-                <h2 className="text-[#042718] text-xl font-semibold" style={{ fontFamily: "'Onest', sans-serif" }}>
-                  Analyzing Product
-                </h2>
-                <p className="text-[#042718]/55 text-sm truncate">
-                  {jobStatus?.currentStep || jobStatus?.message || "AI is scraping and analyzing reviews..."}
-                </p>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-5">
+              <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                <motion.div
+                  animate={{ scale: [1, 1.08, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#198F38]/10 flex items-center justify-center shrink-0"
+                >
+                  <ScanSearch size={24} className="text-[#198F38]" />
+                </motion.div>
+                <div className="flex-1 min-w-0">
+                  <h2 className="text-[#042718] text-lg sm:text-xl font-semibold" style={{ fontFamily: "'Onest', sans-serif" }}>
+                    Analyzing Product
+                  </h2>
+                  <p className="text-[#042718]/55 text-xs sm:text-sm truncate">
+                    {jobStatus?.currentStep || jobStatus?.message || "AI is scraping and analyzing reviews..."}
+                  </p>
+                </div>
               </div>
-              {/* Status badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#042718]/05 text-[#042718]/60 text-xs shrink-0">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#042718]/05 text-[#042718]/60 text-xs shrink-0 self-start sm:self-auto">
                 {["COMPLETED", "DONE", "FINISHED", "SUCCESS"].includes(String(jobStatus?.status || "").toUpperCase())
                   ? <CheckCircle size={11} className="text-[#198F38]" />
                   : <Loader2 size={11} className="animate-spin text-[#198F38]" />

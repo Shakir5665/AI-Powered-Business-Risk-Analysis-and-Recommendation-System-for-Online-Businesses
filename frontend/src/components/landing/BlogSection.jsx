@@ -18,10 +18,10 @@ function BlogCard({ image, date, title, description, tags, imageTop = true, dela
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
-      className="group cursor-pointer flex flex-col items-start bg-white hover:bg-[#F6FDFF] rounded-[24px] overflow-hidden border border-[#042718]/10 shadow-[0_4px_24px_rgba(4,39,24,0.02)] hover:shadow-[0_20px_60px_rgba(4,39,24,0.08)] transition-all duration-500 w-full lg:w-[612px]"
+      className="group cursor-pointer flex flex-col items-start bg-white hover:bg-[#F6FDFF] rounded-2xl sm:rounded-[24px] overflow-hidden border border-[#042718]/10 shadow-[0_4px_24px_rgba(4,39,24,0.02)] hover:shadow-[0_20px_60px_rgba(4,39,24,0.08)] transition-all duration-500 w-full"
     >
       {imageTop && (
-        <div className="w-full h-[300px] md:h-[440px] overflow-hidden">
+        <div className="w-full h-[220px] sm:h-[300px] md:h-[380px] lg:h-[440px] overflow-hidden">
           <motion.img
             src={image}
             alt={title}
@@ -30,24 +30,24 @@ function BlogCard({ image, date, title, description, tags, imageTop = true, dela
         </div>
       )}
 
-      <div className="flex flex-col p-6 md:p-[40px] gap-4 w-full self-stretch lg:w-[612px]">
-        <span className="text-[#042718] font-sans text-base md:text-[18px] leading-[28px] opacity-80">
+      <div className="flex flex-col p-5 sm:p-6 md:p-8 lg:p-10 gap-3 sm:gap-4 w-full self-stretch">
+        <span className="text-[#042718] font-sans text-sm sm:text-base md:text-[18px] leading-relaxed opacity-80">
           {date}
         </span>
         <h3
-          className="text-[#042718] text-[28px] md:text-[34px] font-semibold leading-[1.1] md:leading-[38px] tracking-[-1px]"
+          className="text-[#042718] text-xl sm:text-2xl md:text-[28px] lg:text-[34px] font-semibold leading-[1.2] md:leading-[1.1] tracking-tight"
           style={{ fontFamily: "'Onest', sans-serif" }}
         >
           {title}
         </h3>
-        <p className="text-[#042718] font-sans text-base md:text-[18px] leading-[28px] opacity-80">
+        <p className="text-[#042718] font-sans text-sm sm:text-base md:text-[18px] leading-relaxed opacity-80">
           {description}
         </p>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-2 sm:gap-3">
           {tags.map((tag, i) => (
             <div
               key={i}
-              className={"px-[10px] py-[3px] rounded-[6px] text-center font-sans text-[14px] font-medium leading-[20px] " + getTagStyles(tag)}
+              className={"px-2.5 py-1 rounded-md text-center font-sans text-xs sm:text-sm font-medium leading-5 " + getTagStyles(tag)}
             >
               {tag}
             </div>
@@ -56,7 +56,7 @@ function BlogCard({ image, date, title, description, tags, imageTop = true, dela
       </div>
 
       {!imageTop && (
-        <div className="w-full h-[300px] md:h-[440px] overflow-hidden">
+        <div className="w-full h-[220px] sm:h-[300px] md:h-[380px] lg:h-[440px] overflow-hidden">
           <motion.img
             src={image}
             alt={title}
@@ -70,79 +70,71 @@ function BlogCard({ image, date, title, description, tags, imageTop = true, dela
 
 export default function BlogSection({ className }) {
   return (
-    <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <section
+      id="blog"
+      className={"w-full bg-[#FFFFFF] py-14 sm:py-16 md:py-20 lg:py-[100px] flex justify-center " + (className || "")}
+    >
+      <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-12 xl:px-[96px]">
+        <div className="w-full max-w-[1248px] 2xl:max-w-[1400px] mx-auto">
+          <div className="flex flex-col items-center text-center mb-10 sm:mb-12 md:mb-16 lg:mb-[80px]">
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E4F3EB] border border-[#138E5F]/10 mb-5 sm:mb-6"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-[#138E5F]" />
+              <span className="text-[#138E5F] text-[12px] sm:text-[13px] font-sans font-medium uppercase tracking-wider">
+                Research & Insights
+              </span>
+            </motion.div>
 
-      <section
-        id="blog"
-        className={"w-full bg-[#FFFFFF] py-16 md:py-[100px] flex justify-center " + (className || "")}
-      >
-        <div className="w-full max-w-[1440px] px-6 lg:px-[96px]">
-          <div className="w-full max-w-[1248px] mx-auto">
-            {/* Header Content */}
-            <div className="flex flex-col items-center text-center mb-12 md:mb-[80px]">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E4F3EB] border border-[#138E5F]/10 mb-6"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#138E5F]" />
-                <span className="text-[#138E5F] text-[13px] font-sans font-medium uppercase tracking-wider">
-                  Research & Insights
-                </span>
-              </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="text-[26px] sm:text-[32px] md:text-[40px] lg:text-[52px] font-semibold text-[#042718] leading-[1.15] md:leading-[1.1] tracking-tight md:tracking-[-2px] mb-4 sm:mb-6 max-w-3xl px-1"
+              style={{ fontFamily: "'Onest', sans-serif" }}
+            >
+              Insights to help you{" "}
+              <span className="italic text-[rgba(4,39,24,0.40)]">mitigate</span> business risk
+            </motion.h2>
 
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="text-[32px] sm:text-[40px] md:text-[52px] font-semibold text-[#042718] leading-[1.1] md:leading-[58px] tracking-tight md:tracking-[-2px] mb-6 max-w-3xl"
-                style={{ fontFamily: "'Onest', sans-serif" }}
-              >
-                Insights to help you{" "}
-                <span className="italic text-[rgba(4,39,24,0.40)]">mitigate</span> business risk
-              </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-sm sm:text-[15px] md:text-[18px] text-[#042718] leading-relaxed md:leading-[28px] max-w-[612px] font-sans opacity-60 px-2"
+            >
+              Learn how AI-powered sentiment analysis and business risk scoring can transform the way you manage your online products.
+            </motion.p>
+          </div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="text-[15px] md:text-[18px] text-[#042718] leading-[1.6] md:leading-[28px] max-w-[612px] font-sans opacity-60"
-              >
-                Learn how AI-powered sentiment analysis and business risk scoring can transform the way you manage your online products.
-              </motion.p>
-            </div>
-
-            {/* Blog Cards Grid */}
-            <div className="flex flex-col lg:flex-row gap-6 justify-center">
-              <BlogCard
-                image="https://cdn.jiro.build/Amox/All%20Images/blogs-img-01.jpg"
-                date="12 Jan 2026"
-                title="How AI sentiment analysis can reveal hidden product risks"
-                description="Discover how analyzing customer reviews with NLP models can expose critical quality, delivery, and pricing risks that manual review reading misses entirely."
-                tags={["AI", "Research", "NLP"]}
-                imageTop={true}
-                delay={0.3}
-              />
-              <BlogCard
-                image="https://cdn.jiro.build/Amox/All%20Images/blogs-img-02.jpg"
-                date="28 Mar 2026"
-                title="Understanding the Business Risk Index: A new standard for e-commerce evaluation"
-                description="Explore how the Business Risk Index (BRI) quantifies product risk into a 0–100 score, giving sellers a clear, data-driven view of their business health."
-                tags={["AI", "Research", "Tech"]}
-                imageTop={false}
-                delay={0.4}
-              />
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6">
+            <BlogCard
+              image="https://cdn.jiro.build/Amox/All%20Images/blogs-img-01.jpg"
+              date="12 Jan 2026"
+              title="How AI sentiment analysis can reveal hidden product risks"
+              description="Discover how analyzing customer reviews with NLP models can expose critical quality, delivery, and pricing risks that manual review reading misses entirely."
+              tags={["AI", "Research", "NLP"]}
+              imageTop={true}
+              delay={0.3}
+            />
+            <BlogCard
+              image="https://cdn.jiro.build/Amox/All%20Images/blogs-img-02.jpg"
+              date="28 Mar 2026"
+              title="Understanding the Business Risk Index: A new standard for e-commerce evaluation"
+              description="Explore how the Business Risk Index (BRI) quantifies product risk into a 0–100 score, giving sellers a clear, data-driven view of their business health."
+              tags={["AI", "Research", "Tech"]}
+              imageTop={false}
+              delay={0.4}
+            />
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

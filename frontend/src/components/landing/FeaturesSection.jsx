@@ -16,7 +16,7 @@ function FeatureCard({ title, description, icon: Icon, uiSrc, className = "", de
       transition={{ duration: 0.8, delay, ease: [0.21, 0.45, 0.32, 0.9] }}
       className={"flex flex-col items-start shrink-0 border border-[#042718]/10 overflow-hidden bg-white group w-full rounded-[24px] sm:rounded-[32px] " + (className || "")}
     >
-      <div className="relative w-full h-[320px] sm:h-[400px] lg:h-[440px] overflow-hidden flex items-center justify-center p-6 sm:p-8 bg-[#F9FAFB]">
+      <div className="relative w-full h-[240px] sm:h-[320px] md:h-[400px] lg:h-[440px] overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8 bg-[#F9FAFB]">
         {isMounted && (
           <img
             src={bgImage}
@@ -90,15 +90,11 @@ export default function FeaturesSection({ className }) {
 
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" crossOrigin="anonymous" />
-
       <section
         id="features"
-        className={"w-full bg-[#FFFFFF] py-20 lg:py-32 overflow-hidden " + (className || "")}
+        className={"w-full bg-[#FFFFFF] py-16 sm:py-20 lg:py-32 overflow-hidden " + (className || "")}
       >
-        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[1280px] 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center">
 
             <div className="flex flex-col items-center">
@@ -110,7 +106,7 @@ export default function FeaturesSection({ className }) {
                 className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#198F38]/10 bg-[#198F38]/5 whitespace-nowrap"
               >
                 <Sparkles className="w-4 h-4 text-[#198F38]" />
-                <span className="text-[#198F38] text-center font-inter text-base font-normal leading-6 tracking-[-0.3px]">
+                <span className="text-[#198F38] text-center font-inter text-sm sm:text-base font-normal leading-6 tracking-[-0.3px]">
                   Our Powerful Features
                 </span>
               </motion.div>
@@ -120,7 +116,7 @@ export default function FeaturesSection({ className }) {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="mt-6 w-full max-w-[686px] text-[#042718] text-center text-[32px] sm:text-[40px] lg:text-[52px] font-semibold leading-tight lg:leading-[58px] tracking-[-1.2px] sm:tracking-[-1.8px]"
+                className="mt-6 w-full max-w-[686px] 2xl:max-w-[800px] text-[#042718] text-center text-[28px] sm:text-[40px] lg:text-[52px] font-semibold leading-tight lg:leading-[58px] tracking-tight sm:tracking-[-1.8px] px-2"
                 style={{ fontFamily: "'Onest', sans-serif" }}
               >
                 Understand Your Product
@@ -139,7 +135,7 @@ export default function FeaturesSection({ className }) {
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="mt-3 w-full max-w-[514px] text-[#042718] text-center font-inter text-base sm:text-lg font-normal leading-relaxed sm:leading-7 opacity-80"
+                className="mt-3 w-full max-w-[514px] 2xl:max-w-[620px] text-[#042718] text-center font-inter text-base sm:text-lg font-normal leading-relaxed sm:leading-7 opacity-80 px-2"
               >
                 Everything you need to detect risks, analyze customer sentiment, and make smarter product decisions in one powerful platform.
               </motion.p>

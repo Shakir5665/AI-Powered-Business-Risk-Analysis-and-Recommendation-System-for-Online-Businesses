@@ -26,31 +26,33 @@ function FeatureCard({ logo, description, percentage, statLabel, bgColor, delay 
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
       style={{ backgroundColor: bgColor }}
-      className="flex w-full lg:w-[400px] p-6 md:p-8 flex-col items-start rounded-[24px]"
+      className="flex w-full p-6 md:p-8 flex-col items-start justify-between rounded-[24px] h-full"
     >
-      <div className="flex items-center gap-[12px] mb-[20px]">
-        <div
-          className="h-[36px] flex items-center"
-          style={{
-            filter: "brightness(0) saturate(100%) invert(11%) sepia(21%) saturate(2304%) hue-rotate(111deg) brightness(91%) contrast(100%)",
-          }}
-        >
-          {logo}
+      <div className="w-full">
+        <div className="flex items-center gap-[12px] mb-[20px]">
+          <div
+            className="h-[36px] flex items-center"
+            style={{
+              filter: "brightness(0) saturate(100%) invert(11%) sepia(21%) saturate(2304%) hue-rotate(111deg) brightness(91%) contrast(100%)",
+            }}
+          >
+            {logo}
+          </div>
         </div>
+
+        <p className="font-sans text-[16px] md:text-[18px] font-medium leading-[24px] md:leading-[28px] text-[#042718] opacity-80">
+          {description}
+        </p>
       </div>
 
-      <p className="font-sans text-[16px] md:text-[18px] font-medium leading-[24px] md:leading-[28px] text-[#042718] opacity-80 min-h-0 md:min-h-[112px]">
-        {description}
-      </p>
-
-      <div className="mt-12 md:mt-[80px]">
+      <div className="mt-8 md:mt-12 lg:mt-16 w-full">
         <h2
-          className="font-heading text-[40px] md:text-[52px] font-semibold leading-[46px] md:leading-[58px] tracking-[-1.2px] md:tracking-[-1.8px] text-[#042718]"
+          className="font-heading text-[38px] md:text-[48px] lg:text-[52px] font-semibold leading-[44px] md:leading-[58px] tracking-[-1.2px] md:tracking-[-1.8px] text-[#042718]"
           style={{ fontFamily: "'Onest', sans-serif" }}
         >
           <Counter value={percentage} />
         </h2>
-        <p className="mt-[12px] md:mt-[16px] font-sans text-[16px] md:text-[18px] font-normal leading-[24px] md:leading-[28px] text-[#042718] opacity-80">
+        <p className="mt-[10px] md:mt-[14px] font-sans text-[15px] md:text-[17px] font-normal leading-[22px] md:leading-[26px] text-[#042718] opacity-80">
           {statLabel}
         </p>
       </div>
@@ -108,18 +110,18 @@ export default function MetricsSection({ className }) {
     <>
       <section
         id="about"
-        className={"w-full bg-[#F6FDFF] py-20 lg:py-32 flex justify-center " + (className || "")}
+        className={"w-full bg-[#F6FDFF] py-16 sm:py-20 lg:py-32 flex justify-center " + (className || "")}
       >
-        <div className="w-full max-w-[1440px] px-6 lg:px-[96px]">
-          <div className="w-full max-w-[1248px] mx-auto">
+        <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
+          <div className="w-full max-w-[1248px] 2xl:max-w-[1400px] mx-auto">
             {/* Header Row */}
-            <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 md:mb-[64px] gap-8">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-10 md:mb-[64px] gap-6 sm:gap-8">
               <motion.h1
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="max-w-[584px] text-[36px] md:text-[52px] font-semibold leading-[42px] md:leading-[58px] tracking-[-1.2px] md:tracking-[-1.8px] text-[#042718]"
+                className="max-w-[584px] text-[26px] sm:text-[36px] md:text-[44px] lg:text-[52px] font-semibold leading-tight md:leading-[1.15] lg:leading-[58px] tracking-tight md:tracking-[-1.5px] lg:tracking-[-1.8px] text-[#042718]"
                 style={{ fontFamily: "'Onest', sans-serif" }}
               >
                 Smarter risk analysis for scaling{" "}
@@ -144,7 +146,7 @@ export default function MetricsSection({ className }) {
                 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate("/register")}
-                className="flex items-center h-[56px] min-w-fit w-max bg-[#042718] rounded-full group cursor-pointer transition-colors duration-300 hover:bg-[#063b25] overflow-hidden gap-[12px]"
+                className="flex items-center h-12 sm:h-[56px] min-w-fit w-full sm:w-max justify-between sm:justify-start bg-[#042718] rounded-full group cursor-pointer transition-colors duration-300 hover:bg-[#063b25] overflow-hidden gap-3"
               >
                 <motion.div
                   layout="position"
@@ -166,7 +168,7 @@ export default function MetricsSection({ className }) {
             </div>
 
             {/* Cards Grid */}
-            <div className="flex flex-col lg:flex-row gap-[24px]">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
               {cards.map((card, idx) => (
                 <FeatureCard
                   key={idx}

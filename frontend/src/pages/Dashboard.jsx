@@ -140,12 +140,12 @@ export default function Dashboard() {
       </motion.div>
 
       {/* ── Stats Cards ── */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {STATS.map((stat, i) => (
           <motion.div
             key={stat.label}
             {...fadeUp(0.05 * i + 0.1)}
-            className="bg-white rounded-2xl p-5 border border-[#042718]/06 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-white rounded-2xl p-4 sm:p-5 border border-[#042718]/06 shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="flex items-center justify-between mb-3">
               <div
@@ -159,7 +159,7 @@ export default function Dashboard() {
             {stat.isRisk && stat.value !== "—" ? (
               <RiskBadge level={stat.value} />
             ) : (
-              <p className="text-[#042718] text-2xl font-bold" style={{ fontFamily: "'Onest', sans-serif" }}>
+              <p className="text-[#042718] text-xl sm:text-2xl font-bold" style={{ fontFamily: "'Onest', sans-serif" }}>
                 {stat.value}
               </p>
             )}
@@ -170,7 +170,7 @@ export default function Dashboard() {
       {/* ── Recent Analyses ── */}
       <motion.div {...fadeUp(0.25)} className="bg-white rounded-2xl border border-[#042718]/06 shadow-sm overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#042718]/06">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-[#042718]/06">
           <div className="flex items-center gap-2">
             <Clock size={16} className="text-[#042718]/40" />
             <h3 className="text-[#042718] font-semibold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
@@ -221,8 +221,8 @@ export default function Dashboard() {
         {/* Table — desktop */}
         {!loading && !error && history.length > 0 && (
           <>
-            {/* Desktop table */}
-            <div className="hidden sm:block overflow-x-auto">
+            {/* Desktop / tablet table */}
+            <div className="hidden md:block overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="bg-[#F6FDFF]">
@@ -289,8 +289,8 @@ export default function Dashboard() {
               </table>
             </div>
 
-            {/* Mobile cards */}
-            <div className="sm:hidden flex flex-col divide-y divide-[#042718]/06">
+            {/* Mobile / small tablet cards */}
+            <div className="md:hidden flex flex-col divide-y divide-[#042718]/06">
               {history.map((item) => (
                 <div key={item.analysisId} className="flex items-center gap-3 px-4 py-3">
                   {item.imageUrl ? (

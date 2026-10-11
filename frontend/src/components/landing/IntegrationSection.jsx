@@ -84,14 +84,9 @@ export default function IntegrationSection({ className }) {
   const isLargeScreen = isMounted && windowWidth >= 1024;
 
   return (
-    <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
-
-      <section className={"w-full bg-[#F4FAFB] py-16 md:py-[100px] overflow-hidden relative flex justify-center " + (className || "")}>
-        <div className="w-full max-w-[1440px] px-6 lg:px-[96px]">
-          <div className="w-full max-w-[1248px] mx-auto">
+    <section className={"w-full bg-[#F4FAFB] py-16 md:py-24 2xl:py-32 overflow-hidden relative flex justify-center " + (className || "")}>
+      <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-12 2xl:px-16">
+        <div className="w-full max-w-[1248px] 2xl:max-w-[1400px] mx-auto">
 
             {/* Header Content */}
             <div className="flex flex-col items-center text-center mb-12 md:mb-[80px]">
@@ -278,10 +273,10 @@ export default function IntegrationSection({ className }) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
                 viewport={{ once: true }}
-                className="inline-flex items-center gap-3 px-5 md:px-[24px] py-2 md:py-[11px] rounded-full border border-[#138E5F]/15 bg-white/50 shadow-[0_4px_24px_rgba(19,142,95,0.03)]"
+                className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2.5 md:py-[11px] rounded-2xl sm:rounded-full border border-[#138E5F]/15 bg-white/50 shadow-[0_4px_24px_rgba(19,142,95,0.03)] text-center sm:text-left max-w-full"
               >
-                <ShieldCheck className="w-5 h-5 text-[#138E5F]" />
-                <p className="text-[13px] md:text-[15px] font-sans">
+                <ShieldCheck className="w-5 h-5 text-[#138E5F] shrink-0" />
+                <p className="text-[12px] sm:text-[13px] md:text-[15px] font-sans">
                   <span className="text-[#138E5F] font-semibold">Secure & Private.</span>{" "}
                   <span className="text-[#042718]/40">Your data is encrypted and never shared with third parties.</span>
                 </p>
@@ -305,6 +300,5 @@ export default function IntegrationSection({ className }) {
           </div>
         </div>
       </section>
-    </>
   );
 }

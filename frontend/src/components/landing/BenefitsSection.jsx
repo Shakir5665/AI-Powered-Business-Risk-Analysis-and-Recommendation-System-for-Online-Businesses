@@ -121,25 +121,21 @@ export default function BenefitsSection({ className }) {
 
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet" crossOrigin="anonymous" />
-
-      <section className={"w-full bg-white py-16 md:py-24 lg:py-[120px] flex justify-center " + (className || "")}>
-        <div className="w-full max-w-[1440px] px-6 lg:px-[96px]">
-          <div className="w-full max-w-[1248px] mx-auto">
-            <div className="flex flex-col lg:flex-row items-start gap-16 lg:gap-[48px] justify-between">
+      <section className={"w-full bg-white py-16 sm:py-20 md:py-24 lg:py-[120px] flex justify-center " + (className || "")}>
+        <div className="w-full max-w-[1440px] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-12 xl:px-16 2xl:px-24">
+          <div className="w-full max-w-[1248px] 2xl:max-w-[1400px] mx-auto">
+            <div className="flex flex-col lg:flex-row items-start gap-12 sm:gap-16 lg:gap-[48px] justify-between">
 
               {/* Left Column - Sticky */}
-              <div className="w-full lg:max-w-[622px] flex flex-col items-start lg:sticky lg:top-[120px] self-start">
+              <div className="w-full lg:max-w-[580px] xl:max-w-[622px] flex flex-col items-start lg:sticky lg:top-[120px] self-start">
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="px-4 py-2 bg-[#F2FBF6] border border-[#138E5F]/15 rounded-full flex items-center gap-2 mb-8"
+                  className="px-3.5 sm:px-4 py-1.5 sm:py-2 bg-[#F2FBF6] border border-[#138E5F]/15 rounded-full flex items-center gap-2 mb-6 sm:mb-8"
                 >
                   <Sparkles className="w-4 h-4 text-[#138E5F] fill-[#138E5F]" />
-                  <span className="text-[#138E5F] font-sans text-sm font-medium">Benefits</span>
+                  <span className="text-[#138E5F] font-sans text-xs sm:text-sm font-medium">Benefits</span>
                 </motion.div>
 
                 <motion.h2
@@ -147,7 +143,7 @@ export default function BenefitsSection({ className }) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-                  className="text-[#042718] text-[32px] sm:text-[42px] md:text-[52px] font-semibold leading-[38px] sm:leading-[48px] md:leading-[58px] tracking-[-1.2px] md:tracking-[-1.8px] mb-3"
+                  className="text-[#042718] text-[28px] sm:text-[38px] md:text-[48px] lg:text-[52px] font-semibold leading-[1.2] sm:leading-[48px] md:leading-[58px] tracking-tight sm:tracking-[-1.2px] md:tracking-[-1.8px] mb-3"
                   style={{ fontFamily: "'Onest', sans-serif" }}
                 >
                   Take full control of your business risk with{" "}
@@ -159,12 +155,12 @@ export default function BenefitsSection({ className }) {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  className="text-[#042718] font-sans text-lg md:text-[20px] font-normal leading-[24px] md:leading-[30px] opacity-80 mb-16 max-w-[560px]"
+                  className="text-[#042718] font-sans text-base sm:text-lg md:text-[20px] font-normal leading-relaxed md:leading-[30px] opacity-80 mb-8 sm:mb-12 lg:mb-16 max-w-[560px]"
                 >
                   Make smarter product decisions with powerful AI tools designed to simplify risk detection, surface customer insights, and drive better business outcomes.
                 </motion.p>
 
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {tags.map((tag, idx) => (
                     <motion.span
                       key={tag}
@@ -172,7 +168,7 @@ export default function BenefitsSection({ className }) {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.3 + idx * 0.1, ease: "easeOut" }}
-                      className="px-6 py-3 border border-[#042718]/10 rounded-full text-[#042718] font-sans text-[16px] md:text-[18px] font-normal hover:bg-[#F6FDFF] transition-colors cursor-default"
+                      className="px-4 sm:px-6 py-2 sm:py-3 border border-[#042718]/10 rounded-full text-[#042718] font-sans text-sm sm:text-base md:text-[18px] font-normal hover:bg-[#F6FDFF] transition-colors cursor-default"
                     >
                       {tag}
                     </motion.span>
