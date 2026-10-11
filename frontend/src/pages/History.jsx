@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
   Search, SlidersHorizontal, ChevronLeft, ChevronRight,
-  ExternalLink, Package, Loader2, AlertCircle, ScanSearch,
-  Trash2,
+  Package, Loader2, AlertCircle, ScanSearch, Trash2,
 } from "lucide-react";
 import { historyAPI } from "../api/endpoints";
 import { formatDate } from "../utils/helpers";
@@ -99,14 +98,20 @@ export default function History() {
 
   useEffect(() => { load(); }, [load]);
 
-  const handleDelete = async (analysisId, e) => {
-    e.stopPropagation();
-    if (!window.confirm("Delete this analysis record?")) return;
+  const [deleteTarget, setDeleteTarget] = useState(null);
+  const [deleting, setDeleting] = useState(false);
+
+  const confirmDelete = async () => {
+    if (!deleteTarget?.id) return;
+    setDeleting(true);
     try {
-      await historyAPI.deleteAnalysis(analysisId);
+      await historyAPI.deleteAnalysis(deleteTarget.id);
+      setDeleteTarget(null);
       load();
     } catch {
       // ignore
+    } finally {
+      setDeleting(false);
     }
   };
 
@@ -221,7 +226,7 @@ export default function History() {
               <table className="w-full text-left">
                 <thead>
                   <tr className="bg-slate-100/90 border-b border-slate-200">
-                    {["Product Name", "Risk Score", "Safety Status", "Reviews", "Quality Risk", "Delivery Risk", "Seller Trust", "Date", "Actions"].map((h) => (
+                    {["Product Name", "Risk Score", "Safety Status", "Reviews", "Date", "Actions"].map((h) => (
                       <th key={h} className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider whitespace-nowrap">
                         {h}
                       </th>
@@ -257,25 +262,18 @@ export default function History() {
                         <td className="px-4 py-3.5"><BriScore score={item.businessRiskIndex} /></td>
                         <td className="px-4 py-3.5"><RiskBadge level={item.businessRiskLevel} /></td>
                         <td className="px-4 py-3.5 text-slate-900 font-bold text-sm">{item.totalReviews}</td>
-                        <td className="px-4 py-3.5 text-slate-800 font-medium text-sm">{parseFloat(item.qualityRiskScore || 0).toFixed(1)}</td>
-                        <td className="px-4 py-3.5 text-slate-800 font-medium text-sm">{parseFloat(item.deliveryRiskScore || 0).toFixed(1)}</td>
-                        <td className="px-4 py-3.5 text-slate-800 font-medium text-sm">{parseFloat(item.trustRiskScore || 0).toFixed(1)}</td>
                         <td className="px-4 py-3.5 text-slate-600 text-xs font-medium whitespace-nowrap">{formatDate(item.createdAt)}</td>
                         <td className="px-4 py-3.5">
-                          <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+                          <div className="flex items-center" onClick={(e) => e.stopPropagation()}>
                             <button
-                              onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
-                              className="p-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-600 hover:text-white transition-all"
-                              title="View Full Report"
-                            >
-                              <ExternalLink size={14} />
-                            </button>
-                            <button
-                              onClick={(e) => handleDelete(item.analysisId, e)}
-                              className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-all"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setDeleteTarget({ id: item.analysisId, title: item.productTitle });
+                              }}
+                              className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50 transition-all cursor-pointer group"
                               title="Delete Analysis"
                             >
-                              <Trash2 size={14} />
+                              <Trash2 size={16} className="transition-transform group-hover:scale-110" />
                             </button>
                           </div>
                         </td>
@@ -309,7 +307,16 @@ export default function History() {
                     </div>
                     <p className="text-[#042718]/40 text-xs mt-0.5">{formatDate(item.createdAt)}</p>
                   </div>
-                  <ExternalLink size={14} className="text-[#198F38] shrink-0" />
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setDeleteTarget({ id: item.analysisId, title: item.productTitle });
+                    }}
+                    className="p-2 text-slate-400 hover:text-red-600 transition-colors shrink-0 cursor-pointer"
+                    title="Delete Analysis"
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               ))}
             </div>
@@ -357,6 +364,72 @@ export default function History() {
           </button>
         </motion.div>
       )}
+
+      {/* ── In-App Delete Confirmation Window ── */}
+      <AnimatePresence>
+        {deleteTarget && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 12 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl border border-slate-200 shadow-2xl max-w-md w-full p-6 flex flex-col gap-4"
+            >
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center shrink-0 border border-red-100">
+                  <Trash2 size={22} />
+                </div>
+                <div>
+                  <h3 className="text-slate-900 font-bold text-base leading-snug">
+                    Confirm Deletion
+                  </h3>
+                  <p className="text-slate-500 text-xs">
+                    This action will permanently delete this analysis record.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Are you sure you want to delete the record for{" "}
+                <span className="font-semibold text-slate-900">
+                  "{deleteTarget.title || "this product"}"
+                </span>?
+              </p>
+
+              <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-slate-100">
+                <button
+                  type="button"
+                  disabled={deleting}
+                  onClick={() => setDeleteTarget(null)}
+                  className="px-4 py-2 rounded-xl text-slate-700 bg-slate-100 hover:bg-slate-200 text-xs sm:text-sm font-semibold transition-colors cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  disabled={deleting}
+                  onClick={confirmDelete}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-white bg-red-600 hover:bg-red-700 text-xs sm:text-sm font-semibold transition-colors shadow-sm cursor-pointer disabled:opacity-60"
+                >
+                  {deleting ? (
+                    <>
+                      <Loader2 size={15} className="animate-spin" />
+                      <span>Deleting...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Trash2 size={15} />
+                      <span>Delete Record</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -53,83 +53,62 @@ function formatCheckedOn(isoString) {
 }
 
 const RISK_BADGE = {
-  VERY_LOW:  { label: "Very Low Risk", bg: "bg-[#E6F8EF] border border-[#A7E7C5]", text: "text-[#107E44] font-semibold", dot: "bg-[#107E44]" },
-  LOW:       { label: "Low Risk",      bg: "bg-[#E6F8EF] border border-[#A7E7C5]", text: "text-[#107E44] font-semibold", dot: "bg-[#107E44]" },
-  MEDIUM:    { label: "Moderate Risk", bg: "bg-[#FEF5E7] border border-[#FCD8A2]", text: "text-[#B45309] font-semibold", dot: "bg-[#D97706]" },
-  HIGH:      { label: "High Risk",     bg: "bg-[#FEECEB] border border-[#FCA5A5]", text: "text-[#C53030] font-semibold", dot: "bg-[#E53E3E]" },
-  CRITICAL:  { label: "Critical Risk", bg: "bg-[#FEECEB] border border-[#FCA5A5]", text: "text-[#C53030] font-semibold", dot: "bg-[#E53E3E]" },
+  SAFE:      { label: "Safe",          bg: "bg-[#D8F8E5] text-[#059669]", dot: "bg-[#00C48C]" },
+  VERY_LOW:  { label: "Safe",          bg: "bg-[#D8F8E5] text-[#059669]", dot: "bg-[#00C48C]" },
+  LOW:       { label: "Low Risk",      bg: "bg-[#DCFCE7] text-[#16A34A]", dot: "bg-[#00D060]" },
+  MEDIUM:    { label: "Moderate Risk", bg: "bg-[#FEF0D4] text-[#B45309]", dot: "bg-[#FFA500]" },
+  MODERATE:  { label: "Moderate Risk", bg: "bg-[#FEF0D4] text-[#B45309]", dot: "bg-[#FFA500]" },
+  HIGH:      { label: "High Risk",     bg: "bg-[#FFE8DE] text-[#C2410C]", dot: "bg-[#FF7A00]" },
+  CRITICAL:  { label: "Critical Risk", bg: "bg-[#FFE4E6] text-[#E11D48]", dot: "bg-[#FF3B30]" },
 };
 
 function RiskBadge({ level }) {
   const key = String(level || "").toUpperCase().replace(" ", "_");
-  const cfg = RISK_BADGE[key] || { label: level || "Unknown", bg: "bg-slate-100 border border-slate-300", text: "text-slate-800 font-semibold", dot: "bg-slate-500" };
+  const cfg = RISK_BADGE[key] || { label: level || "Unknown", bg: "bg-slate-100 text-slate-800", dot: "bg-slate-500" };
   return (
-    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs ${cfg.bg} ${cfg.text}`}>
-      <span className={`w-2.5 h-2.5 rounded-full ${cfg.dot} shrink-0`} />
+    <span className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-tight ${cfg.bg}`}>
+      <span className={`w-2 h-2 rounded-full ${cfg.dot} shrink-0`} />
       {cfg.label}
     </span>
   );
 }
 
+function getRiskColor(score) {
+  const s = parseFloat(score || 0);
+  if (s <= 20) return "#00C48C";
+  if (s <= 40) return "#00D060";
+  if (s <= 60) return "#FFA500";
+  if (s <= 80) return "#FF7A00";
+  return "#FF3B30";
+}
+
 function BriScore({ score }) {
   const s = parseFloat(score || 0);
-  const color =
-    s < 20 ? "#059669" :
-    s < 40 ? "#16a34a" :
-    s < 60 ? "#d97706" :
-    s < 80 ? "#ea580c" : "#dc2626";
+  const color = getRiskColor(s);
 
   const assessment =
-    s < 20 ? "Safe" :
-    s < 40 ? "Low Risk" :
-    s < 60 ? "Moderate" :
-    s < 80 ? "High Risk" : "Critical";
+    s <= 20 ? "Safe" :
+    s <= 40 ? "Low" :
+    s <= 60 ? "Moderate" :
+    s <= 80 ? "High" : "Critical";
 
   return (
-    <div className="flex flex-col items-start">
+    <div className="flex flex-col items-start leading-tight">
       <div className="flex items-baseline gap-0.5">
-        <span className="font-extrabold text-lg sm:text-xl tracking-tight" style={{ color }}>
+        <span className="font-extrabold text-lg tracking-tight" style={{ color }}>
           {s.toFixed(1)}
         </span>
         <span className="text-xs text-slate-400 font-medium">/ 100</span>
       </div>
-      <span className="text-xs font-bold text-slate-700 tracking-tight">
+      <span className="text-xs font-bold text-slate-700 tracking-tight mt-0.5">
         {assessment}
       </span>
     </div>
   );
 }
 
-function DimensionBar({ score }) {
-  const num = parseFloat(score || 0);
-  const isHigh = num >= 6.5;
-  const isLow = num < 3.5;
 
-  const barColor = isHigh ? "bg-red-400" : isLow ? "bg-emerald-400" : "bg-amber-400";
-  const labelColor = isHigh ? "text-red-500" : isLow ? "text-emerald-600" : "text-amber-600";
-  const label = isHigh ? "High" : isLow ? "Low" : "Med";
 
-  // percentage fill on a 0-10 or 0-100 scale
-  const normalized = num > 10 ? Math.min(100, num) : Math.min(100, (num / 10) * 100);
-
-  return (
-    <div className="flex flex-col items-start gap-1 w-20">
-      <span className="text-sm font-extrabold text-slate-900 leading-none">
-        {num.toFixed(1)}
-      </span>
-      {/* progress line */}
-      <div className="w-14 h-1.5 rounded-full bg-slate-100 overflow-hidden">
-        <div
-          className={`h-full rounded-full ${barColor}`}
-          style={{ width: `${Math.max(15, normalized)}%` }}
-        />
-      </div>
-      <span className={`text-[11px] font-semibold leading-none ${labelColor}`}>
-        {label}
-      </span>
-    </div>
-  );
-}
 
 // ── Card fade-in animation ────────────────────────────────────────────────────
 
@@ -149,7 +128,7 @@ export default function Dashboard() {
   const [pagination, setPagination] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [showGuide, setShowGuide] = useState(true);
+
 
   // Recent analyses filtering & search state
   const [searchQuery, setSearchQuery] = useState("");
@@ -161,7 +140,7 @@ export default function Dashboard() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await historyAPI.getHistory({ limit: 10, page: 1, sort_by: "created_at", order: "desc" });
+        const res = await historyAPI.getHistory({ limit: 5, page: 1, sort_by: "created_at", order: "desc" });
         const data = res.data?.data;
         setHistory(data?.items || []);
         setPagination(data?.pagination || null);
@@ -173,6 +152,27 @@ export default function Dashboard() {
     };
     load();
   }, []);
+
+  // ── 5 Latest Analyses (filtered & sorted) ──────────────────────────────────
+  const filteredHistory = useMemo(() => {
+    return history
+      .filter((item) => {
+        if (riskFilter !== "ALL" && item.businessRiskLevel !== riskFilter) return false;
+        if (searchQuery.trim()) {
+          const q = searchQuery.toLowerCase();
+          const titleMatch = (item.productTitle || "").toLowerCase().includes(q);
+          const storeMatch = (item.sellerName || "").toLowerCase().includes(q);
+          return titleMatch || storeMatch;
+        }
+        return true;
+      })
+      .sort((a, b) => {
+        if (sortOrder === "highest") return (b.businessRiskIndex || 0) - (a.businessRiskIndex || 0);
+        if (sortOrder === "lowest") return (a.businessRiskIndex || 0) - (b.businessRiskIndex || 0);
+        return new Date(b.createdAt || 0) - new Date(a.createdAt || 0);
+      })
+      .slice(0, 5);
+  }, [history, riskFilter, searchQuery, sortOrder]);
 
   // ── Derived stats ─────────────────────────────────────────────────────────
   const totalAnalyses = pagination?.totalItems ?? history.length;
@@ -292,64 +292,102 @@ export default function Dashboard() {
         ))}
       </div>
 
-      {/* ── Plain-English Guide Banner for Non-Technical Users ── */}
-      {showGuide && (
-        <motion.div
-          {...fadeUp(0.2)}
-          className="bg-emerald-50/90 border border-emerald-200 rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xs"
-        >
-          <div className="flex items-start gap-3">
-            <div className="p-2 rounded-xl bg-emerald-100 text-emerald-800 shrink-0 mt-0.5">
-              <Info size={20} />
-            </div>
-            <div>
-              <h4 className="text-emerald-950 font-bold text-sm sm:text-base">
-                Risk Score Guide
-              </h4>
-              <p className="text-emerald-900/85 text-xs sm:text-sm mt-1 leading-relaxed">
-                Scores range from <strong>0 (Safe)</strong> to <strong>100 (Critical Risk)</strong>:
-              </p>
-              <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-2.5 text-xs font-semibold">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 border border-emerald-300">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600" /> 0–40: Low Risk
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-100 text-amber-950 border border-amber-300">
-                  <span className="w-2 h-2 rounded-full bg-amber-600" /> 41–60: Moderate Risk
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-red-100 text-red-950 border border-red-300">
-                  <span className="w-2 h-2 rounded-full bg-red-600" /> 61–100: High Risk
-                </span>
-              </div>
-            </div>
-          </div>
-          <button
-            onClick={() => setShowGuide(false)}
-            className="text-emerald-800 hover:text-emerald-950 text-xs font-semibold underline shrink-0 self-end md:self-center cursor-pointer"
-          >
-            Dismiss
-          </button>
-        </motion.div>
-      )}
+
 
       {/* ── Recent Analyses ── */}
-      <motion.div {...fadeUp(0.25)} className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4.5 bg-slate-50/80 border-b border-slate-200">
-          <div className="flex items-center gap-2.5">
-            <Clock size={18} className="text-emerald-700" />
-            <h3 className="text-slate-900 font-bold text-base sm:text-lg" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Recent Analyses
-            </h3>
-            <span className="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full ml-1">
-              Latest {history.length}
-            </span>
+      <motion.div {...fadeUp(0.25)} className="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden">
+        {/* Top Header & Toolbar Bar */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-5 sm:p-6 bg-white border-b border-slate-100">
+          {/* Left: Title + Badge + Subtitle */}
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
+                <Clock size={18} strokeWidth={2.2} />
+              </div>
+              <h3 className="text-slate-900 font-extrabold text-xl tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                Recent Analyses
+              </h3>
+              <span className="text-xs bg-[#E6F8EF] text-[#107E44] border border-[#A7E7C5] font-semibold px-2.5 py-0.5 rounded-full">
+                Latest {filteredHistory.length}
+              </span>
+            </div>
+            <p className="text-slate-500 text-xs sm:text-sm font-medium pl-10.5">
+              Your latest product risk assessments
+            </p>
           </div>
-          <button
-            onClick={() => navigate("/history")}
-            className="flex items-center gap-1 text-emerald-700 hover:text-emerald-900 text-sm font-bold transition-colors cursor-pointer"
-          >
-            View All <ArrowRight size={14} />
-          </button>
+
+          {/* Right: Search + Filter + Sort Controls */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            {/* Search Input */}
+            <div className="relative flex-1 sm:w-64">
+              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search products, stores..."
+                className="w-full pl-9 pr-3.5 py-2 text-xs sm:text-sm rounded-xl bg-slate-50/80 border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-all"
+              />
+            </div>
+
+            {/* Filter Dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => { setShowFilterDropdown(!showFilterDropdown); setShowSortDropdown(false); }}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs sm:text-sm font-medium hover:bg-slate-50 transition-colors shadow-2xs cursor-pointer"
+              >
+                <SlidersHorizontal size={14} className="text-slate-500" />
+                <span>{riskFilter === "ALL" ? "Filter" : riskFilter.replace("_", " ")}</span>
+                <ChevronDown size={14} className="text-slate-400 ml-0.5" />
+              </button>
+              {showFilterDropdown && (
+                <div className="absolute right-0 mt-1.5 w-44 rounded-xl bg-white border border-slate-200 shadow-lg py-1.5 z-20">
+                  {["ALL", "VERY_LOW", "LOW", "MEDIUM", "HIGH", "CRITICAL"].map((lvl) => (
+                    <button
+                      key={lvl}
+                      type="button"
+                      onClick={() => { setRiskFilter(lvl); setShowFilterDropdown(false); }}
+                      className={`w-full text-left px-3.5 py-2 text-xs font-medium hover:bg-slate-50 transition-colors ${riskFilter === lvl ? "text-emerald-700 font-bold bg-emerald-50/60" : "text-slate-700"}`}
+                    >
+                      {lvl === "ALL" ? "All Levels" : lvl.replace("_", " ")}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Sort Dropdown */}
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => { setShowSortDropdown(!showSortDropdown); setShowFilterDropdown(false); }}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs sm:text-sm font-medium hover:bg-slate-50 transition-colors shadow-2xs cursor-pointer"
+              >
+                <span>↑↓</span>
+                <span>{sortOrder === "latest" ? "Latest first" : sortOrder === "highest" ? "Highest Risk" : "Lowest Risk"}</span>
+                <ChevronDown size={14} className="text-slate-400 ml-0.5" />
+              </button>
+              {showSortDropdown && (
+                <div className="absolute right-0 mt-1.5 w-40 rounded-xl bg-white border border-slate-200 shadow-lg py-1.5 z-20">
+                  {[
+                    { id: "latest", label: "Latest first" },
+                    { id: "highest", label: "Highest Risk" },
+                    { id: "lowest", label: "Lowest Risk" },
+                  ].map((s) => (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => { setSortOrder(s.id); setShowSortDropdown(false); }}
+                      className={`w-full text-left px-3.5 py-2 text-xs font-medium hover:bg-slate-50 transition-colors ${sortOrder === s.id ? "text-emerald-700 font-bold bg-emerald-50/60" : "text-slate-700"}`}
+                    >
+                      {s.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Loading */}
@@ -388,159 +426,175 @@ export default function Dashboard() {
         {/* Table — desktop */}
         {!loading && !error && history.length > 0 && (
           <>
-            {/* Desktop table */}
-            <div className="hidden sm:block overflow-x-auto">
-              <table className="w-full text-left">
+            <div className="hidden lg:block overflow-x-auto">
+              <table className="w-full text-left border-collapse">
                 <thead>
-                  <tr className="bg-slate-100/90 border-b border-slate-200">
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                      Product Name
-                    </th>
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                      Risk Score
-                    </th>
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                      Safety Status
-                    </th>
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                      Reviews Scanned
-                    </th>
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                      Quality Risk
-                    </th>
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                      Delivery Risk
-                    </th>
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                      Seller Trust
-                    </th>
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider">
-                      Checked On
-                    </th>
-                    <th className="px-4 py-3.5 text-slate-800 text-xs font-bold uppercase tracking-wider text-right">
-                      Report
-                    </th>
+                  <tr className="bg-[#F8FAFC] border-b border-slate-200/80 text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                    <th className="pl-6 pr-4 py-3.5">PRODUCT</th>
+                    <th className="px-4 py-3.5">RISK SCORE</th>
+                    <th className="px-4 py-3.5">SAFETY STATUS</th>
+                    <th className="px-4 py-3.5">REVIEWS</th>
+                    <th className="px-4 py-3.5">CHECKED ON</th>
+                    <th className="pr-6 pl-4 py-3.5 text-right">REPORT</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-200">
-                  {history.map((item, idx) => (
-                    <motion.tr
-                      key={item.analysisId}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: idx * 0.04 }}
-                      className="hover:bg-emerald-50/40 transition-colors"
-                    >
-                      {/* Product */}
-                      <td className="px-4 py-3.5">
-                        <div className="flex items-center gap-3 min-w-[190px] max-w-[240px]">
-                          {item.imageUrl ? (
-                            <img
-                              src={item.imageUrl}
-                              alt=""
-                              className="w-11 h-11 rounded-lg object-cover shrink-0 border border-slate-200 shadow-2xs"
-                            />
-                          ) : (
-                            <div className="w-11 h-11 rounded-lg bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200">
-                              <Package size={18} className="text-slate-500" />
-                            </div>
-                          )}
-                          <div className="min-w-0">
-                            <p className="text-slate-900 text-sm font-semibold truncate hover:text-emerald-700 transition-colors" title={item.productTitle}>
-                              {item.productTitle || "Untitled Product"}
-                            </p>
-                            <p className="text-slate-600 text-xs font-medium truncate mt-0.5">
-                              Store: {item.sellerName || "Marketplace"}
-                            </p>
-                          </div>
-                        </div>
-                      </td>
+                <tbody className="divide-y divide-slate-100 bg-white">
+                  {filteredHistory.map((item, idx) => {
+                      const { dateStr, timeStr } = formatCheckedOn(item.createdAt);
+                      const relativeTime = formatRelativeTime(item.createdAt);
+                      const prodId = item.analysisId ? `#A${item.analysisId.slice(0, 4)}` : `#A${1040 + idx}`;
 
-                      {/* BRI */}
-                      <td className="px-4 py-3.5">
-                        <BriScore score={item.businessRiskIndex} />
-                      </td>
-
-                      {/* Risk */}
-                      <td className="px-4 py-3.5">
-                        <RiskBadge level={item.businessRiskLevel} />
-                      </td>
-
-                      {/* Reviews */}
-                      <td className="px-4 py-3.5">
-                        <span className="text-slate-900 font-bold text-sm">
-                          {item.totalReviews ?? 0}
-                        </span>
-                        <span className="text-slate-500 text-xs ml-1">reviews</span>
-                      </td>
-
-                      {/* Quality Risk */}
-                      <td className="px-4 py-3.5">
-                        <MetricPill score={item.qualityRiskScore} />
-                      </td>
-
-                      {/* Delivery Risk */}
-                      <td className="px-4 py-3.5">
-                        <MetricPill score={item.deliveryRiskScore} />
-                      </td>
-
-                      {/* Seller Trust Risk */}
-                      <td className="px-4 py-3.5">
-                        <MetricPill score={item.trustRiskScore} />
-                      </td>
-
-                      {/* Date */}
-                      <td className="px-4 py-3.5 text-slate-600 text-xs font-medium whitespace-nowrap">
-                        {formatDate(item.createdAt)}
-                      </td>
-
-                      {/* Actions */}
-                      <td className="px-4 py-3.5 text-right">
-                        <button
-                          onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-600 hover:text-white transition-all text-xs font-bold cursor-pointer whitespace-nowrap"
+                      return (
+                        <motion.tr
+                          key={item.analysisId || idx}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: idx * 0.03 }}
+                          className="hover:bg-slate-50/70 transition-colors group"
                         >
-                          View Details <ExternalLink size={12} />
-                        </button>
-                      </td>
-                    </motion.tr>
-                  ))}
+                          {/* 1. PRODUCT (Thumbnail + Title + Store + Product ID pill) */}
+                          <td className="pl-6 pr-4 py-4.5 align-middle">
+                            <div className="flex items-center gap-3.5 min-w-[210px] max-w-[260px]">
+                              {item.imageUrl ? (
+                                <img
+                                  src={item.imageUrl}
+                                  alt=""
+                                  className="w-12 h-12 rounded-xl object-cover shrink-0 border border-slate-200/80 shadow-2xs"
+                                />
+                              ) : (
+                                <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200">
+                                  <Package size={20} className="text-slate-400" />
+                                </div>
+                              )}
+                              <div className="min-w-0">
+                                <p className="text-slate-900 text-sm font-bold truncate leading-tight group-hover:text-emerald-700 transition-colors" title={item.productTitle}>
+                                  {item.productTitle || "Untitled Product"}
+                                </p>
+                                <p className="text-slate-500 text-xs font-medium truncate mt-0.5">
+                                  Store: {item.sellerName || "Marketplace"} · {item.platform || "Daraz"}
+                                </p>
+                                <span className="inline-block mt-1 text-[11px] font-semibold text-slate-500 bg-slate-100 border border-slate-200/80 px-2 py-0.5 rounded-md">
+                                  {prodId}
+                                </span>
+                              </div>
+                            </div>
+                          </td>
+
+                          {/* 2. RISK SCORE */}
+                          <td className="px-4 py-4.5 align-middle whitespace-nowrap">
+                            <BriScore score={item.businessRiskIndex} />
+                          </td>
+
+                          {/* 3. SAFETY STATUS */}
+                          <td className="px-4 py-4.5 align-middle whitespace-nowrap">
+                            <RiskBadge level={item.businessRiskLevel} />
+                          </td>
+
+                          {/* 4. REVIEWS */}
+                          <td className="px-4 py-4.5 align-middle whitespace-nowrap">
+                            <div className="flex flex-col">
+                              <span className="text-slate-900 font-extrabold text-sm leading-tight">
+                                {item.totalReviews ?? 0}
+                              </span>
+                              <span className="text-slate-400 text-xs font-medium">
+                                reviews scanned
+                              </span>
+                            </div>
+                          </td>
+
+                          {/* 5. CHECKED ON */}
+                          <td className="px-4 py-4.5 align-middle whitespace-nowrap text-slate-600 text-xs">
+                            <div className="flex flex-col">
+                              <span className="font-semibold text-slate-700">{dateStr}</span>
+                              <span className="text-slate-500 text-[11px] font-medium">{timeStr}</span>
+                              {relativeTime && (
+                                <span className="flex items-center gap-1 text-slate-400 text-[11px] mt-0.5">
+                                  <Clock size={11} /> {relativeTime}
+                                </span>
+                              )}
+                            </div>
+                          </td>
+
+                          {/* 9. REPORT & MORE ACTION */}
+                          <td className="pr-6 pl-4 py-4.5 align-middle text-right whitespace-nowrap">
+                            <div className="flex items-center justify-end gap-2">
+                              <button
+                                onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
+                                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#E6F8EF] hover:bg-[#D1F2E0] text-[#107E44] border border-[#A7E7C5] transition-all text-xs font-bold cursor-pointer shadow-2xs"
+                              >
+                                <span>View Report</span>
+                                <ExternalLink size={12} strokeWidth={2.2} />
+                              </button>
+                              <button
+                                onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
+                                className="p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors"
+                              >
+                                <MoreVertical size={16} />
+                              </button>
+                            </div>
+                          </td>
+                        </motion.tr>
+                      );
+                    })}
                 </tbody>
               </table>
             </div>
 
-            {/* Mobile cards */}
-            <div className="sm:hidden flex flex-col divide-y divide-slate-200">
-              {history.map((item) => (
-                <div key={item.analysisId} className="flex flex-col gap-3 p-4 hover:bg-slate-50 transition-colors">
-                  <div className="flex items-center gap-3">
-                    {item.imageUrl ? (
-                      <img src={item.imageUrl} alt="" className="w-12 h-12 rounded-xl object-cover shrink-0 border border-slate-200" />
-                    ) : (
-                      <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200">
-                        <Package size={20} className="text-slate-500" />
-                      </div>
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <p className="text-slate-900 text-sm font-bold truncate">{item.productTitle}</p>
-                      <p className="text-slate-600 text-xs font-medium">{item.sellerName || "Marketplace"}</p>
-                    </div>
-                  </div>
+            {/* Mobile / Tablet Responsive Cards */}
+            <div className="lg:hidden flex flex-col divide-y divide-slate-100">
+              {filteredHistory.map((item, idx) => {
+                const { dateStr, timeStr } = formatCheckedOn(item.createdAt);
+                const prodId = item.analysisId ? `#A${item.analysisId.slice(0, 4)}` : `#A${1040 + idx}`;
 
-                  <div className="flex items-center justify-between pt-1">
-                    <div className="flex items-center gap-3">
-                      <BriScore score={item.businessRiskIndex} />
-                      <RiskBadge level={item.businessRiskLevel} />
+                return (
+                  <div key={item.analysisId || idx} className="flex flex-col gap-3.5 p-5 hover:bg-slate-50/70 transition-colors">
+                    <div className="flex items-start gap-3">
+                      {item.imageUrl ? (
+                        <img src={item.imageUrl} alt="" className="w-14 h-14 rounded-xl object-cover shrink-0 border border-slate-200" />
+                      ) : (
+                        <div className="w-14 h-14 rounded-xl bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200">
+                          <Package size={22} className="text-slate-400" />
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-slate-900 text-sm font-bold truncate leading-tight">{item.productTitle}</p>
+                        <p className="text-slate-500 text-xs font-medium mt-0.5">Store: {item.sellerName || "Marketplace"}</p>
+                        <span className="inline-block mt-1 text-[11px] font-semibold text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-md">
+                          {prodId}
+                        </span>
+                      </div>
                     </div>
-                    <button
-                      onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
-                      className="px-3 py-1.5 rounded-lg bg-emerald-100 text-emerald-900 text-xs font-bold hover:bg-emerald-200 transition-colors inline-flex items-center gap-1"
-                    >
-                      View Report <ExternalLink size={12} />
-                    </button>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 border-t border-slate-100">
+                      <div>
+                        <span className="text-[11px] text-slate-400 font-medium">Risk Score</span>
+                        <BriScore score={item.businessRiskIndex} />
+                      </div>
+                      <div>
+                        <span className="text-[11px] text-slate-400 font-medium block mb-1">Safety Status</span>
+                        <RiskBadge level={item.businessRiskLevel} />
+                      </div>
+                      <div>
+                        <span className="text-[11px] text-slate-400 font-medium block">Reviews</span>
+                        <span className="text-slate-900 font-extrabold text-sm">{item.totalReviews ?? 0}</span>
+                      </div>
+                      <div>
+                        <span className="text-[11px] text-slate-400 font-medium block">Checked On</span>
+                        <span className="text-slate-700 text-xs font-semibold">{dateStr} {timeStr}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+                      <button
+                        onClick={() => navigate(`/analysis-result/${item.analysisId}`)}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#E6F8EF] hover:bg-[#D1F2E0] text-[#107E44] border border-[#A7E7C5] text-xs font-bold transition-all"
+                      >
+                        View Report <ExternalLink size={12} strokeWidth={2.2} />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </>
         )}
@@ -548,3 +602,4 @@ export default function Dashboard() {
     </div>
   );
 }
+
