@@ -10,7 +10,6 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
-  Settings as SettingsIcon,
 } from "lucide-react";
 import { useAuth } from "../../hooks/useAuth";
 import { useAnalysis } from "../../context/AnalysisContext";
@@ -22,7 +21,6 @@ const NAV_ITEMS = [
   { label: "Analyze Product", icon: ScanSearch, to: "/analyze" },
   { label: "History", icon: History, to: "/history" },
   { label: "Profile", icon: User, to: "/profile" },
-  { label: "Settings", icon: SettingsIcon, to: "/settings" },
 ];
 
 export default function Sidebar({ isOpen, onClose }) {
@@ -52,7 +50,7 @@ export default function Sidebar({ isOpen, onClose }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm lg:hidden"
           />
           {/* Drawer */}
           <motion.aside
@@ -61,7 +59,7 @@ export default function Sidebar({ isOpen, onClose }) {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 220 }}
-            className="fixed inset-y-0 left-0 z-50 w-[270px] max-w-[85vw] flex flex-col lg:hidden shadow-2xl"
+            className="fixed inset-y-0 left-0 z-50 w-[260px] flex flex-col lg:hidden"
             style={{ background: "#042718" }}
           >
             <SidebarContent
