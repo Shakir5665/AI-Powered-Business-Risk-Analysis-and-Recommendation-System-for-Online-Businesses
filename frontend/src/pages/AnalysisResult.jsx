@@ -12,12 +12,14 @@ import { parseError, formatDate } from "../utils/helpers";
 
 // ── Plain-English Risk Definitions ──────────────────────────────────────────
 
+// ── Plain-English Risk Definitions ──────────────────────────────────────────
+
 const RISK_CONFIG = {
-  VERY_LOW: { label: "Safe · Very Low Risk", color: "#059669", bg: "bg-emerald-50", text: "text-emerald-800", border: "border-emerald-200" },
-  LOW:      { label: "Good · Low Risk",      color: "#16a34a", bg: "bg-green-50",   text: "text-green-800",   border: "border-green-200" },
-  MEDIUM:   { label: "Caution · Moderate",   color: "#d97706", bg: "bg-amber-50",   text: "text-amber-800",   border: "border-amber-200" },
-  HIGH:     { label: "Warning · High Risk",  color: "#ea580c", bg: "bg-orange-50",  text: "text-orange-800",  border: "border-orange-200" },
-  CRITICAL: { label: "Critical · Action Needed", color: "#dc2626", bg: "bg-red-50", text: "text-red-800",    border: "border-red-200" },
+  VERY_LOW: { label: "Very Low Risk", color: "#059669", bg: "bg-emerald-50", text: "text-emerald-800", border: "border-emerald-200" },
+  LOW:      { label: "Low Risk",      color: "#16a34a", bg: "bg-green-50",   text: "text-green-800",   border: "border-green-200" },
+  MEDIUM:   { label: "Moderate Risk", color: "#d97706", bg: "bg-amber-50",   text: "text-amber-800",   border: "border-amber-200" },
+  HIGH:     { label: "High Risk",     color: "#ea580c", bg: "bg-orange-50",  text: "text-orange-800",  border: "border-orange-200" },
+  CRITICAL: { label: "Critical Risk", color: "#dc2626", bg: "bg-red-50",     text: "text-red-800",     border: "border-red-200" },
 };
 
 function getRiskCfg(level) {
@@ -67,12 +69,12 @@ function SentimentIcon({ sentiment }) {
 // Convert technical aspect names into friendly, non-technical titles
 function formatAspectTitle(aspectKey) {
   const map = {
-    product_quality: "Product Quality & Durability",
-    delivery_experience: "Shipping & Delivery Speed",
-    merchant_trust: "Seller Reliability & Trust",
-    customer_service: "Customer Support & Returns",
-    value_for_money: "Value for Money & Pricing",
-    packaging: "Packaging & Item Condition",
+    product_quality: "Product Quality",
+    delivery_experience: "Shipping & Delivery",
+    merchant_trust: "Seller Reliability",
+    customer_service: "Customer Support",
+    value_for_money: "Value for Money",
+    packaging: "Packaging",
     authenticity: "Product Authenticity",
   };
   return map[aspectKey] || aspectKey.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
@@ -149,29 +151,29 @@ export default function AnalysisResult() {
   const neutralCount = stats.neutral_reviews ?? stats.neutral ?? 0;
 
   const sentimentData = [
-    { name: "Positive Reviews", value: positiveCount },
-    { name: "Negative Reviews", value: negativeCount },
-    { name: "Neutral Reviews",  value: neutralCount },
+    { name: "Positive", value: positiveCount },
+    { name: "Negative", value: negativeCount },
+    { name: "Neutral",  value: neutralCount },
   ].filter((d) => d.value > 0);
 
   const RISK_CARDS = [
     {
-      label: "Product Quality Risk",
-      explanation: "Defects, durability issues, missing parts or inaccurate description",
+      label: "Product Quality",
+      explanation: "Material defects, durability issues, and descriptions",
       score: risks?.qualityRisk?.score,
       level: risks?.qualityRisk?.level,
       icon: "📦",
     },
     {
-      label: "Shipping & Delivery Risk",
-      explanation: "Late packages, damaged parcels, transit delays or shipping fees",
+      label: "Shipping & Delivery",
+      explanation: "Transit delays, package damage, and delivery fees",
       score: risks?.deliveryRisk?.score,
       level: risks?.deliveryRisk?.level,
       icon: "🚚",
     },
     {
-      label: "Seller Trust & Service Risk",
-      explanation: "Customer support responsiveness, return handling & buyer trust",
+      label: "Seller Reliability",
+      explanation: "Customer support, return processing, and trust",
       score: risks?.trustRisk?.score,
       level: risks?.trustRisk?.level,
       icon: "🤝",
@@ -283,11 +285,11 @@ export default function AnalysisResult() {
           <div>
             <div className="flex items-center gap-2 mb-1">
               <h2 className="text-slate-900 text-xl font-bold" style={{ fontFamily: "'Onest', sans-serif" }}>
-                Overall Product Risk Score
+                Business Risk Score
               </h2>
             </div>
             <p className="text-slate-700 text-sm font-medium leading-relaxed">
-              This score calculates the risk of lost sales, customer complaints, returns, and negative reviews. A <strong>lower score is safer</strong>.
+              Calculated from review sentiment, delivery issues, and seller reliability. A <strong>lower score is safer</strong>.
             </p>
           </div>
 
@@ -318,11 +320,11 @@ export default function AnalysisResult() {
             <Info size={16} className="text-slate-700 mt-0.5 shrink-0" />
             <p className="text-slate-700 text-xs font-medium leading-normal">
               {bri <= 40 ? (
-                <>This product is in <strong>safe standing</strong>. Reviews indicate high buyer satisfaction and low return risk.</>
+                <>Safe standing. High buyer satisfaction and low return likelihood.</>
               ) : bri <= 60 ? (
-                <>This product has <strong>moderate issues</strong>. Pay attention to common buyer complaints below to avoid losing sales.</>
+                <>Moderate risk. Minor customer complaints require attention.</>
               ) : (
-                <>This product is at <strong>high risk</strong> of returns, refund requests, or seller rating penalties. Immediate action recommended.</>
+                <>High risk. Frequent complaints may lead to returns and rating penalties.</>
               )}
             </p>
           </div>
@@ -332,7 +334,7 @@ export default function AnalysisResult() {
       {/* ── 3 Core Risk Breakdown Cards ── */}
       <div>
         <h3 className="text-slate-900 font-bold text-base mb-3" style={{ fontFamily: "'Onest', sans-serif" }}>
-          Risk Assessment by Area
+          Risk Breakdown
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {RISK_CARDS.map((card, i) => {
@@ -367,9 +369,9 @@ export default function AnalysisResult() {
         <motion.div {...fadeUp(0.3)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
           <div className="mb-3">
             <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Customer Feelings Breakdown
+              Customer Sentiment
             </h4>
-            <p className="text-slate-600 text-xs font-medium">How buyers generally feel based on written feedback</p>
+            <p className="text-slate-600 text-xs font-medium">Overall opinion breakdown from analyzed reviews</p>
           </div>
           {sentimentData.length > 0 ? (
             <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
@@ -406,9 +408,9 @@ export default function AnalysisResult() {
         <motion.div {...fadeUp(0.35)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
           <div className="mb-3">
             <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Customer Feedback by Category
+              Feedback by Category
             </h4>
-            <p className="text-slate-600 text-xs font-medium">Percentage of buyer mentions addressing each aspect</p>
+            <p className="text-slate-600 text-xs font-medium">Distribution of customer mentions across key areas</p>
           </div>
           {statistics?.aspectStatistics && Object.keys(statistics.aspectStatistics).length > 0 ? (
             <div className="flex flex-col gap-3.5 pt-1">
@@ -435,7 +437,7 @@ export default function AnalysisResult() {
               })}
             </div>
           ) : (
-            <p className="text-slate-500 text-sm font-medium py-6 text-center">No specific category breakdown available.</p>
+            <p className="text-slate-500 text-sm font-medium py-6 text-center">No category breakdown available.</p>
           )}
         </motion.div>
       </div>
@@ -449,9 +451,9 @@ export default function AnalysisResult() {
             </div>
             <div>
               <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-                AI Action Plan to Protect Your Sales
+                AI Recommendations
               </h4>
-              <p className="text-slate-600 text-xs font-medium">Direct findings and actionable steps tailored for your store</p>
+              <p className="text-slate-600 text-xs font-medium">Actionable steps tailored for this product</p>
             </div>
           </div>
 
@@ -468,7 +470,7 @@ export default function AnalysisResult() {
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                 <p className="text-slate-900 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-1.5">
                   <AlertCircle size={14} className="text-amber-600" />
-                  What Customers Are Complaining About
+                  Top Complaints
                 </p>
                 <div className="flex flex-col gap-2.5">
                   {report.insights.map((insight, i) => (
@@ -485,7 +487,7 @@ export default function AnalysisResult() {
               <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
                 <p className="text-slate-900 text-xs font-bold uppercase tracking-wider mb-3 flex items-center gap-1.5">
                   <CheckCircle size={14} className="text-emerald-700" />
-                  Recommended Steps to Fix & Grow Sales
+                  Suggested Actions
                 </p>
                 <div className="flex flex-col gap-2.5">
                   {report.actions.map((action, i) => (
@@ -506,9 +508,9 @@ export default function AnalysisResult() {
         <motion.div {...fadeUp(0.45)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
           <div className="mb-4">
             <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Verified Customer Comments & Quotes
+              Customer Reviews
             </h4>
-            <p className="text-slate-600 text-xs font-medium">Actual customer reviews read and categorized by AI</p>
+            <p className="text-slate-600 text-xs font-medium">Sample feedback analyzed from customer reviews</p>
           </div>
           <div className="flex flex-col gap-3 max-h-[420px] overflow-y-auto pr-1">
             {reviewSamples.map((rev, i) => {
@@ -531,7 +533,7 @@ export default function AnalysisResult() {
                           ? "bg-rose-50 text-rose-800 border-rose-200"
                           : "bg-amber-50 text-amber-800 border-amber-200"
                       }`}>
-                        {isPos ? "Positive Opinion" : isNeg ? "Critical Complaint" : "Neutral Feedback"}
+                        {isPos ? "Positive" : isNeg ? "Critical" : "Neutral"}
                       </span>
                       {rev.confidenceScore > 0 && (
                         <span className="text-slate-600 font-medium text-xs">

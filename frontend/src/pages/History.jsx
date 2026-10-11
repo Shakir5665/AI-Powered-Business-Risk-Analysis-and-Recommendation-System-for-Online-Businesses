@@ -12,11 +12,11 @@ import { formatDate } from "../utils/helpers";
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const RISK_BADGE = {
-  VERY_LOW: { label: "Safe · Very Low", bg: "bg-emerald-100 border border-emerald-300", text: "text-emerald-900 font-bold", dot: "bg-emerald-600" },
-  LOW:      { label: "Good · Low Risk", bg: "bg-green-100 border border-green-300",     text: "text-green-900 font-bold",   dot: "bg-green-600"   },
-  MEDIUM:   { label: "Caution · Moderate",bg: "bg-amber-100 border border-amber-300",  text: "text-amber-950 font-bold",   dot: "bg-amber-600"   },
-  HIGH:     { label: "Warning · High", bg: "bg-orange-100 border border-orange-300",  text: "text-orange-950 font-bold",  dot: "bg-orange-600"  },
-  CRITICAL: { label: "Danger · Critical",bg: "bg-red-100 border border-red-300",      text: "text-red-950 font-bold",     dot: "bg-red-600"     },
+  VERY_LOW: { label: "Very Low Risk", bg: "bg-emerald-100 border border-emerald-300", text: "text-emerald-900 font-bold", dot: "bg-emerald-600" },
+  LOW:      { label: "Low Risk",      bg: "bg-green-100 border border-green-300",     text: "text-green-900 font-bold",   dot: "bg-green-600"   },
+  MEDIUM:   { label: "Moderate Risk", bg: "bg-amber-100 border border-amber-300",     text: "text-amber-950 font-bold",   dot: "bg-amber-600"   },
+  HIGH:     { label: "High Risk",     bg: "bg-orange-100 border border-orange-300",   text: "text-orange-950 font-bold",  dot: "bg-orange-600"  },
+  CRITICAL: { label: "Critical Risk", bg: "bg-red-100 border border-red-300",         text: "text-red-950 font-bold",     dot: "bg-red-600"     },
 };
 
 function RiskBadge({ level }) {
@@ -43,8 +43,8 @@ function BriScore({ score }) {
 
 const RISK_LEVELS = ["ALL", "VERY_LOW", "LOW", "MEDIUM", "HIGH", "CRITICAL"];
 const SORT_OPTIONS = [
-  { value: "created_at",         label: "Date Analyzed" },
-  { value: "business_risk_index",label: "Risk Score (0–100)" },
+  { value: "created_at",         label: "Date" },
+  { value: "business_risk_index",label: "Risk Score" },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -128,7 +128,7 @@ export default function History() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search by product title..."
+            placeholder="Search products..."
             className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-[#042718]/10 bg-[#F6FDFF] text-[#042718] text-sm placeholder:text-[#042718]/30 outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/10 transition-all"
           />
         </div>
@@ -145,7 +145,7 @@ export default function History() {
             >
               {RISK_LEVELS.map((lvl) => (
                 <option key={lvl} value={lvl}>
-                  {lvl === "ALL" ? "All Risk Levels" : lvl.replace("_", " ")}
+                  {lvl === "ALL" ? "All Risks" : lvl.replace("_", " ")}
                 </option>
               ))}
             </select>
@@ -159,14 +159,14 @@ export default function History() {
             className="px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm outline-none focus:border-[#198F38] cursor-pointer"
           >
             {SORT_OPTIONS.map((s) => (
-              <option key={s.value} value={s.value}>Sort by {s.label}</option>
+              <option key={s.value} value={s.value}>Sort: {s.label}</option>
             ))}
           </select>
 
           {/* Order toggle */}
           <button
             onClick={() => setOrder((p) => (p === "desc" ? "asc" : "desc"))}
-            className="px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm hover:bg-[#042718]/04 transition-colors"
+            className="px-3 py-2.5 rounded-xl border border-[#042718]/10 bg-white text-[#042718] text-sm hover:bg-[#042718]/04 transition-colors font-medium cursor-pointer"
           >
             {order === "desc" ? "↓ Newest" : "↑ Oldest"}
           </button>
@@ -176,7 +176,7 @@ export default function History() {
       {/* ── Count ── */}
       {pagination && (
         <p className="text-[#042718]/50 text-sm px-1">
-          {pagination.totalItems} {pagination.totalItems === 1 ? "analysis" : "analyses"} found
+          {pagination.totalItems} {pagination.totalItems === 1 ? "result" : "results"}
         </p>
       )}
 
