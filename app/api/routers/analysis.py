@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Request, status
+from fastapi import APIRouter, Depends, Request, Response, status
 from fastapi.responses import JSONResponse
 from datetime import datetime, timezone
 
@@ -27,14 +27,20 @@ router = APIRouter(prefix="/v1/analysis", tags=[APIConstants.TAG_ANALYSIS])
 @router.post("/check-product", response_model=ApiResponse[ProductPreviewResponse], summary="Step 1: Check Product Preview")
 async def check_product(
     request: Request,
+    response: Response,
     body: ProductCheckRequest,
     service: AnalysisService = Depends(get_analysis_service),
 ):
     """
-    Validates URL and extracts product preview information (Title, Image, Seller, Rating, Review Count, Platform, Category) via Selenium.
+    Validates URL and extracts product preview information (Title, Image, Seller, Rating, Review Count, Platform, Category).
     """
     request_id = getattr(request.state, "request_id", "unknown")
     preview = await service.check_product(body.productUrl)
+
+    tier_used = preview.get("tierUsed", "tier_1")
+    response.headers["X-Preview-Tier"] = str(tier_used)
+    if preview.get("fetchTimeMs") is not None:
+        response.headers["X-Preview-Time-Ms"] = str(preview.get("fetchTimeMs"))
 
     return ApiResponse(
         success=True,

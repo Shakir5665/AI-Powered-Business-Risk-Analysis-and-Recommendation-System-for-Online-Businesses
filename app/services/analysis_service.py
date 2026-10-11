@@ -84,7 +84,7 @@ class AnalysisService:
         total_reviews = int(preview_data.get("totalReviews") or preview_data.get("reviewCount") or 0)
 
         invalid_titles = ["error", "404", "page not found", "not found", "products", "catalog", "category", "search", "daraz verified product", "daraz product"]
-        invalid_sellers = ["become a seller", "become a seller!", "n/a", "none"]
+        invalid_sellers = ["become a seller", "become a seller!", "n/a", "none", "no brand", "nobrand"]
 
         is_title_bad = title.lower() in invalid_titles or "404" in title.lower() or title.lower().startswith("error")
         is_seller_bad = seller.lower() in invalid_sellers

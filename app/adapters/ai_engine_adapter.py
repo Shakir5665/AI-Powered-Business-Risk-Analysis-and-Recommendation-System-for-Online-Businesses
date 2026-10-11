@@ -1,6 +1,9 @@
+import time
 from typing import Dict, Any, Optional
 from core.analysis.engine.product_analysis_engine import ProductAnalysisEngine
 from core.scraper.engines.scraper_engine import ScraperEngine
+from core.scraper.engines.fast_preview_fetcher import FastPreviewFetcher
+from core.scraper.cache.preview_cache import preview_cache
 from core.business_risk.prediction.prediction_collector import PredictionCollector
 from core.business_risk.calculator.business_risk_calculator import BusinessRiskCalculator
 from core.business_risk.fuzzy.quality_fis import QualityFIS
@@ -34,12 +37,63 @@ class AIEngineAdapter:
 
     def extract_product_preview(self, product_url: str) -> Dict[str, Any]:
         """
-        Extracts product preview metadata without executing full scraping or AI inference using an isolated scraper.
+        Extracts product preview metadata without executing full scraping or AI inference.
+        Uses dual-tier strategy:
+          - Cache: In-memory hit (< 20ms)
+          - Tier 1: FastPreviewFetcher via HTTP/JSON-LD (~1s)
+          - Tier 2: Selenium ScraperEngine fallback (~15-25s)
         """
-        ai_logger.info(f"Extracting product preview via adapter: {product_url}")
+        start_time = time.perf_counter()
+
+        # 0. Cache Check
+        cached = preview_cache.get(product_url)
+        if cached:
+            fetch_time_ms = int((time.perf_counter() - start_time) * 1000)
+            cached["tierUsed"] = "cache"
+            cached["fetchTimeMs"] = fetch_time_ms
+            ai_logger.info(f"[PREVIEW] [CACHE HIT] Served product preview for {product_url} in {fetch_time_ms}ms")
+            return cached
+
+        # 1. Tier 1: Fast Preview Fetcher
+        try:
+            ai_logger.info(f"[PREVIEW] [TIER 1] Attempting fast metadata extraction for: {product_url}")
+            fast_fetcher = FastPreviewFetcher()
+            fast_result = fast_fetcher.fetch(product_url)
+            if fast_result:
+                fetch_time_ms = int((time.perf_counter() - start_time) * 1000)
+                fast_result["tierUsed"] = "tier_1"
+                fast_result["fetchTimeMs"] = fetch_time_ms
+                preview_cache.set(product_url, fast_result)
+                ai_logger.info(
+                    f"[PREVIEW] [TIER 1 - FAST FETCHER] Extracted preview successfully in {fetch_time_ms}ms "
+                    f"(HTTP + JSON-LD): '{fast_result.get('title', '')[:50]}...'"
+                )
+                return fast_result
+            else:
+                ai_logger.warning(
+                    f"[PREVIEW] [TIER 1 FAILED] Fast fetcher returned incomplete data for {product_url}. "
+                    f"Falling back to Tier 2 (Selenium)..."
+                )
+        except Exception as fast_err:
+            ai_logger.warning(
+                f"[PREVIEW] [TIER 1 FAILED] Fast fetcher error ({fast_err}). "
+                f"Falling back to Tier 2 (Selenium)..."
+            )
+
+        # 2. Tier 2: Existing Selenium ScraperEngine (Fallback)
+        ai_logger.info(f"[PREVIEW] [TIER 2 - SELENIUM] Launching browser engine fallback for: {product_url}")
         scraper = ScraperEngine()
         try:
-            return scraper.extract_product_preview(product_url)
+            selenium_result = scraper.extract_product_preview(product_url)
+            fetch_time_ms = int((time.perf_counter() - start_time) * 1000)
+            selenium_result["tierUsed"] = "tier_2"
+            selenium_result["fetchTimeMs"] = fetch_time_ms
+            preview_cache.set(product_url, selenium_result)
+            ai_logger.info(
+                f"[PREVIEW] [TIER 2 - SELENIUM] Extracted preview in {fetch_time_ms}ms "
+                f"via Chrome driver: '{selenium_result.get('title', '')[:50]}...'"
+            )
+            return selenium_result
         except ValueError as e:
             from app.utils.exceptions import InvalidProductURLError
             raise InvalidProductURLError(message=str(e), details={"provided_url": product_url})

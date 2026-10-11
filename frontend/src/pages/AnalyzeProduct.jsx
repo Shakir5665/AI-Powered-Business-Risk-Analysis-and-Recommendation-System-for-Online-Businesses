@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
   Link2, Search, CheckCircle, ChevronRight, X,
-  Loader2, Star, Package, ScanSearch, AlertCircle, StopCircle, Terminal,
+  Loader2, ScanSearch, AlertCircle, StopCircle, Terminal,
 } from "lucide-react";
 import { analysisAPI } from "../api/endpoints";
 import { parseError } from "../utils/helpers";
@@ -387,33 +387,9 @@ export default function AnalyzeProduct() {
               <h3 className="text-slate-900 text-xl font-bold mb-1 leading-snug tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
                 {preview.title || preview.productTitle || "Product Preview"}
               </h3>
-              <p className="text-slate-600 text-sm font-medium mb-4">
+              <p className="text-slate-600 text-sm font-medium mb-6">
                 Seller: <span className="text-slate-900 font-bold">{preview.seller || preview.sellerName || "Marketplace Seller"}</span>
               </p>
-
-              {/* Stats row */}
-              <div className="flex flex-wrap gap-5 mb-6 p-4 rounded-xl bg-slate-50 border border-slate-200">
-                <div className="flex items-center gap-2">
-                  <Star size={16} className="text-amber-500 fill-amber-500" />
-                  <span className="text-slate-900 text-sm font-bold">
-                    {preview.rating || preview.overallRating || "N/A"}
-                  </span>
-                  <span className="text-slate-600 text-xs font-medium">Rating</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Search size={16} className="text-emerald-700" />
-                  <span className="text-slate-900 text-sm font-bold">
-                    {preview.reviewCount || preview.totalReviews || "0"}
-                  </span>
-                  <span className="text-slate-600 text-xs font-medium">Reviews</span>
-                </div>
-                {preview.category && (
-                  <div className="flex items-center gap-2">
-                    <Package size={16} className="text-slate-600" />
-                    <span className="text-slate-800 text-xs font-semibold">{preview.category}</span>
-                  </div>
-                )}
-              </div>
 
               <AnimatePresence>
                 {error && (
