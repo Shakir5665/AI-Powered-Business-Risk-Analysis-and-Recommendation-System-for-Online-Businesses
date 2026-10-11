@@ -2,6 +2,7 @@ import os
 from app.state.core_state import app_state
 from app.utils.logger import ai_logger
 from core.analysis.engine.product_analysis_engine import ProductAnalysisEngine
+from core.scraper.cache.preview_cache import preview_cache
 
 
 from app.database.session import engine, ensure_schema_migrations

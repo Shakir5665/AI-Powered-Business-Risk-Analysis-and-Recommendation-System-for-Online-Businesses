@@ -84,8 +84,8 @@ export default function Sidebar({ isOpen, onClose }) {
       <motion.aside
         animate={{ width: collapsed ? 72 : 240 }}
         transition={{ duration: 0.3, ease: [0.21, 0.45, 0.32, 0.9] }}
-        className="hidden lg:flex flex-col shrink-0 relative overflow-hidden"
-        style={{ background: "#042718", minHeight: "100vh" }}
+        className="hidden lg:flex flex-col shrink-0 sticky top-0 h-screen z-40 self-start overflow-hidden shadow-xl"
+        style={{ background: "#042718" }}
       >
         <SidebarContent
           collapsed={collapsed}
@@ -210,14 +210,14 @@ function SidebarContent({
       </nav>
 
       {/* User section */}
-      <div className="border-t border-white/10 p-3">
+      <div className="border-t border-white/10 p-3 mt-auto shrink-0 bg-[#032014]/90">
         <div
-          className={`flex items-center gap-3 px-2 py-2 rounded-xl mb-1 ${
+          className={`flex items-center gap-3 px-2 py-2 rounded-xl mb-1.5 transition-colors hover:bg-white/5 ${
             collapsed && !isMobile ? "justify-center" : ""
           }`}
         >
           {/* Avatar */}
-          <div className="w-8 h-8 rounded-full bg-[#198F38] overflow-hidden flex items-center justify-center text-white text-xs font-bold shrink-0">
+          <div className="w-8 h-8 rounded-full bg-[#198F38] overflow-hidden flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-sm border border-emerald-400/30">
             {user?.avatar ? (
               <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
             ) : (
@@ -230,12 +230,12 @@ function SidebarContent({
                 initial={{ opacity: 0, width: 0 }}
                 animate={{ opacity: 1, width: "auto" }}
                 exit={{ opacity: 0, width: 0 }}
-                className="overflow-hidden"
+                className="overflow-hidden min-w-0 flex-1"
               >
                 <p className="text-white text-sm font-semibold truncate leading-tight">
                   {user?.username || "User"}
                 </p>
-                <p className="text-emerald-200/80 text-xs truncate font-medium">{user?.email || ""}</p>
+                <p className="text-emerald-300/80 text-xs truncate font-medium mt-0.5">{user?.email || ""}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -244,11 +244,12 @@ function SidebarContent({
         {/* Logout */}
         <button
           onClick={onLogout}
-          className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-white/80 hover:bg-red-500/20 hover:text-red-300 font-medium transition-all duration-200 cursor-pointer ${
+          title={collapsed && !isMobile ? "Sign Out" : undefined}
+          className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-white/80 hover:bg-rose-500/20 hover:text-rose-200 font-medium text-sm transition-all duration-200 cursor-pointer ${
             collapsed && !isMobile ? "justify-center" : ""
           }`}
         >
-          <LogOut size={18} className="shrink-0" />
+          <LogOut size={18} className="shrink-0 text-white/70 hover:text-rose-300" />
           <AnimatePresence>
             {(!collapsed || isMobile) && (
               <motion.span
