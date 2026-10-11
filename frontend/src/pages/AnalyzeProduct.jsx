@@ -361,65 +361,88 @@ export default function AnalyzeProduct() {
         {step === 2 && preview && (
           <motion.div
             key="step2"
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35 }}
-            className="w-full bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
+            className="w-full bg-white rounded-3xl border border-slate-200/90 shadow-md p-5 sm:p-6.5 relative overflow-hidden"
           >
-            {/* Product image banner */}
-            {(preview.imageUrl || preview.image_url) && (
-              <div className="h-64 sm:h-72 bg-slate-50 overflow-hidden flex items-center justify-center border-b border-slate-200">
-                <img
-                  src={preview.imageUrl || preview.image_url}
-                  alt={preview.title || preview.productTitle}
-                  className="max-h-full max-w-full object-contain p-6"
-                />
-              </div>
-            )}
+            {/* Subtle ambient background glow */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none" />
 
-            <div className="p-6 sm:p-8">
-              {/* Platform badge */}
-              {(preview.platform) && (
-                <span className="inline-block mb-3 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold shadow-2xs">
-                  {preview.platform}
-                </span>
+            <div className="flex flex-col sm:flex-row items-center sm:items-stretch gap-5 sm:gap-6">
+              {/* Product image frame */}
+              {(preview.imageUrl || preview.image_url) && (
+                <div className="w-full sm:w-56 h-56 sm:h-auto sm:min-h-[220px] rounded-2xl bg-gradient-to-b from-slate-50 to-slate-100/70 border border-slate-100 p-4 flex items-center justify-center shrink-0 relative overflow-hidden group">
+                  <img
+                    src={preview.imageUrl || preview.image_url}
+                    alt={preview.title || preview.productTitle}
+                    className="max-h-full max-w-full object-contain rounded-xl drop-shadow-sm transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
               )}
 
-              <h3 className="text-slate-900 text-xl font-bold mb-1 leading-snug tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
-                {preview.title || preview.productTitle || "Product Preview"}
-              </h3>
-              <p className="text-slate-600 text-sm font-medium mb-6">
-                Seller: <span className="text-slate-900 font-bold">{preview.seller || preview.sellerName || "Marketplace Seller"}</span>
-              </p>
-
-              <AnimatePresence>
-                {error && (
-                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                    className="flex items-start gap-2 p-3.5 rounded-xl bg-red-50 border border-red-200 mb-4">
-                    <AlertCircle className="w-4 h-4 text-red-600 mt-0.5 shrink-0" />
-                    <p className="text-red-700 text-sm font-semibold">{error}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              <div className="flex gap-3">
-                <button
-                  onClick={reset}
-                  className="flex-1 py-3.5 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 text-sm font-bold transition-colors cursor-pointer"
-                >
-                  Back
-                </button>
-                <button
-                  id="startAnalysisBtn"
-                  onClick={handleStartAnalysis}
-                  disabled={loading}
-                  className="flex-[2] flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#042718] text-white text-sm font-bold hover:bg-[#063b25] disabled:opacity-50 transition-colors shadow-sm cursor-pointer"
-                >
-                  {loading ? (
-                    <><Loader2 size={18} className="animate-spin" /> Starting...</>
-                  ) : (
-                    <><ScanSearch size={18} /> Run Analysis</>
+              {/* Product details & actions */}
+              <div className="flex-1 flex flex-col justify-between min-w-0 w-full">
+                <div>
+                  {/* Platform badge */}
+                  {preview.platform && (
+                    <span className="inline-flex items-center gap-1.5 mb-2.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80 text-xs font-bold tracking-tight shadow-2xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                      {preview.platform}
+                    </span>
                   )}
-                </button>
+
+                  <h3
+                    className="text-slate-900 text-lg sm:text-xl font-extrabold mb-4 leading-snug tracking-tight line-clamp-2"
+                    style={{ fontFamily: "'Onest', sans-serif" }}
+                    title={preview.title || preview.productTitle}
+                  >
+                    {preview.title || preview.productTitle || "Product Preview"}
+                  </h3>
+                </div>
+
+                <AnimatePresence>
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="flex items-start gap-2 p-3 rounded-xl bg-red-50 border border-red-200 mb-4"
+                    >
+                      <AlertCircle className="w-4 h-4 text-red-600 mt-0.5 shrink-0" />
+                      <p className="text-red-700 text-xs sm:text-sm font-semibold">{error}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Action buttons */}
+                <div className="flex items-center gap-3 pt-3 border-t border-slate-100 sm:border-0 sm:pt-0">
+                  <button
+                    onClick={reset}
+                    className="px-5 py-3 rounded-xl border border-slate-200 text-slate-700 bg-white hover:bg-slate-50 hover:border-slate-300 text-sm font-bold transition-all cursor-pointer shadow-2xs"
+                  >
+                    Back
+                  </button>
+                  <button
+                    id="startAnalysisBtn"
+                    onClick={handleStartAnalysis}
+                    disabled={loading}
+                    className="flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-[#042718] hover:bg-[#063b25] text-white text-sm font-bold disabled:opacity-50 transition-all shadow-md shadow-[#042718]/15 hover:shadow-lg cursor-pointer"
+                  >
+                    {loading ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        <span>Starting...</span>
+                      </>
+                    ) : (
+                      <>
+                        <ScanSearch size={18} strokeWidth={2.2} />
+                        <span>Run Analysis</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>
