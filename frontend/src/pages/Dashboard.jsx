@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
@@ -14,6 +14,10 @@ import {
   CheckCircle2,
   AlertTriangle,
   HelpCircle,
+  Search,
+  SlidersHorizontal,
+  ChevronDown,
+  MoreVertical,
 } from "lucide-react";
 import { historyAPI } from "../api/endpoints";
 import { useAuth } from "../hooks/useAuth";
@@ -21,20 +25,47 @@ import { formatDate } from "../utils/helpers";
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
+function formatRelativeTime(isoString) {
+  if (!isoString) return "";
+  try {
+    const diffMs = Date.now() - new Date(isoString).getTime();
+    const diffSec = Math.floor(diffMs / 1000);
+    const diffMin = Math.floor(diffSec / 60);
+    const diffHours = Math.floor(diffMin / 60);
+    const diffDays = Math.floor(diffHours / 24);
+
+    if (diffMin < 1) return "Just now";
+    if (diffMin < 60) return `${diffMin} min ago`;
+    if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? "s" : ""} ago`;
+    if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? "s" : ""} ago`;
+    return "";
+  } catch {
+    return "";
+  }
+}
+
+function formatCheckedOn(isoString) {
+  if (!isoString) return { dateStr: "Oct 11, 2026", timeStr: "09:40 AM" };
+  const d = new Date(isoString);
+  const dateStr = d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  const timeStr = d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true });
+  return { dateStr, timeStr };
+}
+
 const RISK_BADGE = {
-  VERY_LOW:  { label: "Very Low Risk", bg: "bg-emerald-100 border border-emerald-300", text: "text-emerald-900 font-bold", dot: "bg-emerald-600" },
-  LOW:       { label: "Low Risk",      bg: "bg-green-100 border border-green-300",     text: "text-green-900 font-bold",   dot: "bg-green-600"   },
-  MEDIUM:    { label: "Moderate Risk", bg: "bg-amber-100 border border-amber-300",     text: "text-amber-950 font-bold",   dot: "bg-amber-600"   },
-  HIGH:      { label: "High Risk",     bg: "bg-orange-100 border border-orange-300",   text: "text-orange-950 font-bold",  dot: "bg-orange-600"  },
-  CRITICAL:  { label: "Critical Risk", bg: "bg-red-100 border border-red-300",         text: "text-red-950 font-bold",     dot: "bg-red-600"     },
+  VERY_LOW:  { label: "Very Low Risk", bg: "bg-[#E6F8EF] border border-[#A7E7C5]", text: "text-[#107E44] font-semibold", dot: "bg-[#107E44]" },
+  LOW:       { label: "Low Risk",      bg: "bg-[#E6F8EF] border border-[#A7E7C5]", text: "text-[#107E44] font-semibold", dot: "bg-[#107E44]" },
+  MEDIUM:    { label: "Moderate Risk", bg: "bg-[#FEF5E7] border border-[#FCD8A2]", text: "text-[#B45309] font-semibold", dot: "bg-[#D97706]" },
+  HIGH:      { label: "High Risk",     bg: "bg-[#FEECEB] border border-[#FCA5A5]", text: "text-[#C53030] font-semibold", dot: "bg-[#E53E3E]" },
+  CRITICAL:  { label: "Critical Risk", bg: "bg-[#FEECEB] border border-[#FCA5A5]", text: "text-[#C53030] font-semibold", dot: "bg-[#E53E3E]" },
 };
 
 function RiskBadge({ level }) {
   const key = String(level || "").toUpperCase().replace(" ", "_");
-  const cfg = RISK_BADGE[key] || { label: level || "Unknown", bg: "bg-slate-100 border border-slate-300", text: "text-slate-800 font-bold", dot: "bg-slate-500" };
+  const cfg = RISK_BADGE[key] || { label: level || "Unknown", bg: "bg-slate-100 border border-slate-300", text: "text-slate-800 font-semibold", dot: "bg-slate-500" };
   return (
-    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs shadow-xs ${cfg.bg} ${cfg.text}`}>
-      <span className={`w-2 h-2 rounded-full ${cfg.dot} shrink-0`} />
+    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs ${cfg.bg} ${cfg.text}`}>
+      <span className={`w-2.5 h-2.5 rounded-full ${cfg.dot} shrink-0`} />
       {cfg.label}
     </span>
   );
@@ -56,36 +87,46 @@ function BriScore({ score }) {
 
   return (
     <div className="flex flex-col items-start">
-      <div className="flex items-baseline gap-1">
-        <span className="font-extrabold text-base sm:text-lg" style={{ color }}>
+      <div className="flex items-baseline gap-0.5">
+        <span className="font-extrabold text-lg sm:text-xl tracking-tight" style={{ color }}>
           {s.toFixed(1)}
         </span>
-        <span className="text-xs text-slate-500 font-medium">/ 100</span>
+        <span className="text-xs text-slate-400 font-medium">/ 100</span>
       </div>
-      <span className="text-[11px] font-semibold text-slate-600">
+      <span className="text-xs font-bold text-slate-700 tracking-tight">
         {assessment}
       </span>
     </div>
   );
 }
 
-function MetricPill({ score }) {
+function DimensionBar({ score }) {
   const num = parseFloat(score || 0);
-  // Scale is 0 to 10 where higher is more risk
-  const isGood = num < 3.5;
-  const isMed = num >= 3.5 && num < 6.5;
+  const isHigh = num >= 6.5;
+  const isLow = num < 3.5;
 
-  const bg = isGood ? "bg-emerald-50 text-emerald-800 border-emerald-200" : isMed ? "bg-amber-50 text-amber-900 border-amber-200" : "bg-red-50 text-red-900 border-red-200";
-  const label = isGood ? "Healthy" : isMed ? "Moderate" : "High Risk";
+  const barColor = isHigh ? "bg-red-400" : isLow ? "bg-emerald-400" : "bg-amber-400";
+  const labelColor = isHigh ? "text-red-500" : isLow ? "text-emerald-600" : "text-amber-600";
+  const label = isHigh ? "High" : isLow ? "Low" : "Med";
+
+  // percentage fill on a 0-10 or 0-100 scale
+  const normalized = num > 10 ? Math.min(100, num) : Math.min(100, (num / 10) * 100);
 
   return (
-    <div className="inline-flex flex-col">
-      <div className="flex items-center gap-1.5">
-        <span className="text-sm font-bold text-slate-800">{num.toFixed(1)}</span>
-        <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded border ${bg}`}>
-          {label}
-        </span>
+    <div className="flex flex-col items-start gap-1 w-20">
+      <span className="text-sm font-extrabold text-slate-900 leading-none">
+        {num.toFixed(1)}
+      </span>
+      {/* progress line */}
+      <div className="w-14 h-1.5 rounded-full bg-slate-100 overflow-hidden">
+        <div
+          className={`h-full rounded-full ${barColor}`}
+          style={{ width: `${Math.max(15, normalized)}%` }}
+        />
       </div>
+      <span className={`text-[11px] font-semibold leading-none ${labelColor}`}>
+        {label}
+      </span>
     </div>
   );
 }
@@ -110,10 +151,17 @@ export default function Dashboard() {
   const [error, setError] = useState("");
   const [showGuide, setShowGuide] = useState(true);
 
+  // Recent analyses filtering & search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [riskFilter, setRiskFilter] = useState("ALL");
+  const [sortOrder, setSortOrder] = useState("latest");
+  const [showFilterDropdown, setShowFilterDropdown] = useState(false);
+  const [showSortDropdown, setShowSortDropdown] = useState(false);
+
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await historyAPI.getHistory({ limit: 6, page: 1, sort_by: "created_at", order: "desc" });
+        const res = await historyAPI.getHistory({ limit: 10, page: 1, sort_by: "created_at", order: "desc" });
         const data = res.data?.data;
         setHistory(data?.items || []);
         setPagination(data?.pagination || null);
