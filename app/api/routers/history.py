@@ -177,15 +177,16 @@ async def get_analysis_detail(
     rec_dict = analysis.recommendation_snapshot
     if not rec_dict or not rec_dict.get("aspects"):
         rec_dict = AnalysisMapper.generate_recommendation_dict(
-            quality_score=analysis.quality_risk_score,
-            delivery_score=analysis.delivery_risk_score,
-            trust_score=analysis.trust_risk_score,
-            business_risk_index=analysis.business_risk_index,
-            business_risk_level=analysis.business_risk_level,
+            quality_score=float(analysis.quality_risk_score or 0.0),
+            delivery_score=float(analysis.delivery_risk_score or 0.0),
+            trust_score=float(analysis.trust_risk_score or 0.0),
+            business_risk_index=float(analysis.business_risk_index or 0.0),
+            business_risk_level=str(analysis.business_risk_level or "MEDIUM"),
         )
         try:
             analysis.recommendation_snapshot = rec_dict
-            db.commit()
+            if getattr(service, "db", None):
+                service.db.commit()
         except Exception:
             pass
 

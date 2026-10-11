@@ -297,7 +297,8 @@ async def get_job_result(
         )
         try:
             stored.recommendation_snapshot = rec_dict
-            db.commit()
+            if getattr(service, "db", None):
+                service.db.commit()
         except Exception:
             pass
 
