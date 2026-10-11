@@ -13,8 +13,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "../../hooks/useAuth";
 import { useAnalysis } from "../../context/AnalysisContext";
-import RiskAiLogo1 from "../../assets/RiskAiLogo1.png";
-import RiskAiLogo2 from "../../assets/RiskAiLogo2.png";
+import Logo from "../../assets/Logo.png";
 
 const NAV_ITEMS = [
   { label: "Dashboard", icon: LayoutDashboard, to: "/dashboard" },
@@ -124,9 +123,9 @@ function SidebarContent({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              src={RiskAiLogo1}
-              alt="RiskAI"
-              className="h-8 w-auto object-contain brightness-0 invert"
+              src={Logo}
+              alt="Riskora AI"
+              className="h-9 w-auto object-contain"
             />
           ) : (
             <motion.img
@@ -134,9 +133,9 @@ function SidebarContent({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              src={RiskAiLogo2}
-              alt="RA"
-              className="h-8 w-8 object-contain brightness-0 invert mx-auto"
+              src={Logo}
+              alt="Riskora AI"
+              className="h-8 w-8 object-contain mx-auto"
             />
           )}
         </AnimatePresence>
@@ -218,8 +217,12 @@ function SidebarContent({
           }`}
         >
           {/* Avatar */}
-          <div className="w-8 h-8 rounded-full bg-[#198F38] flex items-center justify-center text-white text-xs font-bold shrink-0">
-            {initials}
+          <div className="w-8 h-8 rounded-full bg-[#198F38] overflow-hidden flex items-center justify-center text-white text-xs font-bold shrink-0">
+            {user?.avatar ? (
+              <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
+            ) : (
+              initials
+            )}
           </div>
           <AnimatePresence>
             {(!collapsed || isMobile) && (
@@ -229,10 +232,10 @@ function SidebarContent({
                 exit={{ opacity: 0, width: 0 }}
                 className="overflow-hidden"
               >
-                <p className="text-white text-sm font-medium truncate leading-tight">
+                <p className="text-white text-sm font-semibold truncate leading-tight">
                   {user?.username || "User"}
                 </p>
-                <p className="text-white/40 text-xs truncate">{user?.email || ""}</p>
+                <p className="text-emerald-200/80 text-xs truncate font-medium">{user?.email || ""}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -241,7 +244,7 @@ function SidebarContent({
         {/* Logout */}
         <button
           onClick={onLogout}
-          className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-white/50 hover:bg-red-500/15 hover:text-red-400 transition-all duration-200 ${
+          className={`flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-white/80 hover:bg-red-500/20 hover:text-red-300 font-medium transition-all duration-200 cursor-pointer ${
             collapsed && !isMobile ? "justify-center" : ""
           }`}
         >

@@ -6,7 +6,7 @@ import { useAuth } from "../../hooks/useAuth";
 import { authAPI } from "../../api/endpoints";
 import { parseError } from "../../utils/helpers";
 import bgImage from "../../assets/background.png";
-import RiskAiLogo1 from "../../assets/RiskAiLogo1.png";
+import Logo from "../../assets/Logo.png";
 
 // ─── Tabs: login | forgot | reset ───────────────────────────────────────────
 
@@ -102,7 +102,7 @@ export default function Login() {
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full justify-between">
           {/* Logo */}
-          <img src={RiskAiLogo1} alt="RiskAI" className="h-10 w-auto object-contain self-start" />
+          <img src={Logo} alt="Riskora AI" className="h-11 w-auto object-contain self-start" />
 
           {/* Tagline */}
           <div>
@@ -168,7 +168,7 @@ export default function Login() {
       >
         {/* Mobile logo */}
         <div className="lg:hidden mb-8">
-          <img src={RiskAiLogo1} alt="RiskAI" className="h-9 w-auto object-contain" />
+          <img src={Logo} alt="Riskora AI" className="h-10 w-auto object-contain brightness-0" />
         </div>
 
         <div className="w-full max-w-[420px]">
@@ -462,7 +462,7 @@ export default function Login() {
         </div>
 
         <p className="mt-12 text-[#042718]/30 text-xs text-center">
-          © 2026 RiskAI · Final Year Research Project · Rajarata University of Sri Lanka
+          © 2026 Riskora AI · Final Year Research Project · Rajarata University of Sri Lanka
         </p>
       </motion.div>
     </div>

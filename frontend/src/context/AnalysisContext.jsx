@@ -25,7 +25,7 @@ export function AnalysisProvider({ children }) {
   const [preview, setPreview] = useState(null);
   const [analysisId, setAnalysisId] = useState(() => {
     // Restore from sessionStorage so a hard-refresh doesn't lose the job
-    try { return sessionStorage.getItem("riskAI_analysisId") || null; } catch { return null; }
+    try { return sessionStorage.getItem("riskoraAI_analysisId") || sessionStorage.getItem("riskAI_analysisId") || null; } catch { return null; }
   });
   const [jobStatus, setJobStatus] = useState(null);
   const [logs, setLogs] = useState([]);
@@ -39,8 +39,9 @@ export function AnalysisProvider({ children }) {
   useEffect(() => {
     try {
       if (analysisId) {
-        sessionStorage.setItem("riskAI_analysisId", analysisId);
+        sessionStorage.setItem("riskoraAI_analysisId", analysisId);
       } else {
+        sessionStorage.removeItem("riskoraAI_analysisId");
         sessionStorage.removeItem("riskAI_analysisId");
       }
     } catch { /* ignore */ }
@@ -62,7 +63,10 @@ export function AnalysisProvider({ children }) {
     setLogs([]);
     setError("");
     seenLogsRef.current = new Set();
-    try { sessionStorage.removeItem("riskAI_analysisId"); } catch { /* ignore */ }
+    try { 
+      sessionStorage.removeItem("riskoraAI_analysisId"); 
+      sessionStorage.removeItem("riskAI_analysisId"); 
+    } catch { /* ignore */ }
   }, []);
 
   // Keep resetRef up-to-date so polling closure always calls the latest reset
@@ -103,7 +107,10 @@ export function AnalysisProvider({ children }) {
           clearInterval(pollingRef.current);
           pollingRef.current = null;
           // Clear session so the completed job isn't resumed on next mount
-          try { sessionStorage.removeItem("riskAI_analysisId"); } catch { /* ignore */ }
+          try { 
+            sessionStorage.removeItem("riskoraAI_analysisId"); 
+            sessionStorage.removeItem("riskAI_analysisId"); 
+          } catch { /* ignore */ }
           // Navigate via ref (always current, no stale closure)
           setTimeout(() => {
             navigateFnRef.current(`/analysis-result/${id}`);
@@ -127,7 +134,7 @@ export function AnalysisProvider({ children }) {
 
   // ── On mount: if we have a saved analysisId, resume polling immediately ──
   useEffect(() => {
-    const savedId = sessionStorage.getItem("riskAI_analysisId");
+    const savedId = sessionStorage.getItem("riskoraAI_analysisId") || sessionStorage.getItem("riskAI_analysisId");
     if (savedId) {
       setAnalysisId(savedId);
       setStep(3);

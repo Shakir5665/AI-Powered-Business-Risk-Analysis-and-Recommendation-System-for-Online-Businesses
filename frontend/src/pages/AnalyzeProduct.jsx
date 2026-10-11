@@ -12,9 +12,9 @@ import { useAnalysis } from "../context/AnalysisContext";
 // ── Step indicator ────────────────────────────────────────────────────────────
 
 const STEPS = [
-  { id: 1, label: "Enter URL" },
-  { id: 2, label: "Preview Product" },
-  { id: 3, label: "Analyzing..." },
+  { id: 1, label: "1. Paste Link" },
+  { id: 2, label: "2. Verify Product" },
+  { id: 3, label: "3. Scan Reviews" },
 ];
 
 function StepBar({ current }) {
@@ -25,22 +25,22 @@ function StepBar({ current }) {
         const active = current === step.id;
         return (
           <React.Fragment key={step.id}>
-            <div className="flex flex-col items-center gap-1">
+            <div className="flex flex-col items-center gap-1.5">
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
+                className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 shadow-xs ${
                   done ? "bg-[#198F38] text-white" :
-                  active ? "bg-[#042718] text-white ring-4 ring-[#042718]/15" :
-                  "bg-[#042718]/08 text-[#042718]/40"
+                  active ? "bg-[#042718] text-white ring-4 ring-[#198F38]/20" :
+                  "bg-slate-100 text-slate-600 border border-slate-300"
                 }`}
               >
-                {done ? <CheckCircle size={16} /> : step.id}
+                {done ? <CheckCircle size={18} /> : step.id}
               </div>
-              <span className={`text-xs font-medium ${active ? "text-[#042718]" : "text-[#042718]/40"}`}>
+              <span className={`text-xs font-bold ${active ? "text-slate-900" : done ? "text-emerald-700" : "text-slate-500"}`}>
                 {step.label}
               </span>
             </div>
             {i < STEPS.length - 1 && (
-              <div className={`h-px w-16 sm:w-24 mx-1 mb-4 transition-all duration-500 ${done ? "bg-[#198F38]" : "bg-[#042718]/10"}`} />
+              <div className={`h-0.5 w-16 sm:w-24 mx-2 mb-5 transition-all duration-500 ${done ? "bg-[#198F38]" : "bg-slate-200"}`} />
             )}
           </React.Fragment>
         );
@@ -148,7 +148,7 @@ function TerminalPanel({ logs, jobStatus }) {
           className="text-xs text-[#4ade80]/60"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          analysis-log — riskAI
+          analysis-log — Riskora AI
         </span>
         <div className="ml-auto flex items-center gap-1.5">
           {isRunning && (
@@ -286,11 +286,11 @@ export default function AnalyzeProduct() {
               <div className="w-14 h-14 rounded-2xl bg-[#198F38]/10 flex items-center justify-center mx-auto mb-4">
                 <Link2 size={28} className="text-[#198F38]" />
               </div>
-              <h2 className="text-[#042718] text-2xl font-semibold mb-2" style={{ fontFamily: "'Onest', sans-serif" }}>
-                Enter Product URL
+              <h2 className="text-slate-900 text-2xl font-bold mb-2 tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                Check Any Product Link
               </h2>
-              <p className="text-[#042718]/60 text-sm">
-                Paste a product URL from Daraz, Amazon, eBay, Shopify, or AliExpress
+              <p className="text-slate-600 text-sm font-medium max-w-md mx-auto leading-relaxed">
+                Paste any product web link from Daraz, Amazon, eBay, Shopify, or AliExpress to inspect customer ratings, product quality, and business risks.
               </p>
             </div>
 
@@ -301,11 +301,11 @@ export default function AnalyzeProduct() {
                   type="url"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  placeholder="https://www.daraz.lk/products/..."
-                  className="w-full px-4 py-3.5 pr-32 rounded-xl border border-[#042718]/12 bg-[#F6FDFF] text-[#042718] placeholder:text-[#042718]/30 text-sm outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/10 transition-all"
+                  placeholder="Paste link here, e.g. https://www.daraz.lk/products/..."
+                  className="w-full px-4 py-3.5 pr-32 rounded-xl border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 text-sm outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/20 transition-all font-medium shadow-2xs"
                 />
                 {platform && (
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-full bg-[#198F38]/10 text-[#198F38] text-xs font-semibold">
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold border border-emerald-300">
                     {platform}
                   </span>
                 )}
@@ -314,9 +314,9 @@ export default function AnalyzeProduct() {
               <AnimatePresence>
                 {error && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                    className="flex items-start gap-2 p-3 rounded-xl bg-red-50 border border-red-100">
-                    <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
-                    <p className="text-red-600 text-sm">{error}</p>
+                    className="flex items-start gap-2 p-3.5 rounded-xl bg-red-50 border border-red-200">
+                    <AlertCircle className="w-4 h-4 text-red-600 mt-0.5 shrink-0" />
+                    <p className="text-red-700 text-sm font-semibold">{error}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -325,17 +325,18 @@ export default function AnalyzeProduct() {
                 id="checkProductBtn"
                 type="submit"
                 disabled={loading || !url.trim()}
-                className="flex items-center justify-between w-full h-13 px-6 py-3 rounded-full bg-[#042718] text-white font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#063b25] transition-colors"
+                className="flex items-center justify-between w-full h-13 px-6 py-3.5 rounded-full bg-[#042718] text-white font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#063b25] transition-colors cursor-pointer shadow-sm"
               >
-                <span>{loading ? "Checking product..." : "Check Product"}</span>
-                {loading ? <Loader2 size={16} className="animate-spin" /> : <ChevronRight size={16} />}
+                <span>{loading ? "Fetching product information..." : "Fetch Product Details"}</span>
+                {loading ? <Loader2 size={18} className="animate-spin" /> : <ChevronRight size={18} />}
               </button>
             </form>
 
             {/* Supported platforms */}
             <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
+              <span className="text-xs font-bold text-slate-600 mr-1">Supported Marketplaces:</span>
               {["Daraz", "Amazon", "eBay", "Shopify", "AliExpress"].map((p) => (
-                <span key={p} className="px-2.5 py-1 rounded-full bg-[#042718]/05 text-[#042718]/50 text-xs">
+                <span key={p} className="px-3 py-1 rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200 shadow-2xs">
                   {p}
                 </span>
               ))}
@@ -349,11 +350,11 @@ export default function AnalyzeProduct() {
             key="step2"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35 }}
-            className="w-full bg-white rounded-2xl border border-[#042718]/08 shadow-sm overflow-hidden"
+            className="w-full bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
           >
             {/* Product image banner */}
             {(preview.imageUrl || preview.image_url) && (
-              <div className="h-64 sm:h-72 bg-[#F6FDFF] overflow-hidden flex items-center justify-center">
+              <div className="h-64 sm:h-72 bg-slate-50 overflow-hidden flex items-center justify-center border-b border-slate-200">
                 <img
                   src={preview.imageUrl || preview.image_url}
                   alt={preview.title || preview.productTitle}
@@ -365,38 +366,38 @@ export default function AnalyzeProduct() {
             <div className="p-6 sm:p-8">
               {/* Platform badge */}
               {(preview.platform) && (
-                <span className="inline-block mb-3 px-2.5 py-1 rounded-full bg-[#198F38]/10 text-[#198F38] text-xs font-semibold">
+                <span className="inline-block mb-3 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold shadow-2xs">
                   {preview.platform}
                 </span>
               )}
 
-              <h3 className="text-[#042718] text-lg font-semibold mb-1 leading-snug" style={{ fontFamily: "'Onest', sans-serif" }}>
-                {preview.title || preview.productTitle || "Product"}
+              <h3 className="text-slate-900 text-xl font-bold mb-1 leading-snug tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                {preview.title || preview.productTitle || "Verified Product"}
               </h3>
-              <p className="text-[#042718]/50 text-sm mb-4">
-                {preview.seller || preview.sellerName || "Seller N/A"}
+              <p className="text-slate-600 text-sm font-medium mb-4">
+                Store / Merchant: <span className="text-slate-900 font-bold">{preview.seller || preview.sellerName || "Marketplace Seller"}</span>
               </p>
 
               {/* Stats row */}
-              <div className="flex flex-wrap gap-4 mb-6 p-3 rounded-xl bg-[#F6FDFF] border border-[#042718]/06">
-                <div className="flex items-center gap-1.5">
-                  <Star size={14} className="text-yellow-400 fill-yellow-400" />
-                  <span className="text-[#042718] text-sm font-medium">
-                    {preview.rating || preview.overallRating || "—"}
+              <div className="flex flex-wrap gap-5 mb-6 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                <div className="flex items-center gap-2">
+                  <Star size={16} className="text-amber-500 fill-amber-500" />
+                  <span className="text-slate-900 text-sm font-bold">
+                    {preview.rating || preview.overallRating || "N/A"}
                   </span>
-                  <span className="text-[#042718]/40 text-xs">rating</span>
+                  <span className="text-slate-600 text-xs font-medium">Customer Rating</span>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Search size={14} className="text-[#198F38]" />
-                  <span className="text-[#042718] text-sm font-medium">
-                    {preview.reviewCount || preview.totalReviews || "—"}
+                <div className="flex items-center gap-2">
+                  <Search size={16} className="text-emerald-700" />
+                  <span className="text-slate-900 text-sm font-bold">
+                    {preview.reviewCount || preview.totalReviews || "0"}
                   </span>
-                  <span className="text-[#042718]/40 text-xs">reviews</span>
+                  <span className="text-slate-600 text-xs font-medium">Available Reviews</span>
                 </div>
                 {preview.category && (
-                  <div className="flex items-center gap-1.5">
-                    <Package size={14} className="text-[#042718]/40" />
-                    <span className="text-[#042718]/60 text-xs">{preview.category}</span>
+                  <div className="flex items-center gap-2">
+                    <Package size={16} className="text-slate-600" />
+                    <span className="text-slate-800 text-xs font-semibold">{preview.category}</span>
                   </div>
                 )}
               </div>
@@ -404,9 +405,9 @@ export default function AnalyzeProduct() {
               <AnimatePresence>
                 {error && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                    className="flex items-start gap-2 p-3 rounded-xl bg-red-50 border border-red-100 mb-4">
-                    <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 shrink-0" />
-                    <p className="text-red-600 text-sm">{error}</p>
+                    className="flex items-start gap-2 p-3.5 rounded-xl bg-red-50 border border-red-200 mb-4">
+                    <AlertCircle className="w-4 h-4 text-red-600 mt-0.5 shrink-0" />
+                    <p className="text-red-700 text-sm font-semibold">{error}</p>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -414,20 +415,20 @@ export default function AnalyzeProduct() {
               <div className="flex gap-3">
                 <button
                   onClick={reset}
-                  className="flex-1 py-3 rounded-full border border-[#042718]/12 text-[#042718]/60 text-sm font-medium hover:bg-[#042718]/04 transition-colors"
+                  className="flex-1 py-3.5 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 text-sm font-bold transition-colors cursor-pointer"
                 >
-                  Cancel
+                  Cancel &amp; Check Another
                 </button>
                 <button
                   id="startAnalysisBtn"
                   onClick={handleStartAnalysis}
                   disabled={loading}
-                  className="flex-[2] flex items-center justify-center gap-2 py-3 rounded-full bg-[#042718] text-white text-sm font-medium hover:bg-[#063b25] disabled:opacity-50 transition-colors"
+                  className="flex-[2] flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#042718] text-white text-sm font-bold hover:bg-[#063b25] disabled:opacity-50 transition-colors shadow-sm cursor-pointer"
                 >
                   {loading ? (
-                    <><Loader2 size={16} className="animate-spin" /> Starting...</>
+                    <><Loader2 size={18} className="animate-spin" /> Preparing AI Scanner...</>
                   ) : (
-                    <><ScanSearch size={16} /> Start AI Analysis</>
+                    <><ScanSearch size={18} /> Start AI Risk Scan</>
                   )}
                 </button>
               </div>
@@ -441,55 +442,55 @@ export default function AnalyzeProduct() {
             key="step3"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35 }}
-            className="w-full bg-white rounded-2xl border border-[#042718]/08 shadow-sm p-6 sm:p-8"
+            className="w-full bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8"
           >
             {/* Header row */}
             <div className="flex items-center gap-4 mb-5">
               <motion.div
                 animate={{ scale: [1, 1.08, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-14 h-14 rounded-2xl bg-[#198F38]/10 flex items-center justify-center shrink-0"
+                className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center shrink-0 border border-emerald-300 shadow-xs"
               >
-                <ScanSearch size={26} className="text-[#198F38]" />
+                <ScanSearch size={28} className="text-emerald-800" />
               </motion.div>
               <div className="flex-1 min-w-0">
-                <h2 className="text-[#042718] text-xl font-semibold" style={{ fontFamily: "'Onest', sans-serif" }}>
-                  Analyzing Product
+                <h2 className="text-slate-900 text-xl font-bold tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                  Reading Customer Reviews with AI
                 </h2>
-                <p className="text-[#042718]/55 text-sm truncate">
-                  {jobStatus?.currentStep || jobStatus?.message || "AI is scraping and analyzing reviews..."}
+                <p className="text-slate-700 text-sm font-medium truncate mt-0.5">
+                  {jobStatus?.currentStep || jobStatus?.message || "Scanning reviews for product defects, shipping delays, and complaints..."}
                 </p>
               </div>
               {/* Status badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#042718]/05 text-[#042718]/60 text-xs shrink-0">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold shrink-0">
                 {["COMPLETED", "DONE", "FINISHED", "SUCCESS"].includes(String(jobStatus?.status || "").toUpperCase())
-                  ? <CheckCircle size={11} className="text-[#198F38]" />
-                  : <Loader2 size={11} className="animate-spin text-[#198F38]" />
+                  ? <CheckCircle size={14} className="text-emerald-700" />
+                  : <Loader2 size={14} className="animate-spin text-emerald-700" />
                 }
-                <span>{jobStatus?.status || "Processing"}</span>
+                <span>{jobStatus?.status || "Scanning Live"}</span>
               </div>
             </div>
 
             {/* Progress bar */}
-            <div className="w-full h-2 rounded-full bg-[#042718]/08 mb-1.5 overflow-hidden">
+            <div className="w-full h-2.5 rounded-full bg-slate-200 mb-2 overflow-hidden">
               <motion.div
                 animate={{ width: `${progressPct}%` }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="h-full rounded-full bg-gradient-to-r from-[#198F38] to-[#4ade80]"
               />
             </div>
-            <div className="flex items-center justify-between text-[#042718]/40 text-xs mb-5">
+            <div className="flex items-center justify-between text-slate-700 font-semibold text-xs mb-5">
               <span>
                 {jobStatus?.reviewsCollected !== undefined
-                  ? `${jobStatus.reviewsCollected} reviews collected`
-                  : "Collecting reviews..."}
+                  ? `${jobStatus.reviewsCollected} customer reviews read`
+                  : "Gathering reviews..."}
               </span>
               <span>
                 {jobStatus?.currentPage && jobStatus?.totalPages
-                  ? `Page ${jobStatus.currentPage}/${jobStatus.totalPages}`
+                  ? `Review Page ${jobStatus.currentPage} of ${jobStatus.totalPages}`
                   : ""}
               </span>
-              <span>{progressPct}%</span>
+              <span className="text-emerald-800 font-bold">{progressPct}% Complete</span>
             </div>
 
             {/* ── Terminal log panel ── */}
@@ -500,13 +501,13 @@ export default function AnalyzeProduct() {
               <button
                 id="stopScrapingBtn"
                 onClick={() => stopScraping(analysisId)}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#042718]/12 text-[#042718]/60 text-sm font-medium hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-all"
+                className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-slate-300 text-slate-800 font-bold text-sm hover:bg-red-50 hover:text-red-700 hover:border-red-300 transition-all cursor-pointer shadow-2xs"
               >
-                <StopCircle size={14} />
-                Finish Scraping Early
+                <StopCircle size={16} />
+                Generate Report Now (Stop Reading Reviews)
               </button>
-              <p className="text-[#042718]/30 text-xs">
-                Stops collecting reviews and processes what was gathered so far
+              <p className="text-slate-500 font-medium text-xs text-center max-w-md">
+                Calculates your risk score immediately using all customer reviews downloaded so far
               </p>
             </div>
           </motion.div>

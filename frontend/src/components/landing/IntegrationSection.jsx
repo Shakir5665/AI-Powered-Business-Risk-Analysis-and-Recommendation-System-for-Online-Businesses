@@ -5,7 +5,7 @@ import darazLogo from "../../assets/darazLogo.png";
 import amazonLogo from "../../assets/amazonLogo.png";
 import ebayLogo from "../../assets/ebayLogo.png";
 import shopifyLogo from "../../assets/shopifyLogo.png";
-import RiskAiLogo2 from "../../assets/RiskAiLogo2.png";
+import Logo from "../../assets/Logo.png";
 
 const leftIntegrations = [
   {
@@ -125,7 +125,7 @@ export default function IntegrationSection({ className }) {
                 viewport={{ once: true }}
                 className="text-[15px] md:text-[18px] text-[#042718] leading-[1.6] md:leading-[28px] max-w-[612px] font-sans font-normal opacity-80 text-center"
               >
-                RiskAI connects to major e-commerce platforms and is powered by a modern AI tech stack — so you always get accurate, real-time business risk insights.
+                Riskora AI connects to major e-commerce platforms and is powered by a modern AI tech stack — so you always get accurate, real-time business risk insights.
               </motion.p>
             </div>
 
@@ -239,8 +239,8 @@ export default function IntegrationSection({ className }) {
                       viewport={{ once: true }}
                       className="w-full h-full rounded-full bg-white shadow-[0_12px_48px_rgba(19,142,95,0.12)] flex items-center justify-center relative z-10"
                     >
-                      <div className="w-[84px] lg:w-[104px] h-[84px] lg:h-[104px] rounded-full bg-[#FAFFFD] flex items-center justify-center p-2">
-                        <img src={RiskAiLogo2} alt="RiskAI Seal" className="w-[60px] lg:w-[75px] h-auto object-contain" />
+                      <div className="w-[84px] lg:w-[104px] h-[84px] lg:h-[104px] rounded-full bg-[#042718] flex items-center justify-center p-3 shadow-inner">
+                        <img src={Logo} alt="Riskora AI Seal" className="w-[60px] lg:w-[75px] h-auto object-contain" />
                       </div>
                     </motion.div>
                   </div>

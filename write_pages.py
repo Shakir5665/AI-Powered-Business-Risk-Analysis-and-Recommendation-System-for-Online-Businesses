@@ -1,6 +1,6 @@
 
 #!/usr/bin/env python3
-"""Writes AnalyzeProduct.jsx and History.jsx for the RiskAI frontend."""
+"""Writes AnalyzeProduct.jsx and History.jsx for the Riskora AI frontend."""
 
 analyze = """\
 import React, { useState, useEffect, useRef, useCallback } from 'react';

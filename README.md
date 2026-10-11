@@ -1,4 +1,4 @@
-# RiskAI — AI-Powered Business Risk Analysis & Recommendation System
+# Riskora AI — AI-Powered Business Risk Analysis & Recommendation System
 
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/Frontend-React%20%7C%20Vite-61DAFB?style=flat-square&logo=react)](https://reactjs.org/)
@@ -10,9 +10,9 @@
 
 ## 📌 Executive Summary
 
-**RiskAI** is an advanced enterprise business intelligence and automated risk management platform developed for online sellers and e-commerce merchants. By harnessing Natural Language Processing (NLP), Aspect-Based Sentiment Analysis (ABSA), and web scraping technology, the platform evaluates customer feedback across major e-commerce marketplaces (such as Daraz) to compute an actionable **Business Risk Index (BRI)**.
+**Riskora AI** is an advanced enterprise business intelligence and automated risk management platform developed for online sellers and e-commerce merchants. By harnessing Natural Language Processing (NLP), Aspect-Based Sentiment Analysis (ABSA), and web scraping technology, the platform evaluates customer feedback across major e-commerce marketplaces (such as Daraz) to compute an actionable **Business Risk Index (BRI)**.
 
-Instead of relying solely on generic rating averages, RiskAI identifies underlying product flaws, delivery bottlenecks, and merchant trust deficits, supplying business owners with data-backed mitigation strategies and verbatim customer evidence.
+Instead of relying solely on generic rating averages, Riskora AI identifies underlying product flaws, delivery bottlenecks, and merchant trust deficits, supplying business owners with data-backed mitigation strategies and verbatim customer evidence.
 
 ---
 
@@ -131,7 +131,7 @@ Ensure you have the following software installed locally:
 4. **Configure Environment Variables**:
    Create a `.env` file in the root directory (or use default configuration):
    ```env
-   APP_NAME="RiskAI Backend"
+   APP_NAME="Riskora AI Backend"
    DATABASE_URL="sqlite:///./risk_analysis.db"
    JWT_SECRET_KEY="your-super-secret-key-change-in-production"
    DEBUG=True

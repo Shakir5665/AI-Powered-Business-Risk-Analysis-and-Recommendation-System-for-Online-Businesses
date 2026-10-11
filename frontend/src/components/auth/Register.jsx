@@ -5,7 +5,7 @@ import { Eye, EyeOff, ArrowRight, Sparkles, AlertCircle, Check } from "lucide-re
 import { useAuth } from "../../hooks/useAuth";
 import { parseError } from "../../utils/helpers";
 import bgImage from "../../assets/background.png";
-import RiskAiLogo1 from "../../assets/RiskAiLogo1.png";
+import Logo from "../../assets/Logo.png";
 
 // ─── Password Strength Indicator ─────────────────────────────────────────────
 
@@ -115,7 +115,7 @@ export default function Register() {
         <div className="absolute inset-0 bg-[#042718]/20" />
 
         <div className="relative z-10 flex flex-col h-full justify-between">
-          <img src={RiskAiLogo1} alt="RiskAI" className="h-10 w-auto object-contain self-start" />
+          <img src={Logo} alt="Riskora AI" className="h-11 w-auto object-contain self-start" />
 
           <div>
             <motion.div
@@ -183,7 +183,7 @@ export default function Register() {
       >
         {/* Mobile logo */}
         <div className="lg:hidden mb-8">
-          <img src={RiskAiLogo1} alt="RiskAI" className="h-9 w-auto object-contain" />
+          <img src={Logo} alt="Riskora AI" className="h-10 w-auto object-contain brightness-0" />
         </div>
 
         <div className="w-full max-w-[420px]">
@@ -309,7 +309,7 @@ export default function Register() {
         </div>
 
         <p className="mt-12 text-[#042718]/30 text-xs text-center">
-          © 2026 RiskAI · Final Year Research Project · Rajarata University of Sri Lanka
+          © 2026 Riskora AI · Final Year Research Project · Rajarata University of Sri Lanka
         </p>
       </motion.div>
     </div>
