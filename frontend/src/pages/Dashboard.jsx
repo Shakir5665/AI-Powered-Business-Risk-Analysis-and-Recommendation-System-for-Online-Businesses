@@ -22,11 +22,11 @@ import { formatDate } from "../utils/helpers";
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 const RISK_BADGE = {
-  VERY_LOW:  { label: "Safe · Very Low Risk", bg: "bg-emerald-100 border border-emerald-300", text: "text-emerald-900 font-bold", dot: "bg-emerald-600" },
-  LOW:       { label: "Good · Low Risk",      bg: "bg-green-100 border border-green-300",     text: "text-green-900 font-bold",   dot: "bg-green-600"   },
-  MEDIUM:    { label: "Caution · Moderate",   bg: "bg-amber-100 border border-amber-300",     text: "text-amber-950 font-bold",   dot: "bg-amber-600"   },
-  HIGH:      { label: "Warning · High Risk",  bg: "bg-orange-100 border border-orange-300",   text: "text-orange-950 font-bold",  dot: "bg-orange-600"  },
-  CRITICAL:  { label: "Danger · Critical",    bg: "bg-red-100 border border-red-300",         text: "text-red-950 font-bold",     dot: "bg-red-600"     },
+  VERY_LOW:  { label: "Very Low Risk", bg: "bg-emerald-100 border border-emerald-300", text: "text-emerald-900 font-bold", dot: "bg-emerald-600" },
+  LOW:       { label: "Low Risk",      bg: "bg-green-100 border border-green-300",     text: "text-green-900 font-bold",   dot: "bg-green-600"   },
+  MEDIUM:    { label: "Moderate Risk", bg: "bg-amber-100 border border-amber-300",     text: "text-amber-950 font-bold",   dot: "bg-amber-600"   },
+  HIGH:      { label: "High Risk",     bg: "bg-orange-100 border border-orange-300",   text: "text-orange-950 font-bold",  dot: "bg-orange-600"  },
+  CRITICAL:  { label: "Critical Risk", bg: "bg-red-100 border border-red-300",         text: "text-red-950 font-bold",     dot: "bg-red-600"     },
 };
 
 function RiskBadge({ level }) {
@@ -136,31 +136,31 @@ export default function Dashboard() {
 
   const STATS = [
     {
-      label: "Products Checked",
-      subtitle: "Total items scanned",
+      label: "Total Analyses",
+      subtitle: "Products scanned",
       value: totalAnalyses,
       icon: BarChart2,
       color: "#16a34a",
     },
     {
-      label: "Average Risk Score",
-      subtitle: "Lower score is safer (0–100)",
+      label: "Average Risk",
+      subtitle: "Lower is safer (0–100)",
       value: avgBri !== "—" ? `${avgBri} / 100` : "—",
       icon: TrendingUp,
       color: "#ea580c",
     },
     {
-      label: "Latest Product Status",
-      subtitle: "Most recent risk finding",
+      label: "Latest Status",
+      subtitle: "Most recent analysis",
       value: latestRisk,
       icon: ShieldAlert,
       color: "#dc2626",
       isRisk: true,
     },
     {
-      label: "Supported Marketplaces",
-      subtitle: "Stores analyzed",
-      value: platforms.length ? `${platforms.length} Stores` : "—",
+      label: "Marketplaces",
+      subtitle: "Platforms analyzed",
+      value: platforms.length ? `${platforms.length} Platforms` : "—",
       icon: Package,
       color: "#4f46e5",
     },
@@ -193,7 +193,7 @@ export default function Dashboard() {
             </span>
           </h2>
           <p className="text-emerald-100/90 text-sm sm:text-base max-w-xl leading-relaxed">
-            Check product safety in seconds. Paste any e-commerce product link to detect customer complaints, fake reviews, delivery delays, and product quality risks before you buy or sell.
+            Analyze any product link to detect customer complaints, quality issues, and seller risks.
           </p>
         </div>
 
@@ -204,7 +204,7 @@ export default function Dashboard() {
           className="relative z-10 flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-[#198F38] text-white font-semibold text-sm hover:bg-[#1aac44] shadow-lg shadow-[#198F38]/30 transition-all shrink-0 cursor-pointer"
         >
           <ScanSearch size={18} />
-          Analyze New Product
+          Analyze Product
           <ArrowRight size={16} />
         </motion.button>
       </motion.div>
@@ -256,20 +256,20 @@ export default function Dashboard() {
             </div>
             <div>
               <h4 className="text-emerald-950 font-bold text-sm sm:text-base">
-                How to Read Your Risk Scores (Quick Guide)
+                Risk Score Guide
               </h4>
               <p className="text-emerald-900/85 text-xs sm:text-sm mt-1 leading-relaxed">
-                Risk scores range from <strong>0 (Safest)</strong> to <strong>100 (Highest Risk)</strong>. A lower score means a better, more reliable product:
+                Scores range from <strong>0 (Safe)</strong> to <strong>100 (Critical Risk)</strong>:
               </p>
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 mt-2.5 text-xs font-semibold">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 border border-emerald-300">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600" /> 0–40: Safe &amp; Low Risk
+                  <span className="w-2 h-2 rounded-full bg-emerald-600" /> 0–40: Low Risk
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-100 text-amber-950 border border-amber-300">
-                  <span className="w-2 h-2 rounded-full bg-amber-600" /> 41–60: Caution (Moderate Risk)
+                  <span className="w-2 h-2 rounded-full bg-amber-600" /> 41–60: Moderate Risk
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-red-100 text-red-950 border border-red-300">
-                  <span className="w-2 h-2 rounded-full bg-red-600" /> 61–100: Warning (High Customer Complaints)
+                  <span className="w-2 h-2 rounded-full bg-red-600" /> 61–100: High Risk
                 </span>
               </div>
             </div>
@@ -290,7 +290,7 @@ export default function Dashboard() {
           <div className="flex items-center gap-2.5">
             <Clock size={18} className="text-emerald-700" />
             <h3 className="text-slate-900 font-bold text-base sm:text-lg" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Recent Product Checks
+              Recent Analyses
             </h3>
             <span className="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full ml-1">
               Latest {history.length}
@@ -300,7 +300,7 @@ export default function Dashboard() {
             onClick={() => navigate("/history")}
             className="flex items-center gap-1 text-emerald-700 hover:text-emerald-900 text-sm font-bold transition-colors cursor-pointer"
           >
-            View Full History <ArrowRight size={14} />
+            View All <ArrowRight size={14} />
           </button>
         </div>
 

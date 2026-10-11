@@ -12,9 +12,9 @@ import { useAnalysis } from "../context/AnalysisContext";
 // ── Step indicator ────────────────────────────────────────────────────────────
 
 const STEPS = [
-  { id: 1, label: "1. Paste Link" },
-  { id: 2, label: "2. Verify Product" },
-  { id: 3, label: "3. Scan Reviews" },
+  { id: 1, label: "Link" },
+  { id: 2, label: "Preview" },
+  { id: 3, label: "Analysis" },
 ];
 
 function StepBar({ current }) {
@@ -62,19 +62,30 @@ function detectPlatform(url) {
   return null;
 }
 
-// ── Terminal log color mapping ────────────────────────────────────────────────
+// ── Terminal log color mapping & Friendly Tag Formatting ─────────────────────
+
+const TAG_MAP = {
+  "[SCRAPER]":   "[Reviews]",
+  "[AI_ENGINE]": "[Analysis]",
+  "[FIS]":       "[Risk Model]",
+  "[DATABASE]":  "[System]",
+  "[COMPLETED]": "[Complete]",
+  "[USER]":      "[Action]",
+  "[SYSTEM]":    "[System]",
+  "[ERROR]":     "[Alert]",
+};
 
 function getLogColor(line) {
   const upper = line.toUpperCase();
-  if (upper.includes("[ERROR]"))     return "#ff5f5f";
-  if (upper.includes("[SCRAPER]"))   return "#67e8f9";   // cyan
-  if (upper.includes("[AI_ENGINE]")) return "#fde047";   // yellow
-  if (upper.includes("[FIS]"))       return "#d8b4fe";   // purple
-  if (upper.includes("[DATABASE]"))  return "#60a5fa";   // blue
-  if (upper.includes("[COMPLETED]")) return "#4ade80";   // bright green
-  if (upper.includes("[USER]"))      return "#fb923c";   // orange
-  if (upper.includes("[SYSTEM]"))    return "#e2e8f0";   // near-white
-  return "#86efac";                                      // default soft green
+  if (upper.includes("[ERROR]") || upper.includes("[ALERT]"))     return "#ff5f5f";
+  if (upper.includes("[SCRAPER]") || upper.includes("[REVIEWS]")) return "#67e8f9";   // cyan
+  if (upper.includes("[AI_ENGINE]") || upper.includes("[ANALYSIS]")) return "#fde047"; // yellow
+  if (upper.includes("[FIS]") || upper.includes("[RISK MODEL]"))  return "#d8b4fe";   // purple
+  if (upper.includes("[DATABASE]") || upper.includes("[STORAGE]")) return "#60a5fa";  // blue
+  if (upper.includes("[COMPLETED]") || upper.includes("[COMPLETE]")) return "#4ade80"; // bright green
+  if (upper.includes("[USER]") || upper.includes("[ACTION]"))     return "#fb923c";   // orange
+  if (upper.includes("[SYSTEM]"))                                 return "#e2e8f0";   // near-white
+  return "#86efac";                                                                   // default soft green
 }
 
 function TerminalLine({ line, animate }) {
@@ -82,6 +93,8 @@ function TerminalLine({ line, animate }) {
   // Split at the category tag for bold highlighting
   const match = line.match(/^(\[\d{2}:\d{2}:\d{2}\]\s)?(\[[A-Z_]+\])(.*)/);
   if (match) {
+    const rawTag = match[2];
+    const friendlyTag = TAG_MAP[rawTag] || rawTag;
     return (
       <motion.div
         initial={animate ? { opacity: 0, x: -6 } : false}
@@ -91,7 +104,7 @@ function TerminalLine({ line, animate }) {
         style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace", fontSize: "12px" }}
       >
         {match[1] && <span style={{ color: "#6b7280" }}>{match[1]}</span>}
-        <span style={{ color, fontWeight: 700, flexShrink: 0 }}>{match[2]}</span>
+        <span style={{ color, fontWeight: 700, flexShrink: 0 }}>{friendlyTag}</span>
         <span style={{ color: "#d1fae5" }}>{match[3]}</span>
       </motion.div>
     );
@@ -148,7 +161,7 @@ function TerminalPanel({ logs, jobStatus }) {
           className="text-xs text-[#4ade80]/60"
           style={{ fontFamily: "'JetBrains Mono', monospace" }}
         >
-          analysis-log — Riskora AI
+          Live Activity
         </span>
         <div className="ml-auto flex items-center gap-1.5">
           {isRunning && (
@@ -169,7 +182,7 @@ function TerminalPanel({ logs, jobStatus }) {
       >
         {logs.length === 0 ? (
           <span style={{ color: "#4ade80/40", fontFamily: "monospace", fontSize: "12px" }}>
-            Waiting for logs...
+            Starting scan...
           </span>
         ) : (
           logs.map((line, i) => (
@@ -241,13 +254,13 @@ export default function AnalyzeProduct() {
   const handleCheckProduct = async (e) => {
     e.preventDefault();
     setError("");
-    if (!url.trim()) { setError("Please enter a product URL."); return; }
+    if (!url.trim()) { setError("Please paste a product link."); return; }
     try {
       setLoading(true);
       const res = await analysisAPI.checkProduct(url.trim());
       setProductPreview(res.data?.data, url.trim());
     } catch (err) {
-      setError(parseError(err) || "Could not fetch product. Please check the URL.");
+      setError(parseError(err) || "Could not load product. Please check the link.");
     } finally {
       setLoading(false);
     }
@@ -260,7 +273,7 @@ export default function AnalyzeProduct() {
       setLoading(true);
       await startAnalysis(url.trim());
     } catch (err) {
-      setError(parseError(err) || "Failed to start analysis.");
+      setError(parseError(err) || "Could not start analysis. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -287,10 +300,10 @@ export default function AnalyzeProduct() {
                 <Link2 size={28} className="text-[#198F38]" />
               </div>
               <h2 className="text-slate-900 text-2xl font-bold mb-2 tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
-                Check Any Product Link
+                Analyze Product
               </h2>
               <p className="text-slate-600 text-sm font-medium max-w-md mx-auto leading-relaxed">
-                Paste any product web link from Daraz, Amazon, eBay, Shopify, or AliExpress to inspect customer ratings, product quality, and business risks.
+                Paste any product link to evaluate customer feedback, quality, and seller risks.
               </p>
             </div>
 
@@ -301,7 +314,7 @@ export default function AnalyzeProduct() {
                   type="url"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  placeholder="Paste link here, e.g. https://www.daraz.lk/products/..."
+                  placeholder="Paste product link (Amazon, Daraz, eBay, Shopify...)"
                   className="w-full px-4 py-3.5 pr-32 rounded-xl border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 text-sm outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/20 transition-all font-medium shadow-2xs"
                 />
                 {platform && (
@@ -327,14 +340,14 @@ export default function AnalyzeProduct() {
                 disabled={loading || !url.trim()}
                 className="flex items-center justify-between w-full h-13 px-6 py-3.5 rounded-full bg-[#042718] text-white font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#063b25] transition-colors cursor-pointer shadow-sm"
               >
-                <span>{loading ? "Fetching product information..." : "Fetch Product Details"}</span>
+                <span>{loading ? "Checking link..." : "Continue"}</span>
                 {loading ? <Loader2 size={18} className="animate-spin" /> : <ChevronRight size={18} />}
               </button>
             </form>
 
             {/* Supported platforms */}
             <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
-              <span className="text-xs font-bold text-slate-600 mr-1">Supported Marketplaces:</span>
+              <span className="text-xs font-bold text-slate-600 mr-1">Supported:</span>
               {["Daraz", "Amazon", "eBay", "Shopify", "AliExpress"].map((p) => (
                 <span key={p} className="px-3 py-1 rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200 shadow-2xs">
                   {p}
@@ -372,10 +385,10 @@ export default function AnalyzeProduct() {
               )}
 
               <h3 className="text-slate-900 text-xl font-bold mb-1 leading-snug tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
-                {preview.title || preview.productTitle || "Verified Product"}
+                {preview.title || preview.productTitle || "Product Preview"}
               </h3>
               <p className="text-slate-600 text-sm font-medium mb-4">
-                Store / Merchant: <span className="text-slate-900 font-bold">{preview.seller || preview.sellerName || "Marketplace Seller"}</span>
+                Seller: <span className="text-slate-900 font-bold">{preview.seller || preview.sellerName || "Marketplace Seller"}</span>
               </p>
 
               {/* Stats row */}
@@ -385,14 +398,14 @@ export default function AnalyzeProduct() {
                   <span className="text-slate-900 text-sm font-bold">
                     {preview.rating || preview.overallRating || "N/A"}
                   </span>
-                  <span className="text-slate-600 text-xs font-medium">Customer Rating</span>
+                  <span className="text-slate-600 text-xs font-medium">Rating</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Search size={16} className="text-emerald-700" />
                   <span className="text-slate-900 text-sm font-bold">
                     {preview.reviewCount || preview.totalReviews || "0"}
                   </span>
-                  <span className="text-slate-600 text-xs font-medium">Available Reviews</span>
+                  <span className="text-slate-600 text-xs font-medium">Reviews</span>
                 </div>
                 {preview.category && (
                   <div className="flex items-center gap-2">
@@ -417,7 +430,7 @@ export default function AnalyzeProduct() {
                   onClick={reset}
                   className="flex-1 py-3.5 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 text-sm font-bold transition-colors cursor-pointer"
                 >
-                  Cancel &amp; Check Another
+                  Back
                 </button>
                 <button
                   id="startAnalysisBtn"
@@ -426,9 +439,9 @@ export default function AnalyzeProduct() {
                   className="flex-[2] flex items-center justify-center gap-2 py-3.5 rounded-full bg-[#042718] text-white text-sm font-bold hover:bg-[#063b25] disabled:opacity-50 transition-colors shadow-sm cursor-pointer"
                 >
                   {loading ? (
-                    <><Loader2 size={18} className="animate-spin" /> Preparing AI Scanner...</>
+                    <><Loader2 size={18} className="animate-spin" /> Starting...</>
                   ) : (
-                    <><ScanSearch size={18} /> Start AI Risk Scan</>
+                    <><ScanSearch size={18} /> Run Analysis</>
                   )}
                 </button>
               </div>
@@ -455,10 +468,10 @@ export default function AnalyzeProduct() {
               </motion.div>
               <div className="flex-1 min-w-0">
                 <h2 className="text-slate-900 text-xl font-bold tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
-                  Reading Customer Reviews with AI
+                  Analyzing Reviews
                 </h2>
                 <p className="text-slate-700 text-sm font-medium truncate mt-0.5">
-                  {jobStatus?.currentStep || jobStatus?.message || "Scanning reviews for product defects, shipping delays, and complaints..."}
+                  {jobStatus?.currentStep || jobStatus?.message || "Extracting customer feedback and calculating risk score..."}
                 </p>
               </div>
               {/* Status badge */}
@@ -467,7 +480,7 @@ export default function AnalyzeProduct() {
                   ? <CheckCircle size={14} className="text-emerald-700" />
                   : <Loader2 size={14} className="animate-spin text-emerald-700" />
                 }
-                <span>{jobStatus?.status || "Scanning Live"}</span>
+                <span>{jobStatus?.status || "Analyzing"}</span>
               </div>
             </div>
 
@@ -482,15 +495,15 @@ export default function AnalyzeProduct() {
             <div className="flex items-center justify-between text-slate-700 font-semibold text-xs mb-5">
               <span>
                 {jobStatus?.reviewsCollected !== undefined
-                  ? `${jobStatus.reviewsCollected} customer reviews read`
-                  : "Gathering reviews..."}
+                  ? `${jobStatus.reviewsCollected} reviews collected`
+                  : "Collecting reviews..."}
               </span>
               <span>
                 {jobStatus?.currentPage && jobStatus?.totalPages
-                  ? `Review Page ${jobStatus.currentPage} of ${jobStatus.totalPages}`
+                  ? `Page ${jobStatus.currentPage} of ${jobStatus.totalPages}`
                   : ""}
               </span>
-              <span className="text-emerald-800 font-bold">{progressPct}% Complete</span>
+              <span className="text-emerald-800 font-bold">{progressPct}%</span>
             </div>
 
             {/* ── Terminal log panel ── */}
@@ -504,10 +517,10 @@ export default function AnalyzeProduct() {
                 className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-slate-300 text-slate-800 font-bold text-sm hover:bg-red-50 hover:text-red-700 hover:border-red-300 transition-all cursor-pointer shadow-2xs"
               >
                 <StopCircle size={16} />
-                Generate Report Now (Stop Reading Reviews)
+                Generate Report Now
               </button>
               <p className="text-slate-500 font-medium text-xs text-center max-w-md">
-                Calculates your risk score immediately using all customer reviews downloaded so far
+                Complete analysis immediately with reviews collected so far
               </p>
             </div>
           </motion.div>
