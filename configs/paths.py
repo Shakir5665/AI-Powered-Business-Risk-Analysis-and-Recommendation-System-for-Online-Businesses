@@ -8,6 +8,7 @@ AI-Powered Business Risk Analysis
 and Recommendation System
 """
 
+import os
 from pathlib import Path
 
 # ==================================================
@@ -15,6 +16,21 @@ from pathlib import Path
 # ==================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+# Load environment variables from .env if available
+_env_path = PROJECT_ROOT / ".env"
+if _env_path.is_file():
+    try:
+        with open(_env_path, "r", encoding="utf-8") as _f:
+            for _line in _f:
+                _line = _line.strip()
+                if _line and not _line.startswith("#") and "=" in _line:
+                    _k, _v = _line.split("=", 1)
+                    _k, _v = _k.strip(), _v.strip().strip("'\"")
+                    if _k not in os.environ:
+                        os.environ[_k] = _v
+    except Exception:
+        pass
 
 # ==================================================
 # Data Directories
@@ -55,7 +71,8 @@ FIGURE_DIR = OUTPUT_DIR / "figures"
 # AI Model & Resources
 # ==================================================
 
-MODEL_DIR = PROJECT_ROOT / "models" / "v1"
+MODEL_VERSION = os.getenv("MODEL_VERSION", "v2").strip()
+MODEL_DIR = PROJECT_ROOT / "models" / MODEL_VERSION
 TOKENIZER_DIR = MODEL_DIR / "tokenizer"
 RESOURCES_DIR = PROJECT_ROOT / "resources"
 
