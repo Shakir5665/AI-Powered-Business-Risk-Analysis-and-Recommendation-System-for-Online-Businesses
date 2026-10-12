@@ -391,7 +391,23 @@ class AnalysisService:
         analysis.confidence_statistics = sanitize_native_types(conf_stats)
         analysis.risk_breakdown = sanitize_native_types(risks_info.get("riskBreakdown"))
         analysis.business_risk_snapshot = sanitize_native_types(mapped_data.get("risks"))
-        analysis.recommendation_snapshot = sanitize_native_types(mapped_data.get("recommendation"))
+        rec_snapshot = mapped_data.get("recommendation")
+        if not rec_snapshot or not rec_snapshot.get("aspects"):
+            full_rec = AnalysisMapper.generate_recommendation_dict(
+                quality_score=float(risks_info["qualityRisk"]["score"]),
+                delivery_score=float(risks_info["deliveryRisk"]["score"]),
+                trust_score=float(risks_info["trustRisk"]["score"]),
+                business_risk_index=float(risks_info["businessRiskIndex"]),
+                business_risk_level=str(risks_info["overallRiskLevel"]),
+            )
+            if full_rec:
+                if rec_snapshot and isinstance(rec_snapshot, dict):
+                    rec_snapshot["aspects"] = full_rec.get("aspects", {})
+                else:
+                    rec_snapshot = full_rec
+        if rec_snapshot:
+            mapped_data["recommendation"] = rec_snapshot
+        analysis.recommendation_snapshot = sanitize_native_types(rec_snapshot)
 
         # Update per-review AI predictions
         predictions = eval_output.get("predictions", [])

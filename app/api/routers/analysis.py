@@ -208,7 +208,7 @@ async def get_job_result(
             if "POS" in s_val: pos_c += 1
             elif "NEG" in s_val: neg_c += 1
             elif "NEU" in s_val or "MIX" in s_val: neu_c += 1
-            else: pos_c += 1
+            else: pass  # skip null or unrecognized sentiments to avoid inflating positive count
 
     statistics_dict = {
         "reviewStatistics": {
