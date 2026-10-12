@@ -1,0 +1,1804 @@
+{
+  "reviews": [
+    {
+      "id": "REV001",
+      "comment": "Excellent sound quality and reliable performance",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV002",
+      "comment": "The sound quality is excellent",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV003",
+      "comment": "Crystal clear audio and the bass response is surprisingly deep.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV004",
+      "comment": "Battery lasts over 6 hours on a single charge. Super impressed!",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV005",
+      "comment": "Arrived two days ahead of schedule, beautifully packed.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV006",
+      "comment": "Genuine product from an honest seller. Everything matches the description.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV007",
+      "comment": "Top notch audio clarity and fast dispatch by the merchant.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV008",
+      "comment": "Comfortable fit for long gym sessions and sweat resistant.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV009",
+      "comment": "Seller answered all my questions promptly and provided official warranty.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV010",
+      "comment": "Superb noise reduction and the silicone case included is really handy.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV011",
+      "comment": "Lightning fast delivery and product arrived in pristine condition.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV012",
+      "comment": "Amazing bluetooth range, works across two rooms without drops.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV013",
+      "comment": "Authentic earbuds, verified serial number on the manufacturer portal.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV014",
+      "comment": "Outstanding microphone pickup during office Zoom calls.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV015",
+      "comment": "Great battery backup and super quick delivery service.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV016",
+      "comment": "High quality finish, feels very premium in hand.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV017",
+      "comment": "Trusted seller with authentic stock and clear communication.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV018",
+      "comment": "Crisp highs and warm mids. Audio profile is very well balanced.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV019",
+      "comment": "Package was bubble-wrapped securely and arrived right on time.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV020",
+      "comment": "Both earbuds connect instantaneously upon opening the charging case lid.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV021",
+      "comment": "The merchant honored the discount code and shipped within 24 hours.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV022",
+      "comment": "Premium sound output, secure courier delivery, and 100% genuine item.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV023",
+      "comment": "Ear tips fit snugly and provide decent passive noise isolation.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV024",
+      "comment": "Very honest seller who proactively shared tracking details.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV025",
+      "comment": "Impressive build quality with sturdy hinges on the magnetic case.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV026",
+      "comment": "Super rapid shipping and the earbuds exceed expectations for the price.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV027",
+      "comment": "Touch controls are very responsive and easy to customize.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV028",
+      "comment": "Flawless experience from order placement to fast doorstep delivery.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV029",
+      "comment": "Legit product with verified warranty card enclosed inside.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV030",
+      "comment": "The bass punch is energetic without overpowering vocal clarity.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV031",
+      "comment": "Speedy shipping and the product matches the listing photos 100%.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV032",
+      "comment": "Wireless charging works seamlessly and earbuds charge quickly.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV033",
+      "comment": "Great build materials and reputable vendor who shipped immediately.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV034",
+      "comment": "Voice calls are loud and clear even when walking outdoors in breeze.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV035",
+      "comment": "Delivered safely within 48 hours without any damage to packaging.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV036",
+      "comment": "Solid construction, fantastic soundstage, and legitimate seller.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV037",
+      "comment": "Battery life easily meets the advertised specifications.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV038",
+      "comment": "Prompt dispatch and polite courier driver.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV039",
+      "comment": "Trustworthy seller with excellent packaging and pristine merchandise.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV040",
+      "comment": "Compact charging case fits easily into coin pockets.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV041",
+      "comment": "Verified authentic merchandise, definitely buying from this store again.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV042",
+      "comment": "Rich acoustic quality with punchy sub-bass frequencies.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV043",
+      "comment": "Swift delivery and hassle-free ordering experience.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV044",
+      "comment": "Low audio latency makes watching movies and gaming delightful.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV045",
+      "comment": "Accurate listing details and transparent return policy from seller.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV046",
+      "comment": "Fast parcel dispatch and the product sounds remarkably clear.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV047",
+      "comment": "Ergonomic contouring ensures earbuds never fall out during jogs.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV048",
+      "comment": "Smooth delivery and seller included the advertised complimentary case.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV049",
+      "comment": "Top-tier sound fidelity, premium packaging, and fast shipment.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV050",
+      "comment": "Completely authentic unit with active manufacturer support.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV051",
+      "comment": "Very bad product and late delivery",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV052",
+      "comment": "Left earbud stopped charging after just three days of mild use.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV053",
+      "comment": "Delivery was delayed by over two weeks with zero tracking updates.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV054",
+      "comment": "Counterfeit item. The serial number fails verification on the official website.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV055",
+      "comment": "Terrible audio quality with constant buzzing distortion at higher volumes.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV056",
+      "comment": "Package arrived completely crushed and one earbud casing was cracked.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV057",
+      "comment": "Seller refused to honor the warranty and stopped responding to messages.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV058",
+      "comment": "Battery drains from 100% to zero in less than 40 minutes.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV059",
+      "comment": "Courier threw the package over the gate during heavy rain.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV060",
+      "comment": "Fake replica earbuds. Do not trust this seller's misleading claims.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV061",
+      "comment": "Microphone sounds muffled and underwater, unusable for work calls.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV062",
+      "comment": "Dispatched five days late and seller gave invalid courier tracking numbers.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV063",
+      "comment": "Cheap plastic build and flimsy case lid broke off within a week.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV064",
+      "comment": "Horrible static noise in both earbuds and delivery was delayed.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV065",
+      "comment": "Seller advertised free silicone case but omitted it from the box.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV066",
+      "comment": "Bluetooth disconnects every 2 minutes while my phone is in my pocket.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV067",
+      "comment": "Arrived two weeks late and the package had clearly been tampered with.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV068",
+      "comment": "Extremely uncomfortable shape, causes ear pain after ten minutes.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV069",
+      "comment": "Misleading product title. This is not genuine JBL as claimed by seller.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV070",
+      "comment": "Severe sound delay between video and audio playback.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV071",
+      "comment": "Late delivery, damaged packaging, and awful sounding audio.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV072",
+      "comment": "Seller rejected my return request despite providing unboxing evidence.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV073",
+      "comment": "Right earbud is significantly quieter than the left one.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV074",
+      "comment": "Courier delayed shipment repeatedly without notifying the buyer.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV075",
+      "comment": "Dishonest seller sent an opened return unit instead of brand new.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV076",
+      "comment": "Hinges on the charging case became loose after only two days.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV077",
+      "comment": "Late arrival and the merchant was extremely rude when contacted.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV078",
+      "comment": "Zero bass response, hollow sound reminiscent of cheap disposable earphones.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV079",
+      "comment": "Box arrived torn open with missing replacement silicone tips.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV080",
+      "comment": "Total scam, received an unbranded clone product in a generic white box.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV081",
+      "comment": "Charging case gets dangerously hot when plugged into standard adapter.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV082",
+      "comment": "Shipping took over 18 days for a local order.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV083",
+      "comment": "Defective item and the store refuses to reply to replacement requests.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV084",
+      "comment": "Volume is way too low even at maximum setting.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV085",
+      "comment": "Courier delivered to the wrong address and box was water damaged.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV086",
+      "comment": "Fraudulent advertising. Specs do not match the received product.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV087",
+      "comment": "Touch controls are hypersensitive and trigger false accidental taps.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV088",
+      "comment": "Unacceptable delivery delay accompanied by poor packaging protection.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV089",
+      "comment": "Poor quality speakers, delayed shipping, and unresponsive seller.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV090",
+      "comment": "Earbud casing cracked open when dropped from desk height.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV091",
+      "comment": "Seller sent a refurbished product while charging full retail price.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV092",
+      "comment": "Harsh screeching sound occurs whenever bluetooth pairs.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV093",
+      "comment": "Late delivery and parcel was missing tracking for over 10 days.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV094",
+      "comment": "Audio cuts in and out every few steps when phone is in handbag.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV095",
+      "comment": "Customer support gave misleading excuses for delays and product defects.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV096",
+      "comment": "Plastic edges have sharp burrs that scratch the ear canal.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV097",
+      "comment": "Delivery courier left the package in plain view on street curb.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV098",
+      "comment": "Seller promised an authentic invoice but failed to provide any receipt.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV099",
+      "comment": "Terrible battery performance and fragile hinge mechanism.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV100",
+      "comment": "Fake warranty card with invalid phone numbers and contact emails.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV101",
+      "comment": "The earbuds work as expected",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV102",
+      "comment": "Decent audio for the price, nothing extraordinary but acceptable.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV103",
+      "comment": "Delivery arrived on the estimated date. Standard standard packaging.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV104",
+      "comment": "The product matches description, although packaging was somewhat plain.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV105",
+      "comment": "Sound is average with modest bass. Good enough for casual podcasts.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV106",
+      "comment": "Shipping speed was normal, took about 4 days as stated at checkout.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV107",
+      "comment": "Standard customer service response, answered questions without enthusiasm.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV108",
+      "comment": "Battery lasts around 3.5 hours, which is typical for budget wireless earbuds.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV109",
+      "comment": "Delivery took standard time and audio quality is okay for everyday commute.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV110",
+      "comment": "Seller provides what is shown, no extra bonuses or special packaging.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV111",
+      "comment": "Build is made of plastic as expected, neither cheap nor premium feeling.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV112",
+      "comment": "Courier followed instructions, parcel delivered safely within ordinary timeframe.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV113",
+      "comment": "Item appears genuine, standard documentation included in the package.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV114",
+      "comment": "Microphone works decently in quiet rooms, but picks up background noise outdoors.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV115",
+      "comment": "Average sound quality, ordinary delivery speed, fair value for money.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV116",
+      "comment": "Merchant provided standard tracking and dispatched on the second business day.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV117",
+      "comment": "Comfort is acceptable for an hour, after which slight ear pressure is felt.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV118",
+      "comment": "Standard cardboard shipping box with basic bubble wrap.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV119",
+      "comment": "Verified product details match specifications without any notable extras.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV120",
+      "comment": "Bluetooth range is around 5 to 6 meters before experiencing occasional lag.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV121",
+      "comment": "Average shipping duration, standard sound quality, and expected vendor communication.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV122",
+      "comment": "Case magnet holds earbuds moderately well, neither too weak nor very strong.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV123",
+      "comment": "Package arrived within expected date window with standard courier updates.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV124",
+      "comment": "Seller delivered exactly what was ordered without surprises.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV125",
+      "comment": "Touch controls work with a slight half-second delay.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV126",
+      "comment": "Parcel took five working days to arrive, which is standard for ground shipping.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV127",
+      "comment": "Volume levels are sufficient for indoor environments.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV128",
+      "comment": "Basic packaging with regular shipping speed and functional earbuds.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV129",
+      "comment": "Seller answered inquiries after 24 hours, average support response time.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV130",
+      "comment": "Treble is clear while bass is fairly neutral and flat.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV131",
+      "comment": "Delivery on schedule, seller reliable, sound quality acceptable.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV132",
+      "comment": "Case charges fully in about two hours using included cable.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV133",
+      "comment": "Standard postal transit time, package arrived intact.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV134",
+      "comment": "Authenticity seems fine, typical retail unit packaging.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV135",
+      "comment": "Latency is fine for YouTube videos, but noticeable in competitive gaming.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV136",
+      "comment": "Transit took the full estimated delivery window.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV137",
+      "comment": "Sound profile is balanced without boosted bass or sharp highs.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV138",
+      "comment": "Standard store policy and receipt provided as requested.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV139",
+      "comment": "Earbud fit is reasonable, three silicone ear tip sizes included.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV140",
+      "comment": "Courier dropped package in mailbox on the scheduled delivery date.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV141",
+      "comment": "Everything works as described in the item specifications.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV142",
+      "comment": "LED battery indicator works properly though light is rather dim.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV143",
+      "comment": "Delivery took standard 4 business days with typical parcel tracking.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV144",
+      "comment": "Call audio is audible in quiet rooms, moderate performance.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV145",
+      "comment": "Seller followed standard guidelines, no issues with transaction.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV146",
+      "comment": "Earbuds connect fine with Android and iOS devices after standard pairing.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV147",
+      "comment": "Package reached destination in ordinary condition without special padding.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV148",
+      "comment": "Medium grade sound quality, meets expectations for entry level wireless buds.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV149",
+      "comment": "Standard dispatch time and reasonable product functionality.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV150",
+      "comment": "Legitimate seller, product corresponds faithfully to specs.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    }
+  ]
+}

@@ -3,13 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowLeft, Star, Package, ExternalLink,
-  ShieldAlert, ThumbsUp, ThumbsDown, Minus,
-  CheckCircle, TrendingUp, Loader2, AlertCircle, Info, HelpCircle,
+  ThumbsUp, ThumbsDown, Minus,
+  Loader2, AlertCircle, Info,
   Truck, ShieldCheck, ChevronRight, Target, Settings
 } from "lucide-react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { analysisAPI } from "../api/endpoints";
-import { parseError, formatDate } from "../utils/helpers";
+import { parseError } from "../utils/helpers";
+import UserReviewsSection from "../components/reviews/UserReviewsSection";
 
 // ── Plain-English Risk Definitions ──────────────────────────────────────────
 
@@ -439,6 +440,10 @@ export default function AnalysisResult() {
   const positiveCount = stats.positive_reviews ?? stats.positive ?? 0;
   const negativeCount = stats.negative_reviews ?? stats.negative ?? 0;
   const neutralCount = stats.neutral_reviews ?? stats.neutral ?? 0;
+  const sumSentiment = positiveCount + negativeCount + neutralCount;
+  const totalSentimentReviews =
+    stats.total_reviews ??
+    (sumSentiment > 0 ? sumSentiment : (product?.reviewCount || product?.totalReviews || 0));
 
   const sentimentData = [
     { name: "Positive", value: positiveCount },
@@ -653,19 +658,25 @@ export default function AnalysisResult() {
       </div>
 
       {/* ── Customer Sentiment Row ── */}
-      <motion.div {...fadeUp(0.3)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
-        <div className="mb-3">
-          <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-            Customer Sentiment
-          </h4>
-          <p className="text-slate-600 text-xs font-medium">Overall opinion breakdown from analyzed reviews</p>
+      <motion.div {...fadeUp(0.3)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
+          <div>
+            <h4 className="text-slate-900 font-bold text-base sm:text-lg" style={{ fontFamily: "'Onest', sans-serif" }}>
+              Customer Sentiment
+            </h4>
+            <p className="text-slate-600 text-xs sm:text-sm font-medium">Overall opinion breakdown from analyzed reviews</p>
+          </div>
+          <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs self-start sm:self-auto">
+            <span className="text-slate-500 text-xs font-semibold">Total Reviews:</span>
+            <span className="text-slate-900 font-black text-base">{totalSentimentReviews}</span>
+          </div>
         </div>
         {sentimentData.length > 0 ? (
-          <div className="flex flex-col sm:flex-row items-center gap-6 pt-2">
-            <div className="w-[140px] h-[140px] shrink-0">
+          <div className="flex flex-col sm:flex-row items-center gap-6 pt-1">
+            <div className="relative w-[150px] h-[150px] shrink-0 flex items-center justify-center">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={sentimentData} cx="50%" cy="50%" innerRadius={42} outerRadius={65} dataKey="value" paddingAngle={3}>
+                  <Pie data={sentimentData} cx="50%" cy="50%" innerRadius={46} outerRadius={68} dataKey="value" paddingAngle={3}>
                     {sentimentData.map((_, i) => (
                       <Cell key={i} fill={SENTIMENT_COLORS[i]} />
                     ))}
@@ -673,15 +684,24 @@ export default function AnalysisResult() {
                   <Tooltip formatter={(v) => [`${v} reviews`, "Count"]} />
                 </PieChart>
               </ResponsiveContainer>
+              {/* Big, clear Total Reviews count in the donut hole */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+                <span className="text-slate-900 font-black text-2xl sm:text-3xl leading-none tracking-tight">
+                  {totalSentimentReviews}
+                </span>
+                <span className="text-slate-500 font-bold text-[10px] uppercase tracking-wider mt-1">
+                  Reviews
+                </span>
+              </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
               {sentimentData.map((d, i) => (
-                <div key={d.name} className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                <div key={d.name} className="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-100">
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full shrink-0" style={{ background: SENTIMENT_COLORS[i] }} />
-                    <span className="text-slate-800 font-semibold text-xs">{d.name}</span>
+                    <span className="text-slate-800 font-semibold text-xs sm:text-sm">{d.name}</span>
                   </div>
-                  <span className="text-slate-900 font-extrabold text-sm">{d.value}</span>
+                  <span className="text-slate-900 font-extrabold text-sm sm:text-base">{d.value}</span>
                 </div>
               ))}
             </div>
@@ -690,6 +710,15 @@ export default function AnalysisResult() {
           <p className="text-slate-500 text-sm font-medium py-6 text-center">No sentiment data recorded yet.</p>
         )}
       </motion.div>
+
+      {/* ── User Reviews Section ── */}
+      <UserReviewsSection
+        analysisCounts={{
+          positive: positiveCount,
+          negative: negativeCount,
+          neutral: neutralCount,
+        }}
+      />
 
       {/* ── Recommendations Section (Matching Screenshot) ── */}
       {(() => {
