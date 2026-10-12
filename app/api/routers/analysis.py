@@ -286,13 +286,21 @@ async def get_job_result(
 
     top_reviews = AnalysisMapper.extract_top_reviews_per_class(db_reviews_list, max_per_class=10)
 
-    rec_dict = AnalysisMapper.generate_recommendation_dict(
-        quality_score=q_score,
-        delivery_score=d_score,
-        trust_score=t_score,
-        business_risk_index=stored.business_risk_index,
-        business_risk_level=stored.business_risk_level,
-    )
+    rec_dict = stored.recommendation_snapshot
+    if not rec_dict or not rec_dict.get("aspects"):
+        rec_dict = AnalysisMapper.generate_recommendation_dict(
+            quality_score=q_score,
+            delivery_score=d_score,
+            trust_score=t_score,
+            business_risk_index=stored.business_risk_index,
+            business_risk_level=stored.business_risk_level,
+        )
+        try:
+            stored.recommendation_snapshot = rec_dict
+            if getattr(service, "db", None):
+                service.db.commit()
+        except Exception:
+            pass
 
     result_payload = {
         "analysisId": stored.public_id,

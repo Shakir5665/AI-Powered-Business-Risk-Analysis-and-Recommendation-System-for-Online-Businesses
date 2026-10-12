@@ -63,6 +63,7 @@ class RecommendationMetadataSchema(BaseModel):
 class RecommendationResultSchema(BaseModel):
     report: RecommendationReportSchema = Field(..., description="Report sections payload")
     metadata: RecommendationMetadataSchema = Field(..., description="Execution metadata")
+    aspects: Optional[Dict[str, Any]] = Field(default_factory=dict, description="Aspect-level structured recommendations")
     generatedTimestamp: str = Field("", description="Preserved UTC generation timestamp")
     version: str = Field("v1", description="Recommendation API version")
     processingTimeMs: int = Field(0, description="Processing duration in milliseconds")

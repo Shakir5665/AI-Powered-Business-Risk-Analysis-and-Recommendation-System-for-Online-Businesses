@@ -1,24 +1,212 @@
 [
   {
-    "id": "delivery_high_001",
+    "id": "delivery_very_low_001",
     "aspect": "DELIVERY",
-    "risk_level": "HIGH",
-    "title": "Improve Delivery Speed and Product Protection",
-    "description": "Many customers have reported delayed deliveries, damaged packages, or orders not arriving as expected. Improving your delivery process can increase customer satisfaction and reduce negative reviews.",
+    "risk_level": "VERY_LOW",
+    "title": "Maintain Reliable Delivery Operations",
+    "description": "Continue the fulfilment practices that help orders reach customers in the expected condition and timeframe.",
     "actions": [
-      "Work with reliable delivery partners to ensure orders arrive on time",
-      "Use stronger packaging to protect products during shipping",
-      "Provide customers with tracking information so they can monitor their orders",
-      "Investigate recurring delivery issues and take corrective action"
+      "Monitor dispatch and delivery performance routinely.",
+      "Keep tracking details available to customers.",
+      "Review carrier performance on a regular schedule."
     ],
-    "priority": "IMMEDIATE",
+    "reasoning": "Current delivery feedback suggests routine monitoring and maintenance are suitable.",
+    "priority": "NORMAL",
     "tags": [
       "delivery",
-      "shipping",
-      "packaging",
-      "customer_experience"
+      "very_low",
+      "business-improvement"
     ],
-    "version": 1,
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_very_low_002",
+    "aspect": "DELIVERY",
+    "risk_level": "VERY_LOW",
+    "title": "Preserve Clear Delivery Expectations",
+    "description": "Keep delivery promises realistic and consistent across product pages, checkout, and order messages.",
+    "actions": [
+      "Review delivery estimates by destination and service.",
+      "Explain cut-off times and known exclusions.",
+      "Update estimates when carrier performance changes."
+    ],
+    "reasoning": "Clear expectations help sustain customer confidence and prevent avoidable confusion.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_very_low_003",
+    "aspect": "DELIVERY",
+    "risk_level": "VERY_LOW",
+    "title": "Keep Packaging and Handoffs Consistent",
+    "description": "Maintain packaging and handoff standards that protect orders during transit.",
+    "actions": [
+      "Use packaging appropriate to each product type.",
+      "Check order labels and addresses before dispatch.",
+      "Review damage reports even when infrequent."
+    ],
+    "reasoning": "Preventive packaging and dispatch checks protect the existing customer experience.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_very_low_004",
+    "aspect": "DELIVERY",
+    "risk_level": "VERY_LOW",
+    "title": "Continue Proactive Order Updates",
+    "description": "Make it easy for customers to understand their order status throughout fulfilment.",
+    "actions": [
+      "Send confirmation and dispatch notices.",
+      "Provide working tracking links where available.",
+      "Offer a clear route to support when tracking stalls."
+    ],
+    "reasoning": "Timely status information reduces uncertainty during the delivery process.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_very_low_005",
+    "aspect": "DELIVERY",
+    "risk_level": "VERY_LOW",
+    "title": "Review Carrier Performance Periodically",
+    "description": "Use a regular carrier review to maintain dependable delivery service as volumes and routes change.",
+    "actions": [
+      "Compare on-time delivery and damage patterns by carrier.",
+      "Discuss recurring service issues with providers.",
+      "Keep a contingency option for important routes."
+    ],
+    "reasoning": "Periodic review helps identify changes before they become a persistent problem.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_low_001",
+    "aspect": "DELIVERY",
+    "risk_level": "LOW",
+    "title": "Maintain Consistent Fulfilment",
+    "description": "Check for small fulfilment inconsistencies and keep dispatch procedures reliable across busy and quiet periods.",
+    "actions": [
+      "Review order handling and dispatch records.",
+      "Use a packing checklist for common error types.",
+      "Monitor whether issues cluster by shift or product."
+    ],
+    "reasoning": "Minor delivery-related signals can often be addressed through consistent process controls.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_low_002",
+    "aspect": "DELIVERY",
+    "risk_level": "LOW",
+    "title": "Review Delivery Estimates",
+    "description": "Ensure delivery windows reflect current carrier performance and the locations served.",
+    "actions": [
+      "Compare estimates with recent completed orders.",
+      "Adjust overly optimistic windows.",
+      "Explain delays promptly when a shipment falls outside expectations."
+    ],
+    "reasoning": "Accurate estimates help prevent avoidable complaints about delivery timing.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_low_003",
+    "aspect": "DELIVERY",
+    "risk_level": "LOW",
+    "title": "Improve Dispatch Accuracy",
+    "description": "Reduce avoidable fulfilment errors by checking that each order is complete and correctly labelled.",
+    "actions": [
+      "Verify item, quantity, and address before handoff.",
+      "Record mis-picks and label errors.",
+      "Refresh staff guidance where patterns appear."
+    ],
+    "reasoning": "Small dispatch errors can create delivery problems even when the carrier performs as expected.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_low_004",
+    "aspect": "DELIVERY",
+    "risk_level": "LOW",
+    "title": "Check Packaging for Transit Needs",
+    "description": "Confirm that packaging is suitable for the products and routes most often mentioned in feedback.",
+    "actions": [
+      "Review packaging condition in damage reports.",
+      "Add protective material where testing shows it is needed.",
+      "Avoid unnecessary packaging changes without evidence."
+    ],
+    "reasoning": "Targeted packaging checks can address potential transit issues efficiently.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_low_005",
+    "aspect": "DELIVERY",
+    "risk_level": "LOW",
+    "title": "Strengthen Delay Communication",
+    "description": "Make delivery updates more useful when orders are delayed or tracking information changes.",
+    "actions": [
+      "Notify customers when a material delay is confirmed.",
+      "Provide the latest reliable estimate.",
+      "Give support staff a standard escalation path for stalled shipments."
+    ],
+    "reasoning": "Proactive communication can reduce frustration when delays occur.",
+    "priority": "NORMAL",
+    "tags": [
+      "delivery",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
     "enabled": true
   },
   {
@@ -26,21 +214,314 @@
     "aspect": "DELIVERY",
     "risk_level": "MEDIUM",
     "title": "Improve Delivery Efficiency",
-    "description": "Some customers have experienced delays in receiving their orders. Making your delivery process more efficient and setting clear expectations can improve the overall customer experience.",
+    "description": "Review fulfilment steps and carrier handoffs to reduce recurring delays and improve order-status communication.",
     "actions": [
-      "Prepare and dispatch orders as quickly as possible",
-      "Provide accurate estimated delivery dates on your product listings",
-      "Keep customers updated if there are unexpected delivery delays",
-      "Regularly review delivery performance to identify areas for improvement"
+      "Prepare and dispatch orders promptly.",
+      "Use realistic delivery estimates and notify customers of confirmed delays.",
+      "Review delivery performance by route and provider."
     ],
+    "reasoning": "Repeated delivery concerns suggest that process and communication improvements may be beneficial.",
     "priority": "HIGH",
     "tags": [
       "delivery",
-      "shipping",
-      "order_fulfillment",
-      "customer_experience"
+      "medium",
+      "business-improvement"
     ],
-    "version": 1,
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_medium_002",
+    "aspect": "DELIVERY",
+    "risk_level": "MEDIUM",
+    "title": "Investigate Recurring Delivery Delays",
+    "description": "Determine where delays occur before changing warehouse or carrier processes.",
+    "actions": [
+      "Compare order, dispatch, tracking, and delivery timestamps.",
+      "Group delays by route, service, and fulfilment stage.",
+      "Agree corrective actions with the responsible team or carrier."
+    ],
+    "reasoning": "Timestamp-based analysis helps locate bottlenecks instead of assuming a single cause.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_medium_003",
+    "aspect": "DELIVERY",
+    "risk_level": "MEDIUM",
+    "title": "Improve Tracking and Order Visibility",
+    "description": "Help customers understand order progress and what to do when tracking stops updating.",
+    "actions": [
+      "Check that tracking links and status messages work.",
+      "Define when stalled shipments are escalated.",
+      "Provide support staff with current carrier contact procedures."
+    ],
+    "reasoning": "Better visibility can address uncertainty even when delivery timing is outside the seller's direct control.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_medium_004",
+    "aspect": "DELIVERY",
+    "risk_level": "MEDIUM",
+    "title": "Optimise Packing and Dispatch Workflow",
+    "description": "Review packing and dispatch steps for avoidable waiting, errors, or rework.",
+    "actions": [
+      "Map the order flow from payment to carrier handoff.",
+      "Identify repeated queue points and packing errors.",
+      "Test one process change at a time and compare results."
+    ],
+    "reasoning": "A focused workflow review can reveal operational improvements without making unsupported assumptions.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_medium_005",
+    "aspect": "DELIVERY",
+    "risk_level": "MEDIUM",
+    "title": "Review Carrier Service Quality",
+    "description": "Use delivery evidence to discuss recurring service issues with carriers and compare alternatives where appropriate.",
+    "actions": [
+      "Summarise late, damaged, or untracked shipments by provider.",
+      "Request a corrective plan for recurring issues.",
+      "Evaluate alternatives against service coverage and reliability."
+    ],
+    "reasoning": "Carrier-level evidence supports targeted changes rather than broad, unnecessary switching.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_high_001",
+    "aspect": "DELIVERY",
+    "risk_level": "HIGH",
+    "title": "Correct Recurring Delivery Problems",
+    "description": "Act promptly on repeated reports of late, damaged, or missing orders while identifying which fulfilment stage is responsible.",
+    "actions": [
+      "Trace affected orders through dispatch and carrier records.",
+      "Strengthen packaging or change the handoff process when evidence supports it.",
+      "Provide customers with a clear resolution and follow-up."
+    ],
+    "reasoning": "Frequent delivery complaints can indicate an operational problem that needs coordinated corrective action.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_high_002",
+    "aspect": "DELIVERY",
+    "risk_level": "HIGH",
+    "title": "Resolve Outstanding and Stalled Shipments",
+    "description": "Prioritise shipments with confirmed prolonged delays or missing tracking updates and give customers clear next steps.",
+    "actions": [
+      "Create a queue of unresolved shipment cases.",
+      "Contact carriers and document investigation outcomes.",
+      "Offer replacement or refund options under the applicable policy."
+    ],
+    "reasoning": "An organised case queue prevents unresolved orders from being overlooked.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_high_003",
+    "aspect": "DELIVERY",
+    "risk_level": "HIGH",
+    "title": "Escalate Repeated Carrier Failures",
+    "description": "Use documented shipment outcomes to address persistent carrier service failures.",
+    "actions": [
+      "Identify routes and services with repeated issues.",
+      "Request a corrective plan and service review.",
+      "Use a suitable backup carrier where justified."
+    ],
+    "reasoning": "Evidence-based carrier escalation can improve reliability while preserving service continuity.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_high_004",
+    "aspect": "DELIVERY",
+    "risk_level": "HIGH",
+    "title": "Strengthen Protection Against Transit Damage",
+    "description": "Reduce repeat damage complaints by checking whether product-specific packaging and handling are adequate.",
+    "actions": [
+      "Inspect returned damaged items and packaging where available.",
+      "Test protective packaging for the affected products.",
+      "Brief warehouse and carrier contacts on verified handling requirements."
+    ],
+    "reasoning": "A targeted packaging review is appropriate when damage patterns are supported by customer or return evidence.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_high_005",
+    "aspect": "DELIVERY",
+    "risk_level": "HIGH",
+    "title": "Improve Delivery Incident Communication",
+    "description": "Give customers timely, consistent updates while delivery incidents are investigated.",
+    "actions": [
+      "Acknowledge reported delivery problems promptly.",
+      "Share verified status and a realistic next update time.",
+      "Track each case until delivery or an agreed resolution."
+    ],
+    "reasoning": "Consistent communication helps manage customer impact while operational causes are being resolved.",
+    "priority": "HIGH",
+    "tags": [
+      "delivery",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_critical_001",
+    "aspect": "DELIVERY",
+    "risk_level": "CRITICAL",
+    "title": "Restore Delivery Operations and Resolve Priority Orders",
+    "description": "Coordinate an urgent response when a large number of orders appear seriously delayed, missing, or affected by fulfilment disruption.",
+    "actions": [
+      "Identify affected orders and prioritise the oldest or most urgent cases.",
+      "Confirm the disruption with warehouse and carrier records.",
+      "Provide customers with verified updates and resolution options."
+    ],
+    "reasoning": "A potentially widespread delivery disruption requires a coordinated response and clear ownership.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "delivery",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_critical_002",
+    "aspect": "DELIVERY",
+    "risk_level": "CRITICAL",
+    "title": "Launch an Urgent Shipment Trace",
+    "description": "Start a time-sensitive trace for shipments with credible evidence of loss or a serious delivery failure.",
+    "actions": [
+      "Collect order IDs, dispatch proof, and tracking history.",
+      "Escalate traces through the carrier's formal process.",
+      "Arrange replacement or refund decisions under the applicable policy."
+    ],
+    "reasoning": "Prompt tracing limits uncertainty and helps determine the appropriate customer remedy.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "delivery",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_critical_003",
+    "aspect": "DELIVERY",
+    "risk_level": "CRITICAL",
+    "title": "Activate a Delivery Contingency Plan",
+    "description": "Use a controlled contingency process if current fulfilment or carrier capacity cannot reliably meet commitments.",
+    "actions": [
+      "Assess affected routes, stock locations, and order volume.",
+      "Use alternative services only after checking suitability and availability.",
+      "Update delivery promises before accepting further orders where necessary."
+    ],
+    "reasoning": "A contingency plan is appropriate when operational evidence indicates that normal delivery capacity is impaired.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "delivery",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_critical_004",
+    "aspect": "DELIVERY",
+    "risk_level": "CRITICAL",
+    "title": "Coordinate a Critical Fulfilment Incident",
+    "description": "Assign clear ownership for a severe delivery incident and coordinate warehouse, support, and carrier responses.",
+    "actions": [
+      "Appoint an incident lead and establish a shared case list.",
+      "Set checkpoints for tracing, customer updates, and resolution.",
+      "Record decisions and verify closure of each affected order."
+    ],
+    "reasoning": "A single coordinated response reduces duplicated work and missed customer cases.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "delivery",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "delivery_critical_005",
+    "aspect": "DELIVERY",
+    "risk_level": "CRITICAL",
+    "title": "Verify Service Recovery Before Clearing the Backlog",
+    "description": "Confirm that delivery performance has stabilised before treating a major fulfilment disruption as resolved.",
+    "actions": [
+      "Track dispatch and delivery outcomes for affected routes.",
+      "Clear unresolved cases and confirm customer remedies.",
+      "Resume normal estimates only when recent evidence supports them."
+    ],
+    "reasoning": "Recovery checks reduce the chance of promising normal service before the underlying disruption has been addressed.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "delivery",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
     "enabled": true
   }
 ]

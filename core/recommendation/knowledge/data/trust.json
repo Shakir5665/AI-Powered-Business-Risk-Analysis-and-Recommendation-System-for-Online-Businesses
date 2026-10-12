@@ -1,24 +1,212 @@
 [
   {
-    "id": "trust_high_001",
+    "id": "trust_very_low_001",
     "aspect": "TRUST",
-    "risk_level": "HIGH",
-    "title": "Restore Customer Trust and Improve Support",
-    "description": "Many customers have reported problems with customer service, returns, or product authenticity. Addressing these concerns quickly is essential to rebuild trust, improve your reputation, and reduce negative reviews.",
+    "risk_level": "VERY_LOW",
+    "title": "Maintain Customer Trust and Transparency",
+    "description": "Continue clear communication and fair support practices that help customers feel confident when purchasing.",
     "actions": [
-      "Respond to customer questions and complaints as quickly as possible",
-      "Make your return and refund process simple, clear, and customer-friendly",
-      "Clearly display product warranties, guarantees, and seller verification information",
-      "Resolve customer issues professionally to increase confidence in your business"
+      "Keep returns, refunds, warranty, and contact details easy to find.",
+      "Respond to customer questions consistently.",
+      "Review policies whenever the offer or fulfilment process changes."
     ],
-    "priority": "IMMEDIATE",
+    "reasoning": "Current trust-related feedback supports maintaining transparent and dependable practices.",
+    "priority": "NORMAL",
     "tags": [
       "trust",
-      "customer_support",
-      "returns",
-      "seller_reputation"
+      "very_low",
+      "business-improvement"
     ],
-    "version": 1,
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_very_low_002",
+    "aspect": "TRUST",
+    "risk_level": "VERY_LOW",
+    "title": "Preserve Accurate Business Information",
+    "description": "Keep store identity, product claims, contact channels, and policy information current and consistent.",
+    "actions": [
+      "Check key pages and contact details periodically.",
+      "Ensure claims can be supported by available evidence.",
+      "Correct outdated information promptly."
+    ],
+    "reasoning": "Accurate information reduces confusion and supports customer confidence.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_very_low_003",
+    "aspect": "TRUST",
+    "risk_level": "VERY_LOW",
+    "title": "Continue Responsive Customer Support",
+    "description": "Maintain a support process that acknowledges customer concerns and explains the next steps clearly.",
+    "actions": [
+      "Set realistic response expectations.",
+      "Use consistent case notes and follow-up.",
+      "Review resolved cases for recurring communication gaps."
+    ],
+    "reasoning": "Reliable support helps sustain positive customer relationships.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_very_low_004",
+    "aspect": "TRUST",
+    "risk_level": "VERY_LOW",
+    "title": "Keep Returns and Refund Policies Clear",
+    "description": "Make post-purchase options understandable before customers place an order.",
+    "actions": [
+      "State eligibility, timeframes, and process clearly.",
+      "Explain any lawful exclusions in plain language.",
+      "Ensure support staff follow the published policy."
+    ],
+    "reasoning": "Clear policies reduce uncertainty and prevent avoidable disputes.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_very_low_005",
+    "aspect": "TRUST",
+    "risk_level": "VERY_LOW",
+    "title": "Maintain Evidence-Based Product Claims",
+    "description": "Ensure statements about authenticity, warranties, and product capabilities are supported and easy to verify.",
+    "actions": [
+      "Retain supplier and warranty documentation where relevant.",
+      "Avoid absolute claims that cannot be substantiated.",
+      "Provide evidence to customers when appropriate."
+    ],
+    "reasoning": "Verifiable claims help maintain trust without implying concerns where none are indicated.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_low_001",
+    "aspect": "TRUST",
+    "risk_level": "LOW",
+    "title": "Maintain Clear Customer Communication",
+    "description": "Review customer-facing information to ensure it remains understandable and consistent throughout the purchase journey.",
+    "actions": [
+      "Check policy pages and checkout wording.",
+      "Explain who customers can contact for help.",
+      "Align automated messages with current processes."
+    ],
+    "reasoning": "Minor trust-related signals may be addressed through clearer and more consistent communication.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_low_002",
+    "aspect": "TRUST",
+    "risk_level": "LOW",
+    "title": "Make Support and Contact Options Easy to Find",
+    "description": "Ensure customers can quickly locate a genuine support channel and understand when to expect a response.",
+    "actions": [
+      "Display current contact options prominently.",
+      "Test contact forms and support links.",
+      "Provide a clear escalation route for unresolved cases."
+    ],
+    "reasoning": "Accessible support channels reduce uncertainty when customers need assistance.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_low_003",
+    "aspect": "TRUST",
+    "risk_level": "LOW",
+    "title": "Review Return and Refund Clarity",
+    "description": "Check whether customers can understand return and refund requirements before purchasing.",
+    "actions": [
+      "Use plain language for steps and timelines.",
+      "Explain how customers receive case updates.",
+      "Check that operational practice matches the published policy."
+    ],
+    "reasoning": "Policy clarity helps prevent misunderstandings that can affect customer confidence.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_low_004",
+    "aspect": "TRUST",
+    "risk_level": "LOW",
+    "title": "Keep Product and Warranty Details Consistent",
+    "description": "Align product pages, order messages, and support guidance so customers receive the same accurate information.",
+    "actions": [
+      "Compare key claims across customer touchpoints.",
+      "Clarify warranty coverage and exclusions.",
+      "Correct contradictory or outdated statements."
+    ],
+    "reasoning": "Consistent information reduces avoidable confusion and disputes.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_low_005",
+    "aspect": "TRUST",
+    "risk_level": "LOW",
+    "title": "Use Customer Feedback to Improve Transparency",
+    "description": "Review feedback for places where customers appear uncertain about policies, product claims, or support processes.",
+    "actions": [
+      "Group questions by recurring theme.",
+      "Improve the relevant FAQ or policy wording.",
+      "Check later feedback to see whether confusion decreases."
+    ],
+    "reasoning": "Feedback can identify where a small information improvement would be useful.",
+    "priority": "NORMAL",
+    "tags": [
+      "trust",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
     "enabled": true
   },
   {
@@ -26,21 +214,314 @@
     "aspect": "TRUST",
     "risk_level": "MEDIUM",
     "title": "Improve Transparency and Customer Communication",
-    "description": "Some customers are unsure about your product details, return policy, or purchasing process. Providing clearer information can improve customer confidence and reduce misunderstandings.",
+    "description": "Make product information, policies, and order communications easier to understand and verify.",
     "actions": [
-      "Update your product description with clear and accurate information",
-      "Clearly explain your return, refund, and exchange policies",
-      "Answer common customer questions in the product description or FAQ section",
-      "Keep customers informed throughout the ordering and delivery process"
+      "Keep descriptions and policy pages accurate.",
+      "Provide clear answers to common questions.",
+      "Send timely order and delivery updates."
     ],
+    "reasoning": "Recurring trust-related feedback suggests that transparency and communication deserve focused review.",
     "priority": "HIGH",
     "tags": [
       "trust",
-      "transparency",
-      "customer_communication",
-      "faq"
+      "medium",
+      "business-improvement"
     ],
-    "version": 1,
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_medium_002",
+    "aspect": "TRUST",
+    "risk_level": "MEDIUM",
+    "title": "Review Unresolved Customer Concerns",
+    "description": "Identify repeated complaints about support, returns, refunds, or unclear information and ensure each has an owner.",
+    "actions": [
+      "Group open cases by issue and age.",
+      "Clarify the next action and expected response time.",
+      "Review whether published policies match actual case handling."
+    ],
+    "reasoning": "A structured review can reveal process gaps without assuming intentional misconduct.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_medium_003",
+    "aspect": "TRUST",
+    "risk_level": "MEDIUM",
+    "title": "Strengthen Refund and Return Handling",
+    "description": "Make return and refund decisions consistent, traceable, and understandable to customers.",
+    "actions": [
+      "Document each case and its decision basis.",
+      "Explain requirements and timelines before requesting further information.",
+      "Escalate exceptions using a defined process."
+    ],
+    "reasoning": "Consistent case handling can reduce repeated disputes and improve confidence.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_medium_004",
+    "aspect": "TRUST",
+    "risk_level": "MEDIUM",
+    "title": "Verify Customer-Facing Claims",
+    "description": "Check that important claims about products, warranties, seller identity, and service are accurate and supported.",
+    "actions": [
+      "Review claims against available records.",
+      "Correct statements that are outdated or ambiguous.",
+      "Escalate material discrepancies for verification."
+    ],
+    "reasoning": "Verifying claims is a proportionate response to uncertainty and avoids unsupported conclusions.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_medium_005",
+    "aspect": "TRUST",
+    "risk_level": "MEDIUM",
+    "title": "Improve the Customer Support Feedback Loop",
+    "description": "Use recurring questions and complaints to improve the information customers receive before and after purchase.",
+    "actions": [
+      "Tag support cases by theme.",
+      "Update FAQs and templates for frequent questions.",
+      "Review whether repeat questions decline after updates."
+    ],
+    "reasoning": "A feedback loop helps resolve communication gaps at their source.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_high_001",
+    "aspect": "TRUST",
+    "risk_level": "HIGH",
+    "title": "Restore Customer Trust and Improve Support",
+    "description": "Investigate repeated concerns about support, returns, refunds, or product authenticity and provide clear, fair resolutions.",
+    "actions": [
+      "Respond promptly and document each case.",
+      "Make return and refund options clear and consistent with policy.",
+      "Provide verifiable warranty or authenticity information when relevant."
+    ],
+    "reasoning": "Repeated trust-related concerns require timely investigation and dependable customer support.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_high_002",
+    "aspect": "TRUST",
+    "risk_level": "HIGH",
+    "title": "Investigate Material Trust Concerns",
+    "description": "Review significant customer concerns carefully and distinguish verified facts from assumptions before taking action.",
+    "actions": [
+      "Collect relevant order records, customer messages, and supplier documentation.",
+      "Check the specific claim with the responsible team or supplier.",
+      "Document findings and communicate the resolution accurately."
+    ],
+    "reasoning": "A fact-based investigation protects customers while avoiding unsupported allegations.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_high_003",
+    "aspect": "TRUST",
+    "risk_level": "HIGH",
+    "title": "Resolve Repeated Refund or Return Disputes",
+    "description": "Review recurring disputes to determine whether policy wording, case handling, or fulfilment evidence needs improvement.",
+    "actions": [
+      "Audit a sample of relevant cases.",
+      "Compare decisions with the published policy and applicable obligations.",
+      "Correct confirmed process inconsistencies and follow up with affected customers."
+    ],
+    "reasoning": "Consistent, evidence-based handling can address repeated disputes and reduce further customer harm.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_high_004",
+    "aspect": "TRUST",
+    "risk_level": "HIGH",
+    "title": "Clarify Authenticity and Warranty Evidence",
+    "description": "Where customers raise credible questions, make relevant product provenance and warranty information easier to verify.",
+    "actions": [
+      "Request and review supplier or warranty records where applicable.",
+      "Correct unclear claims and remove unsupported statements.",
+      "Share appropriate evidence without exposing confidential information."
+    ],
+    "reasoning": "Transparent verification is more reliable than dismissing concerns or making unverified assurances.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_high_005",
+    "aspect": "TRUST",
+    "risk_level": "HIGH",
+    "title": "Set Clear Ownership for Trust-Related Complaints",
+    "description": "Create a consistent process for handling significant complaints so customers receive timely updates and outcomes.",
+    "actions": [
+      "Assign an owner and response deadline to each case.",
+      "Use a standard record of evidence, decisions, and follow-up.",
+      "Escalate unresolved or legally sensitive cases to the appropriate lead."
+    ],
+    "reasoning": "Clear ownership reduces the chance that serious customer concerns remain unresolved.",
+    "priority": "HIGH",
+    "tags": [
+      "trust",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_critical_001",
+    "aspect": "TRUST",
+    "risk_level": "CRITICAL",
+    "title": "Investigate Critical Trust or Authenticity Concerns",
+    "description": "Urgently assess credible evidence of serious customer harm, misleading claims, or product authenticity concerns before drawing conclusions.",
+    "actions": [
+      "Preserve relevant listings, messages, order records, and supplier documents.",
+      "Escalate the case to responsible leadership and qualified advisers where needed.",
+      "Restrict a specific claim or listing only when evidence and applicable rules justify it."
+    ],
+    "reasoning": "Serious trust concerns require prompt evidence preservation and proportionate escalation, not assumptions of fraud.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "trust",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_critical_002",
+    "aspect": "TRUST",
+    "risk_level": "CRITICAL",
+    "title": "Protect Customers During a Serious Trust Incident",
+    "description": "Coordinate a customer-protection response when verified information indicates a material and ongoing risk to buyers.",
+    "actions": [
+      "Identify affected products and orders.",
+      "Provide accurate guidance and appropriate remedies to affected customers.",
+      "Follow applicable consumer-protection, platform, and reporting obligations."
+    ],
+    "reasoning": "Customer protection should be prioritised when a material risk has been substantiated.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "trust",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_critical_003",
+    "aspect": "TRUST",
+    "risk_level": "CRITICAL",
+    "title": "Verify Suspected Product Misrepresentation",
+    "description": "Arrange an urgent review when important product or seller claims materially conflict with available evidence.",
+    "actions": [
+      "Compare claims with supplier records and product documentation.",
+      "Correct or pause disputed claims while they are assessed when warranted.",
+      "Record the evidence, decision, and customer communication."
+    ],
+    "reasoning": "A structured verification process helps prevent further reliance on potentially inaccurate information.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "trust",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_critical_004",
+    "aspect": "TRUST",
+    "risk_level": "CRITICAL",
+    "title": "Escalate a Severe Customer-Protection Issue",
+    "description": "Ensure a serious unresolved customer issue reaches an accountable decision-maker with the evidence needed to act.",
+    "actions": [
+      "Appoint an incident owner and preserve case history.",
+      "Assess customer impact and applicable obligations.",
+      "Set deadlines for decisions, remedies, and customer updates."
+    ],
+    "reasoning": "Escalation is appropriate when the potential impact or complexity exceeds routine support handling.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "trust",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "trust_critical_005",
+    "aspect": "TRUST",
+    "risk_level": "CRITICAL",
+    "title": "Confirm Corrective Actions Before Closing a Critical Case",
+    "description": "Do not treat a serious trust incident as resolved until corrective steps and affected-customer follow-up have been verified.",
+    "actions": [
+      "Confirm the disputed information or process has been corrected.",
+      "Track outstanding refunds, returns, or other agreed remedies.",
+      "Review later cases to check whether the same issue recurs."
+    ],
+    "reasoning": "Verification helps ensure that a response resolves the customer impact rather than only closing the initial complaint.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "trust",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
     "enabled": true
   }
 ]

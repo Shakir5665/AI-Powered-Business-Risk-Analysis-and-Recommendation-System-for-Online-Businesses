@@ -1,22 +1,212 @@
 [
   {
-    "id": "quality_high_001",
+    "id": "quality_very_low_001",
     "aspect": "QUALITY",
-    "risk_level": "HIGH",
-    "title": "Resolve Major Product Quality Issues",
-    "description": "Many customers are reporting serious problems with your product, such as defects, poor quality, or items not working as expected. Taking immediate action can help improve customer satisfaction and protect your business reputation.",
+    "risk_level": "VERY_LOW",
+    "title": "Maintain Product Inspection Standards",
+    "description": "Continue routine checks so current product quality remains consistent as orders and suppliers change.",
     "actions": [
-      "Inspect your current product stock to identify defective items",
-      "Temporarily stop selling products from affected batches until the issue is resolved",
-      "Work with your supplier or manufacturer to improve product quality before future shipments"
+      "Keep a regular sample-inspection schedule.",
+      "Record defects and returns by product batch.",
+      "Review supplier quality periodically."
     ],
-    "priority": "HIGH",
+    "reasoning": "Current feedback indicates little quality-related concern, so preventive controls are appropriate.",
+    "priority": "NORMAL",
     "tags": [
       "quality",
-      "defect",
-      "product_quality"
+      "very_low",
+      "business-improvement"
     ],
-    "version": 1,
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_very_low_002",
+    "aspect": "QUALITY",
+    "risk_level": "VERY_LOW",
+    "title": "Preserve Consistent Product Performance",
+    "description": "Protect the dependable product experience by checking that items continue to match expected specifications.",
+    "actions": [
+      "Use a consistent checklist for incoming stock.",
+      "Compare product samples against approved specifications.",
+      "Document any change in materials or manufacturing."
+    ],
+    "reasoning": "Ongoing specification checks help detect small variations before they affect customers.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_very_low_003",
+    "aspect": "QUALITY",
+    "risk_level": "VERY_LOW",
+    "title": "Keep Product Information Accurate",
+    "description": "Ensure product pages set realistic expectations and remain aligned with the items customers receive.",
+    "actions": [
+      "Review descriptions and specifications after product changes.",
+      "Use clear photos that represent the actual item.",
+      "Correct outdated compatibility or sizing details."
+    ],
+    "reasoning": "Accurate information supports customer expectations and helps prevent avoidable quality complaints.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_very_low_004",
+    "aspect": "QUALITY",
+    "risk_level": "VERY_LOW",
+    "title": "Continue Preventive Quality Reviews",
+    "description": "Use routine feedback reviews to maintain quality and identify emerging patterns early.",
+    "actions": [
+      "Review recent reviews and return reasons on a schedule.",
+      "Track recurring product terms in feedback.",
+      "Assign an owner to investigate any new pattern."
+    ],
+    "reasoning": "A lightweight review process can catch emerging concerns without unnecessary disruption.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_very_low_005",
+    "aspect": "QUALITY",
+    "risk_level": "VERY_LOW",
+    "title": "Sustain Supplier Quality Controls",
+    "description": "Maintain a reliable supply process through regular supplier communication and documented acceptance criteria.",
+    "actions": [
+      "Keep written acceptance criteria for incoming goods.",
+      "Share recurring feedback themes with suppliers.",
+      "Reassess suppliers when quality patterns change."
+    ],
+    "reasoning": "Consistent supplier controls help preserve current performance over time.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "very_low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_low_001",
+    "aspect": "QUALITY",
+    "risk_level": "LOW",
+    "title": "Strengthen Product Consistency Checks",
+    "description": "Make product quality checks more consistent across batches, variants, and suppliers.",
+    "actions": [
+      "Compare samples from different batches.",
+      "Record defects using a common category list.",
+      "Review variations before restocking."
+    ],
+    "reasoning": "Minor quality-related signals may benefit from tighter consistency checks.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_low_002",
+    "aspect": "QUALITY",
+    "risk_level": "LOW",
+    "title": "Review Product Feedback Trends",
+    "description": "Look for small recurring concerns that could become more significant if left unaddressed.",
+    "actions": [
+      "Group feedback by product and defect type.",
+      "Check whether concerns cluster around a variant or batch.",
+      "Prioritise repeatable patterns over isolated comments."
+    ],
+    "reasoning": "Trend analysis helps distinguish one-off experiences from a developing quality issue.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_low_003",
+    "aspect": "QUALITY",
+    "risk_level": "LOW",
+    "title": "Refresh Product Specifications",
+    "description": "Confirm that specifications and product descriptions match the current item and customer use cases.",
+    "actions": [
+      "Verify dimensions, materials, compatibility, and included parts.",
+      "Update unclear or outdated statements.",
+      "Ask support staff to flag expectation mismatches."
+    ],
+    "reasoning": "Small gaps between description and delivered product can create preventable dissatisfaction.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_low_004",
+    "aspect": "QUALITY",
+    "risk_level": "LOW",
+    "title": "Improve Incoming Stock Checks",
+    "description": "Add targeted checks for product attributes that customers mention most often.",
+    "actions": [
+      "Inspect the attributes most frequently discussed in reviews.",
+      "Sample stock from newly received batches.",
+      "Escalate repeated failures to the supplier."
+    ],
+    "reasoning": "Targeted checks provide an efficient way to investigate modest quality concerns.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_low_005",
+    "aspect": "QUALITY",
+    "risk_level": "LOW",
+    "title": "Close the Feedback Loop with Suppliers",
+    "description": "Share specific, evidence-based feedback with suppliers to prevent repeat issues.",
+    "actions": [
+      "Provide examples and batch details where available.",
+      "Agree on corrective actions and review dates.",
+      "Verify changes in later deliveries."
+    ],
+    "reasoning": "Supplier follow-up can reduce recurring variation and improve consistency.",
+    "priority": "NORMAL",
+    "tags": [
+      "quality",
+      "low",
+      "business-improvement"
+    ],
+    "version": "1.0",
     "enabled": true
   },
   {
@@ -24,19 +214,314 @@
     "aspect": "QUALITY",
     "risk_level": "MEDIUM",
     "title": "Improve Product Quality and Customer Expectations",
-    "description": "Some customers have noticed minor issues with the product's appearance, material, or overall quality. Addressing these concerns early can help prevent more serious complaints in the future.",
+    "description": "Review recurring quality concerns and make product performance and descriptions more consistent.",
     "actions": [
-      "Review customer feedback to identify the most common quality concerns",
-      "Improve the product or materials where possible",
-      "Update the product description with accurate information to better match customer expectations"
+      "Analyse negative feedback by product and issue.",
+      "Improve materials, components, or quality checks where evidence supports it.",
+      "Make product descriptions and limitations explicit."
     ],
-    "priority": "NORMAL",
+    "reasoning": "Repeated quality-related feedback suggests that focused investigation and improvement are warranted.",
+    "priority": "HIGH",
     "tags": [
       "quality",
-      "customer_expectation",
-      "product_improvement"
+      "medium",
+      "business-improvement"
     ],
-    "version": 1,
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_medium_002",
+    "aspect": "QUALITY",
+    "risk_level": "MEDIUM",
+    "title": "Investigate Recurring Product Defects",
+    "description": "Identify whether reported defects share a product, batch, supplier, or usage pattern before choosing corrective action.",
+    "actions": [
+      "Create a defect log with dates and product identifiers.",
+      "Inspect relevant samples and returned items.",
+      "Agree on corrective actions with the responsible supplier or team."
+    ],
+    "reasoning": "A structured investigation reduces the risk of treating symptoms while the underlying issue continues.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_medium_003",
+    "aspect": "QUALITY",
+    "risk_level": "MEDIUM",
+    "title": "Align Product Claims with Actual Performance",
+    "description": "Reduce expectation gaps by ensuring marketing claims and specifications reflect observed product performance.",
+    "actions": [
+      "Audit claims against verified product specifications.",
+      "Clarify limitations and compatibility requirements.",
+      "Update customer-facing content where needed."
+    ],
+    "reasoning": "Expectation mismatches can contribute to negative reviews even when the item is functioning as designed.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_medium_004",
+    "aspect": "QUALITY",
+    "risk_level": "MEDIUM",
+    "title": "Strengthen Quality Assurance Before Dispatch",
+    "description": "Introduce a focused pre-dispatch check for products linked to repeated customer concerns.",
+    "actions": [
+      "Define checks for the affected product categories.",
+      "Record pass/fail outcomes for sampled orders.",
+      "Review results and adjust checks based on evidence."
+    ],
+    "reasoning": "Additional targeted checks can prevent avoidable defects from reaching customers.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_medium_005",
+    "aspect": "QUALITY",
+    "risk_level": "MEDIUM",
+    "title": "Prioritise the Most Frequent Quality Issues",
+    "description": "Use review and return data to focus improvement work on the quality issues affecting customers most often.",
+    "actions": [
+      "Rank issues by frequency and customer impact.",
+      "Assign owners and target dates for the top issues.",
+      "Measure whether complaints decline after changes."
+    ],
+    "reasoning": "Prioritisation helps direct effort toward recurring issues rather than isolated anecdotes.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "medium",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_high_001",
+    "aspect": "QUALITY",
+    "risk_level": "HIGH",
+    "title": "Resolve Major Product Quality Issues",
+    "description": "Investigate repeated reports of defects or poor performance and take proportionate corrective action for affected products.",
+    "actions": [
+      "Inspect relevant inventory and returned items promptly.",
+      "Pause sale or dispatch of a batch only when evidence indicates a material defect or safety concern.",
+      "Work with suppliers on a documented corrective plan."
+    ],
+    "reasoning": "Frequent or serious quality complaints may indicate a material problem that needs prompt investigation.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_high_002",
+    "aspect": "QUALITY",
+    "risk_level": "HIGH",
+    "title": "Contain and Correct Confirmed Defects",
+    "description": "Prevent further customer impact when a specific product or batch is confirmed to have a significant defect.",
+    "actions": [
+      "Identify affected SKUs, batches, and orders.",
+      "Quarantine affected stock when justified by inspection findings.",
+      "Arrange repair, replacement, refund, or supplier remediation as appropriate."
+    ],
+    "reasoning": "Containment is appropriate when evidence confirms a significant defect; avoid broad restrictions without product-level evidence.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_high_003",
+    "aspect": "QUALITY",
+    "risk_level": "HIGH",
+    "title": "Launch a Quality Root-Cause Review",
+    "description": "Coordinate a focused review to determine why substantial quality complaints are recurring.",
+    "actions": [
+      "Bring together operations, support, and supplier contacts.",
+      "Compare complaints with inspection and return records.",
+      "Document root cause, corrective actions, owners, and verification steps."
+    ],
+    "reasoning": "A root-cause review helps prevent repeated failures and supports accountable corrective action.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_high_004",
+    "aspect": "QUALITY",
+    "risk_level": "HIGH",
+    "title": "Improve Quality Verification for Affected Products",
+    "description": "Increase verification for products associated with repeated negative quality feedback until performance is stable.",
+    "actions": [
+      "Define measurable acceptance criteria.",
+      "Inspect incoming batches more frequently for the affected items.",
+      "Return to normal checks only after results support the change."
+    ],
+    "reasoning": "Temporary, targeted verification can reduce recurrence while avoiding unnecessary disruption to unaffected products.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_high_005",
+    "aspect": "QUALITY",
+    "risk_level": "HIGH",
+    "title": "Contact Affected Customers with a Resolution Plan",
+    "description": "Provide clear, fair support to customers who report a verified product problem.",
+    "actions": [
+      "Confirm the issue and gather relevant order details.",
+      "Explain available replacement, repair, or refund options.",
+      "Track cases through resolution and review repeat complaints."
+    ],
+    "reasoning": "A consistent resolution process limits ongoing customer impact and reveals whether corrective actions are effective.",
+    "priority": "HIGH",
+    "tags": [
+      "quality",
+      "high",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_critical_001",
+    "aspect": "QUALITY",
+    "risk_level": "CRITICAL",
+    "title": "Contain Critical Product Quality Risks",
+    "description": "Take urgent, evidence-led action when credible reports indicate a severe defect, safety concern, or widespread product failure.",
+    "actions": [
+      "Immediately assess the specific product, batch, and severity of reports.",
+      "Stop sale or dispatch of affected items when warranted by safety or material-defect evidence.",
+      "Escalate to responsible leadership, suppliers, and relevant authorities where legally required."
+    ],
+    "reasoning": "Potentially severe product failures require rapid containment and formal escalation, based on verified evidence.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "quality",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_critical_002",
+    "aspect": "QUALITY",
+    "risk_level": "CRITICAL",
+    "title": "Initiate an Urgent Product Safety Assessment",
+    "description": "Arrange an urgent technical assessment when feedback suggests a possible safety-related product issue.",
+    "actions": [
+      "Preserve complaints, photos, returned items, and batch records.",
+      "Have a qualified person assess the potential hazard.",
+      "Follow applicable reporting, recall, and customer-notification obligations."
+    ],
+    "reasoning": "Safety signals should be assessed by qualified personnel rather than treated as ordinary product dissatisfaction.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "quality",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_critical_003",
+    "aspect": "QUALITY",
+    "risk_level": "CRITICAL",
+    "title": "Isolate Confirmed High-Impact Defective Stock",
+    "description": "Limit further exposure to stock confirmed to have a severe or widespread defect while a resolution is arranged.",
+    "actions": [
+      "Trace affected stock and orders.",
+      "Segregate confirmed affected inventory.",
+      "Coordinate replacement, refund, repair, or recall steps as appropriate."
+    ],
+    "reasoning": "Isolation is justified when the affected stock has been identified and the potential customer impact is substantial.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "quality",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_critical_004",
+    "aspect": "QUALITY",
+    "risk_level": "CRITICAL",
+    "title": "Coordinate a Critical Quality Response",
+    "description": "Create a single accountable response to a serious quality incident and keep customers informed of verified next steps.",
+    "actions": [
+      "Assign an incident owner and decision-makers.",
+      "Set a response timeline and record all decisions.",
+      "Issue accurate customer updates and avoid unsupported claims."
+    ],
+    "reasoning": "A coordinated response reduces confusion and supports timely, consistent action.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "quality",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "quality_critical_005",
+    "aspect": "QUALITY",
+    "risk_level": "CRITICAL",
+    "title": "Verify Recovery Before Resuming Normal Sales",
+    "description": "Confirm that corrective measures have worked before returning affected products to normal handling or sale.",
+    "actions": [
+      "Require documented inspection or testing of corrective changes.",
+      "Check a representative sample of corrected stock.",
+      "Record approval to resume and monitor subsequent feedback closely."
+    ],
+    "reasoning": "Resuming only after verification helps prevent a critical issue from recurring.",
+    "priority": "IMMEDIATE",
+    "tags": [
+      "quality",
+      "critical",
+      "business-improvement"
+    ],
+    "version": "1.0",
     "enabled": true
   }
 ]

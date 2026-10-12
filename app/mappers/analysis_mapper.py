@@ -1,6 +1,10 @@
+import logging
+import random
 import numpy as np
 from typing import Dict, Any
 from app.domain.enums import RiskLevel
+
+logger = logging.getLogger(__name__)
 
 
 def sanitize_native_types(obj: Any) -> Any:
@@ -224,11 +228,16 @@ class AnalysisMapper:
                 "version": getattr(recommendation, "version", "v1"),
                 "processingTimeMs": getattr(recommendation, "processing_time_ms", 0),
             }
-        elif business:
+        if business and (not recommendation_dict or not recommendation_dict.get("aspects")):
             q_score = float(get_val(quality, "risk_score", get_val(quality, "score", 0.0)))
             d_score = float(get_val(delivery, "risk_score", get_val(delivery, "score", 0.0)))
             t_score = float(get_val(trust, "risk_score", get_val(trust, "score", 0.0)))
-            recommendation_dict = cls.generate_recommendation_dict(q_score, d_score, t_score, risk_index, b_level_val)
+            rec_from_fis = cls.generate_recommendation_dict(q_score, d_score, t_score, risk_index, b_level_val)
+            if rec_from_fis:
+                if recommendation_dict is None:
+                    recommendation_dict = rec_from_fis
+                else:
+                    recommendation_dict["aspects"] = rec_from_fis.get("aspects", {})
 
         result = {
             "product": product_dict,
@@ -344,6 +353,89 @@ class AnalysisMapper:
             gen_ts = getattr(rec_obj, "generated_timestamp", None)
             gen_ts_str = gen_ts.isoformat() if hasattr(gen_ts, "isoformat") else str(gen_ts or "")
 
+            aspects_dict = {}
+            try:
+                from core.recommendation.knowledge.knowledge_base import RecommendationKnowledgeBase
+                kb = getattr(rec_service.engine.selector, "knowledge_base", None) or RecommendationKnowledgeBase()
+                if not getattr(kb, "_initialized", False):
+                    kb.initialize()
+
+                def build_aspect_rec(aspect_key: str, level_val: str, default_benefits: list):
+                    rules = kb.get_rules(aspect_key, level_val)
+                    if not rules:
+                        rules = kb.get_rules(aspect_key, "MEDIUM") or kb.get_general_rules("MEDIUM")
+                    if not rules:
+                        return None
+
+                    # Dynamically and randomly pick one primary rule among the valid knowledge-base rules
+                    primary = random.choice(rules)
+
+                    # Gather actions, prioritizing the chosen primary rule's actions and supplementing with others
+                    collected_actions = list(primary.actions)
+                    other_rules = [r for r in rules if r.id != primary.id]
+                    random.shuffle(other_rules)
+                    for r in other_rules:
+                        for act in r.actions:
+                            if act not in collected_actions:
+                                collected_actions.append(act)
+                            if len(collected_actions) >= 5:
+                                break
+                        if len(collected_actions) >= 5:
+                            break
+
+                    # Provide all matching candidates so UI can also dynamically rotate
+                    candidates_data = [
+                        {
+                            "id": r.id,
+                            "title": r.title,
+                            "description": r.description,
+                            "priority": r.priority,
+                            "actions": list(r.actions),
+                            "reasoning": r.reasoning,
+                        }
+                        for r in rules
+                    ]
+
+                    return {
+                        "aspect": aspect_key,
+                        "riskLevel": level_val,
+                        "title": primary.title,
+                        "description": primary.description,
+                        "priority": primary.priority,
+                        "actions": collected_actions[:5],
+                        "reasoning": primary.reasoning,
+                        "achievements": default_benefits,
+                        "candidates": candidates_data,
+                    }
+
+                aspects_dict["DELIVERY"] = build_aspect_rec(
+                    "DELIVERY", d_lvl, [
+                        "More reliable delivery performance",
+                        "Fewer customer complaints",
+                        "Improved customer satisfaction",
+                        "Stronger reputation for your business"
+                    ]
+                )
+                aspects_dict["QUALITY"] = build_aspect_rec(
+                    "QUALITY", q_lvl, [
+                        "Higher product quality consistency",
+                        "Fewer return and refund requests",
+                        "Improved customer ratings and loyalty",
+                        "Lower customer support overhead"
+                    ]
+                )
+                aspects_dict["TRUST"] = build_aspect_rec(
+                    "TRUST", t_lvl, [
+                        "Stronger buyer confidence and credibility",
+                        "Protection against marketplace flags",
+                        "Higher conversion and customer retention",
+                        "Elevated marketplace brand reputation"
+                    ]
+                )
+            except Exception as kb_err:
+                logger.warning(f"Failed to assemble aspect-level recommendations: {kb_err}")
+                aspects_dict = {}
+
             return {
                 "report": {
                     "summary": getattr(rep, "summary", "") if rep else "",
@@ -355,9 +447,11 @@ class AnalysisMapper:
                     "recommendationCount": getattr(meta, "recommendation_count", 0) if meta else 0,
                     "generatedAt": getattr(meta, "generated_at", "") if meta else "",
                 },
+                "aspects": aspects_dict,
                 "generatedTimestamp": gen_ts_str,
                 "version": getattr(rec_obj, "version", "v1"),
                 "processingTimeMs": getattr(rec_obj, "processing_time_ms", 0),
             }
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error in generate_recommendation_dict: {e}", exc_info=True)
             return None

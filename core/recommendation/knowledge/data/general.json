@@ -4,21 +4,43 @@
     "aspect": "GENERAL",
     "risk_level": "LOW",
     "title": "Keep Up Your Excellent Performance",
-    "description": "Your business is performing well, and customers are generally satisfied with your products and service. Continue maintaining these standards to build customer trust and encourage repeat purchases.",
+    "description": "Maintain a consistent customer experience by monitoring feedback and keeping core business processes reliable.",
     "actions": [
-      "Continue monitoring product quality and customer feedback regularly",
-      "Respond promptly to customer questions and concerns",
-      "Encourage satisfied customers to leave honest reviews and ratings",
-      "Keep delivering a consistent shopping experience to maintain customer trust"
+      "Review customer feedback and operational trends regularly.",
+      "Respond to customer questions and complaints promptly.",
+      "Encourage honest feedback without pressuring customers to leave positive reviews.",
+      "Keep product information, policies, and order updates accurate."
     ],
+    "reasoning": "Use this general fallback when no aspect-specific recommendation is available and there is no evidence requiring a more targeted response.",
     "priority": "NORMAL",
     "tags": [
       "general",
       "maintenance",
-      "customer_satisfaction",
-      "business_growth"
+      "fallback"
     ],
-    "version": 1,
+    "version": "1.0",
+    "enabled": true
+  },
+  {
+    "id": "general_fallback_002",
+    "aspect": "GENERAL",
+    "risk_level": "GENERAL",
+    "title": "Review Business Feedback Across Key Areas",
+    "description": "Use a balanced review of product quality, delivery, and customer trust to decide where routine improvements may help most.",
+    "actions": [
+      "Review recent customer feedback by theme.",
+      "Check for recurring patterns before changing business processes.",
+      "Assign an owner to any issue that needs follow-up.",
+      "Reassess outcomes after improvements are made."
+    ],
+    "reasoning": "This neutral fallback supports general monitoring when an aspect-specific rule cannot be matched.",
+    "priority": "NORMAL",
+    "tags": [
+      "general",
+      "fallback",
+      "monitoring"
+    ],
+    "version": "1.0",
     "enabled": true
   }
 ]

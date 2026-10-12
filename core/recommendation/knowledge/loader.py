@@ -84,9 +84,10 @@ class KnowledgeLoader:
                     title=str(item.get("title", "")),
                     description=str(item.get("description", "")),
                     actions=actions,
+                    reasoning=str(item.get("reasoning", "")),
                     priority=str(item.get("priority", "HIGH")).upper(),
                     tags=tags,
-                    version=int(item.get("version", 1)),
+                    version=int(float(item.get("version", 1))),
                     enabled=bool(item.get("enabled", True)),
                 )
                 rules.append(rule)
