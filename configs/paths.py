@@ -71,7 +71,7 @@ FIGURE_DIR = OUTPUT_DIR / "figures"
 # AI Model & Resources
 # ==================================================
 
-MODEL_VERSION = os.getenv("MODEL_VERSION", "v2").strip()
+MODEL_VERSION = os.getenv("MODEL_VERSION", "v1").strip()
 MODEL_DIR = PROJECT_ROOT / "models" / MODEL_VERSION
 TOKENIZER_DIR = MODEL_DIR / "tokenizer"
 RESOURCES_DIR = PROJECT_ROOT / "resources"
