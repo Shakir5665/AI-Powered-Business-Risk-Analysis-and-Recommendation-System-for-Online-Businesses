@@ -22,6 +22,7 @@ class RecommendationRule:
     title: str
     description: str
     actions: Tuple[str, ...]
+    reasoning: str = ""
     priority: str = "HIGH"
     tags: Tuple[str, ...] = field(default_factory=tuple)
     version: int = 1

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, ArrowUpRight } from "lucide-react";
 import { FaGithub, FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import RiskAiLogo1 from "../../assets/RiskAiLogo1.png";
+import Logo from "../../assets/Logo.png";
 
 function CTAButton({ text, variant = "primary", onClick }) {
   const isPrimary = variant === "primary";
@@ -270,16 +270,16 @@ export default function CTAFooter({ className }) {
               </div>
             </motion.div>
 
-            {/* Big Logo RiskAI */}
+            {/* Big Logo Riskora AI */}
             <div className="w-full max-w-[1248px] py-6 sm:py-10 lg:py-14 flex justify-center items-center select-none mx-auto overflow-hidden">
               <motion.img
-                src={RiskAiLogo1}
-                alt="RiskAI Logo"
+                src={Logo}
+                alt="Riskora AI Logo"
                 initial={{ y: "100%", opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2, ease: [0.21, 0.45, 0.32, 0.9] }}
-                className="max-h-[140px] md:max-h-[240px] lg:max-h-[320px] w-auto object-contain"
+                className="max-h-[140px] md:max-h-[240px] lg:max-h-[320px] w-auto object-contain brightness-0 opacity-80"
               />
             </div>
 
@@ -297,7 +297,7 @@ export default function CTAFooter({ className }) {
               </div>
 
               <div className="text-white font-sans text-[18px] font-normal leading-[28px] opacity-80 text-center lg:text-left">
-                &copy; 2026 RiskAI. All rights reserved.
+                &copy; 2026 Riskora AI. All rights reserved.
               </div>
 
               <div className="text-white font-sans text-[18px] font-normal leading-[28px] opacity-80">

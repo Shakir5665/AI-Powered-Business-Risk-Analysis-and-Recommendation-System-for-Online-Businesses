@@ -80,6 +80,7 @@ class ScraperEngine(ScraperInterface):
         if headless:
             chrome_options.add_argument("--headless")
             
+        chrome_options.page_load_strategy = "eager"
         chrome_options.add_argument("--disable-blink-features=AutomationControlled")
         chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
         chrome_options.add_experimental_option('useAutomationExtension', False)
@@ -92,7 +93,7 @@ class ScraperEngine(ScraperInterface):
         
         self._driver = webdriver.Chrome(options=chrome_options)
         self._driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        self._driver.set_page_load_timeout(10)
+        self._driver.set_page_load_timeout(35)
         
     def _check_stop(self) -> bool:
         """Check if user pressed 'Q' (CLI mode) or API requested stop (Web mode)."""
@@ -545,7 +546,15 @@ class ScraperEngine(ScraperInterface):
         try:
             # Open product page
             logger.info(f"Opening product page: {product_url}")
-            self._driver.get(product_url)
+            try:
+                self._driver.get(product_url)
+            except TimeoutException:
+                logger.warning("Page load timed out waiting for full assets, continuing with existing DOM content.")
+            except Exception as nav_err:
+                if "timeout" in str(nav_err).lower() or "timed out" in str(nav_err).lower():
+                    logger.warning(f"Page load timed out for {product_url}, continuing with existing DOM content.")
+                else:
+                    raise nav_err
             time.sleep(3)
 
             metadata = self._extract_metadata_from_driver(product_url)
@@ -900,7 +909,7 @@ class ScraperEngine(ScraperInterface):
         try:
             self._setup_browser(headless=True)
             if self._driver:
-                self._driver.set_page_load_timeout(10)
+                self._driver.set_page_load_timeout(35)
 
             logger.info(f"Extracting product preview for: {product_url}")
             try:

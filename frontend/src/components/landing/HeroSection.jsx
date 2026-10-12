@@ -7,7 +7,7 @@ import darazLogo from "../../assets/darazLogo.png";
 import ebayLogo from "../../assets/ebayLogo.png";
 import shopifyLogo from "../../assets/shopifyLogo.png";
 import aliexpressLogo from "../../assets/aliexpressLogo.png";
-import RiskAiLogo1 from "../../assets/RiskAiLogo1.png";
+import Logo from "../../assets/Logo.png";
 
 const brandLogos = [
   { name: "Daraz", logo: darazLogo },
@@ -90,7 +90,7 @@ export default function HeroSection({ className }) {
             className="flex items-center justify-between"
           >
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <img src={RiskAiLogo1} alt="RiskAI Logo" className="h-9 sm:h-10 w-auto object-contain" />
+              <img src={Logo} alt="Riskora AI Logo" className="h-10 sm:h-12 w-auto object-contain" />
             </a>
 
             {/* Desktop Menu */}
@@ -168,7 +168,7 @@ export default function HeroSection({ className }) {
                 className="fixed inset-0 z-[100] lg:hidden bg-white px-6 py-8 flex flex-col gap-8"
               >
                 <div className="flex items-center justify-between">
-                  <img src={RiskAiLogo1} alt="RiskAI Logo" className="h-9 w-auto object-contain" />
+                  <img src={Logo} alt="Riskora AI Logo" className="h-9 w-auto object-contain brightness-0" />
                   <button
                     onClick={() => setIsMobileMenuOpen(false)}
                     className="p-2 text-[#042718] bg-[#042718]/5 rounded-full"

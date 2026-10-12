@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-RiskAI Predictor v2.0 - Standalone Production AI Inference Tool
+Riskora AI Predictor v2.0 - Standalone Production AI Inference Tool
 ================================================================
 Zero-configuration, GPU-accelerated batch predictor for e-commerce reviews.
 Transforms raw customer feedback in Excel files into actionable risk insights
@@ -498,7 +498,7 @@ def run(file_path: Optional[str] = None):
 
 def main(file_arg: Optional[str] = None):
     print("\n" + "=" * 60)
-    print("🚀 RiskAI Predictor v2.0 Initialized")
+    print("🚀 Riskora AI Predictor v2.0 Initialized")
     print("=" * 60)
 
     # 1. Google Drive / Target Directory Setup

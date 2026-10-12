@@ -21,6 +21,8 @@ class ProductPreviewResponse(BaseModel):
     totalReviews: int = Field(..., description="Total review count")
     platform: str = Field("Daraz", description="Platform name")
     category: Optional[str] = Field("General", description="Product category")
+    tierUsed: Optional[str] = Field("tier_1", description="Tier used to fetch preview: tier_1, tier_2, or cache")
+    fetchTimeMs: Optional[int] = Field(None, description="Fetch duration in milliseconds")
 
 
 class AnalysisStartResponse(BaseModel):

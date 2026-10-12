@@ -48,18 +48,18 @@ export default function Navbar({ onMenuToggle }) {
         <button
           id="sidebarToggle"
           onClick={onMenuToggle}
-          className="lg:hidden p-2 rounded-xl text-[#042718]/50 hover:text-[#042718] hover:bg-[#042718]/05 transition-colors"
+          className="lg:hidden p-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition-colors"
         >
           <Menu size={20} />
         </button>
 
         <div className="flex flex-col">
           {/* Breadcrumb */}
-          <div className="hidden sm:flex items-center gap-1 text-[#042718]/40 text-xs">
+          <div className="hidden sm:flex items-center gap-1 text-slate-500 text-xs font-medium">
             {crumbs.map((crumb, i) => (
               <React.Fragment key={crumb}>
                 {i > 0 && <ChevronRight size={12} />}
-                <span className={i === crumbs.length - 1 ? "text-[#042718]/60 font-medium" : ""}>
+                <span className={i === crumbs.length - 1 ? "text-slate-900 font-bold" : ""}>
                   {crumb}
                 </span>
               </React.Fragment>
@@ -67,7 +67,7 @@ export default function Navbar({ onMenuToggle }) {
           </div>
           {/* Page title */}
           <h1
-            className="text-[#042718] text-lg font-semibold leading-tight tracking-tight"
+            className="text-slate-900 text-lg font-bold leading-tight tracking-tight"
             style={{ fontFamily: "'Onest', sans-serif" }}
           >
             {pageTitle}
@@ -78,9 +78,9 @@ export default function Navbar({ onMenuToggle }) {
       {/* Right: greeting + avatar */}
       <div className="flex items-center gap-2 sm:gap-3">
         {/* Greeting (hidden on very small screens) */}
-        <span className="hidden md:block text-[#042718]/50 text-sm">
+        <span className="hidden md:block text-slate-600 text-sm">
           {greeting},{" "}
-          <span className="text-[#042718] font-medium">{user?.username || "User"}</span>
+          <span className="text-slate-900 font-bold">{user?.username || "User"}</span>
         </span>
 
         {/* Divider */}
@@ -90,9 +90,13 @@ export default function Navbar({ onMenuToggle }) {
         <button
           id="navProfileBtn"
           onClick={() => navigate("/profile")}
-          className="w-9 h-9 rounded-full bg-[#198F38] flex items-center justify-center text-white text-sm font-bold hover:ring-2 hover:ring-[#198F38]/40 transition-all"
+          className="w-9 h-9 rounded-full bg-[#198F38] overflow-hidden flex items-center justify-center text-white text-sm font-bold hover:ring-2 hover:ring-[#198F38]/40 transition-all shadow-sm"
         >
-          {initials}
+          {user?.avatar ? (
+            <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
+          ) : (
+            initials
+          )}
         </button>
       </div>
     </motion.header>
