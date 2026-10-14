@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
-  Link2, Search, CheckCircle, ChevronRight, X,
-  Loader2, ScanSearch, AlertCircle, StopCircle, Terminal,
+  Link2, CheckCircle, ChevronRight,
+  Loader2, ScanSearch, AlertCircle, StopCircle,
+  Globe, FileSearch, Brain, ClipboardCheck,
 } from "lucide-react";
 import { analysisAPI } from "../api/endpoints";
 import { parseError } from "../utils/helpers";
@@ -62,161 +63,6 @@ function detectPlatform(url) {
   return null;
 }
 
-// ── Terminal log color mapping & Friendly Tag Formatting ─────────────────────
-
-const TAG_MAP = {
-  "[SCRAPER]":   "[Reviews]",
-  "[AI_ENGINE]": "[Analysis]",
-  "[FIS]":       "[Risk Model]",
-  "[DATABASE]":  "[System]",
-  "[COMPLETED]": "[Complete]",
-  "[USER]":      "[Action]",
-  "[SYSTEM]":    "[System]",
-  "[ERROR]":     "[Alert]",
-};
-
-function getLogColor(line) {
-  const upper = line.toUpperCase();
-  if (upper.includes("[ERROR]") || upper.includes("[ALERT]"))     return "#ff5f5f";
-  if (upper.includes("[SCRAPER]") || upper.includes("[REVIEWS]")) return "#67e8f9";   // cyan
-  if (upper.includes("[AI_ENGINE]") || upper.includes("[ANALYSIS]")) return "#fde047"; // yellow
-  if (upper.includes("[FIS]") || upper.includes("[RISK MODEL]"))  return "#d8b4fe";   // purple
-  if (upper.includes("[DATABASE]") || upper.includes("[STORAGE]")) return "#60a5fa";  // blue
-  if (upper.includes("[COMPLETED]") || upper.includes("[COMPLETE]")) return "#4ade80"; // bright green
-  if (upper.includes("[USER]") || upper.includes("[ACTION]"))     return "#fb923c";   // orange
-  if (upper.includes("[SYSTEM]"))                                 return "#e2e8f0";   // near-white
-  return "#86efac";                                                                   // default soft green
-}
-
-function TerminalLine({ line, animate }) {
-  const color = getLogColor(line);
-  // Split at the category tag for bold highlighting
-  const match = line.match(/^(\[\d{2}:\d{2}:\d{2}\]\s)?(\[[A-Z_]+\])(.*)/);
-  if (match) {
-    const rawTag = match[2];
-    const friendlyTag = TAG_MAP[rawTag] || rawTag;
-    return (
-      <motion.div
-        initial={animate ? { opacity: 0, x: -6 } : false}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.2 }}
-        className="flex gap-2 leading-relaxed"
-        style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace", fontSize: "12px" }}
-      >
-        {match[1] && <span style={{ color: "#6b7280" }}>{match[1]}</span>}
-        <span style={{ color, fontWeight: 700, flexShrink: 0 }}>{friendlyTag}</span>
-        <span style={{ color: "#d1fae5" }}>{match[3]}</span>
-      </motion.div>
-    );
-  }
-  return (
-    <motion.div
-      initial={animate ? { opacity: 0, x: -6 } : false}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.2 }}
-      style={{ color: "#86efac", fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace", fontSize: "12px", lineHeight: "1.6" }}
-    >
-      {line}
-    </motion.div>
-  );
-}
-
-// ── Terminal panel ────────────────────────────────────────────────────────────
-
-function TerminalPanel({ logs, jobStatus }) {
-  const bottomRef = useRef(null);
-  const containerRef = useRef(null);
-  const prevLogCountRef = useRef(0);
-
-  // Auto-scroll only when new lines arrive
-  useEffect(() => {
-    if (logs.length > prevLogCountRef.current) {
-      prevLogCountRef.current = logs.length;
-      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [logs]);
-
-  const isRunning = !["COMPLETED", "DONE", "FINISHED", "SUCCESS", "FAILED", "ERROR"].includes(
-    String(jobStatus?.status || "").toUpperCase()
-  );
-
-  return (
-    <div
-      ref={containerRef}
-      className="w-full rounded-xl overflow-hidden border"
-      style={{ borderColor: "#198F38/30", background: "#0a1a0f" }}
-    >
-      {/* Terminal title bar */}
-      <div
-        className="flex items-center gap-2 px-4 py-2.5 border-b"
-        style={{ borderColor: "#1a3a1f", background: "#071210" }}
-      >
-        <div className="flex gap-1.5">
-          <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-          <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-          <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-        </div>
-        <Terminal size={12} className="ml-2 text-[#198F38]" />
-        <span
-          className="text-xs text-[#4ade80]/60"
-          style={{ fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          Live Activity
-        </span>
-        <div className="ml-auto flex items-center gap-1.5">
-          {isRunning && (
-            <>
-              <span className="w-2 h-2 rounded-full bg-[#198F38] animate-pulse" />
-              <span className="text-[10px] text-[#4ade80]/60" style={{ fontFamily: "monospace" }}>
-                LIVE
-              </span>
-            </>
-          )}
-        </div>
-      </div>
-
-      {/* Log body */}
-      <div
-        className="p-4 overflow-y-auto flex flex-col gap-0.5"
-        style={{ height: "280px", maxHeight: "280px" }}
-      >
-        {logs.length === 0 ? (
-          <span style={{ color: "#4ade80/40", fontFamily: "monospace", fontSize: "12px" }}>
-            Starting scan...
-          </span>
-        ) : (
-          logs.map((line, i) => (
-            <TerminalLine
-              key={`${i}-${line.slice(0, 20)}`}
-              line={line}
-              animate={i >= logs.length - 5}
-            />
-          ))
-        )}
-        {/* Blinking cursor */}
-        {isRunning && (
-          <motion.span
-            animate={{ opacity: [1, 0, 1] }}
-            transition={{ duration: 1, repeat: Infinity }}
-            style={{
-              color: "#4ade80",
-              fontFamily: "monospace",
-              fontSize: "14px",
-              lineHeight: 1,
-              display: "inline-block",
-              marginTop: "2px",
-            }}
-          >
-            █
-          </motion.span>
-        )}
-        <div ref={bottomRef} />
-      </div>
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function AnalyzeProduct() {
   const navigate = useNavigate();
@@ -448,78 +294,162 @@ export default function AnalyzeProduct() {
           </motion.div>
         )}
 
-        {/* ── Step 3: Live Progress + Terminal ── */}
+        {/* ── Step 3: Premium Progress Panel ── */}
         {step === 3 && (
           <motion.div
             key="step3"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35 }}
-            className="w-full bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8"
+            className="w-full"
           >
-            {/* Header row */}
-            <div className="flex items-center gap-4 mb-5">
+            {/* Phase Steps Track */}
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 mb-4">
+              <div className="flex items-center justify-between gap-1 mb-5">
+                {[
+                  { icon: Globe,         label: "Connecting",         done: true  },
+                  { icon: FileSearch,    label: "Reading Reviews",     done: (jobStatus?.currentPage || 0) > 0 },
+                  { icon: Brain,         label: "AI Analysis",         done: ["COMPLETED","DONE","FINISHED","SUCCESS"].includes(String(jobStatus?.status||"").toUpperCase()) },
+                  { icon: ClipboardCheck,label: "Generating Report",   done: ["COMPLETED","DONE","FINISHED","SUCCESS"].includes(String(jobStatus?.status||"").toUpperCase()) },
+                ].map((phase, i, arr) => {
+                  const isActive = !phase.done && (i === 0 || arr[i-1]?.done);
+                  return (
+                    <React.Fragment key={phase.label}>
+                      <div className="flex flex-col items-center gap-1.5 min-w-0">
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ${
+                          phase.done
+                            ? "bg-[#198F38] text-white shadow-md shadow-[#198F38]/25"
+                            : isActive
+                            ? "bg-[#042718] text-white ring-2 ring-[#198F38]/30 shadow-sm"
+                            : "bg-slate-100 text-slate-400 border border-slate-200"
+                        }`}>
+                          {phase.done
+                            ? <CheckCircle size={18} />
+                            : isActive
+                            ? <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }}><Loader2 size={18} /></motion.div>
+                            : <phase.icon size={16} />
+                          }
+                        </div>
+                        <span className={`text-[10px] font-bold text-center leading-tight ${
+                          phase.done ? "text-[#198F38]" : isActive ? "text-slate-900" : "text-slate-400"
+                        }`}>
+                          {phase.label}
+                        </span>
+                      </div>
+                      {i < arr.length - 1 && (
+                        <div className={`flex-1 h-0.5 mx-1 rounded-full mb-5 transition-all duration-700 ${
+                          phase.done ? "bg-[#198F38]" : "bg-slate-200"
+                        }`} />
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+
+              {/* Main Progress Bar */}
+              <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden mb-2">
+                <motion.div
+                  animate={{ width: `${progressPct}%` }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="h-full rounded-full"
+                  style={{ background: "linear-gradient(90deg, #042718, #198F38, #4ade80)" }}
+                />
+              </div>
+              <div className="flex items-center justify-between text-xs font-bold text-slate-500 mb-4">
+                <span>Progress</span>
+                <span className="text-[#198F38] text-sm">{progressPct}%</span>
+              </div>
+
+              {/* Stats Row */}
+              <div className="grid grid-cols-2 gap-3">
+                {/* Pages */}
+                <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 flex flex-col gap-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <FileSearch size={14} className="text-[#198F38]" />
+                    <span className="text-slate-500 text-xs font-semibold">Pages Read</span>
+                  </div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-slate-900 font-black text-2xl" style={{ fontFamily: "'Onest', sans-serif" }}>
+                      {jobStatus?.currentPage ?? "—"}
+                    </span>
+                    {jobStatus?.totalPages && (
+                      <span className="text-slate-400 text-sm font-semibold">of {jobStatus.totalPages}</span>
+                    )}
+                  </div>
+                  {jobStatus?.totalPages && (
+                    <div className="w-full h-1 rounded-full bg-slate-200 mt-1 overflow-hidden">
+                      <motion.div
+                        animate={{ width: `${Math.round(((jobStatus.currentPage||0)/jobStatus.totalPages)*100)}%` }}
+                        transition={{ duration: 0.6 }}
+                        className="h-full rounded-full bg-[#198F38]"
+                      />
+                    </div>
+                  )}
+                  <p className="text-slate-400 text-[11px] font-medium mt-0.5">Review pages checked</p>
+                </div>
+
+                {/* Reviews */}
+                <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 flex flex-col gap-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Brain size={14} className="text-purple-500" />
+                    <span className="text-slate-500 text-xs font-semibold">Reviews Found</span>
+                  </div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-slate-900 font-black text-2xl" style={{ fontFamily: "'Onest', sans-serif" }}>
+                      {jobStatus?.reviewsCollected ?? 0}
+                    </span>
+                    <span className="text-slate-400 text-sm font-semibold">reviews</span>
+                  </div>
+                  {jobStatus?.reviewsCollected > 0 && (
+                    <div className="w-full h-1 rounded-full bg-slate-200 mt-1 overflow-hidden">
+                      <motion.div
+                        animate={{ width: `${Math.min(100, (jobStatus.reviewsCollected/500)*100)}%` }}
+                        transition={{ duration: 0.6 }}
+                        className="h-full rounded-full bg-purple-400"
+                      />
+                    </div>
+                  )}
+                  <p className="text-slate-400 text-[11px] font-medium mt-0.5">Customer opinions collected</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Status Message */}
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm px-5 py-4 mb-4 flex items-center gap-3">
               <motion.div
-                animate={{ scale: [1, 1.08, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-14 h-14 rounded-2xl bg-emerald-100 flex items-center justify-center shrink-0 border border-emerald-300 shadow-xs"
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-8 h-8 rounded-full bg-[#198F38]/10 flex items-center justify-center shrink-0"
               >
-                <ScanSearch size={28} className="text-emerald-800" />
+                <ScanSearch size={16} className="text-[#198F38]" />
               </motion.div>
               <div className="flex-1 min-w-0">
-                <h2 className="text-slate-900 text-xl font-bold tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
-                  Analyzing Reviews
-                </h2>
-                <p className="text-slate-700 text-sm font-medium truncate mt-0.5">
-                  {jobStatus?.currentStep || jobStatus?.message || "Extracting customer feedback and calculating risk score..."}
+                <p className="text-slate-900 text-sm font-semibold">
+                  {jobStatus?.currentStep
+                    ? jobStatus.currentStep.replace(/scraping/gi, "reading").replace(/scraped/gi, "read").replace(/XLM-?Roberta|BERT|NLP model/gi, "AI")
+                    : "Our AI is reading customer feedback and calculating your risk score..."}
                 </p>
+                <p className="text-slate-400 text-xs font-medium mt-0.5">This usually takes 1–3 minutes</p>
               </div>
-              {/* Status badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold shrink-0">
-                {["COMPLETED", "DONE", "FINISHED", "SUCCESS"].includes(String(jobStatus?.status || "").toUpperCase())
-                  ? <CheckCircle size={14} className="text-emerald-700" />
-                  : <Loader2 size={14} className="animate-spin text-emerald-700" />
-                }
-                <span>{jobStatus?.status || "Analyzing"}</span>
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 shrink-0">
+                <motion.div animate={{ opacity: [1,0,1] }} transition={{ duration: 1, repeat: Infinity }}>
+                  <span className="w-2 h-2 rounded-full bg-[#198F38] block" />
+                </motion.div>
+                <span className="text-[#198F38] text-xs font-bold">Live</span>
               </div>
             </div>
 
-            {/* Progress bar */}
-            <div className="w-full h-2.5 rounded-full bg-slate-200 mb-2 overflow-hidden">
-              <motion.div
-                animate={{ width: `${progressPct}%` }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="h-full rounded-full bg-gradient-to-r from-[#198F38] to-[#4ade80]"
-              />
-            </div>
-            <div className="flex items-center justify-between text-slate-700 font-semibold text-xs mb-5">
-              <span>
-                {jobStatus?.reviewsCollected !== undefined
-                  ? `${jobStatus.reviewsCollected} reviews collected`
-                  : "Collecting reviews..."}
-              </span>
-              <span>
-                {jobStatus?.currentPage && jobStatus?.totalPages
-                  ? `Page ${jobStatus.currentPage} of ${jobStatus.totalPages}`
-                  : ""}
-              </span>
-              <span className="text-emerald-800 font-bold">{progressPct}%</span>
-            </div>
-
-            {/* ── Terminal log panel ── */}
-            <TerminalPanel logs={logs} jobStatus={jobStatus} />
-
-            {/* Stop button */}
-            <div className="mt-5 flex flex-col items-center gap-1.5">
+            {/* Generate Report Early Button */}
+            <div className="flex flex-col items-center gap-2">
               <button
                 id="stopScrapingBtn"
                 onClick={() => stopScraping(analysisId)}
-                className="flex items-center gap-2 px-6 py-2.5 rounded-full border border-slate-300 text-slate-800 font-bold text-sm hover:bg-red-50 hover:text-red-700 hover:border-red-300 transition-all cursor-pointer shadow-2xs"
+                className="flex items-center gap-2 px-6 py-3 rounded-full border border-slate-200 bg-white text-slate-700 font-bold text-sm hover:bg-red-50 hover:text-red-700 hover:border-red-300 transition-all cursor-pointer shadow-xs"
               >
                 <StopCircle size={16} />
                 Generate Report Now
               </button>
-              <p className="text-slate-500 font-medium text-xs text-center max-w-md">
-                Complete analysis immediately with reviews collected so far
+              <p className="text-slate-400 text-xs text-center max-w-xs">
+                Stop collecting and instantly generate your report with the reviews gathered so far
               </p>
             </div>
           </motion.div>
