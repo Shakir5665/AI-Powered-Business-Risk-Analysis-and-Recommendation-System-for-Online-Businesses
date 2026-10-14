@@ -13,20 +13,20 @@ const plans = [
     features: [
       "5 product analyses per month",
       "Basic Business Risk Index (BRI)",
-      "Sentiment analysis overview",
-      "Aspect breakdown summary",
+      "Customer sentiment overview",
+      "Product feedback summary",
       "Export analysis as PDF",
     ],
   },
   {
     name: "Pro Plan",
     description: "Best for growing businesses & active sellers",
-    monthlyPrice: 29,
-    yearlyPrice: 22,
+    monthlyPrice: 8900,
+    yearlyPrice: 6900,
     features: [
       "Everything in Starter Plan",
       "50 product analyses per month",
-      "Full Aspect-Based Analysis (ABSA)",
+      "Full Topic Analysis (Quality, Delivery, Trust)",
       "AI-generated recommendations",
       "Evidence-based customer quotes",
     ],
@@ -34,8 +34,8 @@ const plans = [
   {
     name: "Business Plan",
     description: "Built for teams, researchers & enterprises",
-    monthlyPrice: 79,
-    yearlyPrice: 60,
+    monthlyPrice: 24500,
+    yearlyPrice: 18900,
     features: [
       "Everything in Pro Plan",
       "Unlimited product analyses",
@@ -97,22 +97,28 @@ function PricingCard({ plan, isVisualActive, onClick, onMouseEnter, onMouseLeave
           <div className="flex items-baseline">
             {price === 0 ? (
               <span
-                className="text-[#042718] text-[56px] font-semibold leading-[64px] tracking-[-2px]"
+                className="text-[#042718] text-[48px] sm:text-[56px] font-semibold leading-[64px] tracking-[-2px]"
                 style={{ fontFamily: "'Onest', sans-serif" }}
               >
                 Free
               </span>
             ) : (
-              <span
-                className="text-[#042718] text-[56px] font-semibold leading-[64px] tracking-[-2px]"
-                style={{ fontFamily: "'Onest', sans-serif" }}
-              >
-                ${price}
-              </span>
+              <div className="flex items-baseline gap-1.5 flex-wrap">
+                <span className="text-[#042718] text-[18px] sm:text-[22px] font-bold">
+                  LKR
+                </span>
+                <span
+                  className="text-[#042718] text-[40px] sm:text-[50px] font-semibold leading-[56px] tracking-[-1.5px]"
+                  style={{ fontFamily: "'Onest', sans-serif" }}
+                >
+                  {price.toLocaleString("en-LK")}
+                </span>
+                <span className="text-[#042718]/70 text-sm font-medium">/month</span>
+              </div>
             )}
           </div>
-          <p className="mt-[16px] text-[#042718] font-inter text-[18px] font-normal leading-[28px] tracking-[-0.3px] opacity-80">
-            {price === 0 ? "No credit card required" : "Monthly subscription"}
+          <p className="mt-[16px] text-[#042718] font-inter text-[16px] font-normal leading-[24px] tracking-[-0.3px] opacity-80">
+            {price === 0 ? "No credit card required" : isMonthly ? "Billed monthly in LKR" : "Billed annually in LKR"}
           </p>
         </div>
 

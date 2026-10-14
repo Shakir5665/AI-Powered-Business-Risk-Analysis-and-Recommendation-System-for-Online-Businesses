@@ -115,7 +115,7 @@ class AnalysisService:
         return {
             "analysisId": job.analysis_id,
             "status": "SCRAPING",
-            "message": "Analysis job started successfully. Scraping in progress..."
+            "message": "Analysis job started successfully. Collecting customer reviews..."
         }
 
     def finish_scraping(self, analysis_id: str, user_id: Optional[UUID] = None) -> bool:
@@ -172,7 +172,7 @@ class AnalysisService:
         Internal worker running scraper and full AI pipeline in background.
         """
         try:
-            job.current_step = "Scraping reviews from product page..."
+            job.current_step = "Collecting customer reviews from product page..."
             job.progress_percent = 15
             job.add_log("SCRAPER", "Connecting to Daraz product page via Selenium...")
 
@@ -181,7 +181,7 @@ class AnalysisService:
                 self.adapter.scrape_product, job.product_url, job
             )
 
-            job.current_step = "Staging scraped reviews into PostgreSQL..."
+            job.current_step = "Processing collected reviews for analysis..."
             job.progress_percent = 45
             job.add_log("DATABASE", f"Committing {len(getattr(raw_product, 'reviews', []))} raw reviews to PostgreSQL...")
 

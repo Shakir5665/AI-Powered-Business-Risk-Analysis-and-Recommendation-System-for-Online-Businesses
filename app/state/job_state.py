@@ -72,9 +72,9 @@ class JobStateManager:
         job = self.get_job(analysis_id, user_id=user_id)
         if job:
             job.stop_requested = True
-            job.add_log("USER", "Finish Scraping signal requested by user ('Q' key equivalent).")
+            job.add_log("USER", "Report generation requested by user.")
             if job.status == "SCRAPING":
-                job.current_step = "Finish Scraping requested. Finishing current page..."
+                job.current_step = "Generating report with collected reviews..."
             return True
         return False
 
