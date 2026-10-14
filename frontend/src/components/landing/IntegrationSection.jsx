@@ -17,7 +17,7 @@ const leftIntegrations = [
   {
     id: "amazon",
     name: "Amazon",
-    description: "E-commerce review scraping",
+    description: "E-commerce review collection",
     icon: amazonLogo,
   },
   {

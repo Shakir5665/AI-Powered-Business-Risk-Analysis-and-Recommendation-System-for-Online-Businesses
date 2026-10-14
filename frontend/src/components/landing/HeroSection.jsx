@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, Menu, X } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import amazonLogo from "../../assets/amazonLogo.png";
 import darazLogo from "../../assets/darazLogo.png";
 import ebayLogo from "../../assets/ebayLogo.png";
@@ -22,11 +22,20 @@ export default function HeroSection({ className }) {
   const [isCTAHovered, setIsCTAHovered] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setTimeout(() => setIsMounted(true), 0);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -56,41 +65,19 @@ export default function HeroSection({ className }) {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" crossOrigin="anonymous" />
 
-      <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className={"relative w-full overflow-hidden min-h-[800px] lg:min-h-[900px] " + (className || "")}
+      {/* Sticky Top Navigation Bar */}
+      <header
+        className={
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 " +
+          (isScrolled
+            ? "bg-white/90 backdrop-blur-md shadow-xs border-b border-[#042718]/08 py-3.5"
+            : "bg-transparent py-5 lg:py-7")
+        }
       >
-        {/* Background Video — Cloudinary CDN */}
-        <div className="absolute inset-0 z-0">
-          {isMounted && (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              {/* WebM (smaller) served first to browsers that support it, MP4 fallback */}
-              <source
-                src="https://res.cloudinary.com/rgj4dgir/video/upload/f_auto,q_auto:low/v1788274252/bg.mp4"
-                type="video/mp4"
-              />
-            </video>
-          )}
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8 pb-12">
-          {/* Navigation */}
-          <motion.nav
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-            className="flex items-center justify-between"
-          >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="flex items-center justify-between">
             <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <img src={Logo} alt="Riskora AI Logo" className="h-10 sm:h-12 w-auto object-contain" />
+              <img src={Logo} alt="Riskora AI Logo" className="h-9 sm:h-11 w-auto object-contain" />
             </a>
 
             {/* Desktop Menu */}
@@ -119,13 +106,20 @@ export default function HeroSection({ className }) {
                 layout
                 onClick={() => navigate("/register")}
                 className={
-                  "hidden sm:flex items-center gap-3 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 group cursor-pointer relative h-11 transition-all duration-300 " +
+                  "hidden sm:flex items-center gap-3 py-1.5 rounded-full border group cursor-pointer relative h-11 transition-all duration-300 " +
+                  (isScrolled
+                    ? "bg-[#042718] text-white border-[#042718] shadow-xs hover:bg-[#063b25]"
+                    : "bg-white/10 backdrop-blur-sm border-white/40 text-[#042718]") +
+                  " " +
                   (isNavHovered ? "flex-row-reverse pl-1.5 pr-[18px]" : "flex-row pl-[18px] pr-1.5")
                 }
               >
                 <motion.span
                   layout
-                  className="font-inter text-base font-medium leading-6 tracking-[-0.3px] text-[#042718]"
+                  className={
+                    "font-inter text-base font-medium leading-6 tracking-[-0.3px] " +
+                    (isScrolled ? "text-white" : "text-[#042718]")
+                  }
                 >
                   Get Started
                 </motion.span>
@@ -141,7 +135,7 @@ export default function HeroSection({ className }) {
                     }}
                     transition={{ duration: 0.3, delay: isNavHovered ? 0.1 : 0 }}
                   >
-                    <ArrowUpRight className="w-3 h-3 text-[#042718]" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#042718]" />
                   </motion.div>
                 </motion.div>
               </motion.button>
@@ -149,67 +143,100 @@ export default function HeroSection({ className }) {
               {/* Mobile Menu Toggle */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden p-2 text-[#042718] bg-white/20 backdrop-blur-md rounded-full"
+                className={
+                  "lg:hidden p-2 text-[#042718] rounded-full transition-colors " +
+                  (isScrolled ? "bg-slate-100" : "bg-white/20 backdrop-blur-md")
+                }
+                aria-label="Toggle navigation menu"
               >
-                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
             </div>
-          </motion.nav>
+          </nav>
+        </div>
+      </header>
 
-          {/* Mobile Navigation Drawer */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                key="mobile-menu"
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                className="fixed inset-0 z-[100] lg:hidden bg-white px-6 py-8 flex flex-col gap-8"
+      {/* Mobile Navigation Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 z-[100] lg:hidden bg-white px-6 py-8 flex flex-col gap-8"
+          >
+            <div className="flex items-center justify-between">
+              <img src={Logo} alt="Riskora AI Logo" className="h-9 w-auto object-contain brightness-0" />
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 text-[#042718] bg-[#042718]/5 rounded-full"
+                aria-label="Close menu"
               >
-                <div className="flex items-center justify-between">
-                  <img src={Logo} alt="Riskora AI Logo" className="h-9 w-auto object-contain brightness-0" />
-                  <button
+                <X size={24} />
+              </button>
+            </div>
+
+            <ul className="flex flex-col gap-6">
+              {navItems.map((item, idx) => (
+                <motion.li
+                  key={item}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 * idx, ease: "easeOut" }}
+                >
+                  <a
+                    href={navAnchors[item] || "#"}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 text-[#042718] bg-[#042718]/5 rounded-full"
+                    className="font-inter text-2xl font-semibold text-[#042718]"
                   >
-                    <X size={24} />
-                  </button>
-                </div>
+                    {item}
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
 
-                <ul className="flex flex-col gap-6">
-                  {navItems.map((item, idx) => (
-                    <motion.li
-                      key={item}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 * idx, ease: "easeOut" }}
-                    >
-                      <a
-                        href={navAnchors[item] || "#"}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="font-inter text-2xl font-semibold text-[#042718]"
-                      >
-                        {item}
-                      </a>
-                    </motion.li>
-                  ))}
-                </ul>
+            <div className="mt-auto">
+              <button
+                onClick={() => { setIsMobileMenuOpen(false); navigate("/register"); }}
+                className="w-full py-4 rounded-full bg-[#042718] text-white font-inter font-medium text-lg"
+              >
+                Get Started
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-                <div className="mt-auto">
-                  <button
-                    onClick={() => { setIsMobileMenuOpen(false); navigate("/register"); }}
-                    className="w-full py-4 rounded-full bg-[#042718] text-white font-inter font-medium text-lg"
-                  >
-                    Get Started
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className={"relative w-full overflow-hidden min-h-[800px] lg:min-h-[900px] " + (className || "")}
+      >
+        {/* Background Video — Cloudinary CDN */}
+        <div className="absolute inset-0 z-0">
+          {isMounted && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              {/* WebM (smaller) served first to browsers that support it, MP4 fallback */}
+              <source
+                src="https://res.cloudinary.com/rgj4dgir/video/upload/f_auto,q_auto:low/v1788274252/bg.mp4"
+                type="video/mp4"
+              />
+            </video>
+          )}
+        </div>
 
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-12">
           {/* Hero Content */}
-          <div className="flex flex-col items-center mt-12 lg:mt-[80px]">
+          <div className="flex flex-col items-center mt-6 lg:mt-10">
             {/* Badge */}
             <motion.div
               initial={{ y: 20, opacity: 0 }}
