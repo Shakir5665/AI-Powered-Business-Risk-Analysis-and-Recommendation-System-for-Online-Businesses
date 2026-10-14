@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUpRight, Sparkles, Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -65,150 +65,6 @@ export default function HeroSection({ className }) {
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Onest:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet" crossOrigin="anonymous" />
 
-      {/* Sticky Top Navigation Bar */}
-      <header
-        className={
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 " +
-          (isScrolled
-            ? "bg-white/90 backdrop-blur-md shadow-xs border-b border-[#042718]/08 py-3.5"
-            : "bg-transparent py-5 lg:py-7")
-        }
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <img src={Logo} alt="Riskora AI Logo" className="h-9 sm:h-11 w-auto object-contain" />
-            </a>
-
-            {/* Desktop Menu */}
-            <ul className="hidden lg:flex items-center gap-8">
-              {navItems.map((item) => (
-                <li key={item}>
-                  <a
-                    href={navAnchors[item] || "#"}
-                    className={
-                      "font-inter text-base leading-6 tracking-[-0.3px] text-[#042718] transition-all " +
-                      (item === "Home"
-                        ? "font-bold opacity-100"
-                        : "font-normal opacity-80 hover:opacity-100 hover:font-bold")
-                    }
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <div className="flex items-center gap-4">
-              <motion.button
-                onMouseEnter={() => setIsNavHovered(true)}
-                onMouseLeave={() => setIsNavHovered(false)}
-                layout
-                onClick={() => navigate("/register")}
-                className={
-                  "hidden sm:flex items-center gap-3 py-1.5 rounded-full border group cursor-pointer relative h-11 transition-all duration-300 " +
-                  (isScrolled
-                    ? "bg-[#042718] text-white border-[#042718] shadow-xs hover:bg-[#063b25]"
-                    : "bg-white/10 backdrop-blur-sm border-white/40 text-[#042718]") +
-                  " " +
-                  (isNavHovered ? "flex-row-reverse pl-1.5 pr-[18px]" : "flex-row pl-[18px] pr-1.5")
-                }
-              >
-                <motion.span
-                  layout
-                  className={
-                    "font-inter text-base font-medium leading-6 tracking-[-0.3px] " +
-                    (isScrolled ? "text-white" : "text-[#042718]")
-                  }
-                >
-                  Get Started
-                </motion.span>
-
-                <motion.div
-                  layout
-                  className="w-8 h-8 rounded-full bg-white flex items-center justify-center relative overflow-hidden shrink-0"
-                >
-                  <motion.div
-                    animate={{
-                      x: isNavHovered ? [-20, 0] : 0,
-                      opacity: isNavHovered ? [0, 1] : 1
-                    }}
-                    transition={{ duration: 0.3, delay: isNavHovered ? 0.1 : 0 }}
-                  >
-                    <ArrowUpRight className="w-3.5 h-3.5 text-[#042718]" />
-                  </motion.div>
-                </motion.div>
-              </motion.button>
-
-              {/* Mobile Menu Toggle */}
-              <button
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={
-                  "lg:hidden p-2 text-[#042718] rounded-full transition-colors " +
-                  (isScrolled ? "bg-slate-100" : "bg-white/20 backdrop-blur-md")
-                }
-                aria-label="Toggle navigation menu"
-              >
-                {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-              </button>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      {/* Mobile Navigation Drawer */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            key="mobile-menu"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[100] lg:hidden bg-white px-6 py-8 flex flex-col gap-8"
-          >
-            <div className="flex items-center justify-between">
-              <img src={Logo} alt="Riskora AI Logo" className="h-9 w-auto object-contain brightness-0" />
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-[#042718] bg-[#042718]/5 rounded-full"
-                aria-label="Close menu"
-              >
-                <X size={24} />
-              </button>
-            </div>
-
-            <ul className="flex flex-col gap-6">
-              {navItems.map((item, idx) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 * idx, ease: "easeOut" }}
-                >
-                  <a
-                    href={navAnchors[item] || "#"}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="font-inter text-2xl font-semibold text-[#042718]"
-                  >
-                    {item}
-                  </a>
-                </motion.li>
-              ))}
-            </ul>
-
-            <div className="mt-auto">
-              <button
-                onClick={() => { setIsMobileMenuOpen(false); navigate("/register"); }}
-                className="w-full py-4 rounded-full bg-[#042718] text-white font-inter font-medium text-lg"
-              >
-                Get Started
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -234,6 +90,149 @@ export default function HeroSection({ className }) {
           )}
         </div>
 
+        {/* Dark overlay for text legibility */}
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none"
+          style={{
+            background: "linear-gradient(180deg, rgba(3,25,15,0.76) 0%, rgba(3,25,15,0.60) 40%, rgba(3,25,15,0.78) 100%)",
+          }}
+        />
+        {/* Side vignette */}
+        <div
+          className="absolute inset-0 z-[1] pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse at center, transparent 40%, rgba(2,18,10,0.55) 100%)",
+          }}
+        />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8 pb-12">
+          {/* Navigation */}
+          <motion.nav
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            className="flex items-center justify-between"
+          >
+            <a href="/" className="flex items-center gap-2 hover:opacity-85 transition-opacity">
+              <img src={Logo} alt="Riskora AI Logo" className="h-10 sm:h-12 w-auto object-contain" />
+            </a>
+
+            {/* Desktop Menu */}
+            <ul className="hidden lg:flex items-center gap-8">
+              {navItems.map((item) => (
+                <li key={item}>
+                  <a
+                    href={navAnchors[item] || "#"}
+                    className={
+                      "font-inter text-base leading-6 tracking-[-0.3px] transition-all " +
+                      (item === "Home"
+                        ? "font-bold text-white opacity-100"
+                        : "font-normal text-white/80 hover:text-white hover:opacity-100")
+                    }
+                  >
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex items-center gap-4">
+              <motion.button
+                onMouseEnter={() => setIsNavHovered(true)}
+                onMouseLeave={() => setIsNavHovered(false)}
+                layout
+                onClick={() => navigate("/register")}
+                className={
+                  "hidden sm:flex items-center gap-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/30 group cursor-pointer relative h-11 transition-all duration-300 shadow-sm " +
+                  (isNavHovered ? "flex-row-reverse pl-1.5 pr-[18px]" : "flex-row pl-[18px] pr-1.5")
+                }
+              >
+                <motion.span
+                  layout
+                  className="font-inter text-base font-semibold leading-6 tracking-[-0.3px] text-white"
+                >
+                  Get Started
+                </motion.span>
+
+                <motion.div
+                  layout
+                  className="w-8 h-8 rounded-full bg-white flex items-center justify-center relative overflow-hidden shrink-0 shadow-xs"
+                >
+                  <motion.div
+                    animate={{
+                      x: isNavHovered ? [-20, 0] : 0,
+                      opacity: isNavHovered ? [0, 1] : 1
+                    }}
+                    transition={{ duration: 0.3, delay: isNavHovered ? 0.1 : 0 }}
+                  >
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[#042718]" />
+                  </motion.div>
+                </motion.div>
+              </motion.button>
+
+              {/* Mobile Menu Toggle */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden p-2 text-white bg-white/15 hover:bg-white/25 backdrop-blur-md rounded-full border border-white/20"
+              >
+                {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
+          </motion.nav>
+        </div>
+
+        {/* Mobile Navigation Drawer */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              key="mobile-menu"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-0 z-[100] lg:hidden bg-[#042718] px-6 py-8 flex flex-col gap-8"
+            >
+              <div className="flex items-center justify-between">
+                <img src={Logo} alt="Riskora AI Logo" className="h-9 w-auto object-contain" />
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 text-white bg-white/10 rounded-full"
+                >
+                  <X size={24} />
+                </button>
+              </div>
+
+              <ul className="flex flex-col gap-6">
+                {navItems.map((item, idx) => (
+                  <motion.li
+                    key={item}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 * idx, ease: "easeOut" }}
+                  >
+                    <a
+                      href={navAnchors[item] || "#"}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="font-inter text-2xl font-semibold text-white/90 hover:text-white"
+                    >
+                      {item}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+
+              <div className="mt-auto">
+                <button
+                  onClick={() => { setIsMobileMenuOpen(false); navigate("/register"); }}
+                  className="w-full py-4 rounded-full bg-emerald-500 hover:bg-emerald-400 text-[#042718] font-inter font-bold text-lg shadow-lg"
+                >
+                  Get Started
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 lg:pt-32 pb-12">
           {/* Hero Content */}
           <div className="flex flex-col items-center mt-6 lg:mt-10">
@@ -242,15 +241,15 @@ export default function HeroSection({ className }) {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
-              className="flex flex-row items-center gap-1.5 sm:gap-2 px-3 sm:px-[14px] py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/40 mb-6 whitespace-nowrap"
+              className="flex flex-row items-center gap-1.5 sm:gap-2 px-3.5 sm:px-[16px] py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 whitespace-nowrap shadow-sm"
             >
-              <div className="flex items-center gap-1 shrink-0">
-                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#042718] text-[#042718]" />
-                <span className="font-inter text-sm sm:text-base lg:text-[18px] font-medium leading-[28px] text-[#042718]">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-emerald-300 text-emerald-300" />
+                <span className="font-inter text-sm sm:text-base lg:text-[18px] font-semibold leading-[28px] text-emerald-300">
                   AI-Powered Analysis
                 </span>
               </div>
-              <span className="font-inter text-sm sm:text-base lg:text-[18px] font-normal leading-[28px] text-[#000000] opacity-60 shrink-0">
+              <span className="font-inter text-sm sm:text-base lg:text-[18px] font-normal leading-[28px] text-white/80 shrink-0">
                 for smarter business decisions
               </span>
             </motion.div>
@@ -260,12 +259,12 @@ export default function HeroSection({ className }) {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
-              className="max-w-[750px] w-full text-center font-onest text-[40px] sm:text-[50px] lg:text-[66px] font-semibold leading-tight lg:leading-[72px] tracking-tight lg:tracking-[-3px] text-[#042718]"
+              className="max-w-[780px] w-full text-center font-onest text-[40px] sm:text-[52px] lg:text-[68px] font-bold leading-tight lg:leading-[74px] tracking-tight lg:tracking-[-2.5px] text-white drop-shadow-md"
               style={{ fontFamily: "'Onest', sans-serif" }}
             >
               Understand Your{" "}
               <span
-                className="font-semibold text-[#000000] opacity-50 tracking-normal lg:tracking-[-3.566px]"
+                className="font-semibold text-emerald-300 tracking-normal lg:tracking-[-2px] drop-shadow-lg"
                 style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
               >
                 Business Risk
@@ -278,7 +277,7 @@ export default function HeroSection({ className }) {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-              className="max-w-[630px] w-full text-center mt-5 font-inter text-lg lg:text-[20px] font-normal leading-relaxed lg:leading-[30px] tracking-[-0.4px] text-[#042718]"
+              className="max-w-[650px] w-full text-center mt-5 font-inter text-base sm:text-lg lg:text-[19px] font-normal leading-relaxed lg:leading-[30px] tracking-[-0.3px] text-slate-200/90 drop-shadow-sm"
             >
               Paste a product URL and let our AI analyze customer reviews, detect risks, calculate your Business Risk Index, and deliver actionable recommendations — instantly.
             </motion.p>
@@ -293,20 +292,20 @@ export default function HeroSection({ className }) {
               layout
               onClick={() => navigate("/register")}
               className={
-                "flex items-center gap-3 py-2 rounded-full bg-[#042718] mt-8 lg:mt-12 group cursor-pointer relative h-14 border border-white/20 transition-all duration-300 " +
-                (isCTAHovered ? "flex-row-reverse pl-2 pr-5" : "flex-row pl-5 pr-2")
+                "flex items-center gap-3 py-2 rounded-full bg-emerald-500 hover:bg-emerald-400 mt-8 lg:mt-11 group cursor-pointer relative h-14 border border-emerald-300/40 shadow-xl shadow-emerald-950/50 transition-all duration-300 " +
+                (isCTAHovered ? "flex-row-reverse pl-2 pr-6" : "flex-row pl-6 pr-2")
               }
             >
               <motion.span
                 layout
-                className="font-inter text-base lg:text-[18px] font-medium leading-[28px] text-white"
+                className="font-inter text-base lg:text-[18px] font-bold leading-[28px] text-[#042718]"
               >
                 Analyze Product
               </motion.span>
 
               <motion.div
                 layout
-                className="w-10 h-10 rounded-full bg-white flex items-center justify-center relative overflow-hidden shrink-0"
+                className="w-10 h-10 rounded-full bg-[#042718] flex items-center justify-center relative overflow-hidden shrink-0 shadow-sm"
               >
                 <motion.div
                   animate={{
@@ -315,7 +314,7 @@ export default function HeroSection({ className }) {
                   }}
                   transition={{ duration: 0.3, delay: isCTAHovered ? 0.1 : 0 }}
                 >
-                  <ArrowUpRight className="w-4 h-4 text-[#042718]" />
+                  <ArrowUpRight className="w-4 h-4 text-emerald-400" />
                 </motion.div>
               </motion.div>
             </motion.button>
