@@ -556,71 +556,142 @@ export default function AnalysisResult() {
       {/* ── Overall Product Risk Score Hero ── */}
       <motion.div
         {...fadeUp(0.1)}
-        className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6"
+        className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden"
       >
-        {/* Score gauge */}
-        <div className="flex flex-col items-center gap-2.5 shrink-0">
-          <div
-            className="w-32 h-32 rounded-full flex items-center justify-center border-8 shadow-sm"
-            style={{ borderColor: briCfg.color + "35", background: briCfg.color + "10" }}
-          >
-            <div className="flex flex-col items-center text-center">
-              <span className="font-extrabold text-3xl" style={{ color: briCfg.color, fontFamily: "'Onest', sans-serif" }}>
-                {bri.toFixed(0)}
-              </span>
-              <span className="text-slate-600 text-xs font-semibold">out of 100</span>
-            </div>
-          </div>
-          <RiskBadge level={overallLevel} />
-        </div>
+        {/* Top color accent bar */}
+        <div className="h-1 w-full" style={{ background: `linear-gradient(90deg, ${briCfg.color}60, ${briCfg.color}, ${briCfg.color}60)` }} />
 
-        {/* Details & Explanation */}
-        <div className="flex flex-col gap-3 flex-1 w-full">
-          <div>
-            <div className="flex items-center gap-2 mb-1">
-              <h2 className="text-slate-900 text-xl font-bold" style={{ fontFamily: "'Onest', sans-serif" }}>
+        <div className="p-6 sm:p-8 flex flex-col lg:flex-row items-center gap-8">
+
+          {/* ── Big Animated Gauge ── */}
+          <div className="flex flex-col items-center gap-4 shrink-0">
+            {/* Outer pulsing ring */}
+            <div className="relative flex items-center justify-center">
+              {/* Pulse rings */}
+              <motion.div
+                animate={{ scale: [1, 1.12, 1], opacity: [0.4, 0.1, 0.4] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute w-52 h-52 rounded-full pointer-events-none"
+                style={{ border: `3px solid ${briCfg.color}`, opacity: 0.25 }}
+              />
+              <motion.div
+                animate={{ scale: [1, 1.2, 1], opacity: [0.25, 0, 0.25] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+                className="absolute w-60 h-60 rounded-full pointer-events-none"
+                style={{ border: `2px solid ${briCfg.color}`, opacity: 0.1 }}
+              />
+
+              {/* Main gauge circle */}
+              <motion.div
+                initial={{ scale: 0.7, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.7, ease: [0.21, 0.45, 0.32, 0.9] }}
+                className="w-44 h-44 rounded-full flex items-center justify-center relative z-10"
+                style={{
+                  background: `radial-gradient(circle at 40% 35%, ${briCfg.color}18, ${briCfg.color}08 70%)`,
+                  border: `6px solid ${briCfg.color}`,
+                  boxShadow: `0 0 40px ${briCfg.color}25, 0 4px 24px ${briCfg.color}15`,
+                }}
+              >
+                <div className="flex flex-col items-center text-center">
+                  <motion.span
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.5 }}
+                    className="font-black text-5xl leading-none tracking-tight"
+                    style={{ color: briCfg.color, fontFamily: "'Onest', sans-serif" }}
+                  >
+                    {bri.toFixed(0)}
+                  </motion.span>
+                  <span className="text-slate-400 text-sm font-semibold mt-1">out of 100</span>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Risk badge below gauge */}
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
+            >
+              <RiskBadge level={overallLevel} />
+            </motion.div>
+
+            {/* Plain-english verdict */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="text-center text-xs text-slate-500 font-medium max-w-[160px] leading-relaxed"
+            >
+              {bri <= 40
+                ? "✅ This product is generally safe to buy"
+                : bri <= 60
+                ? "⚠️ Some concerns — review before buying"
+                : "🚨 High risk — significant issues found"}
+            </motion.p>
+          </div>
+
+          {/* ── Details & Explanation ── */}
+          <div className="flex flex-col gap-4 flex-1 w-full">
+            <div>
+              <h2 className="text-slate-900 text-2xl font-black tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
                 Business Risk Score
               </h2>
+              <p className="text-slate-600 text-sm font-medium leading-relaxed mt-1.5">
+                An overall risk rating based on product quality, shipping experience, and seller reliability.
+                A <strong>lower score means a safer product</strong> to buy.
+              </p>
             </div>
-            <p className="text-slate-700 text-sm font-medium leading-relaxed">
-              Driven by the highest risk identified across product quality, delivery, and seller reliability. A <strong>lower score is safer</strong>.
-            </p>
-          </div>
 
-          {/* Risk scale bar */}
-          <div className="mt-2 pt-2 border-t border-slate-100">
-            <div className="flex items-center justify-between text-xs font-bold text-slate-700 mb-1.5">
-              <span>Risk Scale (0 = Safe, 100 = Critical)</span>
-              <span style={{ color: briCfg.color }}>Current: {bri.toFixed(0)} / 100</span>
+            {/* Risk scale */}
+            <div className="pt-3 border-t border-slate-100">
+              <div className="flex items-center justify-between text-xs font-bold text-slate-600 mb-2">
+                <span>Risk Scale</span>
+                <span style={{ color: briCfg.color }}>Your Score: {bri.toFixed(0)} / 100</span>
+              </div>
+              <div className="grid grid-cols-5 gap-1.5 mb-2">
+                {[
+                  { label: "0–20",   sublabel: "Safe",     color: "#059669", bg: "bg-emerald-500" },
+                  { label: "21–40",  sublabel: "Low",      color: "#16a34a", bg: "bg-green-500"   },
+                  { label: "41–60",  sublabel: "Moderate", color: "#d97706", bg: "bg-amber-500"   },
+                  { label: "61–80",  sublabel: "High",     color: "#ea580c", bg: "bg-orange-500"  },
+                  { label: "81–100", sublabel: "Critical", color: "#dc2626", bg: "bg-red-500"     },
+                ].map((r, i) => {
+                  const isActive = (
+                    (i === 0 && bri <= 20) || (i === 1 && bri > 20 && bri <= 40) ||
+                    (i === 2 && bri > 40 && bri <= 60) || (i === 3 && bri > 60 && bri <= 80) ||
+                    (i === 4 && bri > 80)
+                  );
+                  return (
+                    <div key={r.label} className="text-center">
+                      <div className={`h-3 rounded-full mb-1.5 transition-all ${r.bg} ${isActive ? "opacity-100 ring-2 ring-offset-1 ring-slate-300" : "opacity-40"}`} />
+                      <span className="text-slate-500 text-[10px] font-bold block">{r.sublabel}</span>
+                      <span className="text-slate-400 text-[9px] block">{r.label}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="grid grid-cols-5 gap-1.5">
-              {[
-                { label: "0–20 Safe", color: "#059669", bg: "bg-emerald-500" },
-                { label: "21–40 Low", color: "#16a34a", bg: "bg-green-500" },
-                { label: "41–60 Moderate", color: "#d97706", bg: "bg-amber-500" },
-                { label: "61–80 High", color: "#ea580c", bg: "bg-orange-500" },
-                { label: "81–100 Critical", color: "#dc2626", bg: "bg-red-500" },
-              ].map((r) => (
-                <div key={r.label} className="text-center">
-                  <div className={`h-2.5 rounded-full mb-1 ${r.bg}`} />
-                  <span className="text-slate-700 text-[11px] font-semibold block">{r.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Quick non-technical advice */}
-          <div className="mt-2 p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-start gap-2.5">
-            <Info size={16} className="text-slate-700 mt-0.5 shrink-0" />
-            <p className="text-slate-700 text-xs font-medium leading-normal">
-              {bri <= 40 ? (
-                <>Safe standing. High buyer satisfaction and low return likelihood.</>
-              ) : bri <= 60 ? (
-                <>Moderate risk. Minor customer complaints require attention.</>
-              ) : (
-                <>High risk. Frequent complaints may lead to returns and rating penalties.</>
-              )}
-            </p>
+            {/* Contextual advice card */}
+            <div
+              className="p-4 rounded-xl border flex items-start gap-3"
+              style={{ background: briCfg.color + "08", borderColor: briCfg.color + "25" }}
+            >
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style={{ background: briCfg.color + "20" }}>
+                <Info size={16} style={{ color: briCfg.color }} />
+              </div>
+              <p className="text-slate-700 text-sm font-medium leading-relaxed">
+                {bri <= 40 ? (
+                  <>This product has <strong>strong customer ratings</strong> and low risk of quality or delivery problems. Suitable for most buyers.</>  
+                ) : bri <= 60 ? (
+                  <>There are <strong>some mixed reviews</strong>. Check the risk breakdown below to understand which areas need attention before purchasing.</>  
+                ) : (
+                  <>This product has <strong>frequent customer complaints</strong> that may lead to returns, delays, or disappointment. Proceed with caution.</>
+                )}
+              </p>
+            </div>
           </div>
         </div>
       </motion.div>
@@ -839,137 +910,198 @@ export default function AnalysisResult() {
             };
 
         return (
-          <motion.div {...fadeUp(0.4)} className="flex flex-col gap-5">
-            {/* Header with Title */}
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
-                Recommendations
-              </h3>
-              <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
-                Actionable guidance to help you improve your business and customer experience.
-              </p>
+          <motion.div {...fadeUp(0.4)} className="flex flex-col gap-4">
+            {/* Section Header */}
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                  Action Recommendations
+                </h3>
+                <p className="text-slate-500 text-xs sm:text-sm mt-1">
+                  AI-generated guidance based on your product's risk analysis — tailored to improve your business outcomes.
+                </p>
+              </div>
             </div>
 
-            {/* 2-Column Master-Detail Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-              {/* Left Column: 3 Aspect Cards */}
-              <div className="lg:col-span-4 flex flex-col gap-3">
+            {/* Master-Detail Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+
+              {/* Left: Tab Selector */}
+              <div className="lg:col-span-4 flex flex-col gap-2">
                 {aspectCards.map((card) => {
                   const isSelected = selectedAspect === card.key;
                   const pill = getPillBadge(card.riskLevel);
                   const CardIcon = card.icon;
+
+                  // Icon colors per aspect
+                  const iconStyle = {
+                    DELIVERY: { bg: "#EFF6FF", color: "#2563EB", border: "#BFDBFE" },
+                    QUALITY:  { bg: "#FFFBEB", color: "#D97706", border: "#FDE68A" },
+                    TRUST:    { bg: "#ECFDF5", color: "#059669", border: "#6EE7B7" },
+                  }[card.key] || { bg: "#F1F5F9", color: "#64748B", border: "#E2E8F0" };
 
                   return (
                     <button
                       key={card.key}
                       type="button"
                       onClick={() => setSelectedAspect(card.key)}
-                      className={`w-full rounded-2xl p-4 text-left transition-all duration-200 flex items-center justify-between gap-3 border cursor-pointer ${
+                      className={`w-full rounded-2xl p-4 text-left transition-all duration-250 cursor-pointer group ${
                         isSelected
-                          ? "border-blue-500 ring-2 ring-blue-500/20 bg-blue-50/20 shadow-sm"
-                          : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50 shadow-2xs"
+                          ? "shadow-md"
+                          : "bg-white border border-slate-100 hover:border-slate-200 hover:shadow-sm shadow-xs"
                       }`}
+                      style={isSelected ? {
+                        background: "linear-gradient(135deg, #042718 0%, #064d2a 100%)",
+                        border: "1px solid #198F38",
+                        boxShadow: "0 4px 20px rgba(25,143,56,0.20)",
+                      } : {}}
                     >
-                      <div className="flex items-center gap-3.5 min-w-0">
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${card.iconBoxClass}`}>
-                          <CardIcon size={24} />
+                      <div className="flex items-center gap-3.5">
+                        {/* Icon box */}
+                        <div
+                          className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all"
+                          style={isSelected
+                            ? { background: "rgba(255,255,255,0.15)", border: "1px solid rgba(255,255,255,0.2)" }
+                            : { background: iconStyle.bg, border: `1px solid ${iconStyle.border}` }
+                          }
+                        >
+                          <CardIcon size={20} style={{ color: isSelected ? "#ffffff" : iconStyle.color }} />
                         </div>
-                        <div className="flex flex-col min-w-0">
-                          <div className="flex items-center gap-2">
-                            <span className="font-bold text-slate-900 text-sm">{card.title}</span>
-                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border ${pill.bg}`}>
-                              {pill.label}
+
+                        {/* Text */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <span className={`font-bold text-sm ${isSelected ? "text-white" : "text-slate-900"}`}>
+                              {card.title}
                             </span>
                           </div>
-                          <p className="text-slate-500 text-xs leading-snug mt-1 line-clamp-2">
-                            {card.subtitle}
-                          </p>
+                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border inline-block ${
+                            isSelected
+                              ? "bg-white/15 text-white border-white/25"
+                              : pill.bg
+                          }`}>
+                            {pill.label}
+                          </span>
                         </div>
-                      </div>
 
-                      <ChevronRight
-                        size={18}
-                        className={`shrink-0 transition-colors ${
-                          isSelected ? "text-blue-600 font-bold" : "text-slate-400"
-                        }`}
-                      />
+                        {/* Arrow */}
+                        <ChevronRight size={16} className={`shrink-0 transition-transform ${
+                          isSelected ? "text-white translate-x-0.5" : "text-slate-300"
+                        }`} />
+                      </div>
                     </button>
                   );
                 })}
+
+                {/* Help note */}
+                <p className="text-slate-400 text-[11px] font-medium text-center pt-1">
+                  Select a category to view tailored actions
+                </p>
               </div>
 
-              {/* Right Column: Active Recommendation Detail Panel */}
-              <div className="lg:col-span-8 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-7 flex flex-col gap-6">
-                {/* Top Banner */}
-                <div className={`rounded-2xl p-4 sm:p-5 border flex flex-col sm:flex-row items-start justify-between gap-4 ${bannerTheme.container}`}>
-                  <div className="flex items-start gap-3.5 flex-1 min-w-0">
+              {/* Right: Detail Panel */}
+              <div className="lg:col-span-8 bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+
+                {/* Colored top banner */}
+                <div
+                  className={`p-5 sm:p-6 border-b ${bannerTheme.container}`}
+                  style={{ borderBottomColor: "rgba(0,0,0,0.06)" }}
+                >
+                  <div className="flex items-start gap-4">
                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${bannerTheme.iconBox}`}>
                       <ActiveIcon size={24} />
                     </div>
-                    <div className="flex flex-col">
-                      <h4 className="text-slate-900 font-extrabold text-lg sm:text-xl tracking-tight leading-snug" style={{ fontFamily: "'Onest', sans-serif" }}>
-                        {activeData.title}
-                      </h4>
-                      <p className="text-slate-600 text-xs sm:text-sm mt-1 leading-relaxed">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                        <h4 className="text-slate-900 font-black text-lg tracking-tight leading-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                          {activeData.title}
+                        </h4>
+                        <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold border ${bannerTheme.priorityBadge}`}>
+                          <AlertCircle size={11} />
+                          {bannerTheme.priorityLabel}
+                        </span>
+                      </div>
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                         {activeData.description}
                       </p>
                     </div>
                   </div>
-
-                  {/* Priority Pill */}
-                  <div className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shrink-0 border ${bannerTheme.priorityBadge}`}>
-                    <AlertCircle size={14} className={bannerTheme.priorityIcon} />
-                    <span>{bannerTheme.priorityLabel}</span>
-                  </div>
                 </div>
 
-                {/* Recommended Actions */}
-                <div className="flex flex-col gap-3">
-                  <h5 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-                    Recommended Actions
-                  </h5>
-                  <div className="flex flex-col gap-3">
-                    {activeData.actions.map((act, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <span className={`w-6 h-6 rounded-full font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 ${bannerTheme.numberBadge}`}>
-                          {i + 1}
-                        </span>
-                        <p className="text-slate-700 text-xs sm:text-sm font-medium leading-relaxed">
-                          {act}
-                        </p>
+                {/* Body */}
+                <div className="p-5 sm:p-6 flex flex-col gap-5">
+
+                  {/* Recommended Actions */}
+                  <div>
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-1 h-4 rounded-full bg-[#198F38]" />
+                      <h5 className="text-slate-900 font-black text-sm" style={{ fontFamily: "'Onest', sans-serif" }}>
+                        Recommended Actions
+                      </h5>
+                    </div>
+                    <div className="flex flex-col gap-2.5">
+                      {activeData.actions.map((act, i) => {
+                        const cleanAct = typeof act === "string"
+                          ? act.replace(/^(\d+[\.\)\-:]|\*|\-|\u2022)\s*/, "").trim()
+                          : act;
+
+                        return (
+                          <div
+                            key={i}
+                            className="flex items-start gap-3.5 p-3.5 rounded-xl bg-slate-50/80 border border-slate-100/90 hover:bg-slate-100/70 hover:border-slate-200 transition-all duration-200"
+                          >
+                            <span
+                              className={`w-6 h-6 rounded-full font-bold text-xs flex items-center justify-center shrink-0 select-none shadow-xs ${bannerTheme.numberBadge}`}
+                            >
+                              {i + 1}
+                            </span>
+                            <p className="text-slate-800 text-sm font-medium leading-6 flex-1 min-w-0">
+                              {cleanAct}
+                            </p>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Why + Achieve Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {/* Why This Recommendation */}
+                    <div className="bg-rose-50/50 border border-rose-100 rounded-xl p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-6 h-6 rounded-lg bg-rose-100 flex items-center justify-center">
+                          <Target size={13} className="text-rose-600" />
+                        </div>
+                        <span className="text-rose-800 font-bold text-xs sm:text-sm">Why This?</span>
                       </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Bottom 2 Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
-                  {/* Card 1: Why This Recommendation? */}
-                  <div className="bg-rose-50/40 border border-rose-100/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-start">
-                    <div className="flex items-center gap-2 text-rose-600 font-bold text-sm sm:text-base">
-                      <Target size={18} className="text-rose-600 shrink-0" />
-                      <span>Why This Recommendation?</span>
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">{activeData.reasoning}</p>
                     </div>
-                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mt-2.5">
-                      {activeData.reasoning}
-                    </p>
+
+                    {/* What You Can Achieve */}
+                    <div className="bg-blue-50/50 border border-blue-100 rounded-xl p-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-6 h-6 rounded-lg bg-blue-100 flex items-center justify-center">
+                          <Settings size={13} className="text-blue-600" />
+                        </div>
+                        <span className="text-blue-900 font-bold text-xs sm:text-sm">What You Gain</span>
+                      </div>
+                      <ul className="flex flex-col gap-2">
+                        {activeData.achievements.map((ach, idx) => {
+                          const cleanAch = typeof ach === "string"
+                            ? ach.replace(/^(\d+[\.\)\-:]|\*|\-|\u2022)\s*/, "").trim()
+                            : ach;
+
+                          return (
+                            <li key={idx} className="flex items-start gap-2.5 text-slate-700 text-xs sm:text-sm leading-5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-[7px] shrink-0" />
+                              <span className="flex-1 font-medium">{cleanAch}</span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
                   </div>
 
-                  {/* Card 2: What You Can Achieve */}
-                  <div className="bg-blue-50/40 border border-blue-100/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-start">
-                    <div className="flex items-center gap-2 text-blue-900 font-bold text-sm sm:text-base">
-                      <Settings size={18} className="text-blue-700 shrink-0" />
-                      <span>What You Can Achieve</span>
-                    </div>
-                    <ul className="flex flex-col gap-2 mt-2.5">
-                      {activeData.achievements.map((ach, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-slate-700 text-xs sm:text-sm leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />
-                          <span>{ach}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                 </div>
               </div>
             </div>
