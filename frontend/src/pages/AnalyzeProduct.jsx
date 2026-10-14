@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Link2, CheckCircle, ChevronRight,
-  Loader2, ScanSearch, AlertCircle,
-  Package, Star, Sparkles, ExternalLink, CheckCircle2
+  Loader2, ScanSearch, AlertCircle, StopCircle,
+  Globe, FileSearch, Brain, ClipboardCheck,
 } from "lucide-react";
 import { analysisAPI } from "../api/endpoints";
 import { parseError } from "../utils/helpers";
 import { useAnalysis } from "../context/AnalysisContext";
 
-// ── Step indicator ────────────────────────────────────────────────────────────
+// -- Step indicator -----------------------------------------------------------
 
 const STEPS = [
   { id: 1, label: "Link" },
@@ -49,7 +49,7 @@ function StepBar({ current }) {
   );
 }
 
-// ── Platform badge detection ──────────────────────────────────────────────────
+// -- Platform badge detection -------------------------------------------------
 
 function detectPlatform(url) {
   if (!url) return null;
@@ -61,184 +61,6 @@ function detectPlatform(url) {
   if (u.includes("aliexpress")) return "AliExpress";
   return null;
 }
-
-// ── Product Analysis Preview Card (Replaces Terminal) ─────────────────────────
-
-function ProductAnalysisPreviewCard({ preview, url, platform }) {
-  const title = preview?.title || preview?.productTitle || "Product under analysis";
-  const image = preview?.imageUrl || preview?.image_url;
-  const seller = preview?.seller || preview?.sellerName || "Store Seller";
-  const rating = preview?.overallRating || preview?.rating || 0;
-  const reviews = preview?.totalReviews || preview?.reviewCount;
-  const displayPlatform = preview?.platform || platform || detectPlatform(url) || "Online Store";
-
-  return (
-    <div className="w-full rounded-2xl border border-slate-200 bg-gradient-to-b from-white to-slate-50/70 p-4 sm:p-5 shadow-xs mb-5 overflow-hidden">
-      <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5">
-        {/* Thumbnail Frame */}
-        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-xl bg-white border border-slate-200/80 p-2 flex items-center justify-center shrink-0 shadow-2xs relative overflow-hidden">
-          {image ? (
-            <img
-              src={image}
-              alt={title}
-              className="max-h-full max-w-full object-contain rounded-lg"
-            />
-          ) : (
-            <div className="flex flex-col items-center justify-center text-slate-400">
-              <Package size={32} className="text-slate-400 stroke-1" />
-              <span className="text-[10px] font-semibold text-slate-500 mt-1">Preview</span>
-            </div>
-          )}
-        </div>
-
-        {/* Product Details */}
-        <div className="flex-1 min-w-0 text-center sm:text-left flex flex-col justify-between h-full">
-          <div>
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-1.5">
-              <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold inline-flex items-center gap-1 shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
-                {displayPlatform}
-              </span>
-              {seller && (
-                <span className="text-slate-600 text-xs font-medium truncate max-w-[200px]">
-                  Sold by <strong className="text-slate-800">{seller}</strong>
-                </span>
-              )}
-            </div>
-
-            <h3
-              className="text-slate-900 font-bold text-base sm:text-lg leading-snug line-clamp-2"
-              style={{ fontFamily: "'Onest', sans-serif" }}
-              title={title}
-            >
-              {title}
-            </h3>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-3 pt-3 border-t border-slate-200/60 text-xs">
-            {rating > 0 && (
-              <div className="flex items-center gap-1 text-slate-700 font-bold">
-                <Star size={14} className="text-amber-500 fill-amber-500" />
-                <span>{rating.toFixed(1)}</span>
-                <span className="text-slate-500 font-normal">/ 5.0</span>
-              </div>
-            )}
-            {reviews !== undefined && reviews !== null && (
-              <span className="text-slate-600 font-medium">
-                {reviews} review{reviews === 1 ? "" : "s"} found
-              </span>
-            )}
-            {url && (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-emerald-700 hover:text-emerald-800 font-semibold inline-flex items-center gap-1 hover:underline ml-auto"
-              >
-                <span>View Product Link</span>
-                <ExternalLink size={12} />
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ── Step-by-Step Status Row ──────────────────────────────────────────────────
-
-function StepStatusRow({ jobStatus, progressPct }) {
-  const statusUpper = String(jobStatus?.status || "").toUpperCase();
-  const isCompleted = ["COMPLETED", "DONE", "FINISHED", "SUCCESS"].includes(statusUpper);
-  const reviewsCount = jobStatus?.reviewsCollected ?? 0;
-
-  const isCollecting = statusUpper === "SCRAPING" || (!isCompleted && progressPct < 50);
-  const isAnalyzing = statusUpper === "AI_ANALYSIS" || (!isCompleted && progressPct >= 50 && progressPct < 85);
-  const isFinalizing = !isCompleted && progressPct >= 85;
-
-  const stages = [
-    {
-      id: 1,
-      label: "Connecting to Store",
-      desc: "Product URL verified & store reached",
-      done: progressPct >= 15 || isCompleted,
-      active: progressPct < 15 && !isCompleted,
-    },
-    {
-      id: 2,
-      label: "Collecting Customer Reviews",
-      desc: reviewsCount > 0 ? `${reviewsCount} customer reviews collected` : "Reading customer feedback...",
-      done: (progressPct >= 50 && !isCollecting) || isCompleted,
-      active: isCollecting,
-      badge: reviewsCount > 0 ? `${reviewsCount} Reviews` : null,
-    },
-    {
-      id: 3,
-      label: "Evaluating Feedback & Risks",
-      desc: "Analyzing quality, delivery, and seller trust",
-      done: progressPct >= 85 || isCompleted,
-      active: isAnalyzing,
-    },
-    {
-      id: 4,
-      label: "Compiling Risk Report",
-      desc: "Generating Business Risk Index & recommendations",
-      done: isCompleted,
-      active: isFinalizing,
-    },
-  ];
-
-  return (
-    <div className="flex flex-col gap-2.5 my-4">
-      {stages.map((st) => (
-        <div
-          key={st.id}
-          className={`flex items-start gap-3 p-3 rounded-xl border transition-all duration-300 ${
-            st.done
-              ? "bg-emerald-50/60 border-emerald-200/70"
-              : st.active
-              ? "bg-white border-emerald-500 shadow-xs ring-2 ring-emerald-500/10"
-              : "bg-slate-50/60 border-slate-200/60 opacity-60"
-          }`}
-        >
-          <div className="mt-0.5 shrink-0">
-            {st.done ? (
-              <div className="w-5 h-5 rounded-full bg-emerald-600 flex items-center justify-center text-white">
-                <CheckCircle size={13} strokeWidth={3} />
-              </div>
-            ) : st.active ? (
-              <div className="w-5 h-5 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-800">
-                <Loader2 size={13} className="animate-spin text-emerald-700" />
-              </div>
-            ) : (
-              <div className="w-5 h-5 rounded-full border border-slate-300 bg-white flex items-center justify-center text-slate-400 text-[10px] font-bold">
-                {st.id}
-              </div>
-            )}
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between gap-2">
-              <p className={`text-xs sm:text-sm font-bold ${st.active ? "text-slate-900" : st.done ? "text-emerald-950" : "text-slate-600"}`}>
-                {st.label}
-              </p>
-              {st.badge && (
-                <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[10px] border border-emerald-200 shrink-0 animate-pulse">
-                  {st.badge}
-                </span>
-              )}
-            </div>
-            <p className="text-slate-500 text-xs mt-0.5 font-medium leading-relaxed">
-              {st.desc}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function AnalyzeProduct() {
   const {
@@ -280,7 +102,7 @@ export default function AnalyzeProduct() {
       : 30)
   );
 
-  // ── Step 1: Check product ─────────────────────────────────────────────────
+  // -- Step 1: Check product --------------------------------------------------
   const handleCheckProduct = async (e) => {
     e.preventDefault();
     setError("");
@@ -296,7 +118,7 @@ export default function AnalyzeProduct() {
     }
   };
 
-  // ── Step 2: Start analysis ────────────────────────────────────────────────
+  // -- Step 2: Start analysis -------------------------------------------------
   const handleStartAnalysis = async () => {
     setError("");
     try {
@@ -309,7 +131,7 @@ export default function AnalyzeProduct() {
     }
   };
 
-  // ── Step 3: Generate report now with clear states & duplicate click prevention
+  // -- Step 3: Generate report now with clear states & duplicate click prevention
   const handleGenerateReportNow = async () => {
     if (isFinishingEarly || !analysisId) return;
     try {
@@ -334,7 +156,7 @@ export default function AnalyzeProduct() {
 
       <AnimatePresence mode="wait">
 
-        {/* ── Step 1: URL Input ── */}
+        {/* -- Step 1: URL Input -- */}
         {step === 1 && (
           <motion.div
             key="step1"
@@ -404,7 +226,7 @@ export default function AnalyzeProduct() {
           </motion.div>
         )}
 
-        {/* ── Step 2: Product Preview ── */}
+        {/* -- Step 2: Product Preview -- */}
         {step === 2 && preview && (
           <motion.div
             key="step2"
@@ -495,7 +317,7 @@ export default function AnalyzeProduct() {
           </motion.div>
         )}
 
-        {/* ── Step 3: Live Progress & Product Preview ── */}
+        {/* -- Step 3: Premium Progress Panel -- */}
         {step === 3 && (
           <motion.div
             key="step3"
@@ -503,106 +325,150 @@ export default function AnalyzeProduct() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.35 }}
-            className="w-full bg-white rounded-3xl border border-slate-200/90 shadow-md p-6 sm:p-8"
+            className="w-full"
           >
-            {/* Header row */}
-            <div className="flex items-center gap-4 mb-5">
+            {/* Phase Steps Track */}
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5 mb-4">
+              <div className="flex items-center justify-between gap-1 mb-5">
+                {[
+                  { icon: Globe,          label: "Connecting",       done: true },
+                  { icon: FileSearch,     label: "Reading Reviews",  done: (jobStatus?.currentPage || 0) > 0 },
+                  { icon: Brain,          label: "AI Analysis",      done: ["COMPLETED","DONE","FINISHED","SUCCESS"].includes(String(jobStatus?.status||"").toUpperCase()) },
+                  { icon: ClipboardCheck, label: "Generating Report",done: ["COMPLETED","DONE","FINISHED","SUCCESS"].includes(String(jobStatus?.status||"").toUpperCase()) },
+                ].map((phase, i, arr) => {
+                  const isActive = !phase.done && (i === 0 || arr[i-1]?.done);
+                  return (
+                    <React.Fragment key={phase.label}>
+                      <div className="flex flex-col items-center gap-1.5 min-w-0">
+                        <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ${
+                          phase.done
+                            ? "bg-[#198F38] text-white shadow-md shadow-[#198F38]/25"
+                            : isActive
+                            ? "bg-[#042718] text-white ring-2 ring-[#198F38]/30 shadow-sm"
+                            : "bg-slate-100 text-slate-400 border border-slate-200"
+                        }`}>
+                          {phase.done
+                            ? <CheckCircle size={18} />
+                            : isActive
+                            ? <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }}><Loader2 size={18} /></motion.div>
+                            : <phase.icon size={16} />
+                          }
+                        </div>
+                        <span className={`text-[10px] font-bold text-center leading-tight ${
+                          phase.done ? "text-[#198F38]" : isActive ? "text-slate-900" : "text-slate-400"
+                        }`}>
+                          {phase.label}
+                        </span>
+                      </div>
+                      {i < arr.length - 1 && (
+                        <div className={`flex-1 h-0.5 mx-1 rounded-full mb-5 transition-all duration-700 ${
+                          phase.done ? "bg-[#198F38]" : "bg-slate-200"
+                        }`} />
+                      )}
+                    </React.Fragment>
+                  );
+                })}
+              </div>
+
+              {/* Main Progress Bar */}
+              <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden mb-2">
+                <motion.div
+                  animate={{ width: `${progressPct}%` }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                  className="h-full rounded-full"
+                  style={{ background: "linear-gradient(90deg, #042718, #198F38, #4ade80)" }}
+                />
+              </div>
+              <div className="flex items-center justify-between text-xs font-bold text-slate-500 mb-4">
+                <span>Progress</span>
+                <span className="text-[#198F38] text-sm">{progressPct}%</span>
+              </div>
+
+              {/* Stats Row */}
+              <div className="grid grid-cols-2 gap-3">
+                {/* Pages */}
+                <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 flex flex-col gap-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <FileSearch size={14} className="text-[#198F38]" />
+                    <span className="text-slate-500 text-xs font-semibold">Pages Read</span>
+                  </div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-slate-900 font-black text-2xl" style={{ fontFamily: "'Onest', sans-serif" }}>
+                      {jobStatus?.currentPage ?? "�"}
+                    </span>
+                    {jobStatus?.totalPages && (
+                      <span className="text-slate-400 text-sm font-semibold">of {jobStatus.totalPages}</span>
+                    )}
+                  </div>
+                  {jobStatus?.totalPages && (
+                    <div className="w-full h-1 rounded-full bg-slate-200 mt-1 overflow-hidden">
+                      <motion.div
+                        animate={{ width: `${Math.round(((jobStatus.currentPage||0)/jobStatus.totalPages)*100)}%` }}
+                        transition={{ duration: 0.6 }}
+                        className="h-full rounded-full bg-[#198F38]"
+                      />
+                    </div>
+                  )}
+                  <p className="text-slate-400 text-[11px] font-medium mt-0.5">Review pages checked</p>
+                </div>
+
+                {/* Reviews */}
+                <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 flex flex-col gap-1">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Brain size={14} className="text-purple-500" />
+                    <span className="text-slate-500 text-xs font-semibold">Reviews Found</span>
+                  </div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-slate-900 font-black text-2xl" style={{ fontFamily: "'Onest', sans-serif" }}>
+                      {jobStatus?.reviewsCollected ?? 0}
+                    </span>
+                    <span className="text-slate-400 text-sm font-semibold">reviews</span>
+                  </div>
+                  {jobStatus?.reviewsCollected > 0 && (
+                    <div className="w-full h-1 rounded-full bg-slate-200 mt-1 overflow-hidden">
+                      <motion.div
+                        animate={{ width: `${Math.min(100, (jobStatus.reviewsCollected/500)*100)}%` }}
+                        transition={{ duration: 0.6 }}
+                        className="h-full rounded-full bg-purple-400"
+                      />
+                    </div>
+                  )}
+                  <p className="text-slate-400 text-[11px] font-medium mt-0.5">Customer opinions collected</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Status Message */}
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm px-5 py-4 mb-4 flex items-center gap-3">
               <motion.div
-                animate={{ scale: [1, 1.06, 1] }}
-                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-13 h-13 rounded-2xl bg-emerald-100/90 flex items-center justify-center shrink-0 border border-emerald-300 shadow-xs"
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="w-8 h-8 rounded-full bg-[#198F38]/10 flex items-center justify-center shrink-0"
               >
-                <ScanSearch size={26} className="text-emerald-800" />
+                <ScanSearch size={16} className="text-[#198F38]" />
               </motion.div>
               <div className="flex-1 min-w-0">
-                <h2
-                  className="text-slate-900 text-xl sm:text-2xl font-bold tracking-tight"
-                  style={{ fontFamily: "'Onest', sans-serif" }}
-                >
-                  Evaluating Product Risks
-                </h2>
-                <p className="text-slate-600 text-xs sm:text-sm font-medium truncate mt-0.5">
-                  {jobStatus?.currentStep || jobStatus?.message || "Collecting customer reviews and evaluating risks..."}
+                <p className="text-slate-900 text-sm font-semibold">
+                  {jobStatus?.currentStep
+                    ? jobStatus.currentStep.replace(/scraping/gi, "reading").replace(/scraped/gi, "read").replace(/XLM-?Roberta|BERT|NLP model/gi, "AI")
+                    : "Our AI is reading customer feedback and calculating your risk score..."}
                 </p>
+                <p className="text-slate-400 text-xs font-medium mt-0.5">This usually takes 1�3 minutes</p>
               </div>
-              {/* Status badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-300 text-xs font-bold shrink-0">
-                {isCompleted ? (
-                  <CheckCircle size={14} className="text-emerald-700" />
-                ) : (
-                  <Loader2 size={14} className="animate-spin text-emerald-700" />
-                )}
-                <span>
-                  {isCompleted
-                    ? "Complete"
-                    : String(jobStatus?.status || "").toUpperCase() === "SCRAPING"
-                    ? "Collecting Reviews"
-                    : String(jobStatus?.status || "").toUpperCase() === "AI_ANALYSIS"
-                    ? "Analyzing Risks"
-                    : "Analyzing"}
-                </span>
-              </div>
-            </div>
-
-            {/* Product Preview Card (Replaces Developer Terminal) */}
-            <ProductAnalysisPreviewCard preview={preview} url={url} platform={platform} />
-
-            {/* Progress bar */}
-            <div className="w-full h-2.5 rounded-full bg-slate-100 border border-slate-200/80 mb-2 overflow-hidden">
-              <motion.div
-                animate={{ width: `${progressPct}%` }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400"
-              />
-            </div>
-            <div className="flex items-center justify-between text-slate-600 font-semibold text-xs mb-3">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                {jobStatus?.reviewsCollected !== undefined
-                  ? `${jobStatus.reviewsCollected} customer review${jobStatus.reviewsCollected === 1 ? "" : "s"} collected`
-                  : "Collecting customer reviews..."}
-              </span>
-              <span>
-                {jobStatus?.currentPage && jobStatus?.totalPages
-                  ? `Batch ${jobStatus.currentPage} of ${jobStatus.totalPages}`
-                  : ""}
-              </span>
-              <span className="text-emerald-800 font-bold">{progressPct}%</span>
-            </div>
-
-            {/* Step-by-Step Status Row */}
-            <StepStatusRow jobStatus={jobStatus} progressPct={progressPct} />
-
-            {/* Error notice if stop action hit an issue */}
-            <AnimatePresence>
-              {stopError && (
-                <motion.div
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="flex items-center gap-2 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold my-3"
-                >
-                  <AlertCircle size={15} className="shrink-0 text-amber-700" />
-                  <span>{stopError}</span>
+              <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 shrink-0">
+                <motion.div animate={{ opacity: [1,0,1] }} transition={{ duration: 1, repeat: Infinity }}>
+                  <span className="w-2 h-2 rounded-full bg-[#198F38] block" />
                 </motion.div>
-              )}
-            </AnimatePresence>
+                <span className="text-[#198F38] text-xs font-bold">Live</span>
+              </div>
+            </div>
 
-            {/* Generate Report Now Button with Multi-State Logic & Duplicate Click Prevention */}
-            <div className="mt-6 flex flex-col items-center gap-2 pt-4 border-t border-slate-100">
+            {/* Generate Report Early Button */}
+            <div className="flex flex-col items-center gap-2">
               <button
                 id="stopScrapingBtn"
-                type="button"
-                onClick={handleGenerateReportNow}
-                disabled={isFinishingEarly || isCompleted}
-                className={
-                  "flex items-center justify-center gap-2.5 px-7 py-3 rounded-full text-sm font-bold transition-all shadow-xs cursor-pointer " +
-                  (isFinishingEarly
-                    ? "bg-emerald-50 border border-emerald-300 text-emerald-800 cursor-not-allowed opacity-90"
-                    : isCompleted
-                    ? "bg-emerald-600 text-white border border-emerald-600 opacity-90 cursor-default"
-                    : "bg-white border border-slate-300 text-slate-800 hover:bg-emerald-50 hover:text-emerald-900 hover:border-emerald-300 hover:shadow-sm")
-                }
+                onClick={() => stopScraping(analysisId)}
+                className="flex items-center gap-2 px-6 py-3 rounded-full border border-slate-200 bg-white text-slate-700 font-bold text-sm hover:bg-red-50 hover:text-red-700 hover:border-red-300 transition-all cursor-pointer shadow-xs"
               >
                 {isFinishingEarly ? (
                   <>
@@ -611,18 +477,18 @@ export default function AnalyzeProduct() {
                   </>
                 ) : isCompleted ? (
                   <>
-                    <CheckCircle2 size={16} className="text-white" />
+                    <CheckCircle size={16} className="text-white" />
                     <span>Report Ready! Redirecting...</span>
                   </>
                 ) : (
                   <>
-                    <Sparkles size={16} className="text-emerald-700" />
+                    <StopCircle size={16} className="text-slate-600" />
                     <span>Generate Report Now</span>
                   </>
                 )}
               </button>
-              <p className="text-slate-500 font-medium text-xs text-center max-w-sm">
-                Complete analysis immediately using the reviews collected so far
+              <p className="text-slate-400 text-xs text-center max-w-xs">
+                Stop collecting and instantly generate your report with the reviews gathered so far
               </p>
             </div>
           </motion.div>
