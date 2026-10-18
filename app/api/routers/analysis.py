@@ -354,3 +354,28 @@ async def analyze_product(
             version=settings.APP_VERSION,
         ),
     )
+
+
+from pydantic import BaseModel
+from typing import List as PyList
+
+
+class BatchPredictRequest(BaseModel):
+    reviews: PyList[str]
+
+
+@router.post("/predict-batch", summary="Remote GPU Batch Prediction Endpoint")
+async def predict_batch_remote(payload: BatchPredictRequest):
+    """
+    Executes high-speed batch inference on remote GPU using warmed in-memory model.
+    """
+    from app.state.core_state import app_state
+
+    if app_state.engine_instance and hasattr(app_state.engine_instance, "_pipeline"):
+        predictor = app_state.engine_instance._pipeline._predictor
+    else:
+        from core.ai.predictor import Predictor
+        predictor = Predictor()
+
+    results = predictor.predict_batch(payload.reviews)
+    return {"success": True, "count": len(results), "predictions": results}

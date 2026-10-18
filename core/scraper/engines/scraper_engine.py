@@ -6,6 +6,8 @@ Professional Daraz Review Scraper Engine - Manual Filter Mode
 - Saves to CSV in real-time
 """
 
+import os
+import sys
 import time
 import csv
 import re
@@ -32,9 +34,13 @@ from core.scraper.dto.scraped_review import ScrapedReview
 try:
     import keyboard
     KEYBOARD_AVAILABLE = True
+    msvcrt = None
 except ImportError:
     KEYBOARD_AVAILABLE = False
-    import msvcrt
+    try:
+        import msvcrt
+    except ImportError:
+        msvcrt = None
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -110,7 +116,7 @@ class ScraperEngine(ScraperInterface):
                         return True
                 except Exception:
                     pass
-            else:
+            elif msvcrt is not None:
                 try:
                     if msvcrt.kbhit():
                         key = msvcrt.getch()
