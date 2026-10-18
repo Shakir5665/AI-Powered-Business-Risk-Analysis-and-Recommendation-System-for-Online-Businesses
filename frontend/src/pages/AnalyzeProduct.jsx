@@ -69,7 +69,6 @@ function ProductAnalysisPreviewCard({ preview, url, platform }) {
   const image = preview?.imageUrl || preview?.image_url;
   const seller = preview?.seller || preview?.sellerName || "Store Seller";
   const rating = preview?.overallRating || preview?.rating || 0;
-  const reviews = preview?.totalReviews || preview?.reviewCount;
   const displayPlatform = preview?.platform || platform || detectPlatform(url) || "Online Store";
 
   return (
@@ -122,11 +121,6 @@ function ProductAnalysisPreviewCard({ preview, url, platform }) {
                 <span>{rating.toFixed(1)}</span>
                 <span className="text-slate-500 font-normal">/ 5.0</span>
               </div>
-            )}
-            {reviews !== undefined && reviews !== null && (
-              <span className="text-slate-600 font-medium">
-                {reviews} review{reviews === 1 ? "" : "s"} found
-              </span>
             )}
             {url && (
               <a

@@ -716,7 +716,7 @@ class ScraperEngine(ScraperInterface):
             category=metadata.get("category", "General"),
             seller_name=metadata.get("seller", "Daraz Flagship Store"),
             overall_rating=float(metadata.get("overallRating", 0.0)),
-            total_reviews=int(metadata.get("totalReviews", review_count)),
+            total_reviews=max(review_count, int(metadata.get("totalReviews") or 0)),
             image_url=metadata.get("imageUrl", ""),
             platform=metadata.get("platform", "Daraz"),
             reviews=reviews
@@ -865,27 +865,41 @@ class ScraperEngine(ScraperInterface):
                     pass
 
         # --- 5. Total Reviews Extraction ---
-        count_selectors = [".pdp-review-summary__link", ".count", ".score-total", "a[href*='rating-review']"]
+        count_selectors = [
+            "a.pdp-review-summary__link",
+            ".pdp-review-summary__link",
+            "a[href*='rating-review']",
+            ".pdp-review-summary a"
+        ]
         for sel in count_selectors:
             try:
-                elem = self._driver.find_element(By.CSS_SELECTOR, sel)
-                if elem and elem.text.strip():
-                    match = re.search(r'\d+', elem.text.strip())
-                    if match:
-                        total_reviews = int(match.group())
-                        break
+                elems = self._driver.find_elements(By.CSS_SELECTOR, sel)
+                for elem in elems:
+                    if elem and elem.text.strip():
+                        raw_text = elem.text.strip()
+                        # Extract full number including commas (e.g. "3,006 Ratings" -> 3006)
+                        match = re.search(r'([\d,]+)\s*(?:Ratings|Reviews|ratings|reviews)', raw_text)
+                        if not match:
+                            match = re.search(r'([\d,]+)', raw_text)
+                        if match:
+                            num_str = match.group(1).replace(',', '').strip()
+                            if num_str.isdigit() and int(num_str) > 0:
+                                total_reviews = int(num_str)
+                                break
+                if total_reviews > 0:
+                    break
             except Exception:
                 continue
 
         if total_reviews == 0 and page_source:
-            rev_match = re.search(r'"reviewCount"\s*:\s*"?(\d+)"?', page_source)
+            rev_match = re.search(r'"(?:reviewCount|ratingCount|totalReview|totalRatings)"\s*:\s*"?([\d,]+)"?', page_source)
             if not rev_match:
-                rev_match = re.search(r'"ratingCount"\s*:\s*"?(\d+)"?', page_source)
-            if not rev_match:
-                rev_match = re.search(r'(\d+)\s*(?:Ratings|Reviews|ratings|reviews)', page_source)
+                rev_match = re.search(r'([\d,]+)\s*(?:Ratings|Reviews|ratings|reviews)', page_source)
             if rev_match:
                 try:
-                    total_reviews = int(rev_match.group(1))
+                    num_str = rev_match.group(1).replace(',', '').strip()
+                    if num_str.isdigit():
+                        total_reviews = int(num_str)
                 except Exception:
                     pass
 

@@ -477,23 +477,27 @@ class FastPreviewFetcher:
         # Total Reviews fallback
         if total_reviews == 0:
             count_html = re.search(
-                r'class="[^"]*(?:pdp-review-summary__link|score-total|count)[^"]*"[^>]*>.*?(\d+)\s*(?:Ratings|Reviews|ratings|reviews)?',
+                r'class="[^"]*(?:pdp-review-summary__link)[^"]*"[^>]*>.*?([\d,]+)\s*(?:Ratings|Reviews|ratings|reviews)?',
                 html_text,
                 re.IGNORECASE | re.DOTALL
             )
             if count_html:
                 try:
-                    total_reviews = int(count_html.group(1))
+                    num_str = count_html.group(1).replace(',', '').strip()
+                    if num_str.isdigit():
+                        total_reviews = int(num_str)
                 except Exception:
                     pass
 
         if total_reviews == 0:
-            rev_match = re.search(r'"(?:reviewCount|ratingCount|totalReview|totalRatings)"\s*:\s*"?(\d+)"?', html_text)
+            rev_match = re.search(r'"(?:reviewCount|ratingCount|totalReview|totalRatings)"\s*:\s*"?([\d,]+)"?', html_text)
             if not rev_match:
-                rev_match = re.search(r'(\d+)\s*(?:Ratings|Reviews|ratings|reviews)', html_text)
+                rev_match = re.search(r'([\d,]+)\s*(?:Ratings|Reviews|ratings|reviews)', html_text)
             if rev_match:
                 try:
-                    total_reviews = int(rev_match.group(1))
+                    num_str = rev_match.group(1).replace(',', '').strip()
+                    if num_str.isdigit():
+                        total_reviews = int(num_str)
                 except Exception:
                     pass
 
