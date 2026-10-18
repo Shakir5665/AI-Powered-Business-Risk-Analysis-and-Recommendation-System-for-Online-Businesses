@@ -49,6 +49,8 @@ export const analysisAPI = {
     api.get(`/v1/analysis/result/${analysisId}`),
   analyzeProduct: (productUrl, options = { saveHistory: true }) =>
     api.post("/v1/analysis", { productUrl, options }),
+  getUserReviews: () =>
+    api.get("/v1/analysis/user-reviews"),
 };
 
 // ─── History API ─────────────────────────────────────────────────────────────

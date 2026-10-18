@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import userReviewsData from "../../data/user_reviews.json";
+import initialUserReviewsData from "@root_user_reviews";
+import { analysisAPI } from "../../api/endpoints";
 
 /**
  * Formats a raw sentiment string to Title Case (Positive, Negative, Neutral).
@@ -8,29 +9,37 @@ import userReviewsData from "../../data/user_reviews.json";
 function formatSentiment(sentiment) {
   if (!sentiment) return "Neutral";
   const s = String(sentiment).trim().toLowerCase();
-  if (s === "positive") return "Positive";
-  if (s === "negative") return "Negative";
+  if (s.includes("pos")) return "Positive";
+  if (s.includes("neg")) return "Negative";
   return "Neutral";
 }
 
 /**
  * Extracts and formats mentioned aspects into a comma-separated string (e.g. "Quality, Delivery").
- * Only displays relevant aspects: Quality, Delivery, and Trust.
+ * Only displays relevant aspects: Quality, Delivery, and Trust, plus any custom aspects.
  */
 function formatAspects(aspects) {
   if (!aspects || typeof aspects !== "object") return "-";
 
-  const aspectOrder = [
-    { key: "quality", label: "Quality" },
-    { key: "delivery", label: "Delivery" },
-    { key: "trust", label: "Trust" },
-  ];
+  const standardOrder = ["quality", "delivery", "trust"];
+  const labelMap = {
+    quality: "Quality",
+    delivery: "Delivery",
+    trust: "Trust",
+  };
 
   const mentioned = [];
-  for (const item of aspectOrder) {
-    const val = aspects[item.key];
+  for (const key of standardOrder) {
+    const val = aspects[key];
     if (val && String(val).toLowerCase() !== "not_mentioned") {
-      mentioned.push(item.label);
+      mentioned.push(labelMap[key]);
+    }
+  }
+
+  for (const [key, val] of Object.entries(aspects)) {
+    if (!standardOrder.includes(key.toLowerCase()) && val && String(val).toLowerCase() !== "not_mentioned") {
+      const label = key.charAt(0).toUpperCase() + key.slice(1);
+      mentioned.push(label);
     }
   }
 
@@ -45,21 +54,30 @@ function formatAspects(aspects) {
  * - count >= 5: selects 5 randomly selected reviews
  */
 export function getReviewsForSentiment(sentiment, analysisCounts = {}, reviews = []) {
-  const normKey = String(sentiment || "").toLowerCase();
-  const count =
-    analysisCounts[normKey] ??
-    analysisCounts[sentiment] ??
-    analysisCounts[`${normKey}_reviews`] ??
-    0;
+  const normKey = String(sentiment || "").trim().toLowerCase();
+
+  const hasSpecificCount =
+    normKey in analysisCounts ||
+    sentiment in analysisCounts ||
+    `${normKey}_reviews` in analysisCounts;
+
+  const count = hasSpecificCount
+    ? (analysisCounts[normKey] ??
+       analysisCounts[sentiment] ??
+       analysisCounts[`${normKey}_reviews`] ??
+       0)
+    : 5;
 
   if (count <= 0) {
     return [];
   }
 
-  const matchingReviews = reviews.filter(
-    (review) =>
-      String(review.predictions?.sentiment || "").toLowerCase() === normKey
-  );
+  const matchingReviews = (reviews || []).filter((review) => {
+    const s = String(
+      review.predictions?.sentiment || review.sentiment || ""
+    ).trim().toLowerCase();
+    return s.includes(normKey);
+  });
 
   const shuffled = [...matchingReviews];
 
@@ -80,25 +98,80 @@ export function getReviewsForSentiment(sentiment, analysisCounts = {}, reviews =
  * Positioned directly below Customer Sentiment and above Recommendations.
  * Filters customer comments by Positive, Negative, and Neutral.
  * Number of displayed reviews is determined by the sentiment counts from the current product's analysis.
+ * Renders reviews directly from the root user_reviews.json file dynamically.
  */
 export default function UserReviewsSection({
   analysisCounts = {},
-  reviews = userReviewsData?.reviews || [],
+  reviews: propReviews,
 }) {
   const [activeSentiment, setActiveSentiment] = useState("Positive");
 
-  // Keep displayedReviews in sync with active sentiment and incoming analysis counts
+  // Keep all reviews in state; default from imported root user_reviews.json
+  const [allReviews, setAllReviews] = useState(() => {
+    if (Array.isArray(propReviews) && propReviews.length > 0) return propReviews;
+    if (Array.isArray(initialUserReviewsData?.reviews)) return initialUserReviewsData.reviews;
+    return [];
+  });
+
+  // Fetch live reviews from the backend/dev server dynamically so updates to user_reviews.json
+  // on disk are immediately reflected without requiring any code changes.
+  useEffect(() => {
+    if (Array.isArray(propReviews) && propReviews.length > 0) {
+      setAllReviews(propReviews);
+      return;
+    }
+
+    let isMounted = true;
+
+    const fetchLiveReviews = async () => {
+      // 1. Try FastAPI backend endpoint first
+      try {
+        const res = await analysisAPI.getUserReviews();
+        const incoming = res.data?.data?.reviews || res.data?.reviews;
+        if (isMounted && Array.isArray(incoming) && incoming.length > 0) {
+          setAllReviews(incoming);
+          return;
+        }
+      } catch {
+        // Backend not reached; fall through to static / dev server fetch
+      }
+
+      // 2. Fetch directly from Vite dev server / static endpoint with cache-busting
+      try {
+        const res = await fetch(`/user_reviews.json?t=${Date.now()}`, {
+          cache: "no-store",
+          headers: { "Cache-Control": "no-cache" },
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (isMounted && Array.isArray(data?.reviews) && data.reviews.length > 0) {
+            setAllReviews(data.reviews);
+          }
+        }
+      } catch {
+        // Keeps initialUserReviewsData as reliable fallback
+      }
+    };
+
+    fetchLiveReviews();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [propReviews]);
+
+  // Keep displayedReviews in sync with active sentiment, incoming analysis counts, and allReviews
   const [displayedReviews, setDisplayedReviews] = useState(() =>
-    getReviewsForSentiment("Positive", analysisCounts, reviews)
+    getReviewsForSentiment("Positive", analysisCounts, allReviews)
   );
 
   useEffect(() => {
-    setDisplayedReviews(getReviewsForSentiment(activeSentiment, analysisCounts, reviews));
-  }, [activeSentiment, analysisCounts, reviews]);
+    setDisplayedReviews(getReviewsForSentiment(activeSentiment, analysisCounts, allReviews));
+  }, [activeSentiment, analysisCounts, allReviews]);
 
   const handleFilterClick = (sentiment) => {
     setActiveSentiment(sentiment);
-    setDisplayedReviews(getReviewsForSentiment(sentiment, analysisCounts, reviews));
+    setDisplayedReviews(getReviewsForSentiment(sentiment, analysisCounts, allReviews));
   };
 
   return (
@@ -174,55 +247,68 @@ export default function UserReviewsSection({
           </thead>
           <tbody className="divide-y divide-slate-100">
             <AnimatePresence mode="wait">
-              {displayedReviews.map((review, index) => {
-                const sentiment = formatSentiment(review.predictions?.sentiment);
-                const aspectString = formatAspects(review.predictions?.aspects);
+              {displayedReviews.length === 0 ? (
+                <motion.tr
+                  key={`empty-${activeSentiment}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <td colSpan={3} className="py-8 text-center text-slate-500 text-xs sm:text-sm font-medium">
+                    No {activeSentiment.toLowerCase()} customer reviews found.
+                  </td>
+                </motion.tr>
+              ) : (
+                displayedReviews.map((review, index) => {
+                  const sentiment = formatSentiment(review.predictions?.sentiment || review.sentiment);
+                  const aspectString = formatAspects(review.predictions?.aspects || review.aspects);
 
-                let sentimentBadge = null;
-                if (sentiment === "Positive") {
-                  sentimentBadge = (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/80">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                      Positive
-                    </span>
-                  );
-                } else if (sentiment === "Negative") {
-                  sentimentBadge = (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200/80">
-                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                      Negative
-                    </span>
-                  );
-                } else {
-                  sentimentBadge = (
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200/80">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
-                      Neutral
-                    </span>
-                  );
-                }
+                  let sentimentBadge = null;
+                  if (sentiment === "Positive") {
+                    sentimentBadge = (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        Positive
+                      </span>
+                    );
+                  } else if (sentiment === "Negative") {
+                    sentimentBadge = (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200/80">
+                        <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                        Negative
+                      </span>
+                    );
+                  } else {
+                    sentimentBadge = (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200/80">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Neutral
+                      </span>
+                    );
+                  }
 
-                return (
-                  <motion.tr
-                    key={review.id || `${activeSentiment}-${index}`}
-                    initial={{ opacity: 0, y: 6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.2, delay: index * 0.03 }}
-                    className="hover:bg-slate-50/70 transition-colors"
-                  >
-                    <td className="py-3.5 px-4 text-slate-800 text-xs sm:text-sm font-medium leading-relaxed">
-                      {review.comment}
-                    </td>
-                    <td className="py-3.5 px-4 whitespace-nowrap">
-                      {sentimentBadge}
-                    </td>
-                    <td className="py-3.5 px-4 text-xs sm:text-sm font-semibold text-slate-700 whitespace-nowrap">
-                      {aspectString}
-                    </td>
-                  </motion.tr>
-                );
-              })}
+                  return (
+                    <motion.tr
+                      key={review.id || `${activeSentiment}-${index}`}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.2, delay: index * 0.03 }}
+                      className="hover:bg-slate-50/70 transition-colors"
+                    >
+                      <td className="py-3.5 px-4 text-slate-800 text-xs sm:text-sm font-medium leading-relaxed">
+                        {review.comment || review.review_text || review.reviewText}
+                      </td>
+                      <td className="py-3.5 px-4 whitespace-nowrap">
+                        {sentimentBadge}
+                      </td>
+                      <td className="py-3.5 px-4 text-xs sm:text-sm font-semibold text-slate-700 whitespace-nowrap">
+                        {aspectString}
+                      </td>
+                    </motion.tr>
+                  );
+                })
+              )}
             </AnimatePresence>
           </tbody>
         </table>
@@ -230,3 +316,4 @@ export default function UserReviewsSection({
     </motion.div>
   );
 }
+
