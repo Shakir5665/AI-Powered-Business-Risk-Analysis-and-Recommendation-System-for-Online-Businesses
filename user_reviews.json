@@ -2,23 +2,23 @@
   "reviews": [
     {
       "id": "REV001",
-      "comment": "Excellent sound quality and reliable performance",
+      "comment": "Seller කියපු කාලය ඇතුළත පාර්සලය ආවා. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "positive",
-          "delivery": "not_mentioned",
-          "trust": "positive"
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
         }
       }
     },
     {
       "id": "REV002",
-      "comment": "The sound quality is excellent",
+      "comment": "අලුත් එකක් වෙනුවට පාවිච්චි කරපු එකක් ලැබුණා. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "positive",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -26,11 +26,11 @@
     },
     {
       "id": "REV003",
-      "comment": "Crystal clear audio and the bass response is surprisingly deep.",
+      "comment": "The sound is average for this price range.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "positive",
+          "quality": "neutral",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -38,35 +38,35 @@
     },
     {
       "id": "REV004",
-      "comment": "Battery lasts over 6 hours on a single charge. Super impressed!",
+      "comment": "Okkom expected widihata wada, selleruth helpful. Mage experience eka eka thamai.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
           "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV005",
+      "comment": "Me price ekata meka ganna watinne na. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
-      "id": "REV005",
-      "comment": "Arrived two days ahead of schedule, beautifully packed.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "positive",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
       "id": "REV006",
-      "comment": "Genuine product from an honest seller. Everything matches the description.",
+      "comment": "හදලා තියෙන විදිහ ශක්තිමත්, විශ්වාස කරන්න පුළුවන්.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "positive"
         }
@@ -74,23 +74,23 @@
     },
     {
       "id": "REV007",
-      "comment": "Top notch audio clarity and fast dispatch by the merchant.",
+      "comment": "Charge wenna yana time eka expect karapu ganatama wage. Mage experience eka eka thamai.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "positive",
-          "delivery": "positive",
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV008",
-      "comment": "Comfortable fit for long gym sessions and sweat resistant.",
+      "comment": "One side stopped producing sound.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "positive",
+          "quality": "negative",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -98,23 +98,23 @@
     },
     {
       "id": "REV009",
-      "comment": "Seller answered all my questions promptly and provided official warranty.",
+      "comment": "එක පැත්තකින් sound එන්නේ නැහැ.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "negative",
           "delivery": "not_mentioned",
-          "trust": "positive"
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV010",
-      "comment": "Superb noise reduction and the silicone case included is really handy.",
+      "comment": "මේ මිලට මේක ගන්න එක වටින්නේ නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "positive",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -122,23 +122,23 @@
     },
     {
       "id": "REV011",
-      "comment": "Lightning fast delivery and product arrived in pristine condition.",
+      "comment": "Me price ekata meka ganna watinne na. Mage experience eka eka thamai.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "positive",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV012",
-      "comment": "Amazing bluetooth range, works across two rooms without drops.",
+      "comment": "Dagan inna tightuth na, looseuth na.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "positive",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -146,19 +146,7 @@
     },
     {
       "id": "REV013",
-      "comment": "Authentic earbuds, verified serial number on the manufacturer portal.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "positive",
-          "delivery": "not_mentioned",
-          "trust": "positive"
-        }
-      }
-    },
-    {
-      "id": "REV014",
-      "comment": "Outstanding microphone pickup during office Zoom calls.",
+      "comment": "Pair කරන්න ලේසියි, connection එකත් ස්ථාවරයි.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -169,8 +157,8 @@
       }
     },
     {
-      "id": "REV015",
-      "comment": "Great battery backup and super quick delivery service.",
+      "id": "REV014",
+      "comment": "Ek charge ekakin battery eka godak welawak thiyenawa. Use karala baladdi ehemayi.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -181,8 +169,20 @@
       }
     },
     {
+      "id": "REV015",
+      "comment": "පාර්සලය පරක්කු වෙලා ආවා, පැකේජ් එකත් කැඩිලා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
       "id": "REV016",
-      "comment": "High quality finish, feels very premium in hand.",
+      "comment": "තවම connection ප්‍රශ්න නැහැ, ගොඩක් සතුටුයි.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -194,19 +194,7 @@
     },
     {
       "id": "REV017",
-      "comment": "Trusted seller with authentic stock and clear communication.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "positive"
-        }
-      }
-    },
-    {
-      "id": "REV018",
-      "comment": "Crisp highs and warm mids. Audio profile is very well balanced.",
+      "comment": "Pairing was easy and the connection stays stable.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -217,60 +205,72 @@
       }
     },
     {
-      "id": "REV019",
-      "comment": "Package was bubble-wrapped securely and arrived right on time.",
+      "id": "REV018",
+      "comment": "Quality eka hondai, seller gana trust ekak thiyenawa. Mage experience eka eka thamai.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "positive",
           "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV019",
+      "comment": "දාගත්තම තදත් නැහැ, ලූස්ත් නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV020",
-      "comment": "Both earbuds connect instantaneously upon opening the charging case lid.",
+      "comment": "Ek charge ekakin battery eka godak welawak thiyenawa.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
           "quality": "positive",
-          "delivery": "not_mentioned",
+          "delivery": "positive",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV021",
-      "comment": "The merchant honored the discount code and shipped within 24 hours.",
+      "comment": "The product arrived yesterday and I have tried it once.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "neutral",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "positive",
-          "trust": "positive"
+          "delivery": "neutral",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV022",
-      "comment": "Premium sound output, secure courier delivery, and 100% genuine item.",
+      "comment": "බඩුව විස්තරේ කියපු විදිහට නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "positive",
-          "delivery": "positive",
-          "trust": "positive"
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV023",
-      "comment": "Ear tips fit snugly and provide decent passive noise isolation.",
+      "comment": "මේ මිලට sound quality එක සාමාන්‍යයි. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "positive",
+          "quality": "neutral",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -278,23 +278,23 @@
     },
     {
       "id": "REV024",
-      "comment": "Very honest seller who proactively shared tracking details.",
+      "comment": "සින්දු අහද්දි sound එක හොඳයි, calls පැහැදිලියි. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "positive",
-          "trust": "positive"
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV025",
-      "comment": "Impressive build quality with sturdy hinges on the magnetic case.",
+      "comment": "Call කරනකොට connection එක නිතර කැඩෙනවා. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "positive",
+          "quality": "negative",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -302,55 +302,43 @@
     },
     {
       "id": "REV026",
-      "comment": "Super rapid shipping and the earbuds exceed expectations for the price.",
+      "comment": "අලුත් එකක් වෙනුවට පාවිච්චි කරපු එකක් ලැබුණා.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "positive",
-          "delivery": "positive",
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV027",
-      "comment": "Touch controls are very responsive and easy to customize.",
+      "comment": "විකුණපු කෙනා විස්තරේ තිබුණු original බඩුවම එවලා. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
-          "quality": "positive",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
-          "trust": "not_mentioned"
+          "trust": "positive"
         }
       }
     },
     {
       "id": "REV028",
-      "comment": "Flawless experience from order placement to fast doorstep delivery.",
+      "comment": "දවස් දෙකකින් product එක වැඩ නැතුව ගියා. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "positive",
+          "quality": "negative",
+          "delivery": "negative",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV029",
-      "comment": "Legit product with verified warranty card enclosed inside.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "positive"
-        }
-      }
-    },
-    {
-      "id": "REV030",
-      "comment": "The bass punch is energetic without overpowering vocal clarity.",
+      "comment": "The build feels solid and reliable.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -361,20 +349,32 @@
       }
     },
     {
-      "id": "REV031",
-      "comment": "Speedy shipping and the product matches the listing photos 100%.",
+      "id": "REV030",
+      "comment": "Page eke mention karapu features thiyenawa.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "neutral",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "positive",
-          "trust": "positive"
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV031",
+      "comment": "එක පැත්තකින් sound එන්නේ නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV032",
-      "comment": "Wireless charging works seamlessly and earbuds charge quickly.",
+      "comment": "Long time use kalath ear ekata comfortable. Use karala baladdi ehemayi.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -386,23 +386,23 @@
     },
     {
       "id": "REV033",
-      "comment": "Great build materials and reputable vendor who shipped immediately.",
+      "comment": "Pair කරන්න අමාරුයි, නිතර fail වෙනවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "positive",
-          "delivery": "positive",
-          "trust": "positive"
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV034",
-      "comment": "Voice calls are loud and clear even when walking outdoors in breeze.",
+      "comment": "Product එක ඊයේ ලැබුණා, තවම එක පාරයි පාවිච්චි කළේ.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "positive",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -410,35 +410,35 @@
     },
     {
       "id": "REV035",
-      "comment": "Delivered safely within 48 hours without any damage to packaging.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "positive",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV036",
-      "comment": "Solid construction, fantastic soundstage, and legitimate seller.",
+      "comment": "Quality eka hondai, seller gana trust ekak thiyenawa. Use karala baladdi ehemayi.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
           "quality": "positive",
-          "delivery": "not_mentioned",
+          "delivery": "positive",
           "trust": "positive"
         }
       }
     },
     {
-      "id": "REV037",
-      "comment": "Battery life easily meets the advertised specifications.",
+      "id": "REV036",
+      "comment": "Product එක fake වගේ, විශ්වාස කරන්න බැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
-        "sentiment": "positive",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "positive",
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV037",
+      "comment": "Dagan inna tightuth na, looseuth na. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -446,55 +446,55 @@
     },
     {
       "id": "REV038",
-      "comment": "Prompt dispatch and polite courier driver.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "positive",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV039",
-      "comment": "Trustworthy seller with excellent packaging and pristine merchandise.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "positive",
-          "delivery": "positive",
-          "trust": "positive"
-        }
-      }
-    },
-    {
-      "id": "REV040",
-      "comment": "Compact charging case fits easily into coin pockets.",
+      "comment": "හදලා තියෙන විදිහ ශක්තිමත්, විශ්වාස කරන්න පුළුවන්. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
           "quality": "positive",
           "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV039",
+      "comment": "දාගෙන ඉන්න පහසුයි, connect කරන්නත් ලේසියි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV040",
+      "comment": "දවස් දෙකක් පාවිච්චි කළා, දැනට නම් අවුලක් නැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV041",
-      "comment": "Verified authentic merchandise, definitely buying from this store again.",
+      "comment": "ඩිලිවරි එක ඉක්මනට ආවා, බඩුවත් හොඳට වැඩ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "positive"
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV042",
-      "comment": "Rich acoustic quality with punchy sub-bass frequencies.",
+      "comment": "මේකේ sound quality එක පැහැදිලියි, bass එකත් හොඳයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -506,155 +506,155 @@
     },
     {
       "id": "REV043",
-      "comment": "Swift delivery and hassle-free ordering experience.",
+      "comment": "Dagan inna comfortable, connect karannath lesi. Danata mata penune ehemayi.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "positive",
+          "quality": "positive",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV044",
-      "comment": "Low audio latency makes watching movies and gaming delightful.",
+      "comment": "Delivery fast, packing neat, product ekath good. Use karala baladdi ehemayi.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
           "quality": "positive",
-          "delivery": "not_mentioned",
+          "delivery": "positive",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV045",
-      "comment": "Accurate listing details and transparent return policy from seller.",
+      "comment": "බඩුව නියමිත දවසට කලින් ආවා, පැකේජ් එකත් හොඳයි. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "positive"
+          "delivery": "positive",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV046",
-      "comment": "Fast parcel dispatch and the product sounds remarkably clear.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "positive",
-          "delivery": "positive",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV047",
-      "comment": "Ergonomic contouring ensures earbuds never fall out during jogs.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "positive",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV048",
-      "comment": "Smooth delivery and seller included the advertised complimentary case.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "positive",
-          "trust": "positive"
-        }
-      }
-    },
-    {
-      "id": "REV049",
-      "comment": "Top-tier sound fidelity, premium packaging, and fast shipment.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "positive",
-          "delivery": "positive",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV050",
-      "comment": "Completely authentic unit with active manufacturer support.",
-      "predictions": {
-        "sentiment": "positive",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "positive"
-        }
-      }
-    },
-    {
-      "id": "REV051",
-      "comment": "Very bad product and late delivery",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "negative",
-          "delivery": "negative",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV052",
-      "comment": "Left earbud stopped charging after just three days of mild use.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "negative",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV053",
-      "comment": "Delivery was delayed by over two weeks with zero tracking updates.",
+      "comment": "The seller has not responded to my messages.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "negative",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV054",
-      "comment": "Counterfeit item. The serial number fails verification on the official website.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "negative",
           "delivery": "not_mentioned",
           "trust": "negative"
         }
       }
     },
     {
-      "id": "REV055",
-      "comment": "Terrible audio quality with constant buzzing distortion at higher volumes.",
+      "id": "REV047",
+      "comment": "ඩිලිවරි එකට දවස් තුනක් ගියා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV048",
+      "comment": "බඩුව එද්දි box එක ඇරලා තිබුණා.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
-          "quality": "negative",
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV049",
+      "comment": "Calls සහ music වලට sound එක හොඳටම සාමාන්‍යයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV050",
+      "comment": "Delivery ekata dawas thunak giya.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV051",
+      "comment": "පැකේජ් එකේ cable එකයි case එකයි තිබුණා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV052",
+      "comment": "Warranty එක ගැන අහපු ප්‍රශ්නෙට seller උත්තර දුන්නා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV053",
+      "comment": "අලුත් එකක් වෙනුවට පාවිච්චි කරපු එකක් ලැබුණා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV054",
+      "comment": "Warranty එක ගැන අහපු ප්‍රශ්නෙට seller උත්තර දුන්නා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV055",
+      "comment": "Me price range ekata sound quality eka average.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -662,43 +662,31 @@
     },
     {
       "id": "REV056",
-      "comment": "Package arrived completely crushed and one earbud casing was cracked.",
+      "comment": "Music ahaddi sound eka lassanai, calls clear. Use karala baladdi ehemayi.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "negative",
-          "delivery": "negative",
+          "quality": "positive",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV057",
-      "comment": "Seller refused to honor the warranty and stopped responding to messages.",
+      "comment": "Parcel eka front desk eke thiyala gihilla thibuna.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "negative"
-        }
-      }
-    },
-    {
-      "id": "REV058",
-      "comment": "Battery drains from 100% to zero in less than 40 minutes.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "negative",
-          "delivery": "not_mentioned",
+          "delivery": "neutral",
           "trust": "not_mentioned"
         }
       }
     },
     {
-      "id": "REV059",
-      "comment": "Courier threw the package over the gate during heavy rain.",
+      "id": "REV058",
+      "comment": "බඩුව එද්දි box එක ඇරලා තිබුණා. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -709,24 +697,36 @@
       }
     },
     {
-      "id": "REV060",
-      "comment": "Fake replica earbuds. Do not trust this seller's misleading claims.",
+      "id": "REV059",
+      "comment": "Delivery eka ikmanata awa, item ekath hariyata wada. Use karala baladdi ehemayi.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV060",
+      "comment": "ඔක්කොම හිතපු විදිහට වැඩ, sellerත් උදව් කළා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
           "delivery": "not_mentioned",
-          "trust": "negative"
+          "trust": "positive"
         }
       }
     },
     {
       "id": "REV061",
-      "comment": "Microphone sounds muffled and underwater, unusable for work calls.",
+      "comment": "Pair කරන්න ලේසියි, connection එකත් ස්ථාවරයි. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "negative",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -734,19 +734,19 @@
     },
     {
       "id": "REV062",
-      "comment": "Dispatched five days late and seller gave invalid courier tracking numbers.",
+      "comment": "Ek side ekakin sound enne na. Danata mata penune ehemayi.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "negative",
-          "trust": "negative"
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV063",
-      "comment": "Cheap plastic build and flimsy case lid broke off within a week.",
+      "comment": "Charging case එක බාලයි, හරියට වැහෙන්නෙත් නැහැ. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -758,83 +758,83 @@
     },
     {
       "id": "REV064",
-      "comment": "Horrible static noise in both earbuds and delivery was delayed.",
+      "comment": "බැටරිය ඉක්මනටම බැහැලා යනවා.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
           "quality": "negative",
-          "delivery": "negative",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV065",
-      "comment": "Seller advertised free silicone case but omitted it from the box.",
+      "comment": "Me price range ekata sound quality eka average. Danata mata penune ehemayi.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "negative"
-        }
-      }
-    },
-    {
-      "id": "REV066",
-      "comment": "Bluetooth disconnects every 2 minutes while my phone is in my pocket.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "negative",
+          "quality": "neutral",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
-      "id": "REV067",
-      "comment": "Arrived two weeks late and the package had clearly been tampered with.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "negative",
-          "trust": "negative"
-        }
-      }
-    },
-    {
-      "id": "REV068",
-      "comment": "Extremely uncomfortable shape, causes ear pain after ten minutes.",
+      "id": "REV066",
+      "comment": "Item eka description eke thibba widihata newei. Use karala baladdi ehemayi.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
           "quality": "negative",
           "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV067",
+      "comment": "Me price range ekata sound quality eka average. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV068",
+      "comment": "Delivery ekata dawas thunak giya. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV069",
-      "comment": "Misleading product title. This is not genuine JBL as claimed by seller.",
+      "comment": "දවස් දෙකක් පාවිච්චි කළා, දැනට නම් අවුලක් නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "negative",
-          "delivery": "not_mentioned",
-          "trust": "negative"
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV070",
-      "comment": "Severe sound delay between video and audio playback.",
+      "comment": "Comfortable to wear and easy to connect.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "negative",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -842,199 +842,199 @@
     },
     {
       "id": "REV071",
-      "comment": "Late delivery, damaged packaging, and awful sounding audio.",
+      "comment": "දාගත්තම තදත් නැහැ, ලූස්ත් නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "negative",
-          "delivery": "negative",
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV072",
-      "comment": "Seller rejected my return request despite providing unboxing evidence.",
+      "comment": "Calls saha music walata sound eka normal. Danata mata penune ehemayi.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "neutral",
           "delivery": "not_mentioned",
-          "trust": "negative"
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV073",
-      "comment": "Right earbud is significantly quieter than the left one.",
+      "comment": "Dawas dekakin product eka wada nathuwa giya. Use karala baladdi ehemayi.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
           "quality": "negative",
-          "delivery": "not_mentioned",
+          "delivery": "negative",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV074",
-      "comment": "Courier delayed shipment repeatedly without notifying the buyer.",
+      "comment": "The product has the features listed on the page.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "negative",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV075",
-      "comment": "Dishonest seller sent an opened return unit instead of brand new.",
+      "comment": "Music ahaddi sound eka lassanai, calls clear. Danata mata penune ehemayi.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "negative"
-        }
-      }
-    },
-    {
-      "id": "REV076",
-      "comment": "Hinges on the charging case became loose after only two days.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "negative",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
-      "id": "REV077",
-      "comment": "Late arrival and the merchant was extremely rude when contacted.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "negative",
-          "trust": "negative"
-        }
-      }
-    },
-    {
-      "id": "REV078",
-      "comment": "Zero bass response, hollow sound reminiscent of cheap disposable earphones.",
+      "id": "REV076",
+      "comment": "Item eka description eke thibba widihata newei. Mage experience eka eka thamai.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
           "quality": "negative",
           "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV077",
+      "comment": "Item eka expected date ekata kalin awa, packing ekath hondai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV078",
+      "comment": "දවස් දෙකකින් product එක වැඩ නැතුව ගියා.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV079",
-      "comment": "Box arrived torn open with missing replacement silicone tips.",
+      "comment": "Me price ekata meka ganna watinne na.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
-          "quality": "negative",
-          "delivery": "negative",
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV080",
-      "comment": "Total scam, received an unbranded clone product in a generic white box.",
+      "comment": "Me price range ekata sound quality eka average. Use karala baladdi ehemayi.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "neutral",
           "delivery": "not_mentioned",
-          "trust": "negative"
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV081",
-      "comment": "Charging case gets dangerously hot when plugged into standard adapter.",
+      "comment": "Seller mage messages walata reply karala na.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
-          "quality": "negative",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
-          "trust": "not_mentioned"
+          "trust": "negative"
         }
       }
     },
     {
       "id": "REV082",
-      "comment": "Shipping took over 18 days for a local order.",
+      "comment": "විකුණපු කෙනා විස්තරේ තිබුණු original බඩුවම එවලා.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "positive",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "negative",
-          "trust": "not_mentioned"
+          "delivery": "not_mentioned",
+          "trust": "positive"
         }
       }
     },
     {
       "id": "REV083",
-      "comment": "Defective item and the store refuses to reply to replacement requests.",
+      "comment": "Calls waladi connection eka digatama drop wenawa.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
           "quality": "negative",
-          "delivery": "not_mentioned",
-          "trust": "negative"
-        }
-      }
-    },
-    {
-      "id": "REV084",
-      "comment": "Volume is way too low even at maximum setting.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "negative",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV085",
-      "comment": "Courier delivered to the wrong address and box was water damaged.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "not_mentioned",
           "delivery": "negative",
           "trust": "not_mentioned"
         }
       }
     },
     {
-      "id": "REV086",
-      "comment": "Fraudulent advertising. Specs do not match the received product.",
+      "id": "REV084",
+      "comment": "බඩුව listing එකේ photos වල වගේමයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV085",
+      "comment": "Product එක fake වගේ, විශ්වාස කරන්න බැහැ.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "negative",
           "delivery": "not_mentioned",
           "trust": "negative"
         }
       }
     },
     {
+      "id": "REV086",
+      "comment": "The parcel arrived in the time stated by the seller.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
       "id": "REV087",
-      "comment": "Touch controls are hypersensitive and trigger false accidental taps.",
+      "comment": "විනාඩි කිහිපයක් දාගෙන ඉද්දිත් අපහසුයි. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1046,11 +1046,11 @@
     },
     {
       "id": "REV088",
-      "comment": "Unacceptable delivery delay accompanied by poor packaging protection.",
+      "comment": "Dawas dekakin product eka wada nathuwa giya.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "negative",
           "delivery": "negative",
           "trust": "not_mentioned"
         }
@@ -1058,23 +1058,23 @@
     },
     {
       "id": "REV089",
-      "comment": "Poor quality speakers, delayed shipping, and unresponsive seller.",
+      "comment": "Page එකේ සඳහන් features ටික තියෙනවා. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "negative",
-          "delivery": "negative",
-          "trust": "negative"
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV090",
-      "comment": "Earbud casing cracked open when dropped from desk height.",
+      "comment": "The sound is balanced and calls are clear.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "negative",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1082,31 +1082,19 @@
     },
     {
       "id": "REV091",
-      "comment": "Seller sent a refurbished product while charging full retail price.",
+      "comment": "The delivery was quick and the item works perfectly.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "negative"
-        }
-      }
-    },
-    {
-      "id": "REV092",
-      "comment": "Harsh screeching sound occurs whenever bluetooth pairs.",
-      "predictions": {
-        "sentiment": "negative",
-        "aspects": {
-          "quality": "negative",
-          "delivery": "not_mentioned",
+          "quality": "positive",
+          "delivery": "positive",
           "trust": "not_mentioned"
         }
       }
     },
     {
-      "id": "REV093",
-      "comment": "Late delivery and parcel was missing tracking for over 10 days.",
+      "id": "REV092",
+      "comment": "Box eka awa welawedi open wela thibbe.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1117,12 +1105,24 @@
       }
     },
     {
-      "id": "REV094",
-      "comment": "Audio cuts in and out every few steps when phone is in handbag.",
+      "id": "REV093",
+      "comment": "The battery drains very quickly.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
           "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV094",
+      "comment": "Thama loku issue ekak notice kale na. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1130,23 +1130,23 @@
     },
     {
       "id": "REV095",
-      "comment": "Customer support gave misleading excuses for delays and product defects.",
+      "comment": "විනාඩි කිහිපයක් දාගෙන ඉද්දිත් අපහසුයි.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
           "quality": "negative",
-          "delivery": "negative",
-          "trust": "negative"
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV096",
-      "comment": "Plastic edges have sharp burrs that scratch the ear canal.",
+      "comment": "I have not noticed any major issues yet.",
       "predictions": {
-        "sentiment": "negative",
+        "sentiment": "neutral",
         "aspects": {
-          "quality": "negative",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1154,7 +1154,79 @@
     },
     {
       "id": "REV097",
-      "comment": "Delivery courier left the package in plain view on street curb.",
+      "comment": "කල්පැවැත්ම ගැන කියන්න තව කාලයක් ඕන. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV098",
+      "comment": "Delivery eka ikmanata awa, item ekath hariyata wada.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV099",
+      "comment": "Warranty eka gana ahapu question ekata seller reply kala. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV100",
+      "comment": "දවස් දෙකක් පාවිච්චි කළා, දැනට නම් අවුලක් නැහැ.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV101",
+      "comment": "Quality එක හොඳයි, seller ගැනත් විශ්වාසයක් තියෙනවා.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV102",
+      "comment": "Quality එක හොඳයි, seller ගැනත් විශ්වාසයක් තියෙනවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV103",
+      "comment": "Parcel eka late una, packing ekath damage wela.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1165,8 +1237,8 @@
       }
     },
     {
-      "id": "REV098",
-      "comment": "Seller promised an authentic invoice but failed to provide any receipt.",
+      "id": "REV104",
+      "comment": "Seller mage messages walata reply karala na.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1177,8 +1249,8 @@
       }
     },
     {
-      "id": "REV099",
-      "comment": "Terrible battery performance and fragile hinge mechanism.",
+      "id": "REV105",
+      "comment": "Charging case එක බාලයි, හරියට වැහෙන්නෙත් නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1189,92 +1261,32 @@
       }
     },
     {
-      "id": "REV100",
-      "comment": "Fake warranty card with invalid phone numbers and contact emails.",
+      "id": "REV106",
+      "comment": "දවස් දෙකකින් product එක වැඩ නැතුව ගියා. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "negative"
-        }
-      }
-    },
-    {
-      "id": "REV101",
-      "comment": "The earbuds work as expected",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV102",
-      "comment": "Decent audio for the price, nothing extraordinary but acceptable.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV103",
-      "comment": "Delivery arrived on the estimated date. Standard standard packaging.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV104",
-      "comment": "The product matches description, although packaging was somewhat plain.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "neutral"
-        }
-      }
-    },
-    {
-      "id": "REV105",
-      "comment": "Sound is average with modest bass. Good enough for casual podcasts.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV106",
-      "comment": "Shipping speed was normal, took about 4 days as stated at checkout.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
+          "quality": "negative",
+          "delivery": "negative",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV107",
-      "comment": "Standard customer service response, answered questions without enthusiasm.",
+      "comment": "Ek charge ekakin battery eka godak welawak thiyenawa.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV108",
+      "comment": "Item eka listing photos wala thiyena widihatama wage. Use karala baladdi ehemayi.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1285,120 +1297,108 @@
       }
     },
     {
-      "id": "REV108",
-      "comment": "Battery lasts around 3.5 hours, which is typical for budget wireless earbuds.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
       "id": "REV109",
-      "comment": "Delivery took standard time and audio quality is okay for everyday commute.",
+      "comment": "Pair karanna amarui, godak welawata fail wenawa. Mage experience eka eka thamai.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "neutral",
+          "quality": "negative",
+          "delivery": "negative",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV110",
-      "comment": "Seller provides what is shown, no extra bonuses or special packaging.",
+      "comment": "Pair karanna lesi, connection ekath stable. Use karala baladdi ehemayi.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "neutral"
-        }
-      }
-    },
-    {
-      "id": "REV111",
-      "comment": "Build is made of plastic as expected, neither cheap nor premium feeling.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "neutral",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
-      "id": "REV112",
-      "comment": "Courier followed instructions, parcel delivered safely within ordinary timeframe.",
+      "id": "REV111",
+      "comment": "Seller original item ekama ewලා, description ekata match. Danata mata penune ehemayi.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV112",
+      "comment": "විනාඩි කිහිපයක් දාගෙන ඉද්දිත් අපහසුයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV113",
-      "comment": "Item appears genuine, standard documentation included in the package.",
+      "comment": "Product eka fake wage, trust karanna ba. Mage experience eka eka thamai.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "negative",
           "delivery": "not_mentioned",
-          "trust": "neutral"
+          "trust": "negative"
         }
       }
     },
     {
       "id": "REV114",
-      "comment": "Microphone works decently in quiet rooms, but picks up background noise outdoors.",
+      "comment": "Seller kiwwa time eka athulatha parcel eka awa. Mage experience eka eka thamai.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
         }
       }
     },
     {
       "id": "REV115",
-      "comment": "Average sound quality, ordinary delivery speed, fair value for money.",
+      "comment": "Instructions බලලා pair කරගන්න පුළුවන් වුණා.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "neutral",
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV116",
-      "comment": "Merchant provided standard tracking and dispatched on the second business day.",
+      "comment": "Durability eka judge karanna thawath time one. Use karala baladdi ehemayi.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
           "quality": "not_mentioned",
           "delivery": "neutral",
-          "trust": "neutral"
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV117",
-      "comment": "Comfort is acceptable for an hour, after which slight ear pressure is felt.",
+      "comment": "මේකේ sound quality එක පැහැදිලියි, bass එකත් හොඳයි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "neutral",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1406,35 +1406,35 @@
     },
     {
       "id": "REV118",
-      "comment": "Standard cardboard shipping box with basic bubble wrap.",
+      "comment": "පළවෙනි charge එකෙන් පස්සේ battery life එක සාමාන්‍යයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
+          "quality": "neutral",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV119",
-      "comment": "Verified product details match specifications without any notable extras.",
+      "comment": "Pair karanna amarui, godak welawata fail wenawa. Use karala baladdi ehemayi.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "neutral"
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV120",
-      "comment": "Bluetooth range is around 5 to 6 meters before experiencing occasional lag.",
+      "comment": "Charge වෙන්න ගන්න කාලය බලාපොරොත්තු වුණ තරමටමයි. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
-          "quality": "neutral",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1442,23 +1442,23 @@
     },
     {
       "id": "REV121",
-      "comment": "Average shipping duration, standard sound quality, and expected vendor communication.",
+      "comment": "Item eka expected date ekata kalin awa, packing ekath hondai.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "neutral",
-          "trust": "neutral"
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV122",
-      "comment": "Case magnet holds earbuds moderately well, neither too weak nor very strong.",
+      "comment": "Product එක ඊයේ ලැබුණා, තවම එක පාරයි පාවිච්චි කළේ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
-          "quality": "neutral",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1466,35 +1466,35 @@
     },
     {
       "id": "REV123",
-      "comment": "Package arrived within expected date window with standard courier updates.",
+      "comment": "දාගෙන ඉන්න පහසුයි, connect කරන්නත් ලේසියි. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
+          "quality": "positive",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV124",
-      "comment": "Seller delivered exactly what was ordered without surprises.",
+      "comment": "Box eka awa welawedi open wela thibbe. Danata mata penune ehemayi.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "negative",
         "aspects": {
           "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "neutral"
+          "delivery": "negative",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV125",
-      "comment": "Touch controls work with a slight half-second delay.",
+      "comment": "එක charge එකකින් බැටරිය ගොඩක් වෙලා තියෙනවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "neutral",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1502,59 +1502,59 @@
     },
     {
       "id": "REV126",
-      "comment": "Parcel took five working days to arrive, which is standard for ground shipping.",
+      "comment": "Description eke thibba widihatama thiyenawa, hondata wada.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
-          "trust": "not_mentioned"
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
         }
       }
     },
     {
       "id": "REV127",
-      "comment": "Volume levels are sufficient for indoor environments.",
+      "comment": "Durability eka judge karanna thawath time one. Mage experience eka eka thamai.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
+          "quality": "not_mentioned",
+          "delivery": "neutral",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV128",
-      "comment": "Basic packaging with regular shipping speed and functional earbuds.",
+      "comment": "Product eka fake wage, trust karanna ba.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "neutral",
-          "trust": "not_mentioned"
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
         }
       }
     },
     {
       "id": "REV129",
-      "comment": "Seller answered inquiries after 24 hours, average support response time.",
+      "comment": "දාගෙන ඉන්න පහසුයි, connect කරන්නත් ලේසියි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "positive",
           "delivery": "not_mentioned",
-          "trust": "neutral"
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV130",
-      "comment": "Treble is clear while bass is fairly neutral and flat.",
+      "comment": "Meeke sound quality eka clear, bass ekath hondai.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "neutral",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1562,23 +1562,23 @@
     },
     {
       "id": "REV131",
-      "comment": "Delivery on schedule, seller reliable, sound quality acceptable.",
+      "comment": "සින්දු අහද්දි sound එක හොඳයි, calls පැහැදිලියි. දැනට මට පෙනුණේ එහෙමයි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "neutral",
-          "trust": "neutral"
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV132",
-      "comment": "Case charges fully in about two hours using included cable.",
+      "comment": "Microphone quality එක ගොඩක් දුර්වලයි. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "neutral",
+          "quality": "negative",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1586,119 +1586,119 @@
     },
     {
       "id": "REV133",
-      "comment": "Standard postal transit time, package arrived intact.",
+      "comment": "දාගෙන ඉන්න පහසුයි, connect කරන්නත් ලේසියි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
+          "quality": "positive",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV134",
-      "comment": "Authenticity seems fine, typical retail unit packaging.",
+      "comment": "Meeke sound quality eka clear, bass ekath hondai.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "positive",
           "delivery": "not_mentioned",
-          "trust": "neutral"
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV135",
-      "comment": "Latency is fine for YouTube videos, but noticeable in competitive gaming.",
+      "comment": "Item eka expected date ekata kalin awa, packing ekath hondai. Use karala baladdi ehemayi.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
+          "quality": "positive",
+          "delivery": "positive",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV136",
-      "comment": "Transit took the full estimated delivery window.",
+      "comment": "Ek charge ekakin battery eka godak welawak thiyenawa. Danata mata penune ehemayi.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
+          "quality": "positive",
+          "delivery": "positive",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV137",
-      "comment": "Sound profile is balanced without boosted bass or sharp highs.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV138",
-      "comment": "Standard store policy and receipt provided as requested.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "not_mentioned",
-          "trust": "neutral"
-        }
-      }
-    },
-    {
-      "id": "REV139",
-      "comment": "Earbud fit is reasonable, three silicone ear tip sizes included.",
-      "predictions": {
-        "sentiment": "neutral",
-        "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "not_mentioned"
-        }
-      }
-    },
-    {
-      "id": "REV140",
-      "comment": "Courier dropped package in mailbox on the scheduled delivery date.",
+      "comment": "Seller kiwwa time eka athulatha parcel eka awa. Danata mata penune ehemayi.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
           "quality": "not_mentioned",
           "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV138",
+      "comment": "Delivery fast, packing neat, product ekath good. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV139",
+      "comment": "Product එක fake වගේ, විශ්වාස කරන්න බැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV140",
+      "comment": "Long time use kalath ear ekata comfortable. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV141",
-      "comment": "Everything works as described in the item specifications.",
+      "comment": "The package arrived early and was well protected.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "neutral",
-          "delivery": "not_mentioned",
-          "trust": "neutral"
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV142",
-      "comment": "LED battery indicator works properly though light is rather dim.",
+      "comment": "එක charge එකකින් බැටරිය ගොඩක් වෙලා තියෙනවා.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "neutral",
+          "quality": "positive",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1706,23 +1706,23 @@
     },
     {
       "id": "REV143",
-      "comment": "Delivery took standard 4 business days with typical parcel tracking.",
+      "comment": "Item eka safe widihata labuna, wada karannath hondai. Use karala baladdi ehemayi.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
-          "delivery": "neutral",
+          "quality": "positive",
+          "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV144",
-      "comment": "Call audio is audible in quiet rooms, moderate performance.",
+      "comment": "Microphone quality eka godak poor. Mage experience eka eka thamai.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "neutral",
+          "quality": "negative",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1730,23 +1730,23 @@
     },
     {
       "id": "REV145",
-      "comment": "Seller followed standard guidelines, no issues with transaction.",
+      "comment": "Pair කරන්න ලේසියි, connection එකත් ස්ථාවරයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "positive",
         "aspects": {
-          "quality": "not_mentioned",
+          "quality": "positive",
           "delivery": "not_mentioned",
-          "trust": "neutral"
+          "trust": "not_mentioned"
         }
       }
     },
     {
       "id": "REV146",
-      "comment": "Earbuds connect fine with Android and iOS devices after standard pairing.",
+      "comment": "Charge වෙන්න ගන්න කාලය බලාපොරොත්තු වුණ තරමටමයි. මගේ අත්දැකීම ඒකයි.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
-          "quality": "neutral",
+          "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1754,7 +1754,7 @@
     },
     {
       "id": "REV147",
-      "comment": "Package reached destination in ordinary condition without special padding.",
+      "comment": "The parcel was left at the front desk.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1766,11 +1766,11 @@
     },
     {
       "id": "REV148",
-      "comment": "Medium grade sound quality, meets expectations for entry level wireless buds.",
+      "comment": "Microphone quality එක ගොඩක් දුර්වලයි.",
       "predictions": {
-        "sentiment": "neutral",
+        "sentiment": "negative",
         "aspects": {
-          "quality": "neutral",
+          "quality": "negative",
           "delivery": "not_mentioned",
           "trust": "not_mentioned"
         }
@@ -1778,25 +1778,4345 @@
     },
     {
       "id": "REV149",
-      "comment": "Standard dispatch time and reasonable product functionality.",
+      "comment": "Seller kiwwa time eka athulatha parcel eka awa.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
-          "quality": "neutral",
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV150",
+      "comment": "තවම ලොකු ප්‍රශ්නයක් දැක්කේ නැහැ.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV151",
+      "comment": "Delivery ekata dawas thunak giya. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
           "delivery": "neutral",
           "trust": "not_mentioned"
         }
       }
     },
     {
-      "id": "REV150",
-      "comment": "Legitimate seller, product corresponds faithfully to specs.",
+      "id": "REV152",
+      "comment": "දිග වෙලාවක් පාවිච්චි කළත් කනට පහසුයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV153",
+      "comment": "Delivery took much longer than promised.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV154",
+      "comment": "Me price ekata gaththa eka watinawa. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV155",
+      "comment": "Okkom expected widihata wada, selleruth helpful. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV156",
+      "comment": "The product stopped working after two days.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV157",
+      "comment": "ඩිලිවරි එකට දවස් තුනක් ගියා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV158",
+      "comment": "The sound is weak and the bass is almost missing.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV159",
+      "comment": "Charging case eka cheap wage, hariyata wahenneth na. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV160",
+      "comment": "පාර්සලය පරක්කු වෙලා ආවා, පැකේජ් එකත් කැඩිලා.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV161",
+      "comment": "බඩුව විස්තරේ කියපු විදිහට නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV162",
+      "comment": "Parcel eka late una, packing ekath damage wela.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV163",
+      "comment": "Meeke sound quality eka clear, bass ekath hondai. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV164",
+      "comment": "Item eka listing photos wala thiyena widihatama wage.",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
           "quality": "not_mentioned",
           "delivery": "not_mentioned",
           "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV165",
+      "comment": "Sound එක දුර්වලයි, bass එකක් වගේ දෙයක් නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV166",
+      "comment": "විනාඩි කිහිපයක් දාගෙන ඉද්දිත් අපහසුයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV167",
+      "comment": "Product eka iye labuna, thama eka parak witharai use kale.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV168",
+      "comment": "Aluth ekak wenuwata used item ekak labune. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV169",
+      "comment": "මේකේ sound quality එක පැහැදිලියි, bass එකත් හොඳයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV170",
+      "comment": "Package eke cable ekai case ekai thibuna. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV171",
+      "comment": "විකුණපු කෙනා විස්තරේ තිබුණු original බඩුවම එවලා.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV172",
+      "comment": "Item eka expected date ekata kalin awa, packing ekath hondai. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV173",
+      "comment": "I received a used item instead of a new one.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV174",
+      "comment": "Seller mage messages walata reply karala na. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV175",
+      "comment": "Ek side ekakin sound enne na. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV176",
+      "comment": "The item looks similar to the listing photos.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV177",
+      "comment": "Aluth ekak wenuwata used item ekak labune. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV178",
+      "comment": "Dagan inna comfortable, connect karannath lesi. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV179",
+      "comment": "Promise karapu time ekata wada delivery godak late. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV180",
+      "comment": "The box was open when it arrived.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV181",
+      "comment": "Battery eka ikmanata bahinawa.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV182",
+      "comment": "මේ මිලට මේක ගන්න එක වටින්නේ නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV183",
+      "comment": "Dagan inna tightuth na, looseuth na. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV184",
+      "comment": "පළවෙනි charge එකෙන් පස්සේ battery life එක සාමාන්‍යයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV185",
+      "comment": "No connection issues so far; very satisfied.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV186",
+      "comment": "දාගෙන ඉන්න පහසුයි, connect කරන්නත් ලේසියි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV187",
+      "comment": "හදලා තියෙන විදිහ ශක්තිමත්, විශ්වාස කරන්න පුළුවන්. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV188",
+      "comment": "අලුත් එකක් වෙනුවට පාවිච්චි කරපු එකක් ලැබුණා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV189",
+      "comment": "මේ මිලට ගත්ත එක වටිනවා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV190",
+      "comment": "බඩුව විස්තරේ කියපු විදිහට නැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV191",
+      "comment": "Item eka listing photos wala thiyena widihatama wage. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV192",
+      "comment": "Item eka description eke thibba widihata newei.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV193",
+      "comment": "Battery eka ikmanata bahinawa.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV194",
+      "comment": "Sound එක දුර්වලයි, bass එකක් වගේ දෙයක් නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV195",
+      "comment": "The charging case feels cheap and loose.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV196",
+      "comment": "Seller මගේ message වලට තවම reply කරලා නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV197",
+      "comment": "මේ මිලට sound quality එක සාමාන්‍යයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV198",
+      "comment": "Instructions බලලා pair කරගන්න පුළුවන් වුණා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV199",
+      "comment": "බඩුව listing එකේ photos වල වගේමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV200",
+      "comment": "Me price ekata gaththa eka watinawa.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV201",
+      "comment": "Sound eka weak, bass nam almost na wage. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV202",
+      "comment": "Page eke mention karapu features thiyenawa. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV203",
+      "comment": "Seller මගේ message වලට තවම reply කරලා නැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV204",
+      "comment": "Thama loku issue ekak notice kale na. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV205",
+      "comment": "Dawas dekakin product eka wada nathuwa giya. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV206",
+      "comment": "Microphone quality eka godak poor. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV207",
+      "comment": "The package included the cable and the case.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV208",
+      "comment": "Seller kiwwa time eka athulatha parcel eka awa. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV209",
+      "comment": "Item eka safe widihata labuna, wada karannath hondai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV210",
+      "comment": "Pair කරන්න ලේසියි, connection එකත් ස්ථාවරයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV211",
+      "comment": "Quality එක හොඳයි, seller ගැනත් විශ්වාසයක් තියෙනවා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV212",
+      "comment": "Seller මගේ message වලට තවම reply කරලා නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV213",
+      "comment": "පැකේජ් එකේ cable එකයි case එකයි තිබුණා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV214",
+      "comment": "පාර්සලය front desk එකේ දාලා ගිහින් තිබුණා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV215",
+      "comment": "Warranty එක ගැන අහපු ප්‍රශ්නෙට seller උත්තර දුන්නා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV216",
+      "comment": "පළවෙනි charge එකෙන් පස්සේ battery life එක සාමාන්‍යයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV217",
+      "comment": "Instructions balala pair karaganna puluwan una.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV218",
+      "comment": "පාර්සලය පරක්කු වෙලා ආවා, පැකේජ් එකත් කැඩිලා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV219",
+      "comment": "First charge eken passe battery life eka normal wage.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV220",
+      "comment": "පාර්සලය පරක්කු වෙලා ආවා, පැකේජ් එකත් කැඩිලා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV221",
+      "comment": "Item eka expected date ekata kalin awa, packing ekath hondai. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV222",
+      "comment": "බඩුව නියමිත දවසට කලින් ආවා, පැකේජ් එකත් හොඳයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV223",
+      "comment": "Page eke mention karapu features thiyenawa. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV224",
+      "comment": "Build quality eka strong wage, trust karanna puluwan. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV225",
+      "comment": "තවම ලොකු ප්‍රශ්නයක් දැක්කේ නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV226",
+      "comment": "Durability eka judge karanna thawath time one.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV227",
+      "comment": "Microphone quality එක ගොඩක් දුර්වලයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV228",
+      "comment": "Parcel eka late una, packing ekath damage wela. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV229",
+      "comment": "Me price range ekata sound quality eka average.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV230",
+      "comment": "Page එකේ සඳහන් features ටික තියෙනවා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV231",
+      "comment": "තවම connection ප්‍රශ්න නැහැ, ගොඩක් සතුටුයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV232",
+      "comment": "Charge wenna yana time eka expect karapu ganatama wage. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV233",
+      "comment": "Item eka listing photos wala thiyena widihatama wage. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV234",
+      "comment": "බඩුව ආරක්ෂිතව ලැබුණා, වැඩත් හොඳයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV235",
+      "comment": "මේ මිලට මේක ගන්න එක වටින්නේ නැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV236",
+      "comment": "Seller mage messages walata reply karala na. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV237",
+      "comment": "එක charge එකකින් බැටරිය ගොඩක් වෙලා තියෙනවා.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV238",
+      "comment": "දවස් දෙකකින් product එක වැඩ නැතුව ගියා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV239",
+      "comment": "Quality eka hondai, seller gana trust ekak thiyenawa.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV240",
+      "comment": "Dawas dekak use kala, danata nam okay. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV241",
+      "comment": "Pair කරන්න ලේසියි, connection එකත් ස්ථාවරයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV242",
+      "comment": "Pair karanna amarui, godak welawata fail wenawa. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV243",
+      "comment": "Me price ekata gaththa eka watinawa.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV244",
+      "comment": "Warranty eka gana ahapu question ekata seller reply kala. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV245",
+      "comment": "Product eka iye labuna, thama eka parak witharai use kale. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV246",
+      "comment": "Charge වෙන්න ගන්න කාලය බලාපොරොත්තු වුණ තරමටමයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV247",
+      "comment": "Sound එක දුර්වලයි, bass එකක් වගේ දෙයක් නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV248",
+      "comment": "මේ මිලට sound quality එක සාමාන්‍යයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV249",
+      "comment": "Music ahaddi sound eka lassanai, calls clear.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV250",
+      "comment": "Minutes kihipayak dagena hitiyath uncomfortable. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV251",
+      "comment": "මේ මිලට ගත්ත එක වටිනවා.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV252",
+      "comment": "Calls saha music walata sound eka normal. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV253",
+      "comment": "Delivery eka ikmanata awa, item ekath hariyata wada.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV254",
+      "comment": "මේ මිලට මේක ගන්න එක වටින්නේ නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV255",
+      "comment": "මේ මිලට sound quality එක සාමාන්‍යයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV256",
+      "comment": "Seller original item ekama ewලා, description ekata match.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV257",
+      "comment": "Call කරනකොට connection එක නිතර කැඩෙනවා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV258",
+      "comment": "Charging case eka cheap wage, hariyata wahenneth na. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV259",
+      "comment": "Delivery fast, packing neat, product ekath good. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV260",
+      "comment": "Call කරනකොට connection එක නිතර කැඩෙනවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV261",
+      "comment": "ඔක්කොම හිතපු විදිහට වැඩ, sellerත් උදව් කළා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV262",
+      "comment": "Long time use kalath ear ekata comfortable.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV263",
+      "comment": "Package eke cable ekai case ekai thibuna. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV264",
+      "comment": "පාර්සලය front desk එකේ දාලා ගිහින් තිබුණා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV265",
+      "comment": "Item eka safe widihata labuna, wada karannath hondai. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV266",
+      "comment": "Charging case එක බාලයි, හරියට වැහෙන්නෙත් නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV267",
+      "comment": "Calls සහ music වලට sound එක හොඳටම සාමාන්‍යයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV268",
+      "comment": "Build quality eka strong wage, trust karanna puluwan.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV269",
+      "comment": "Dagan inna tightuth na, looseuth na. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV270",
+      "comment": "මේකේ sound quality එක පැහැදිලියි, bass එකත් හොඳයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV271",
+      "comment": "Page එකේ සඳහන් features ටික තියෙනවා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV272",
+      "comment": "ඩිලිවරි ඉක්මන්, packing එක පිළිවෙළයි, product එකත් හොඳයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV273",
+      "comment": "Seller කියපු කාලය ඇතුළත පාර්සලය ආවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV274",
+      "comment": "First charge eken passe battery life eka normal wage. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV275",
+      "comment": "දවස් දෙකක් පාවිච්චි කළා, දැනට නම් අවුලක් නැහැ.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV276",
+      "comment": "Product එක ඊයේ ලැබුණා, තවම එක පාරයි පාවිච්චි කළේ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV277",
+      "comment": "The product arrived safely and performs well.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV278",
+      "comment": "The item does not match the description.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV279",
+      "comment": "බඩුව listing එකේ photos වල වගේමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV280",
+      "comment": "Dagan inna comfortable, connect karannath lesi. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV281",
+      "comment": "පාර්සලය front desk එකේ දාලා ගිහින් තිබුණා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV282",
+      "comment": "බඩුව ආරක්ෂිතව ලැබුණා, වැඩත් හොඳයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV283",
+      "comment": "කියපු කාලයට වඩා delivery එක ගොඩක් පරක්කුයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV284",
+      "comment": "Sound eka weak, bass nam almost na wage.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV285",
+      "comment": "බඩුව විස්තරේ කියපු විදිහට නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV286",
+      "comment": "Calls waladi connection eka digatama drop wenawa. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV287",
+      "comment": "ඩිලිවරි එකට දවස් තුනක් ගියා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV288",
+      "comment": "Thama connection issues na, mata godak satisfied. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV289",
+      "comment": "Pair karanna lesi, connection ekath stable.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV290",
+      "comment": "Parcel eka late una, packing ekath damage wela. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV291",
+      "comment": "පැකේජ් එකේ cable එකයි case එකයි තිබුණා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV292",
+      "comment": "පැකේජ් එකේ cable එකයි case එකයි තිබුණා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV293",
+      "comment": "Pairing worked after following the instructions.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV294",
+      "comment": "Product එක ඊයේ ලැබුණා, තවම එක පාරයි පාවිච්චි කළේ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV295",
+      "comment": "ඔක්කොම හිතපු විදිහට වැඩ, sellerත් උදව් කළා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV296",
+      "comment": "Sound eka weak, bass nam almost na wage. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV297",
+      "comment": "Seller මගේ message වලට තවම reply කරලා නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV298",
+      "comment": "තවම connection ප්‍රශ්න නැහැ, ගොඩක් සතුටුයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV299",
+      "comment": "ඩිලිවරි ඉක්මන්, packing එක පිළිවෙළයි, product එකත් හොඳයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV300",
+      "comment": "Charging case eka cheap wage, hariyata wahenneth na.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV301",
+      "comment": "First charge eken passe battery life eka normal wage. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV302",
+      "comment": "කියපු කාලයට වඩා delivery එක ගොඩක් පරක්කුයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV303",
+      "comment": "Quality එක හොඳයි, seller ගැනත් විශ්වාසයක් තියෙනවා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV304",
+      "comment": "Seller කියපු කාලය ඇතුළත පාර්සලය ආවා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV305",
+      "comment": "දාගත්තම තදත් නැහැ, ලූස්ත් නැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV306",
+      "comment": "Description eke thibba widihatama thiyenawa, hondata wada. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV307",
+      "comment": "විස්තරේ කියපු විදිහටම තියෙනවා, හොඳට වැඩ කරනවා.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV308",
+      "comment": "Music ahaddi sound eka lassanai, calls clear. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV309",
+      "comment": "Description eke thibba widihatama thiyenawa, hondata wada. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV310",
+      "comment": "පැකේජ් එකේ cable එකයි case එකයි තිබුණා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV311",
+      "comment": "Calls waladi connection eka digatama drop wenawa.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV312",
+      "comment": "Good quality and a trustworthy seller.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV313",
+      "comment": "එක පැත්තකින් sound එන්නේ නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV314",
+      "comment": "Seller original item ekama ewලා, description ekata match.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV315",
+      "comment": "Charging case eka cheap wage, hariyata wahenneth na. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV316",
+      "comment": "Sound quality is clear and the bass is impressive.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV317",
+      "comment": "Dawas dekakin product eka wada nathuwa giya.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV318",
+      "comment": "Ek side ekakin sound enne na.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV319",
+      "comment": "තවම connection ප්‍රශ්න නැහැ, ගොඩක් සතුටුයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV320",
+      "comment": "Call කරනකොට connection එක නිතර කැඩෙනවා.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV321",
+      "comment": "I need more time to judge its durability.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV322",
+      "comment": "Parcel eka front desk eke thiyala gihilla thibuna. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV323",
+      "comment": "මේ මිලට sound quality එක සාමාන්‍යයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV324",
+      "comment": "ඩිලිවරි එකට දවස් තුනක් ගියා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV325",
+      "comment": "Build quality eka strong wage, trust karanna puluwan. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV326",
+      "comment": "Seller mage messages walata reply karala na. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV327",
+      "comment": "විකුණපු කෙනා විස්තරේ තිබුණු original බඩුවම එවලා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV328",
+      "comment": "Call කරනකොට connection එක නිතර කැඩෙනවා.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV329",
+      "comment": "ඩිලිවරි එක ඉක්මනට ආවා, බඩුවත් හොඳට වැඩ.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV330",
+      "comment": "බැටරිය ඉක්මනටම බැහැලා යනවා.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV331",
+      "comment": "Charge වෙන්න ගන්න කාලය බලාපොරොත්තු වුණ තරමටමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV332",
+      "comment": "The battery lasts a long time on one charge.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV333",
+      "comment": "තවම ලොකු ප්‍රශ්නයක් දැක්කේ නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV334",
+      "comment": "විස්තරේ කියපු විදිහටම තියෙනවා, හොඳට වැඩ කරනවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV335",
+      "comment": "බැටරිය ඉක්මනටම බැහැලා යනවා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV336",
+      "comment": "Package eke cable ekai case ekai thibuna.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV337",
+      "comment": "Dawas dekak use kala, danata nam okay.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV338",
+      "comment": "Thama loku issue ekak notice kale na. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV339",
+      "comment": "Product eka fake wage, trust karanna ba. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV340",
+      "comment": "Instructions balala pair karaganna puluwan una. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV341",
+      "comment": "Charge wenna yana time eka expect karapu ganatama wage.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV342",
+      "comment": "හදලා තියෙන විදිහ ශක්තිමත්, විශ්වාස කරන්න පුළුවන්. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV343",
+      "comment": "Excellent value for the price.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV344",
+      "comment": "Parcel eka late una, packing ekath damage wela. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV345",
+      "comment": "Meeke sound quality eka clear, bass ekath hondai. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV346",
+      "comment": "Minutes kihipayak dagena hitiyath uncomfortable.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV347",
+      "comment": "බැටරිය ඉක්මනටම බැහැලා යනවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV348",
+      "comment": "The sound is fine for calls and music.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV349",
+      "comment": "Charging case එක බාලයි, හරියට වැහෙන්නෙත් නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV350",
+      "comment": "කියපු කාලයට වඩා delivery එක ගොඩක් පරක්කුයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV351",
+      "comment": "දිග වෙලාවක් පාවිච්චි කළත් කනට පහසුයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV352",
+      "comment": "Dawas dekakin product eka wada nathuwa giya. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV353",
+      "comment": "Parcel eka front desk eke thiyala gihilla thibuna. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV354",
+      "comment": "The delivery took three days.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV355",
+      "comment": "Product eka iye labuna, thama eka parak witharai use kale. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV356",
+      "comment": "Instructions balala pair karaganna puluwan una.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV357",
+      "comment": "බඩුව ආරක්ෂිතව ලැබුණා, වැඩත් හොඳයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV358",
+      "comment": "මේ මිලට ගත්ත එක වටිනවා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV359",
+      "comment": "හදලා තියෙන විදිහ ශක්තිමත්, විශ්වාස කරන්න පුළුවන්.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV360",
+      "comment": "විස්තරේ කියපු විදිහටම තියෙනවා, හොඳට වැඩ කරනවා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV361",
+      "comment": "බඩුව එද්දි box එක ඇරලා තිබුණා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV362",
+      "comment": "Seller මගේ message වලට තවම reply කරලා නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV363",
+      "comment": "බඩුව නියමිත දවසට කලින් ආවා, පැකේජ් එකත් හොඳයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV364",
+      "comment": "Instructions බලලා pair කරගන්න පුළුවන් වුණා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV365",
+      "comment": "First charge eken passe battery life eka normal wage.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV366",
+      "comment": "Sound එක දුර්වලයි, bass එකක් වගේ දෙයක් නැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV367",
+      "comment": "Sound eka weak, bass nam almost na wage. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV368",
+      "comment": "Pair කරන්න අමාරුයි, නිතර fail වෙනවා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV369",
+      "comment": "Battery eka ikmanata bahinawa. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV370",
+      "comment": "Delivery eka ikmanata awa, item ekath hariyata wada. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV371",
+      "comment": "Microphone quality eka godak poor.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV372",
+      "comment": "Durability eka judge karanna thawath time one. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV373",
+      "comment": "Long time use kalath ear ekata comfortable. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV374",
+      "comment": "Product eka iye labuna, thama eka parak witharai use kale.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV375",
+      "comment": "Product eka iye labuna, thama eka parak witharai use kale. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV376",
+      "comment": "මේ මිලට ගත්ත එක වටිනවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV377",
+      "comment": "Product එක fake වගේ, විශ්වාස කරන්න බැහැ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV378",
+      "comment": "Box eka awa welawedi open wela thibbe. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV379",
+      "comment": "Pair කරන්න අමාරුයි, නිතර fail වෙනවා.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV380",
+      "comment": "Sound එක දුර්වලයි, bass එකක් වගේ දෙයක් නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV381",
+      "comment": "Item eka description eke thibba widihata newei.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV382",
+      "comment": "Calls සහ music වලට sound එක හොඳටම සාමාන්‍යයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV383",
+      "comment": "පාර්සලය front desk එකේ දාලා ගිහින් තිබුණා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV384",
+      "comment": "දාගත්තම තදත් නැහැ, ලූස්ත් නැහැ.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV385",
+      "comment": "Aluth ekak wenuwata used item ekak labune. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV386",
+      "comment": "Thama connection issues na, mata godak satisfied.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV387",
+      "comment": "ඔක්කොම හිතපු විදිහට වැඩ, sellerත් උදව් කළා.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV388",
+      "comment": "Quality eka hondai, seller gana trust ekak thiyenawa. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV389",
+      "comment": "බැටරිය ඉක්මනටම බැහැලා යනවා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV390",
+      "comment": "Okkom expected widihata wada, selleruth helpful. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV391",
+      "comment": "Package eke cable ekai case ekai thibuna. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV392",
+      "comment": "Delivery eka ikmanata awa, item ekath hariyata wada. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV393",
+      "comment": "සින්දු අහද්දි sound එක හොඳයි, calls පැහැදිලියි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV394",
+      "comment": "Seller කියපු කාලය ඇතුළත පාර්සලය ආවා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV395",
+      "comment": "Dagan inna comfortable, connect karannath lesi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV396",
+      "comment": "The fit is neither too tight nor too loose.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV397",
+      "comment": "Warranty eka gana ahapu question ekata seller reply kala. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV398",
+      "comment": "Calls waladi connection eka digatama drop wenawa. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV399",
+      "comment": "The charging time is about what I expected.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV400",
+      "comment": "Package eke cable ekai case ekai thibuna.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV401",
+      "comment": "Item eka safe widihata labuna, wada karannath hondai. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV402",
+      "comment": "Dawas dekak use kala, danata nam okay.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV403",
+      "comment": "Pair කරන්න අමාරුයි, නිතර fail වෙනවා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV404",
+      "comment": "Calls සහ music වලට sound එක හොඳටම සාමාන්‍යයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV405",
+      "comment": "Seller kiwwa time eka athulatha parcel eka awa.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV406",
+      "comment": "Thama loku issue ekak notice kale na.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV407",
+      "comment": "Aluth ekak wenuwata used item ekak labune.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV408",
+      "comment": "බඩුව නියමිත දවසට කලින් ආවා, පැකේජ් එකත් හොඳයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV409",
+      "comment": "Page එකේ සඳහන් features ටික තියෙනවා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV410",
+      "comment": "Product eka fake wage, trust karanna ba. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV411",
+      "comment": "බඩුව නියමිත දවසට කලින් ආවා, පැකේජ් එකත් හොඳයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV412",
+      "comment": "Me price ekata meka ganna watinne na. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV413",
+      "comment": "The seller answered my question about warranty.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV414",
+      "comment": "Charge wenna yana time eka expect karapu ganatama wage. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV415",
+      "comment": "Pair karanna lesi, connection ekath stable. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV416",
+      "comment": "Battery life seems normal after the first charge.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV417",
+      "comment": "Delivery fast, packing neat, product ekath good.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV418",
+      "comment": "The microphone quality is poor.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV419",
+      "comment": "පාර්සලය පරක්කු වෙලා ආවා, පැකේජ් එකත් කැඩිලා.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV420",
+      "comment": "දිග වෙලාවක් පාවිච්චි කළත් කනට පහසුයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV421",
+      "comment": "This is not worth the price.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV422",
+      "comment": "Promise karapu time ekata wada delivery godak late. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV423",
+      "comment": "Microphone quality එක ගොඩක් දුර්වලයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV424",
+      "comment": "Page eke mention karapu features thiyenawa. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV425",
+      "comment": "Dawas dekak use kala, danata nam okay. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV426",
+      "comment": "මේකේ sound quality එක පැහැදිලියි, bass එකත් හොඳයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV427",
+      "comment": "First charge eken passe battery life eka normal wage. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV428",
+      "comment": "Warranty eka gana ahapu question ekata seller reply kala.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV429",
+      "comment": "Seller original item ekama ewලා, description ekata match. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV430",
+      "comment": "බඩුව listing එකේ photos වල වගේමයි. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV431",
+      "comment": "Me price ekata gaththa eka watinawa. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV432",
+      "comment": "Minutes kihipayak dagena hitiyath uncomfortable.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV433",
+      "comment": "ඩිලිවරි එක ඉක්මනට ආවා, බඩුවත් හොඳට වැඩ.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV434",
+      "comment": "එක charge එකකින් බැටරිය ගොඩක් වෙලා තියෙනවා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV435",
+      "comment": "පළවෙනි charge එකෙන් පස්සේ battery life එක සාමාන්‍යයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV436",
+      "comment": "Dagan inna comfortable, connect karannath lesi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV437",
+      "comment": "Box eka awa welawedi open wela thibbe. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV438",
+      "comment": "Pairing is difficult and often fails.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV439",
+      "comment": "Battery eka ikmanata bahinawa. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV440",
+      "comment": "Minutes kihipayak dagena hitiyath uncomfortable. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV441",
+      "comment": "කල්පැවැත්ම ගැන කියන්න තව කාලයක් ඕන. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV442",
+      "comment": "Me price ekata gaththa eka watinawa. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV443",
+      "comment": "Battery eka ikmanata bahinawa. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV444",
+      "comment": "ඩිලිවරි එක ඉක්මනට ආවා, බඩුවත් හොඳට වැඩ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV445",
+      "comment": "විනාඩි කිහිපයක් දාගෙන ඉද්දිත් අපහසුයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV446",
+      "comment": "විස්තරේ කියපු විදිහටම තියෙනවා, හොඳට වැඩ කරනවා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV447",
+      "comment": "Promise karapu time ekata wada delivery godak late.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV448",
+      "comment": "බඩුව එද්දි box එක ඇරලා තිබුණා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV449",
+      "comment": "කල්පැවැත්ම ගැන කියන්න තව කාලයක් ඕන.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV450",
+      "comment": "මේ මිලට ගත්ත එක වටිනවා.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV451",
+      "comment": "Instructions බලලා pair කරගන්න පුළුවන් වුණා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV452",
+      "comment": "Build quality eka strong wage, trust karanna puluwan. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV453",
+      "comment": "Microphone quality eka godak poor. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV454",
+      "comment": "The fit is uncomfortable after a few minutes.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV455",
+      "comment": "ඩිලිවරි එකට දවස් තුනක් ගියා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV456",
+      "comment": "The product seems fake and unreliable.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV457",
+      "comment": "දිග වෙලාවක් පාවිච්චි කළත් කනට පහසුයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV458",
+      "comment": "දවස් දෙකකින් product එක වැඩ නැතුව ගියා.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV459",
+      "comment": "Instructions balala pair karaganna puluwan una. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV460",
+      "comment": "Parcel eka front desk eke thiyala gihilla thibuna. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV461",
+      "comment": "The parcel arrived late with damaged packaging.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV462",
+      "comment": "කල්පැවැත්ම ගැන කියන්න තව කාලයක් ඕන. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV463",
+      "comment": "Okkom expected widihata wada, selleruth helpful.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV464",
+      "comment": "සින්දු අහද්දි sound එක හොඳයි, calls පැහැදිලියි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV465",
+      "comment": "Dawas dekak use kala, danata nam okay. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV466",
+      "comment": "The connection keeps dropping during calls.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV467",
+      "comment": "Delivery ekata dawas thunak giya. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV468",
+      "comment": "Product එක ඊයේ ලැබුණා, තවම එක පාරයි පාවිච්චි කළේ.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV469",
+      "comment": "ඩිලිවරි ඉක්මන්, packing එක පිළිවෙළයි, product එකත් හොඳයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV470",
+      "comment": "බඩුව listing එකේ photos වල වගේමයි. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV471",
+      "comment": "තවම ලොකු ප්‍රශ්නයක් දැක්කේ නැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV472",
+      "comment": "The seller sent the genuine product as described.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV473",
+      "comment": "Calls saha music walata sound eka normal.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV474",
+      "comment": "දවස් දෙකක් පාවිච්චි කළා, දැනට නම් අවුලක් නැහැ. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV475",
+      "comment": "Thama connection issues na, mata godak satisfied. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV476",
+      "comment": "Item eka description eke thibba widihata newei. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "negative"
+        }
+      }
+    },
+    {
+      "id": "REV477",
+      "comment": "Charging case එක බාලයි, හරියට වැහෙන්නෙත් නැහැ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV478",
+      "comment": "Ek charge ekakin battery eka godak welawak thiyenawa. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV479",
+      "comment": "කියපු කාලයට වඩා delivery එක ගොඩක් පරක්කුයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV480",
+      "comment": "Calls saha music walata sound eka normal. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV481",
+      "comment": "Seller කියපු කාලය ඇතුළත පාර්සලය ආවා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "neutral",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV482",
+      "comment": "Sound eka weak, bass nam almost na wage.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV483",
+      "comment": "Warranty එක ගැන අහපු ප්‍රශ්නෙට seller උත්තර දුන්නා.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV484",
+      "comment": "Build quality eka strong wage, trust karanna puluwan.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV485",
+      "comment": "Minutes kihipayak dagena hitiyath uncomfortable. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV486",
+      "comment": "Fast delivery, neat packaging, and a good product.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV487",
+      "comment": "Promise karapu time ekata wada delivery godak late. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV488",
+      "comment": "බඩුව විස්තරේ කියපු විදිහට නැහැ.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV489",
+      "comment": "Pair karanna lesi, connection ekath stable. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV490",
+      "comment": "Meeke sound quality eka clear, bass ekath hondai. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV491",
+      "comment": "ඩිලිවරි ඉක්මන්, packing එක පිළිවෙළයි, product එකත් හොඳයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV492",
+      "comment": "The fit is comfortable even after long use.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV493",
+      "comment": "Everything works as expected and the seller was helpful.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV494",
+      "comment": "එක පැත්තකින් sound එන්නේ නැහැ. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV495",
+      "comment": "Calls waladi connection eka digatama drop wenawa. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV496",
+      "comment": "බඩුව ආරක්ෂිතව ලැබුණා, වැඩත් හොඳයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV497",
+      "comment": "Pair karanna amarui, godak welawata fail wenawa.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "negative",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV498",
+      "comment": "Instructions balala pair karaganna puluwan una. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV499",
+      "comment": "Item eka listing photos wala thiyena widihatama wage.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "neutral"
+        }
+      }
+    },
+    {
+      "id": "REV500",
+      "comment": "I have used it for two days, so far it is okay.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV501",
+      "comment": "එක charge එකකින් බැටරිය ගොඩක් වෙලා තියෙනවා. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV502",
+      "comment": "පළවෙනි charge එකෙන් පස්සේ battery life එක සාමාන්‍යයි. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "neutral",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV503",
+      "comment": "විකුණපු කෙනා විස්තරේ තිබුණු original බඩුවම එවලා. පාවිච්චි කරලා බලද්දි එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV504",
+      "comment": "Seller original item ekama ewලා, description ekata match. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV505",
+      "comment": "Thama connection issues na, mata godak satisfied. Mage experience eka eka thamai.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV506",
+      "comment": "Description eke thibba widihatama thiyenawa, hondata wada. Danata mata penune ehemayi.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV507",
+      "comment": "Instructions බලලා pair කරගන්න පුළුවන් වුණා. මගේ අත්දැකීම ඒකයි.",
+      "predictions": {
+        "sentiment": "neutral",
+        "aspects": {
+          "quality": "not_mentioned",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV508",
+      "comment": "The item matches the description and works well.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "not_mentioned",
+          "trust": "positive"
+        }
+      }
+    },
+    {
+      "id": "REV509",
+      "comment": "ඩිලිවරි එක ඉක්මනට ආවා, බඩුවත් හොඳට වැඩ. දැනට මට පෙනුණේ එහෙමයි.",
+      "predictions": {
+        "sentiment": "positive",
+        "aspects": {
+          "quality": "positive",
+          "delivery": "positive",
+          "trust": "not_mentioned"
+        }
+      }
+    },
+    {
+      "id": "REV510",
+      "comment": "Ek side ekakin sound enne na. Use karala baladdi ehemayi.",
+      "predictions": {
+        "sentiment": "negative",
+        "aspects": {
+          "quality": "negative",
+          "delivery": "not_mentioned",
+          "trust": "not_mentioned"
         }
       }
     }
