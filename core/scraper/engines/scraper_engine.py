@@ -6,6 +6,8 @@ Professional Daraz Review Scraper Engine - Manual Filter Mode
 - Saves to CSV in real-time
 """
 
+import os
+import sys
 import time
 import csv
 import re
