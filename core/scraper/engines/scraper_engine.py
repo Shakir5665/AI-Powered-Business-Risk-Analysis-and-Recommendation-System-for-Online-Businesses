@@ -660,7 +660,15 @@ class ScraperEngine(ScraperInterface):
                             )
 
                     logger.info(f"Created {new_count} ScrapedReview objects.")
-                    consecutive_empty_pages = 0
+                    if new_count > 0:
+                        consecutive_empty_pages = 0
+                    else:
+                        consecutive_empty_pages += 1
+                        if consecutive_empty_pages >= 3:
+                            logger.info(f"Stopping: No new unique reviews found for {consecutive_empty_pages} consecutive pages (Total collected: {review_count}).")
+                            if self.job_state:
+                                self.job_state.add_log("SCRAPER", f"All unique customer reviews collected ({review_count} reviews). Finishing collection.")
+                            break
 
                     if self.job_state:
                         self.job_state.status = "SCRAPING"
