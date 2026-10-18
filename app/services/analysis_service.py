@@ -103,9 +103,9 @@ class AnalysisService:
         """
         self._validate_url(product_url)
         job = job_state_manager.create_job(product_url, user_id=str(user_id))
-        job.status = "SCRAPING"
-        job.current_step = "Connecting to product page..."
-        job.progress_percent = 10
+        job.status = "CONNECTING"
+        job.current_step = "Opening the product page..."
+        job.progress_percent = 5
 
         api_logger.info(f"Started guided background analysis job [{job.analysis_id}] for user [{user_id}]")
 
@@ -114,8 +114,8 @@ class AnalysisService:
 
         return {
             "analysisId": job.analysis_id,
-            "status": "SCRAPING",
-            "message": "Analysis job started successfully. Collecting customer reviews..."
+            "status": "CONNECTING",
+            "message": "Analysis job started. Connecting to store..."
         }
 
     def finish_scraping(self, analysis_id: str, user_id: Optional[UUID] = None) -> bool:
@@ -164,7 +164,9 @@ class AnalysisService:
             "reviewsCollected": job.reviews_collected,
             "progress": job.progress_percent,
             "elapsedTime": job.get_elapsed_time_str(),
-            "logs": list(job.log_entries)
+            "logs": list(job.log_entries),
+            "stopRequested": getattr(job, "stop_requested", False),
+            "errorMessage": getattr(job, "error_message", None),
         }
 
     async def _run_async_job(self, job: JobState, user_id: UUID, save_history: bool):
@@ -172,8 +174,9 @@ class AnalysisService:
         Internal worker running scraper and full AI pipeline in background.
         """
         try:
-            job.current_step = "Collecting customer reviews from product page..."
-            job.progress_percent = 15
+            job.status = "CONNECTING"
+            job.current_step = "Opening the product page..."
+            job.progress_percent = 5
             job.add_log("SCRAPER", "Connecting to Daraz product page via Selenium...")
 
             # Phase 1: Web Scraping & Immediate DB Staging
@@ -181,9 +184,14 @@ class AnalysisService:
                 self.adapter.scrape_product, job.product_url, job
             )
 
-            job.current_step = "Processing collected reviews for analysis..."
-            job.progress_percent = 45
-            job.add_log("DATABASE", f"Committing {len(getattr(raw_product, 'reviews', []))} raw reviews to PostgreSQL...")
+            scraped_reviews = getattr(raw_product, "reviews", [])
+            job.reviews_collected = len(scraped_reviews)
+            if job.stop_requested:
+                job.current_step = f"You collected {len(scraped_reviews)} reviews before stopping."
+            else:
+                job.current_step = f"You have collected all {len(scraped_reviews)} reviews."
+            job.progress_percent = 60
+            job.add_log("DATABASE", f"Committing {len(scraped_reviews)} raw reviews to PostgreSQL...")
 
             staged_info = {}
             if save_history:
@@ -196,13 +204,11 @@ class AnalysisService:
 
             # Phase 2: AI Predictions & Fuzzy Logic Evaluation
             job.status = "AI_ANALYSIS"
-            job.current_step = "Running XLM-R + Adapter AI Inference on Staged Reviews..."
-            job.progress_percent = 65
-            job.add_log("AI_ENGINE", "Preprocessing & tokenizing multilingual review texts...")
-            job.add_log("AI_ENGINE", "Running XLM-R backbone + adapter classification head...")
+            job.current_step = "Understanding customer opinions and what they like or dislike..."
+            job.progress_percent = 75
+            job.add_log("AI_ENGINE", "Analyzing customer sentiments and aspect predictions...")
             job.add_log("FIS", "Evaluating Quality, Delivery, and Trust Fuzzy Inference Systems...")
 
-            scraped_reviews = getattr(raw_product, "reviews", [])
             eval_output = await asyncio.to_thread(
                 self.adapter.evaluate_predictions_and_risks, scraped_reviews
             )
@@ -214,10 +220,12 @@ class AnalysisService:
             mapped_data = AnalysisMapper.to_api_result(pipeline_output)
 
             # Phase 3: Finalize Analysis Risk Scores in PostgreSQL
+            job.status = "REPORT_GENERATION"
+            job.current_step = "Preparing your business risk report and recommendations..."
+            job.progress_percent = 90
+            job.add_log("DATABASE", "Updating Analysis risk scores and Review AI predictions in PostgreSQL...")
+
             if save_history and staged_info.get("analysis_db_id"):
-                job.current_step = "Finalizing Analysis Risk Scores in PostgreSQL..."
-                job.progress_percent = 90
-                job.add_log("DATABASE", "Updating Analysis risk scores and Review AI predictions in PostgreSQL...")
                 try:
                     with SessionLocal() as db_session:
                         self._finalize_staged_analysis(db_session, staged_info["analysis_db_id"], mapped_data, eval_output, job)
@@ -227,7 +235,7 @@ class AnalysisService:
 
             job.status = AnalysisStatus.COMPLETED.value
             job.end_time = time.time()
-            job.current_step = "Analysis Completed"
+            job.current_step = "Your business risk report is ready to view."
             job.progress_percent = 100
             job.add_log("COMPLETED", f"Business Risk Analysis [{job.analysis_id}] finished successfully.")
             job.result = {

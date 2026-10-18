@@ -54,3 +54,6 @@ class AnalysisStatusResponse(BaseModel):
     progress: int = Field(0, description="Progress percentage (0-100)")
     elapsedTime: str = Field("00:00:00", description="Formatted elapsed duration")
     logs: List[str] = Field(default_factory=list, description="Timestamped progress log entries")
+    stopRequested: Optional[bool] = Field(False, description="Whether stop was requested by user")
+    errorMessage: Optional[str] = Field(None, description="Detailed error message if failed")
+

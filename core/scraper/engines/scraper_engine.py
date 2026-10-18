@@ -540,6 +540,11 @@ class ScraperEngine(ScraperInterface):
     def scrape_product(self, product_url: str) -> Product:
 
         self._init_csv()
+        if self.job_state:
+            self.job_state.status = "CONNECTING"
+            self.job_state.current_step = "Opening the product page..."
+            self.job_state.progress_percent = 5
+
         self._setup_browser(headless=False)
 
         unique_review_texts: set[str] = set()
@@ -566,6 +571,10 @@ class ScraperEngine(ScraperInterface):
             metadata = self._extract_metadata_from_driver(product_url)
             if self.job_state:
                 self.job_state.product_preview = metadata
+                self.job_state.status = "SCRAPING"
+                self.job_state.current_step = "Connected to Store. Finding customer reviews..."
+                self.job_state.progress_percent = 15
+                self.job_state.add_log("SCRAPER", "Connected to Store: Successfully opened product page.")
 
             # Progressive Auto-Scroll to trigger lazy-loaded review components
             logger.info("Executing progressive auto-scroll to trigger lazy-loading content...")
@@ -654,10 +663,12 @@ class ScraperEngine(ScraperInterface):
                     consecutive_empty_pages = 0
 
                     if self.job_state:
+                        self.job_state.status = "SCRAPING"
                         self.job_state.current_page = current_page
                         self.job_state.reviews_collected = review_count
-                        pct = min(65, int(10 + (current_page / max(1, total_pages)) * 55))
+                        pct = min(60, int(15 + (current_page / max(1, total_pages)) * 45))
                         self.job_state.progress_percent = pct
+                        self.job_state.current_step = f"Finding and collecting customer reviews... ({review_count} collected)"
                         self.job_state.add_log("SCRAPER", f"Scraped page {current_page}/{total_pages} - Collected {new_count} new reviews (Total: {review_count})")
 
                     # Show progress every 10 pages
