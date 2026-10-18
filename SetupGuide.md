@@ -5,30 +5,6 @@
 
 ---
 
-## 📌 Architecture & Data Flow
-
-```mermaid
-flowchart TD
-    subgraph Mode_A["Mode A: Hybrid GPU Acceleration (Live Demo & Presentation)"]
-        A1["🌐 Local PC: React Frontend (localhost:5173)"] <--> A2["⚙️ Local PC: FastAPI Backend (localhost:8000)"]
-        A2 -->|Selenium + Chrome UI| A3["🛒 Daraz.lk (Sri Lankan Residential IP)"]
-        A3 -->|125+ Scraped Reviews| A2
-        A2 -->|HTTP POST /predict-batch (~0.2s)| A4["⚡ Google Colab (Tesla T4 GPU 15GB VRAM)"]
-        A4 -->|XLM-RoBERTa + Adapters (~2s)| A2
-        A2 -->|Fuzzy Logic & Risk Engine| A5[("☁️ Neon Cloud PostgreSQL")]
-    end
-
-    subgraph Mode_B["Mode B: 100% Pure Local Execution (Offline / Dev)"]
-        B1["🌐 Local PC: React Frontend (localhost:5173)"] <--> B2["⚙️ Local PC: FastAPI Backend (localhost:8000)"]
-        B2 -->|Selenium + Chrome UI| B3["🛒 Daraz.lk (Sri Lankan Residential IP)"]
-        B3 -->|Scraped Reviews| B2
-        B2 -->|Local CPU Inference (~35-50s)| B4["💻 Local PC CPU (XLM-RoBERTa Model)"]
-        B4 -->|Fuzzy Logic & Risk Engine| B5[("☁️ Neon Cloud PostgreSQL")]
-    end
-```
-
----
-
 ## ⚖️ Mode Comparison Matrix
 
 | Feature | ⚡ Mode A: Colab GPU Offload | 💻 Mode B: 100% Local PC |
