@@ -77,7 +77,7 @@ class ReviewTokenizer:
 
             reviews,
 
-            padding="max_length",
+            padding="longest",
 
             truncation=True,
 

@@ -16,7 +16,7 @@ MODEL_NAME = "FacebookAI/xlm-roberta-base"
 # Tokenization
 # --------------------------------------------------
 
-MAX_SEQUENCE_LENGTH = 512
+MAX_SEQUENCE_LENGTH = 256
 
 # --------------------------------------------------
 # XLM-R Architecture
@@ -55,7 +55,16 @@ FREEZE_BACKBONE = True
 LOW_CONFIDENCE_THRESHOLD = 0.60
 
 # ==================================================
-# Inference Batching
+# Inference Batching & Precision
 # ==================================================
 
 INFERENCE_BATCH_SIZE = 64
+
+# Mini-batch sizes for inference engine (inside batch chunk)
+INFERENCE_MINI_BATCH_GPU_LARGE = 64    # GPUs with >= 15 GB VRAM (e.g. Tesla T4, V100, A100)
+INFERENCE_MINI_BATCH_GPU_SMALL = 32    # GPUs with < 15 GB VRAM (e.g. RTX 3060/3070/4060)
+INFERENCE_MINI_BATCH_CPU = 16          # CPU execution fallback
+
+# Mixed precision (GPU only)
+USE_FP16_INFERENCE = True
+
