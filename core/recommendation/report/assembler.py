@@ -24,7 +24,7 @@ class ReportAssembler:
     """
 
     def __init__(self):
-        logger.info("Initializing ReportAssembler component")
+        logger.debug("Initializing ReportAssembler component")
 
     def assemble(
         self,

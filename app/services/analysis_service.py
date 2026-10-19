@@ -36,10 +36,21 @@ class AnalysisService:
         review_repo: Optional[ReviewRepository] = None,
     ):
         self.db = db
-        self.adapter = adapter or AIEngineAdapter()
+        self._adapter = adapter
         self.product_repo = product_repo or (ProductRepository(db) if db else None)
         self.analysis_repo = analysis_repo or (AnalysisRepository(db) if db else None)
         self.review_repo = review_repo or (ReviewRepository(db) if db else None)
+
+    @property
+    def adapter(self) -> AIEngineAdapter:
+        """
+        Lazily loads the shared AIEngineAdapter on demand.
+        Prevents instantiating heavy AI/FIS/Recommendation components on lightweight queries like get_status.
+        """
+        if self._adapter is None:
+            from app.api.dependencies.services import get_shared_ai_adapter
+            self._adapter = get_shared_ai_adapter()
+        return self._adapter
 
     def _validate_url(self, url: str):
         import re

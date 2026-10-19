@@ -712,6 +712,7 @@ export default function AnalysisResult() {
 
       {/* ── User Reviews Section ── */}
       <UserReviewsSection
+        analysisId={id || analysisData?.analysisId || analysisData?.id}
         analysisCounts={{
           positive: positiveCount,
           negative: negativeCount,

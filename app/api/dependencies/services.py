@@ -45,8 +45,25 @@ def get_auth_service(db: Session = Depends(get_db)) -> AuthService:
     return AuthService(db=db, user_repo=user_repo)
 
 
+from app.state.core_state import app_state
+from app.adapters.ai_engine_adapter import AIEngineAdapter
+from core.recommendation.service import RecommendationService
+
+
+def get_shared_ai_adapter() -> AIEngineAdapter:
+    """
+    Returns the shared singleton AIEngineAdapter instance stored in app_state.
+    Initializes lazily on first access and stays warm in memory.
+    """
+    if app_state.adapter_instance is None:
+        app_state.adapter_instance = AIEngineAdapter()
+    return app_state.adapter_instance
+
+
 def get_recommendation_service() -> RecommendationService:
     """
     Dependency providing RecommendationService instance.
+    Reuses the shared recommendation service from the shared adapter for zero overhead.
     """
-    return RecommendationService()
+    adapter = get_shared_ai_adapter()
+    return adapter._recommendation_service

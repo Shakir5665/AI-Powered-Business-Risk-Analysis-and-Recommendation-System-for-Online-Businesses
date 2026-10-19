@@ -16,7 +16,7 @@ class TemplateResolver:
     """
 
     def __init__(self):
-        logger.info("Initializing TemplateResolver component")
+        logger.debug("Initializing TemplateResolver component")
 
     def resolve_summary(self, highest_priority: str, aspect: Optional[str] = None) -> str:
         """

@@ -29,7 +29,7 @@ class SelectionStrategy:
     """
 
     def __init__(self):
-        logger.info("Initializing SelectionStrategy component")
+        logger.debug("Initializing SelectionStrategy component")
 
     def select_recommendations(
         self, context: RecommendationContext, knowledge_base: RecommendationKnowledgeBase
