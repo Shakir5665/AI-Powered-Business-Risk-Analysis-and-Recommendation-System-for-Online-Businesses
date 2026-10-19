@@ -6,6 +6,8 @@ Professional Daraz Review Scraper Engine - Manual Filter Mode
 - Saves to CSV in real-time
 """
 
+import os
+import sys
 import time
 import csv
 import re
@@ -32,9 +34,13 @@ from core.scraper.dto.scraped_review import ScrapedReview
 try:
     import keyboard
     KEYBOARD_AVAILABLE = True
+    msvcrt = None
 except ImportError:
     KEYBOARD_AVAILABLE = False
-    import msvcrt
+    try:
+        import msvcrt
+    except ImportError:
+        msvcrt = None
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -110,7 +116,7 @@ class ScraperEngine(ScraperInterface):
                         return True
                 except Exception:
                     pass
-            else:
+            elif msvcrt is not None:
                 try:
                     if msvcrt.kbhit():
                         key = msvcrt.getch()
@@ -534,6 +540,11 @@ class ScraperEngine(ScraperInterface):
     def scrape_product(self, product_url: str) -> Product:
 
         self._init_csv()
+        if self.job_state:
+            self.job_state.status = "CONNECTING"
+            self.job_state.current_step = "Opening the product page..."
+            self.job_state.progress_percent = 5
+
         self._setup_browser(headless=False)
 
         unique_review_texts: set[str] = set()
@@ -560,6 +571,10 @@ class ScraperEngine(ScraperInterface):
             metadata = self._extract_metadata_from_driver(product_url)
             if self.job_state:
                 self.job_state.product_preview = metadata
+                self.job_state.status = "SCRAPING"
+                self.job_state.current_step = "Connected to Store. Finding customer reviews..."
+                self.job_state.progress_percent = 15
+                self.job_state.add_log("SCRAPER", "Connected to Store: Successfully opened product page.")
 
             # Progressive Auto-Scroll to trigger lazy-loaded review components
             logger.info("Executing progressive auto-scroll to trigger lazy-loading content...")
@@ -645,13 +660,23 @@ class ScraperEngine(ScraperInterface):
                             )
 
                     logger.info(f"Created {new_count} ScrapedReview objects.")
-                    consecutive_empty_pages = 0
+                    if new_count > 0:
+                        consecutive_empty_pages = 0
+                    else:
+                        consecutive_empty_pages += 1
+                        if consecutive_empty_pages >= 3:
+                            logger.info(f"Stopping: No new unique reviews found for {consecutive_empty_pages} consecutive pages (Total collected: {review_count}).")
+                            if self.job_state:
+                                self.job_state.add_log("SCRAPER", f"All unique customer reviews collected ({review_count} reviews). Finishing collection.")
+                            break
 
                     if self.job_state:
+                        self.job_state.status = "SCRAPING"
                         self.job_state.current_page = current_page
                         self.job_state.reviews_collected = review_count
-                        pct = min(65, int(10 + (current_page / max(1, total_pages)) * 55))
+                        pct = min(60, int(15 + (current_page / max(1, total_pages)) * 45))
                         self.job_state.progress_percent = pct
+                        self.job_state.current_step = f"Finding and collecting customer reviews... ({review_count} collected)"
                         self.job_state.add_log("SCRAPER", f"Scraped page {current_page}/{total_pages} - Collected {new_count} new reviews (Total: {review_count})")
 
                     # Show progress every 10 pages
@@ -691,7 +716,7 @@ class ScraperEngine(ScraperInterface):
             category=metadata.get("category", "General"),
             seller_name=metadata.get("seller", "Daraz Flagship Store"),
             overall_rating=float(metadata.get("overallRating", 0.0)),
-            total_reviews=int(metadata.get("totalReviews", review_count)),
+            total_reviews=max(review_count, int(metadata.get("totalReviews") or 0)),
             image_url=metadata.get("imageUrl", ""),
             platform=metadata.get("platform", "Daraz"),
             reviews=reviews
@@ -840,27 +865,41 @@ class ScraperEngine(ScraperInterface):
                     pass
 
         # --- 5. Total Reviews Extraction ---
-        count_selectors = [".pdp-review-summary__link", ".count", ".score-total", "a[href*='rating-review']"]
+        count_selectors = [
+            "a.pdp-review-summary__link",
+            ".pdp-review-summary__link",
+            "a[href*='rating-review']",
+            ".pdp-review-summary a"
+        ]
         for sel in count_selectors:
             try:
-                elem = self._driver.find_element(By.CSS_SELECTOR, sel)
-                if elem and elem.text.strip():
-                    match = re.search(r'\d+', elem.text.strip())
-                    if match:
-                        total_reviews = int(match.group())
-                        break
+                elems = self._driver.find_elements(By.CSS_SELECTOR, sel)
+                for elem in elems:
+                    if elem and elem.text.strip():
+                        raw_text = elem.text.strip()
+                        # Extract full number including commas (e.g. "3,006 Ratings" -> 3006)
+                        match = re.search(r'([\d,]+)\s*(?:Ratings|Reviews|ratings|reviews)', raw_text)
+                        if not match:
+                            match = re.search(r'([\d,]+)', raw_text)
+                        if match:
+                            num_str = match.group(1).replace(',', '').strip()
+                            if num_str.isdigit() and int(num_str) > 0:
+                                total_reviews = int(num_str)
+                                break
+                if total_reviews > 0:
+                    break
             except Exception:
                 continue
 
         if total_reviews == 0 and page_source:
-            rev_match = re.search(r'"reviewCount"\s*:\s*"?(\d+)"?', page_source)
+            rev_match = re.search(r'"(?:reviewCount|ratingCount|totalReview|totalRatings)"\s*:\s*"?([\d,]+)"?', page_source)
             if not rev_match:
-                rev_match = re.search(r'"ratingCount"\s*:\s*"?(\d+)"?', page_source)
-            if not rev_match:
-                rev_match = re.search(r'(\d+)\s*(?:Ratings|Reviews|ratings|reviews)', page_source)
+                rev_match = re.search(r'([\d,]+)\s*(?:Ratings|Reviews|ratings|reviews)', page_source)
             if rev_match:
                 try:
-                    total_reviews = int(rev_match.group(1))
+                    num_str = rev_match.group(1).replace(',', '').strip()
+                    if num_str.isdigit():
+                        total_reviews = int(num_str)
                 except Exception:
                     pass
 

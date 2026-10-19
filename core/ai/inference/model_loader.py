@@ -76,6 +76,8 @@ class ModelLoader:
 
         checkpoint_path = Path(MODEL_DIR) / "best_model.pt"
 
+        logger.info(f"Loading model checkpoint from: {checkpoint_path}")
+
         checkpoint = torch.load(
             checkpoint_path,
             map_location=self.device

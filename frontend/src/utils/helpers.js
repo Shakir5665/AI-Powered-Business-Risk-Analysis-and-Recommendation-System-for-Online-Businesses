@@ -84,3 +84,17 @@ export function truncate(str, maxLength = 80) {
   if (!str) return "";
   return str.length <= maxLength ? str : `${str.slice(0, maxLength)}…`;
 }
+
+/**
+ * Formats a numeric amount into a localized currency string.
+ * Defaults to Sri Lankan Rupee (LKR).
+ * @param {number} amount
+ * @param {string} currency - e.g. "LKR"
+ * @returns {string} e.g. "LKR 8,900" or "Free"
+ */
+export function formatCurrency(amount, currency = "LKR") {
+  if (amount === 0) return "Free";
+  const formatted = new Intl.NumberFormat("en-LK").format(amount);
+  return `${currency} ${formatted}`;
+}
+

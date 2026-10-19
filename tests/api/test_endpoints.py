@@ -79,3 +79,17 @@ def test_analysis_invalid_url_with_auth(client):
     data = response.json()
     assert data["success"] is False
     assert "error" in data
+
+
+def test_user_reviews_endpoint(client):
+    response = client.get("/api/v1/analysis/user-reviews")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["success"] is True
+    assert "data" in data
+    assert "reviews" in data["data"]
+    assert len(data["data"]["reviews"]) > 0
+    first_review = data["data"]["reviews"][0]
+    assert "comment" in first_review
+    assert "predictions" in first_review
+

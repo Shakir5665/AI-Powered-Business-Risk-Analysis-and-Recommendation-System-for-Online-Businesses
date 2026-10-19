@@ -208,7 +208,7 @@ async def get_job_result(
             if "POS" in s_val: pos_c += 1
             elif "NEG" in s_val: neg_c += 1
             elif "NEU" in s_val or "MIX" in s_val: neu_c += 1
-            else: pos_c += 1
+            else: pass  # skip null or unrecognized sentiments to avoid inflating positive count
 
     statistics_dict = {
         "reviewStatistics": {
@@ -354,3 +354,66 @@ async def analyze_product(
             version=settings.APP_VERSION,
         ),
     )
+
+
+from pydantic import BaseModel
+from typing import List as PyList
+
+
+class BatchPredictRequest(BaseModel):
+    reviews: PyList[str]
+
+
+@router.post("/predict-batch", summary="Remote GPU Batch Prediction Endpoint")
+async def predict_batch_remote(payload: BatchPredictRequest):
+    """
+    Executes high-speed batch inference on remote GPU using warmed in-memory model.
+    """
+    from app.state.core_state import app_state
+
+    if app_state.engine_instance and hasattr(app_state.engine_instance, "_pipeline"):
+        predictor = app_state.engine_instance._pipeline._predictor
+    else:
+        from core.ai.predictor import Predictor
+        predictor = Predictor()
+
+    results = predictor.predict_batch(payload.reviews)
+    return {"success": True, "count": len(results), "predictions": results}
+
+
+@router.get("/user-reviews", summary="Get Customer Reviews Directly from user_reviews.json")
+async def get_user_reviews(request: Request):
+    """
+    Reads user_reviews.json directly from repository root on disk on every call.
+    Any updates made to user_reviews.json are instantly returned without requiring code changes.
+    """
+    import json
+    import os
+
+    request_id = getattr(request.state, "request_id", "unknown")
+    possible_paths = [
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../..", "user_reviews.json")),
+        os.path.abspath("user_reviews.json"),
+    ]
+
+    reviews_data = {"reviews": []}
+    for file_path in possible_paths:
+        if os.path.exists(file_path):
+            try:
+                with open(file_path, "r", encoding="utf-8") as f:
+                    reviews_data = json.load(f)
+                break
+            except Exception:
+                pass
+
+    return ApiResponse(
+        success=True,
+        message="User reviews retrieved successfully.",
+        data=reviews_data,
+        meta=ApiMeta(
+            requestId=request_id,
+            timestamp=datetime.now(timezone.utc).isoformat(),
+            version=settings.APP_VERSION,
+        ),
+    )
+

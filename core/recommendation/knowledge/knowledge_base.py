@@ -32,7 +32,7 @@ class RecommendationKnowledgeBase:
         validator: Optional[KnowledgeValidator] = None,
         repository: Optional[KnowledgeRepository] = None,
     ):
-        logger.info("Initializing RecommendationKnowledgeBase facade instance")
+        logger.debug("Initializing RecommendationKnowledgeBase facade instance")
         self.loader = loader or KnowledgeLoader()
         self.validator = validator or KnowledgeValidator()
         self.repository = repository or KnowledgeRepository()

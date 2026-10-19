@@ -21,8 +21,15 @@ export function AnalysisProvider({ children }) {
   const [step, setStep] = useState(1);
 
   // ── Persistent job fields ─────────────────────────────────────────────────
-  const [url, setUrl] = useState("");
-  const [preview, setPreview] = useState(null);
+  const [url, setUrl] = useState(() => {
+    try { return sessionStorage.getItem("riskoraAI_url") || ""; } catch { return ""; }
+  });
+  const [preview, setPreview] = useState(() => {
+    try {
+      const stored = sessionStorage.getItem("riskoraAI_preview");
+      return stored ? JSON.parse(stored) : null;
+    } catch { return null; }
+  });
   const [analysisId, setAnalysisId] = useState(() => {
     // Restore from sessionStorage so a hard-refresh doesn't lose the job
     try { return sessionStorage.getItem("riskoraAI_analysisId") || sessionStorage.getItem("riskAI_analysisId") || null; } catch { return null; }
@@ -35,7 +42,7 @@ export function AnalysisProvider({ children }) {
   const pollingRef = useRef(null);
   const seenLogsRef = useRef(new Set()); // deduplicate log lines across polls
 
-  // ── Persist analysisId to sessionStorage ─────────────────────────────────
+  // ── Persist fields to sessionStorage ─────────────────────────────────────
   useEffect(() => {
     try {
       if (analysisId) {
@@ -46,6 +53,21 @@ export function AnalysisProvider({ children }) {
       }
     } catch { /* ignore */ }
   }, [analysisId]);
+
+  useEffect(() => {
+    try {
+      if (preview) {
+        sessionStorage.setItem("riskoraAI_preview", JSON.stringify(preview));
+      } else {
+        sessionStorage.removeItem("riskoraAI_preview");
+      }
+      if (url) {
+        sessionStorage.setItem("riskoraAI_url", url);
+      } else {
+        sessionStorage.removeItem("riskoraAI_url");
+      }
+    } catch { /* ignore */ }
+  }, [preview, url]);
 
   // ─────────────────────────────────────────────────────────────────────────
   // Full reset — defined early so polling callback can reference it via ref
@@ -66,6 +88,8 @@ export function AnalysisProvider({ children }) {
     try { 
       sessionStorage.removeItem("riskoraAI_analysisId"); 
       sessionStorage.removeItem("riskAI_analysisId"); 
+      sessionStorage.removeItem("riskoraAI_preview");
+      sessionStorage.removeItem("riskoraAI_url");
     } catch { /* ignore */ }
   }, []);
 
@@ -111,19 +135,23 @@ export function AnalysisProvider({ children }) {
             sessionStorage.removeItem("riskoraAI_analysisId"); 
             sessionStorage.removeItem("riskAI_analysisId"); 
           } catch { /* ignore */ }
-          // Navigate via ref (always current, no stale closure)
+          // Allow user to see "Risk Report Ready" checkmark clearly before navigating
           setTimeout(() => {
             navigateFnRef.current(`/analysis-result/${id}`);
             // Reset context state after a brief delay so the navigation settles
-            setTimeout(() => { resetRef.current?.(); }, 300);
-          }, 800);
+            setTimeout(() => { resetRef.current?.(); }, 400);
+          }, 1200);
         }
 
         if (failed) {
           clearInterval(pollingRef.current);
           pollingRef.current = null;
-          setError("Analysis failed. Please try again.");
-          resetRef.current?.();
+          setError(statusData?.errorMessage || statusData?.currentStep || "Analysis failed. Please try again.");
+          setJobStatus((prev) => ({
+            ...prev,
+            ...statusData,
+            status: "FAILED",
+          }));
         }
       } catch {
         // Silently swallow transient polling errors
@@ -164,7 +192,15 @@ export function AnalysisProvider({ children }) {
     const id = data.analysisId;
 
     setAnalysisId(id);
-    setJobStatus({ status: "STARTED", progress: 0, message: "Starting analysis job..." });
+    setJobStatus({
+      status: "CONNECTING",
+      progress: 5,
+      currentStep: "Opening the product page...",
+      reviewsCollected: 0,
+      currentPage: 1,
+      totalPages: 1,
+      stopRequested: false,
+    });
     setLogs([]);
     seenLogsRef.current = new Set();
     setStep(3);
@@ -173,15 +209,16 @@ export function AnalysisProvider({ children }) {
     return id;
   }, [_startPolling]);
 
-  /** Called when user clicks "Finish Scraping Early" */
+  /** Called when user clicks "Generate Report Now" */
   const stopScraping = useCallback(async (id) => {
     if (!id) return;
     try {
-      await analysisAPI.stopScraping(id);
       setJobStatus((p) => ({
         ...p,
-        message: "Finishing scraping... Processing collected reviews...",
+        stopRequested: true,
+        message: "Stopping review collection... Analyzing feedback...",
       }));
+      await analysisAPI.stopScraping(id);
     } catch { /* ignore */ }
   }, []);
 

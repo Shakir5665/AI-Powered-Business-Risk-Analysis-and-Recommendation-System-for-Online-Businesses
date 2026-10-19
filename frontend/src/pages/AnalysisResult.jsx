@@ -475,7 +475,6 @@ export default function AnalysisResult() {
     },
   ];
 
-  const report = recommendation?.report;
   const reviewSamples = reviews || [];
 
   return (
@@ -584,7 +583,7 @@ export default function AnalysisResult() {
               </h2>
             </div>
             <p className="text-slate-700 text-sm font-medium leading-relaxed">
-              Calculated from review sentiment, delivery issues, and seller reliability. A <strong>lower score is safer</strong>.
+              Driven by the highest risk identified across product quality, delivery, and seller reliability. A <strong>lower score is safer</strong>.
             </p>
           </div>
 
@@ -713,6 +712,7 @@ export default function AnalysisResult() {
 
       {/* ── User Reviews Section ── */}
       <UserReviewsSection
+        analysisId={id || analysisData?.analysisId || analysisData?.id}
         analysisCounts={{
           positive: positiveCount,
           negative: negativeCount,

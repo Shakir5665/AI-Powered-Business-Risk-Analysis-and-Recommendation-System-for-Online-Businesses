@@ -46,7 +46,7 @@ class RecommendationEngine:
         :param formatter: Optional ResponseFormatter instance.
         :param builder: Optional ReportBuilder instance (legacy alias for report_builder).
         """
-        logger.info("Initializing RecommendationEngine with sub-component dependencies")
+        logger.debug("Initializing RecommendationEngine with sub-component dependencies")
         self.interpreter = interpreter or RiskInterpreter()
         self.selector = selector or ActionSelector()
         self.report_builder = report_builder or builder or ReportBuilder()

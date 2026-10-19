@@ -16,7 +16,7 @@ class ReportValidator:
     """
 
     def __init__(self):
-        logger.info("Initializing ReportValidator component")
+        logger.debug("Initializing ReportValidator component")
 
     def validate_selection_result(self, selection_result: SelectionResult) -> None:
         """

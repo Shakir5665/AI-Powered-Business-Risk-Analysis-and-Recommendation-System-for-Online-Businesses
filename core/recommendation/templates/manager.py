@@ -34,7 +34,7 @@ class TemplateManager:
         repository: Optional[TemplateRepository] = None,
         renderer: Optional[TemplateRenderer] = None,
     ):
-        logger.info("Initializing TemplateManager facade instance")
+        logger.debug("Initializing TemplateManager facade instance")
         self.loader = loader or TemplateLoader()
         self.validator = validator or TemplateValidator()
         self.repository = repository or TemplateRepository()

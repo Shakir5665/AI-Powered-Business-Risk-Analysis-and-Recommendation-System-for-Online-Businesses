@@ -36,10 +36,21 @@ class AnalysisService:
         review_repo: Optional[ReviewRepository] = None,
     ):
         self.db = db
-        self.adapter = adapter or AIEngineAdapter()
+        self._adapter = adapter
         self.product_repo = product_repo or (ProductRepository(db) if db else None)
         self.analysis_repo = analysis_repo or (AnalysisRepository(db) if db else None)
         self.review_repo = review_repo or (ReviewRepository(db) if db else None)
+
+    @property
+    def adapter(self) -> AIEngineAdapter:
+        """
+        Lazily loads the shared AIEngineAdapter on demand.
+        Prevents instantiating heavy AI/FIS/Recommendation components on lightweight queries like get_status.
+        """
+        if self._adapter is None:
+            from app.api.dependencies.services import get_shared_ai_adapter
+            self._adapter = get_shared_ai_adapter()
+        return self._adapter
 
     def _validate_url(self, url: str):
         import re
@@ -103,9 +114,9 @@ class AnalysisService:
         """
         self._validate_url(product_url)
         job = job_state_manager.create_job(product_url, user_id=str(user_id))
-        job.status = "SCRAPING"
-        job.current_step = "Connecting to product page..."
-        job.progress_percent = 10
+        job.status = "CONNECTING"
+        job.current_step = "Opening the product page..."
+        job.progress_percent = 5
 
         api_logger.info(f"Started guided background analysis job [{job.analysis_id}] for user [{user_id}]")
 
@@ -114,8 +125,8 @@ class AnalysisService:
 
         return {
             "analysisId": job.analysis_id,
-            "status": "SCRAPING",
-            "message": "Analysis job started successfully. Scraping in progress..."
+            "status": "CONNECTING",
+            "message": "Analysis job started. Connecting to store..."
         }
 
     def finish_scraping(self, analysis_id: str, user_id: Optional[UUID] = None) -> bool:
@@ -164,7 +175,9 @@ class AnalysisService:
             "reviewsCollected": job.reviews_collected,
             "progress": job.progress_percent,
             "elapsedTime": job.get_elapsed_time_str(),
-            "logs": list(job.log_entries)
+            "logs": list(job.log_entries),
+            "stopRequested": getattr(job, "stop_requested", False),
+            "errorMessage": getattr(job, "error_message", None),
         }
 
     async def _run_async_job(self, job: JobState, user_id: UUID, save_history: bool):
@@ -172,8 +185,9 @@ class AnalysisService:
         Internal worker running scraper and full AI pipeline in background.
         """
         try:
-            job.current_step = "Scraping reviews from product page..."
-            job.progress_percent = 15
+            job.status = "CONNECTING"
+            job.current_step = "Opening the product page..."
+            job.progress_percent = 5
             job.add_log("SCRAPER", "Connecting to Daraz product page via Selenium...")
 
             # Phase 1: Web Scraping & Immediate DB Staging
@@ -181,9 +195,14 @@ class AnalysisService:
                 self.adapter.scrape_product, job.product_url, job
             )
 
-            job.current_step = "Staging scraped reviews into PostgreSQL..."
-            job.progress_percent = 45
-            job.add_log("DATABASE", f"Committing {len(getattr(raw_product, 'reviews', []))} raw reviews to PostgreSQL...")
+            scraped_reviews = getattr(raw_product, "reviews", [])
+            job.reviews_collected = len(scraped_reviews)
+            if job.stop_requested:
+                job.current_step = f"You collected {len(scraped_reviews)} reviews before stopping."
+            else:
+                job.current_step = f"You have collected all {len(scraped_reviews)} reviews."
+            job.progress_percent = 60
+            job.add_log("DATABASE", f"Committing {len(scraped_reviews)} raw reviews to PostgreSQL...")
 
             staged_info = {}
             if save_history:
@@ -196,13 +215,11 @@ class AnalysisService:
 
             # Phase 2: AI Predictions & Fuzzy Logic Evaluation
             job.status = "AI_ANALYSIS"
-            job.current_step = "Running XLM-R + Adapter AI Inference on Staged Reviews..."
-            job.progress_percent = 65
-            job.add_log("AI_ENGINE", "Preprocessing & tokenizing multilingual review texts...")
-            job.add_log("AI_ENGINE", "Running XLM-R backbone + adapter classification head...")
+            job.current_step = "Understanding customer opinions and what they like or dislike..."
+            job.progress_percent = 75
+            job.add_log("AI_ENGINE", "Analyzing customer sentiments and aspect predictions...")
             job.add_log("FIS", "Evaluating Quality, Delivery, and Trust Fuzzy Inference Systems...")
 
-            scraped_reviews = getattr(raw_product, "reviews", [])
             eval_output = await asyncio.to_thread(
                 self.adapter.evaluate_predictions_and_risks, scraped_reviews
             )
@@ -214,10 +231,12 @@ class AnalysisService:
             mapped_data = AnalysisMapper.to_api_result(pipeline_output)
 
             # Phase 3: Finalize Analysis Risk Scores in PostgreSQL
+            job.status = "REPORT_GENERATION"
+            job.current_step = "Preparing your business risk report and recommendations..."
+            job.progress_percent = 90
+            job.add_log("DATABASE", "Updating Analysis risk scores and Review AI predictions in PostgreSQL...")
+
             if save_history and staged_info.get("analysis_db_id"):
-                job.current_step = "Finalizing Analysis Risk Scores in PostgreSQL..."
-                job.progress_percent = 90
-                job.add_log("DATABASE", "Updating Analysis risk scores and Review AI predictions in PostgreSQL...")
                 try:
                     with SessionLocal() as db_session:
                         self._finalize_staged_analysis(db_session, staged_info["analysis_db_id"], mapped_data, eval_output, job)
@@ -227,7 +246,7 @@ class AnalysisService:
 
             job.status = AnalysisStatus.COMPLETED.value
             job.end_time = time.time()
-            job.current_step = "Analysis Completed"
+            job.current_step = "Your business risk report is ready to view."
             job.progress_percent = 100
             job.add_log("COMPLETED", f"Business Risk Analysis [{job.analysis_id}] finished successfully.")
             job.result = {
@@ -391,7 +410,23 @@ class AnalysisService:
         analysis.confidence_statistics = sanitize_native_types(conf_stats)
         analysis.risk_breakdown = sanitize_native_types(risks_info.get("riskBreakdown"))
         analysis.business_risk_snapshot = sanitize_native_types(mapped_data.get("risks"))
-        analysis.recommendation_snapshot = sanitize_native_types(mapped_data.get("recommendation"))
+        rec_snapshot = mapped_data.get("recommendation")
+        if not rec_snapshot or not rec_snapshot.get("aspects"):
+            full_rec = AnalysisMapper.generate_recommendation_dict(
+                quality_score=float(risks_info["qualityRisk"]["score"]),
+                delivery_score=float(risks_info["deliveryRisk"]["score"]),
+                trust_score=float(risks_info["trustRisk"]["score"]),
+                business_risk_index=float(risks_info["businessRiskIndex"]),
+                business_risk_level=str(risks_info["overallRiskLevel"]),
+            )
+            if full_rec:
+                if rec_snapshot and isinstance(rec_snapshot, dict):
+                    rec_snapshot["aspects"] = full_rec.get("aspects", {})
+                else:
+                    rec_snapshot = full_rec
+        if rec_snapshot:
+            mapped_data["recommendation"] = rec_snapshot
+        analysis.recommendation_snapshot = sanitize_native_types(rec_snapshot)
 
         # Update per-review AI predictions
         predictions = eval_output.get("predictions", [])

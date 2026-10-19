@@ -100,7 +100,7 @@ class AnalysisMapper:
                 elif "NEU" in sent or "MIX" in sent:
                     neu_count += 1
                 else:
-                    pos_count += 1
+                    pass  # skip null or unrecognized sentiments to avoid inflating positive count
 
         tot_reviews = scraped_count or (pos_count + neg_count + neu_count)
 
