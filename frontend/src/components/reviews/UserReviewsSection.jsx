@@ -47,13 +47,31 @@ function formatAspects(aspects) {
 }
 
 /**
+ * Creates a deterministic pseudo-random number generator (Mulberry32)
+ * initialized from a string seed (e.g. analysisId like 'anl_222bb2877562').
+ */
+function createSeededRandom(seedStr) {
+  let h = 1779033703 ^ (seedStr ? seedStr.length : 0);
+  const s = String(seedStr || "riskora_default_seed");
+  for (let i = 0; i < s.length; i++) {
+    h = Math.imul(h ^ s.charCodeAt(i), 3432918353);
+    h = (h << 13) | (h >>> 19);
+  }
+  return function () {
+    h = Math.imul(h ^ (h >>> 16), 2246822507);
+    h = Math.imul(h ^ (h >>> 13), 3266489909);
+    return ((h ^= h >>> 16) >>> 0) / 4294967296;
+  };
+}
+
+/**
  * Selects reviews for a given sentiment based on current analysis counts.
  * Display limit = min(5, analysis count)
  * - count === 0: returns []
  * - 1 <= count <= 4: selects exactly that number of reviews
- * - count >= 5: selects 5 randomly selected reviews
+ * - count >= 5: selects 5 deterministically/randomly selected reviews
  */
-export function getReviewsForSentiment(sentiment, analysisCounts = {}, reviews = []) {
+export function getReviewsForSentiment(sentiment, analysisCounts = {}, reviews = [], seedOrRng = null) {
   const normKey = String(sentiment || "").trim().toLowerCase();
 
   const hasSpecificCount =
@@ -80,10 +98,16 @@ export function getReviewsForSentiment(sentiment, analysisCounts = {}, reviews =
   });
 
   const shuffled = [...matchingReviews];
+  const randomFunc =
+    typeof seedOrRng === "function"
+      ? seedOrRng
+      : typeof seedOrRng === "string" && seedOrRng.length > 0
+      ? createSeededRandom(seedOrRng)
+      : Math.random;
 
-  // Fisher-Yates shuffle
+  // Seeded Fisher-Yates shuffle
   for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
+    const j = Math.floor(randomFunc() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
@@ -94,13 +118,64 @@ export function getReviewsForSentiment(sentiment, analysisCounts = {}, reviews =
 }
 
 /**
+ * Generates or retrieves the pinned reviews map for a specific analysisId.
+ * Checks localStorage first; if not present, deterministically selects using analysisId.
+ */
+function buildPinnedMap(analysisId, analysisCounts, reviews) {
+  const cacheKey = analysisId ? `riskora_user_reviews_${analysisId}` : null;
+
+  // 1. Try reading from localStorage first
+  if (cacheKey) {
+    try {
+      const stored = localStorage.getItem(cacheKey);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (
+          parsed &&
+          typeof parsed === "object" &&
+          (Array.isArray(parsed.Positive) || Array.isArray(parsed.Negative) || Array.isArray(parsed.Neutral))
+        ) {
+          return parsed;
+        }
+      }
+    } catch {
+      // localStorage read failed or disabled
+    }
+  }
+
+  // 2. Generate pinned reviews deterministically using analysisId seed
+  const seedPrefix = analysisId || "riskora_default";
+  const rngPositive = createSeededRandom(`${seedPrefix}_positive`);
+  const rngNegative = createSeededRandom(`${seedPrefix}_negative`);
+  const rngNeutral = createSeededRandom(`${seedPrefix}_neutral`);
+
+  const map = {
+    Positive: getReviewsForSentiment("Positive", analysisCounts, reviews, rngPositive),
+    Negative: getReviewsForSentiment("Negative", analysisCounts, reviews, rngNegative),
+    Neutral: getReviewsForSentiment("Neutral", analysisCounts, reviews, rngNeutral),
+  };
+
+  // 3. Persist to localStorage if analysisId exists and reviews are loaded
+  if (cacheKey && reviews && reviews.length > 0) {
+    try {
+      localStorage.setItem(cacheKey, JSON.stringify(map));
+    } catch {
+      // Ignore quota exceeded or storage disabled
+    }
+  }
+
+  return map;
+}
+
+/**
  * UserReviewsSection:
  * Positioned directly below Customer Sentiment and above Recommendations.
  * Filters customer comments by Positive, Negative, and Neutral.
  * Number of displayed reviews is determined by the sentiment counts from the current product's analysis.
- * Renders reviews directly from the root user_reviews.json file dynamically.
+ * Pinned per analysisId so reviews remain identical when toggling filters or revisiting history.
  */
 export default function UserReviewsSection({
+  analysisId,
   analysisCounts = {},
   reviews: propReviews,
 }) {
@@ -160,18 +235,22 @@ export default function UserReviewsSection({
     };
   }, [propReviews]);
 
-  // Keep displayedReviews in sync with active sentiment, incoming analysis counts, and allReviews
-  const [displayedReviews, setDisplayedReviews] = useState(() =>
-    getReviewsForSentiment("Positive", analysisCounts, allReviews)
+  // Pinned reviews map initialized and synced per analysisId and analysisCounts
+  const [pinnedReviewsMap, setPinnedReviewsMap] = useState(() =>
+    buildPinnedMap(analysisId, analysisCounts, allReviews)
   );
 
   useEffect(() => {
-    setDisplayedReviews(getReviewsForSentiment(activeSentiment, analysisCounts, allReviews));
-  }, [activeSentiment, analysisCounts, allReviews]);
+    if (allReviews && allReviews.length > 0) {
+      setPinnedReviewsMap(buildPinnedMap(analysisId, analysisCounts, allReviews));
+    }
+  }, [analysisId, analysisCounts, allReviews]);
+
+  // Derived displayed reviews: direct lookup from pinned map (NEVER re-randomized on button clicks)
+  const displayedReviews = pinnedReviewsMap[activeSentiment] || [];
 
   const handleFilterClick = (sentiment) => {
     setActiveSentiment(sentiment);
-    setDisplayedReviews(getReviewsForSentiment(sentiment, analysisCounts, allReviews));
   };
 
   return (
