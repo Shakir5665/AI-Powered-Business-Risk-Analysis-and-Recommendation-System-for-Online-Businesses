@@ -5,6 +5,7 @@ from sqlalchemy import select, func, delete, or_
 
 from app.models.analysis import Analysis
 from app.models.product import Product
+from app.models.review import Review
 from app.utils.logger import db_logger
 
 
@@ -43,14 +44,23 @@ class AnalysisRepository:
     def delete_by_public_id(self, public_id: str, user_id: Optional[UUID] = None) -> bool:
         """
         Deletes an analysis record by public business identifier (anl_...).
-        Scoped to user_id if provided. Cascades deletion to related reviews.
+        Scoped to user_id if provided. Cascades deletion to related reviews in a single fast bulk operation.
         """
-        analysis = self.get_by_public_id(public_id, user_id=user_id)
-        if not analysis:
+        stmt = select(Analysis.id).where(Analysis.public_id == public_id)
+        if user_id is not None:
+            stmt = stmt.where(Analysis.user_id == user_id)
+
+        analysis_id = self.db.scalars(stmt).first()
+        if not analysis_id:
             return False
 
-        db_logger.info(f"Deleting analysis record public_id={public_id} for user_id={user_id}")
-        self.db.delete(analysis)
+        db_logger.info(f"Deleting analysis record public_id={public_id} (id={analysis_id}) for user_id={user_id}")
+
+        # Fast bulk deletion of child reviews (avoids N+1 ORM object hydration & loops)
+        self.db.execute(delete(Review).where(Review.analysis_id == analysis_id))
+
+        # Delete the analysis row itself
+        self.db.execute(delete(Analysis).where(Analysis.id == analysis_id))
         self.db.flush()
         return True
 

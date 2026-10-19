@@ -73,8 +73,8 @@ export default function History() {
   // Reset to page 1 on filter change
   useEffect(() => { setPage(1); }, [debouncedSearch, riskFilter, sortBy, order]);
 
-  const load = useCallback(async () => {
-    setLoading(true);
+  const load = useCallback(async (silent = false) => {
+    if (!silent) setLoading(true);
     setError("");
     try {
       const params = {
@@ -92,7 +92,7 @@ export default function History() {
     } catch {
       setError("Failed to load history.");
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
     }
   }, [page, debouncedSearch, riskFilter, sortBy, order]);
 
@@ -103,11 +103,14 @@ export default function History() {
 
   const confirmDelete = async () => {
     if (!deleteTarget?.id) return;
+    const targetId = deleteTarget.id;
     setDeleting(true);
     try {
-      await historyAPI.deleteAnalysis(deleteTarget.id);
+      await historyAPI.deleteAnalysis(targetId);
       setDeleteTarget(null);
-      load();
+      setItems((prev) => prev.filter((item) => item.analysisId !== targetId));
+      setPagination((prev) => prev ? { ...prev, totalItems: Math.max(0, prev.totalItems - 1) } : prev);
+      load(true);
     } catch {
       // ignore
     } finally {

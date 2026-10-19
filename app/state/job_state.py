@@ -78,6 +78,11 @@ class JobStateManager:
             return True
         return False
 
+    def remove_job(self, analysis_id: str) -> None:
+        """Removes an analysis job from runtime memory."""
+        with self._lock:
+            self._jobs.pop(analysis_id, None)
+
     def cleanup_expired_jobs(self, ttl_seconds: int = 3600, max_jobs: int = 100):
         """
         Prunes completed or failed jobs older than ttl_seconds or enforces max_jobs limit.

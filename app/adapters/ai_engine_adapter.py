@@ -1,4 +1,5 @@
 import time
+from concurrent.futures import ThreadPoolExecutor
 from typing import Dict, Any, Optional
 from core.analysis.engine.product_analysis_engine import ProductAnalysisEngine
 from core.scraper.engines.scraper_engine import ScraperEngine
@@ -187,18 +188,27 @@ class AIEngineAdapter:
         aggregation = self._engine._aggregator.aggregate(local_collector.get_all())
 
         stats = getattr(aggregation, "aspect_statistics", {})
-        quality_eval = self._quality_fis.evaluate(
-            mention_ratio=stats["quality"]["mention_ratio"],
-            average_negative_strength=stats["quality"]["average_negative_strength"],
-        )
-        delivery_eval = self._delivery_fis.evaluate(
-            mention_ratio=stats["delivery"]["mention_ratio"],
-            average_negative_strength=stats["delivery"]["average_negative_strength"],
-        )
-        trust_eval = self._trust_fis.evaluate(
-            mention_ratio=stats["trust"]["mention_ratio"],
-            average_negative_strength=stats["trust"]["average_negative_strength"],
-        )
+
+        # Run all 3 FIS evaluations in parallel (CPU-bound, independent)
+        with ThreadPoolExecutor(max_workers=3) as executor:
+            quality_future = executor.submit(
+                self._quality_fis.evaluate,
+                mention_ratio=stats["quality"]["mention_ratio"],
+                average_negative_strength=stats["quality"]["average_negative_strength"],
+            )
+            delivery_future = executor.submit(
+                self._delivery_fis.evaluate,
+                mention_ratio=stats["delivery"]["mention_ratio"],
+                average_negative_strength=stats["delivery"]["average_negative_strength"],
+            )
+            trust_future = executor.submit(
+                self._trust_fis.evaluate,
+                mention_ratio=stats["trust"]["mention_ratio"],
+                average_negative_strength=stats["trust"]["average_negative_strength"],
+            )
+            quality_eval = quality_future.result()
+            delivery_eval = delivery_future.result()
+            trust_eval = trust_future.result()
 
         business_risk = self._risk_calculator.calculate(
             aggregation=aggregation,
