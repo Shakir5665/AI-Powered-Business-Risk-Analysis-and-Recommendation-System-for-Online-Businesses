@@ -80,3 +80,4 @@ class AnalysisResultResponse(BaseModel):
     risks: RisksSchema = Field(..., description="Fuzzy inference risks and overall business risk")
     recommendation: Optional[RecommendationResultSchema] = Field(None, description="Actionable recommendation outcome")
     negativeReviews: Optional[list[str]] = Field(default_factory=list, description="List of at most 20 negative customer review texts")
+    reviews: Optional[List[Dict[str, Any]]] = Field(default_factory=list, description="Structured customer reviews")

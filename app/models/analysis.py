@@ -48,5 +48,6 @@ class Analysis(BaseEntity):
     reviews = relationship(
         "Review",
         back_populates="analysis",
-        cascade="all, delete-orphan"
+        cascade="all, delete-orphan",
+        passive_deletes=True,
     )

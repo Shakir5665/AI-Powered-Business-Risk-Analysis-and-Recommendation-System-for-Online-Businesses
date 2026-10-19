@@ -106,7 +106,11 @@ export function AnalysisProvider({ children }) {
     clearInterval(pollingRef.current);
     seenLogsRef.current = new Set();
 
-    pollingRef.current = setInterval(async () => {
+    const POLL_FAST = 1000;
+    const POLL_NORMAL = 2500;
+    let currentInterval = POLL_NORMAL;
+
+    const poll = async () => {
       try {
         const res = await analysisAPI.getStatus(id);
         const statusData = res.data?.data;
@@ -126,6 +130,16 @@ export function AnalysisProvider({ children }) {
         const completed = ["COMPLETED", "DONE", "FINISHED", "SUCCESS"].includes(statusUpper);
         const failed = ["FAILED", "ERROR"].includes(statusUpper);
 
+        // Adaptive polling: switch to fast interval during AI/Report phases
+        const wantFast = ["AI_ANALYSIS", "REPORT_GENERATION"].includes(statusUpper)
+          || (statusData?.progress >= 60);
+        const desiredInterval = wantFast ? POLL_FAST : POLL_NORMAL;
+        if (desiredInterval !== currentInterval) {
+          currentInterval = desiredInterval;
+          clearInterval(pollingRef.current);
+          pollingRef.current = setInterval(poll, currentInterval);
+        }
+
         if (completed) {
           // Stop polling immediately
           clearInterval(pollingRef.current);
@@ -139,8 +153,8 @@ export function AnalysisProvider({ children }) {
           setTimeout(() => {
             navigateFnRef.current(`/analysis-result/${id}`);
             // Reset context state after a brief delay so the navigation settles
-            setTimeout(() => { resetRef.current?.(); }, 400);
-          }, 1200);
+            setTimeout(() => { resetRef.current?.(); }, 200);
+          }, 500);
         }
 
         if (failed) {
@@ -156,7 +170,9 @@ export function AnalysisProvider({ children }) {
       } catch {
         // Silently swallow transient polling errors
       }
-    }, 2500);
+    };
+
+    pollingRef.current = setInterval(poll, currentInterval);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
   // ↑ Empty deps intentional — all mutable dependencies accessed via refs above
 

@@ -228,16 +228,20 @@ class AnalysisMapper:
                 "version": getattr(recommendation, "version", "v1"),
                 "processingTimeMs": getattr(recommendation, "processing_time_ms", 0),
             }
-        if business and (not recommendation_dict or not recommendation_dict.get("aspects")):
+            # Eagerly populate aspects so downstream consumers never re-generate
+            if not recommendation_dict.get("aspects") and business:
+                q_score = float(get_val(quality, "risk_score", get_val(quality, "score", 0.0)))
+                d_score = float(get_val(delivery, "risk_score", get_val(delivery, "score", 0.0)))
+                t_score = float(get_val(trust, "risk_score", get_val(trust, "score", 0.0)))
+                rec_from_fis = cls.generate_recommendation_dict(q_score, d_score, t_score, risk_index, b_level_val)
+                if rec_from_fis:
+                    recommendation_dict["aspects"] = rec_from_fis.get("aspects", {})
+        elif business:
+            # No recommendation object at all — generate from scratch (one-time only)
             q_score = float(get_val(quality, "risk_score", get_val(quality, "score", 0.0)))
             d_score = float(get_val(delivery, "risk_score", get_val(delivery, "score", 0.0)))
             t_score = float(get_val(trust, "risk_score", get_val(trust, "score", 0.0)))
-            rec_from_fis = cls.generate_recommendation_dict(q_score, d_score, t_score, risk_index, b_level_val)
-            if rec_from_fis:
-                if recommendation_dict is None:
-                    recommendation_dict = rec_from_fis
-                else:
-                    recommendation_dict["aspects"] = rec_from_fis.get("aspects", {})
+            recommendation_dict = cls.generate_recommendation_dict(q_score, d_score, t_score, risk_index, b_level_val)
 
         result = {
             "product": product_dict,
