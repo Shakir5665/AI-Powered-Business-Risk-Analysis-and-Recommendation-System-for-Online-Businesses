@@ -15,6 +15,8 @@ AI-Powered Business Risk Analysis
 and Recommendation System
 """
 
+import math
+import time
 from typing import Dict, List, Any
 
 import torch
@@ -130,6 +132,9 @@ class InferenceEngine:
         if not reviews:
             return {}
 
+        total_n = len(reviews)
+        start_time = time.perf_counter()
+
         # -----------------------------
         # Preprocess
         # -----------------------------
@@ -152,13 +157,42 @@ class InferenceEngine:
         chunk_outputs_list = []
         is_cuda = (self.loader.device.type == "cuda" and torch.cuda.is_available())
 
+        # Hardware & Precision Observability
+        if is_cuda:
+            try:
+                device_idx = self.loader.device.index if self.loader.device.index is not None else torch.cuda.current_device()
+                gpu_name = torch.cuda.get_device_name(device_idx)
+                vram_total_gb = torch.cuda.get_device_properties(device_idx).total_memory / (1024 ** 3)
+                torch.cuda.reset_peak_memory_stats(device_idx)
+            except Exception:
+                device_idx = 0
+                gpu_name = "CUDA GPU"
+                vram_total_gb = 0.0
+            precision_label = "FP16 (AMP)" if USE_FP16_INFERENCE else "FP32"
+            device_label = f"CUDA ({gpu_name})"
+        else:
+            device_idx = None
+            gpu_name = "N/A"
+            vram_total_gb = 0.0
+            precision_label = "FP32"
+            device_label = "CPU"
+
+        total_chunks = math.ceil(total_n / mini_batch_size)
+        logger.info(
+            f"[AI BATCH] Starting inference for {total_n} reviews | Device: {device_label} | Mode: {precision_label} | Mini-batch: {mini_batch_size}"
+        )
+
         # -----------------------------
         # Mini-Batch Forward Passes with OOM Recovery
         # -----------------------------
         i = 0
-        while i < len(indexed_reviews):
+        chunk_counter = 0
+
+        while i < total_n:
             chunk_items = indexed_reviews[i : i + mini_batch_size]
             chunk_texts = [text for _, text in chunk_items]
+            chunk_counter += 1
+            step_start = time.perf_counter()
 
             try:
                 tokens = self.loader.tokenizer_instance.tokenize_batch(
@@ -172,6 +206,8 @@ class InferenceEngine:
                 attention_mask = tokens["attention_mask"].to(
                     self.loader.device
                 )
+
+                max_tokens = input_ids.shape[1]
 
                 with torch.no_grad():
                     if is_cuda and USE_FP16_INFERENCE:
@@ -192,14 +228,27 @@ class InferenceEngine:
                     for k, v in chunk_out.items()
                 }
                 chunk_outputs_list.append((chunk_items, cpu_chunk_out))
+                step_ms = int((time.perf_counter() - step_start) * 1000)
+
+                if is_cuda:
+                    vram_used_gb = torch.cuda.memory_allocated(device_idx) / (1024 ** 3)
+                    logger.info(
+                        f"[AI BATCH] Chunk [{chunk_counter:2d}/{total_chunks}] ({len(chunk_items):2d} reviews) | Max tokens: {max_tokens:3d} | VRAM: {vram_used_gb:.2f} GB / {vram_total_gb:.1f} GB | Step: {step_ms}ms"
+                    )
+                else:
+                    logger.info(
+                        f"[AI BATCH] Chunk [{chunk_counter:2d}/{total_chunks}] ({len(chunk_items):2d} reviews) | Max tokens: {max_tokens:3d} | Step: {step_ms}ms"
+                    )
+
                 i += len(chunk_items)
 
             except (torch.cuda.OutOfMemoryError, RuntimeError) as oom_err:
                 if is_cuda and "out of memory" in str(oom_err).lower() and mini_batch_size > 1:
                     torch.cuda.empty_cache()
                     mini_batch_size = max(1, mini_batch_size // 2)
+                    total_chunks = math.ceil((total_n - i) / mini_batch_size) + (chunk_counter - 1)
                     logger.warning(
-                        f"[InferenceEngine] CUDA OOM encountered. Halving mini-batch size to {mini_batch_size} and retrying..."
+                        f"[AI BATCH] [WARN] CUDA OOM encountered. Halving mini-batch size to {mini_batch_size} and retrying..."
                     )
                 else:
                     raise oom_err
@@ -207,7 +256,6 @@ class InferenceEngine:
         # -----------------------------
         # Reconstruct Outputs in Original Order
         # -----------------------------
-        total_n = len(reviews)
         if not chunk_outputs_list:
             return {}
 
@@ -227,6 +275,22 @@ class InferenceEngine:
                 merged_outputs[key] = merged_tensor
             else:
                 merged_outputs[key] = sample_val
+
+        elapsed_s = time.perf_counter() - start_time
+        speed = total_n / elapsed_s if elapsed_s > 0 else 0.0
+
+        if is_cuda:
+            try:
+                peak_vram_gb = torch.cuda.max_memory_allocated(device_idx) / (1024 ** 3)
+            except Exception:
+                peak_vram_gb = 0.0
+            logger.info(
+                f"[AI BATCH] [DONE] Completed {total_n} reviews in {elapsed_s:.2f}s ({speed:.1f} revs/sec) | Peak VRAM: {peak_vram_gb:.2f} GB"
+            )
+        else:
+            logger.info(
+                f"[AI BATCH] [DONE] Completed {total_n} reviews in {elapsed_s:.2f}s ({speed:.1f} revs/sec)"
+            )
 
         return merged_outputs
 
