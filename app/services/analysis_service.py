@@ -230,25 +230,7 @@ class AnalysisService:
             }
             mapped_data = AnalysisMapper.to_api_result(pipeline_output)
 
-            # Phase 3: Finalize Analysis Risk Scores in PostgreSQL
-            job.status = "REPORT_GENERATION"
-            job.current_step = "Preparing your business risk report and recommendations..."
-            job.progress_percent = 90
-            job.add_log("DATABASE", "Updating Analysis risk scores and Review AI predictions in PostgreSQL...")
-
-            if save_history and staged_info.get("analysis_db_id"):
-                try:
-                    with SessionLocal() as db_session:
-                        self._finalize_staged_analysis(db_session, staged_info["analysis_db_id"], mapped_data, eval_output, job)
-                except Exception as db_err:
-                    api_logger.error(f"Database finalization error during job [{job.analysis_id}]: {db_err}", exc_info=True)
-                    job.add_log("ERROR", f"Database finalization warning: {db_err}")
-
-            job.status = AnalysisStatus.COMPLETED.value
-            job.end_time = time.time()
-            job.current_step = "Your business risk report is ready to view."
-            job.progress_percent = 100
-            job.add_log("COMPLETED", f"Business Risk Analysis [{job.analysis_id}] finished successfully.")
+            # ── Build result in memory FIRST (instant) ──
             job.result = {
                 "analysisId": job.analysis_id,
                 "status": AnalysisStatus.COMPLETED.value,
@@ -257,8 +239,22 @@ class AnalysisService:
                 "risks": mapped_data["risks"],
                 "recommendation": mapped_data.get("recommendation"),
                 "reviews": mapped_data.get("reviews", []),
+                "negativeReviews": mapped_data.get("negativeReviews", []),
             }
+
+            # Mark job as COMPLETED immediately so frontend can navigate
+            job.status = AnalysisStatus.COMPLETED.value
+            job.end_time = time.time()
+            job.current_step = "Your business risk report is ready to view."
+            job.progress_percent = 100
+            job.add_log("COMPLETED", f"Business Risk Analysis [{job.analysis_id}] finished successfully.")
             api_logger.info(f"Background job [{job.analysis_id}] completed successfully.")
+
+            # ── Persist to DB in background (fire-and-forget) ──
+            if save_history and staged_info.get("analysis_db_id"):
+                asyncio.create_task(
+                    self._finalize_db_background(staged_info["analysis_db_id"], mapped_data, eval_output, job)
+                )
 
         except Exception as e:
             job.status = AnalysisStatus.FAILED.value
@@ -378,6 +374,24 @@ class AnalysisService:
         db_logger.info(f"Staged {len(review_entities)} raw reviews for analysis [{analysis_id}] for user [{user_id}] into DB successfully.")
         return {"product_id": existing_product.id, "analysis_db_id": analysis_entity.id}
 
+    async def _finalize_db_background(self, analysis_db_id: Any, mapped_data: dict, eval_output: dict, job: JobState):
+        """Fire-and-forget DB finalization after result is already served to user."""
+        try:
+            await asyncio.to_thread(
+                self._finalize_staged_analysis_safe, analysis_db_id, mapped_data, eval_output, job
+            )
+        except Exception as db_err:
+            api_logger.error(f"Background DB finalization error for job [{job.analysis_id}]: {db_err}", exc_info=True)
+
+    def _finalize_staged_analysis_safe(self, analysis_db_id: Any, mapped_data: dict, eval_output: dict, job: JobState):
+        """Thread-safe wrapper that opens its own DB session."""
+        try:
+            with SessionLocal() as db_session:
+                self._finalize_staged_analysis(db_session, analysis_db_id, mapped_data, eval_output, job)
+        except Exception as db_err:
+            api_logger.error(f"DB finalization error during job [{job.analysis_id}]: {db_err}", exc_info=True)
+            job.add_log("ERROR", f"Database finalization warning: {db_err}")
+
     def _finalize_staged_analysis(self, db: Session, analysis_db_id: Any, mapped_data: dict, eval_output: dict, job: JobState):
         analysis = db.query(Analysis).filter(Analysis.id == analysis_db_id).first()
         if not analysis:
@@ -428,21 +442,27 @@ class AnalysisService:
             mapped_data["recommendation"] = rec_snapshot
         analysis.recommendation_snapshot = sanitize_native_types(rec_snapshot)
 
-        # Update per-review AI predictions
+        # Bulk update: fetch review IDs, build mappings, single batch UPDATE
         predictions = eval_output.get("predictions", [])
-        reviews = db.query(Review).filter(Review.analysis_id == analysis.id).all()
-        for i, r in enumerate(reviews):
+        review_rows = db.query(Review.id).filter(Review.analysis_id == analysis.id).order_by(Review.created_at, Review.id).all()
+        update_mappings = []
+        for i, (review_id,) in enumerate(review_rows):
             pred = predictions[i] if i < len(predictions) else {}
-            r.sentiment = pred.get("sentiment")
-            r.confidence_score = float(pred.get("confidence") or pred.get("confidence_score") or avg_conf)
             aspect_probs = pred.get("aspect_probabilities", {})
             detected_asps = pred.get("detected_aspects", [])
-            r.aspects = sanitize_native_types({
-                "quality": float(aspect_probs.get("quality", 0.0)),
-                "delivery": float(aspect_probs.get("delivery", 0.0)),
-                "trust": float(aspect_probs.get("trust", 0.0)),
-                "detected": detected_asps
+            update_mappings.append({
+                "id": review_id,
+                "sentiment": pred.get("sentiment"),
+                "confidence_score": float(pred.get("confidence") or pred.get("confidence_score") or avg_conf),
+                "aspects": sanitize_native_types({
+                    "quality": float(aspect_probs.get("quality", 0.0)),
+                    "delivery": float(aspect_probs.get("delivery", 0.0)),
+                    "trust": float(aspect_probs.get("trust", 0.0)),
+                    "detected": detected_asps
+                }),
             })
+        if update_mappings:
+            db.bulk_update_mappings(Review, update_mappings)
 
         db.commit()
         db_logger.info(f"Finalized analysis [{analysis.public_id}] in DB successfully.")
@@ -508,8 +528,8 @@ class AnalysisService:
         if save_history:
             dummy_job = JobState(analysis_id=analysis_id, product_url=product_url, user_id=str(user_id), start_time=start_time)
             with SessionLocal() as db_session:
-                self._stage_scraped_data(db_session, analysis_id, product_url, pipeline_output["product"], user_id, dummy_job)
-                self._finalize_staged_analysis(db_session, analysis_id, mapped_data, pipeline_output, dummy_job)
+                staged = self._stage_scraped_data(db_session, analysis_id, product_url, pipeline_output["product"], user_id, dummy_job)
+                self._finalize_staged_analysis(db_session, staged.get("analysis_db_id"), mapped_data, pipeline_output, dummy_job)
 
         return {
             "analysisId": analysis_id,
@@ -542,6 +562,7 @@ class AnalysisService:
             success = self.analysis_repo.delete_by_public_id(public_id, user_id=user_id)
             if success:
                 self.db.commit()
+                job_state_manager.remove_job(public_id)
             return success
         except Exception as e:
             self.db.rollback()

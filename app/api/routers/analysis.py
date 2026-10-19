@@ -20,6 +20,7 @@ from app.models.user import User
 from app.constants.api_constants import APIConstants
 from app.constants.messages import APIMessages
 from app.config.settings import settings
+from app.state.job_state import job_state_manager
 
 router = APIRouter(prefix="/v1/analysis", tags=[APIConstants.TAG_ANALYSIS])
 
@@ -165,6 +166,22 @@ async def get_job_result(
     Retrieves final risk analysis result scoped to current user.
     """
     request_id = getattr(request.state, "request_id", "unknown")
+
+    # ── Fast path: serve from in-memory job state if available ──
+    job = job_state_manager.get_job(analysisId, user_id=str(current_user.id) if current_user else None)
+    if job and job.result:
+        return ApiResponse(
+            success=True,
+            message="Analysis result retrieved successfully.",
+            data=AnalysisResultResponse(**job.result),
+            meta=ApiMeta(
+                requestId=request_id,
+                timestamp=datetime.now(timezone.utc).isoformat(),
+                version=settings.APP_VERSION,
+            ),
+        )
+
+    # ── Fallback: read from database (for history, refreshes, etc.) ──
     stored = service.get_analysis_by_public_id(analysisId, user_id=current_user.id)
 
     if not stored:
@@ -287,7 +304,7 @@ async def get_job_result(
     top_reviews = AnalysisMapper.extract_top_reviews_per_class(db_reviews_list, max_per_class=10)
 
     rec_dict = stored.recommendation_snapshot
-    if not rec_dict or not rec_dict.get("aspects"):
+    if not rec_dict:
         rec_dict = AnalysisMapper.generate_recommendation_dict(
             quality_score=q_score,
             delivery_score=d_score,
