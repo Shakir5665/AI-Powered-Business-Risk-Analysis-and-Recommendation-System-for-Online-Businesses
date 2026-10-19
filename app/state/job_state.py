@@ -72,9 +72,9 @@ class JobStateManager:
         job = self.get_job(analysis_id, user_id=user_id)
         if job:
             job.stop_requested = True
-            job.add_log("USER", "Report generation requested by user.")
+            job.add_log("USER", f"Review collection stopped early by user. Preserving {job.reviews_collected} reviews.")
             if job.status == "SCRAPING":
-                job.current_step = "Generating report with collected reviews..."
+                job.current_step = f"You collected {job.reviews_collected} reviews before stopping."
             return True
         return False
 

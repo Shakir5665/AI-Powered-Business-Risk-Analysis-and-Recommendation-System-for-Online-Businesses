@@ -135,19 +135,23 @@ export function AnalysisProvider({ children }) {
             sessionStorage.removeItem("riskoraAI_analysisId"); 
             sessionStorage.removeItem("riskAI_analysisId"); 
           } catch { /* ignore */ }
-          // Navigate via ref (always current, no stale closure)
+          // Allow user to see "Risk Report Ready" checkmark clearly before navigating
           setTimeout(() => {
             navigateFnRef.current(`/analysis-result/${id}`);
             // Reset context state after a brief delay so the navigation settles
-            setTimeout(() => { resetRef.current?.(); }, 300);
-          }, 800);
+            setTimeout(() => { resetRef.current?.(); }, 400);
+          }, 1200);
         }
 
         if (failed) {
           clearInterval(pollingRef.current);
           pollingRef.current = null;
-          setError("Analysis failed. Please try again.");
-          resetRef.current?.();
+          setError(statusData?.errorMessage || statusData?.currentStep || "Analysis failed. Please try again.");
+          setJobStatus((prev) => ({
+            ...prev,
+            ...statusData,
+            status: "FAILED",
+          }));
         }
       } catch {
         // Silently swallow transient polling errors
@@ -188,7 +192,15 @@ export function AnalysisProvider({ children }) {
     const id = data.analysisId;
 
     setAnalysisId(id);
-    setJobStatus({ status: "STARTED", progress: 0, message: "Connecting to product page and starting review collection..." });
+    setJobStatus({
+      status: "CONNECTING",
+      progress: 5,
+      currentStep: "Opening the product page...",
+      reviewsCollected: 0,
+      currentPage: 1,
+      totalPages: 1,
+      stopRequested: false,
+    });
     setLogs([]);
     seenLogsRef.current = new Set();
     setStep(3);
@@ -201,11 +213,12 @@ export function AnalysisProvider({ children }) {
   const stopScraping = useCallback(async (id) => {
     if (!id) return;
     try {
-      await analysisAPI.stopScraping(id);
       setJobStatus((p) => ({
         ...p,
-        message: "Wrapping up review collection... Analyzing feedback...",
+        stopRequested: true,
+        message: "Stopping review collection... Analyzing feedback...",
       }));
+      await analysisAPI.stopScraping(id);
     } catch { /* ignore */ }
   }, []);
 
