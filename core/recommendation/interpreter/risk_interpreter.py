@@ -81,7 +81,7 @@ class RiskInterpreter:
     """
 
     def __init__(self):
-        logger.info("Initializing RiskInterpreter component")
+        logger.debug("Initializing RiskInterpreter component")
 
     def interpret(self, risk_result: BusinessRiskResult) -> RecommendationContext:
         """

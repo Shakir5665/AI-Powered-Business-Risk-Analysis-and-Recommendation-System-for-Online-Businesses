@@ -22,7 +22,7 @@ class RecommendationService:
         """
         Initializes RecommendationService with an optional RecommendationEngine instance.
         """
-        logger.info("Initializing RecommendationService facade")
+        logger.debug("Initializing RecommendationService facade")
         self.engine = engine or RecommendationEngine()
 
     def generate_recommendation(self, risk_result: BusinessRiskResult) -> RecommendationResult:

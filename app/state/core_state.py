@@ -12,6 +12,7 @@ class ApplicationState:
         self.ai_loaded: bool = False
         self.loader_error: Optional[str] = None
         self.engine_instance: Optional[Any] = None
+        self.adapter_instance: Optional[Any] = None
         
         self.checks: Dict[str, str] = {
             "database": ComponentHealthStatus.PENDING.value,

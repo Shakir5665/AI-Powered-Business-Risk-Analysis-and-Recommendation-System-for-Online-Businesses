@@ -33,7 +33,7 @@ class ResponseFormatter:
         """
         self.validator = validator or ResponseValidator()
         self.mapper = mapper or ResponseMapper()
-        logger.info("Initialized ResponseFormatter with validator and mapper components")
+        logger.debug("Initialized ResponseFormatter with validator and mapper components")
 
     def format(
         self,

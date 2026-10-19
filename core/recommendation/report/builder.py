@@ -33,7 +33,7 @@ class ReportBuilder:
         """
         Initializes ReportBuilder facade with dependency injection.
         """
-        logger.info("Initializing ReportBuilder facade instance")
+        logger.debug("Initializing ReportBuilder facade instance")
         self.template_manager = template_manager
         self.assembler = assembler or ReportAssembler()
         self.validator = validator or ReportValidator()

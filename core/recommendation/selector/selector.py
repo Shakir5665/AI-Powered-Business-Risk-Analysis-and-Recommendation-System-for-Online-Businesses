@@ -30,7 +30,7 @@ class ActionSelector:
         """
         Initializes ActionSelector with optional knowledge base and strategy dependencies.
         """
-        logger.info("Initializing ActionSelector facade instance")
+        logger.debug("Initializing ActionSelector facade instance")
         self.knowledge_base = knowledge_base
         self.strategy = strategy or SelectionStrategy()
 
