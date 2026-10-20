@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowLeft, Star, Package, ExternalLink,
-  ThumbsUp, ThumbsDown, Minus,
   Loader2, AlertCircle, Info,
   Truck, ShieldCheck, ChevronRight, Target, Settings
 } from "lucide-react";
@@ -61,26 +60,6 @@ function ScoreBar({ score, color }) {
 
 const SENTIMENT_COLORS = ["#16a34a", "#dc2626", "#d97706"];
 
-function SentimentIcon({ sentiment }) {
-  const s = String(sentiment || "").toUpperCase();
-  if (s.includes("POS")) return <ThumbsUp size={14} className="text-emerald-600" />;
-  if (s.includes("NEG")) return <ThumbsDown size={14} className="text-rose-600" />;
-  return <Minus size={14} className="text-amber-600" />;
-}
-
-// Convert technical aspect names into friendly, non-technical titles
-function formatAspectTitle(aspectKey) {
-  const map = {
-    product_quality: "Product Quality",
-    delivery_experience: "Shipping & Delivery",
-    merchant_trust: "Seller Reliability",
-    customer_service: "Customer Support",
-    value_for_money: "Value for Money",
-    packaging: "Packaging",
-    authenticity: "Product Authenticity",
-  };
-  return map[aspectKey] || aspectKey.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-}
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -475,7 +454,6 @@ export default function AnalysisResult() {
     },
   ];
 
-  const reviewSamples = reviews || [];
 
   return (
     <div className="flex flex-col gap-6 max-w-[1100px]" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -536,7 +514,7 @@ export default function AnalysisResult() {
               </span>
             )}
             <span className="text-slate-700">
-              <strong className="text-slate-900 font-bold">{product?.reviewCount || product?.totalReviews || reviewSamples.length || 0}</strong> reviews analyzed
+              <strong className="text-slate-900 font-bold">{product?.reviewCount || product?.totalReviews || reviews?.length || 0}</strong> reviews analyzed
             </span>
           </div>
         </div>
@@ -978,56 +956,6 @@ export default function AnalysisResult() {
         );
       })()}
 
-      {/* ── Sample Reviews ── */}
-      {reviewSamples.length > 0 && (
-        <motion.div {...fadeUp(0.45)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
-          <div className="mb-4">
-            <h4 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Customer Reviews
-            </h4>
-            <p className="text-slate-600 text-xs font-medium">Sample feedback analyzed from customer reviews</p>
-          </div>
-          <div className="flex flex-col gap-3 max-h-[420px] overflow-y-auto pr-1">
-            {reviewSamples.map((rev, i) => {
-              const sentimentLabel = String(rev.sentiment || "").toUpperCase();
-              const isPos = sentimentLabel.includes("POS");
-              const isNeg = sentimentLabel.includes("NEG");
-              
-              return (
-                <div key={rev.id || i} className="flex gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="mt-1 shrink-0"><SentimentIcon sentiment={rev.sentiment} /></div>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-slate-800 text-sm font-medium leading-relaxed">
-                      "{rev.reviewText}"
-                    </p>
-                    <div className="flex flex-wrap items-center gap-2 mt-2">
-                      <span className={`px-2 py-0.5 rounded text-xs font-bold border ${
-                        isPos
-                          ? "bg-emerald-50 text-emerald-800 border-emerald-200"
-                          : isNeg
-                          ? "bg-rose-50 text-rose-800 border-rose-200"
-                          : "bg-amber-50 text-amber-800 border-amber-200"
-                      }`}>
-                        {isPos ? "Positive" : isNeg ? "Critical" : "Neutral"}
-                      </span>
-                      {rev.confidenceScore > 0 && (
-                        <span className="text-slate-600 font-medium text-xs">
-                          {(rev.confidenceScore * 100).toFixed(0)}% AI confidence
-                        </span>
-                      )}
-                      {rev.aspect && rev.aspect !== "GENERAL" && (
-                        <span className="px-2 py-0.5 rounded bg-slate-200 text-slate-800 font-medium text-xs capitalize">
-                          {formatAspectTitle(rev.aspect.toLowerCase())}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
-      )}
     </div>
   );
 }
