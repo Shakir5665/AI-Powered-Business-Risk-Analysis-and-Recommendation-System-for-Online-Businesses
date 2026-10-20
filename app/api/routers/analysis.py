@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, Request, Response, status
 from fastapi.responses import JSONResponse
 from datetime import datetime, timezone
+from starlette.concurrency import run_in_threadpool
 
 from app.api.schemas.common_schema import ApiResponse, ApiMeta
 from app.api.schemas.analysis_schema import AnalysisRequest, AnalysisResultResponse
@@ -182,7 +183,7 @@ async def get_job_result(
         )
 
     # ── Fallback: read from database (for history, refreshes, etc.) ──
-    stored = service.get_analysis_by_public_id(analysisId, user_id=current_user.id)
+    stored = await run_in_threadpool(service.get_analysis_by_public_id, analysisId, user_id=current_user.id)
 
     if not stored:
         return JSONResponse(
@@ -398,12 +399,16 @@ async def predict_batch_remote(payload: BatchPredictRequest):
     return {"success": True, "count": len(results), "predictions": results}
 
 
+_USER_REVIEWS_CACHE = {"mtime": 0.0, "data": None, "path": None}
+
+
 @router.get("/user-reviews", summary="Get Customer Reviews Directly from user_reviews.json")
 async def get_user_reviews(request: Request):
     """
-    Reads user_reviews.json directly from repository root on disk on every call.
-    Any updates made to user_reviews.json are instantly returned without requiring code changes.
+    Reads user_reviews.json with mtime-based in-memory caching for sub-millisecond response.
+    Any updates made to user_reviews.json on disk automatically reload on the next call.
     """
+    global _USER_REVIEWS_CACHE
     import json
     import os
 
@@ -413,15 +418,25 @@ async def get_user_reviews(request: Request):
         os.path.abspath("user_reviews.json"),
     ]
 
-    reviews_data = {"reviews": []}
-    for file_path in possible_paths:
-        if os.path.exists(file_path):
-            try:
-                with open(file_path, "r", encoding="utf-8") as f:
+    target_path = None
+    for p in possible_paths:
+        if os.path.exists(p):
+            target_path = p
+            break
+
+    if target_path:
+        try:
+            curr_mtime = os.path.getmtime(target_path)
+            if _USER_REVIEWS_CACHE["data"] is not None and _USER_REVIEWS_CACHE["mtime"] == curr_mtime:
+                reviews_data = _USER_REVIEWS_CACHE["data"]
+            else:
+                with open(target_path, "r", encoding="utf-8") as f:
                     reviews_data = json.load(f)
-                break
-            except Exception:
-                pass
+                _USER_REVIEWS_CACHE = {"mtime": curr_mtime, "data": reviews_data, "path": target_path}
+        except Exception:
+            reviews_data = _USER_REVIEWS_CACHE["data"] or {"reviews": []}
+    else:
+        reviews_data = {"reviews": []}
 
     return ApiResponse(
         success=True,

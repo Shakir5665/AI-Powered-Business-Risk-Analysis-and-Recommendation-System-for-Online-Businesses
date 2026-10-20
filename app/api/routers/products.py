@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from uuid import UUID
 from typing import Optional, List, Dict, Any
 from fastapi import APIRouter, Depends, Request, Query, HTTPException, status
+from starlette.concurrency import run_in_threadpool
 
 from app.api.schemas.common_schema import ApiResponse, ApiMeta
 from app.api.schemas.history_schema import ProductListResponse, ProductItemResponse, PaginationMeta
@@ -31,7 +32,7 @@ async def get_products(
     Retrieves a paginated list of analyzed products for current authenticated user.
     """
     request_id = getattr(request.state, "request_id", "unknown")
-    products, total = service.get_products_paginated(user_id=current_user.id, page=page, limit=limit)
+    products, total = await run_in_threadpool(service.get_products_paginated, user_id=current_user.id, page=page, limit=limit)
 
     total_pages = math.ceil(total / limit) if total > 0 else 0
 

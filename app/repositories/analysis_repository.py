@@ -1,6 +1,6 @@
 from typing import Optional, List, Tuple
 from uuid import UUID
-from sqlalchemy.orm import Session, joinedload
+from sqlalchemy.orm import Session, joinedload, selectinload
 from sqlalchemy import select, func, delete, or_
 
 from app.models.analysis import Analysis
@@ -29,11 +29,12 @@ class AnalysisRepository:
     def get_by_public_id(self, public_id: str, user_id: Optional[UUID] = None) -> Optional[Analysis]:
         """
         Retrieves analysis by public business identifier (anl_...).
-        Scoped to user_id if provided. Eagerly loads related Product and Reviews.
+        Scoped to user_id if provided. Eagerly loads related Product (joinedload) and Reviews (selectinload).
+        Using selectinload for reviews prevents Cartesian product duplication of heavy JSON snapshot columns.
         """
         stmt = (
             select(Analysis)
-            .options(joinedload(Analysis.product), joinedload(Analysis.reviews))
+            .options(joinedload(Analysis.product), selectinload(Analysis.reviews))
             .where(Analysis.public_id == public_id)
         )
         if user_id is not None:
@@ -76,6 +77,7 @@ class AnalysisRepository:
     ) -> Tuple[List[Analysis], int]:
         """
         Retrieves user-scoped paginated history with filtering, searching, and sorting.
+        Utilizes index-only count queries and eager product loading.
         """
         stmt = (
             select(Analysis)
@@ -98,11 +100,30 @@ class AnalysisRepository:
                 )
             )
 
-        # Total matching records count
-        count_stmt = select(func.count()).select_from(stmt.subquery())
+        # High-efficiency count: Avoid joining products table unless search requires product title
+        if search:
+            search_pattern = f"%{search}%"
+            count_stmt = (
+                select(func.count(Analysis.id))
+                .join(Analysis.product)
+                .where(Analysis.user_id == user_id)
+                .where(
+                    or_(
+                        Product.product_title.ilike(search_pattern),
+                        Analysis.public_id.ilike(search_pattern),
+                    )
+                )
+            )
+            if risk_level:
+                count_stmt = count_stmt.where(Analysis.business_risk_level == risk_level.upper())
+        else:
+            count_stmt = select(func.count(Analysis.id)).where(Analysis.user_id == user_id)
+            if risk_level:
+                count_stmt = count_stmt.where(Analysis.business_risk_level == risk_level.upper())
+
         total = self.db.scalar(count_stmt) or 0
 
-        # Sorting
+        # Sorting using indexed columns
         sort_column = getattr(Analysis, sort_by, Analysis.created_at)
         if order.lower() == "asc":
             stmt = stmt.order_by(sort_column.asc())

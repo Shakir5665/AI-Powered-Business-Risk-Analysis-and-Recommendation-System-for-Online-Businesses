@@ -2,7 +2,7 @@
   "reviews": [
     {
       "id": "REV001",
-      "comment": "Package eka hondin pack karala thibuna. Labunu de gana quality eken satishtai. Seller ge response eka gana satishtayak na.",
+      "comment": "Package eka hondin pack karala thibuna. Labunu de gana quality eken satishtai. Seller ge response eka gana satishtayak na. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -14,7 +14,7 @@
     },
     {
       "id": "REV002",
-      "comment": "Delivery eka normal, kiyapu kalaya athulatha labuna. Seller clear details dunna, trust ekak thiyenawa. Description eke thibba widihata hondin thibuna.",
+      "comment": "Delivery eka normal, kiyapu kalaya athulatha labuna. Seller clear details dunna, trust ekak thiyenawa. Description eke thibba widihata hondin thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -26,7 +26,7 @@
     },
     {
       "id": "REV003",
-      "comment": "Details normal, trust gana thawa balanna one. Gewapu ganata galapena quality ekak thiyenawa.",
+      "comment": "Details normal, trust gana thawa balanna one. Gewapu ganata galapena quality ekak thiyenawa. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -38,7 +38,7 @@
     },
     {
       "id": "REV004",
-      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. Labenn tikak kal giya, eth loku awlak na. Quality eka gana thawa tikak check karala balanna one.",
+      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. Labenn tikak kal giya, eth loku awlak na. Quality eka gana thawa tikak check karala balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -50,7 +50,7 @@
     },
     {
       "id": "REV005",
-      "comment": "Dunnu details saha labunu de match une na, trust eka adui. Labunu de eke quality eka gana satishtayak na.",
+      "comment": "Dunnu details saha labunu de match une na, trust eka adui. Labunu de eke quality eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -62,7 +62,7 @@
     },
     {
       "id": "REV006",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -74,7 +74,7 @@
     },
     {
       "id": "REV007",
-      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන.",
+      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -86,7 +86,7 @@
     },
     {
       "id": "REV008",
-      "comment": "Delivery was quick and the packaging was good.",
+      "comment": "Delivery was quick and the packaging was good. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -98,7 +98,7 @@
     },
     {
       "id": "REV009",
-      "comment": "Delivery eka delay una, eka gana satishtayak na. Labunu de eke quality issues kihipayak thibuna.",
+      "comment": "Delivery eka delay una, eka gana satishtayak na. Labunu de eke quality issues kihipayak thibuna. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -110,7 +110,7 @@
     },
     {
       "id": "REV010",
-      "comment": "Kiyapu kalaya athulatha safe widihata labuna. Labunu de eke quality eka average wage. Seller clear details dunna, trust ekak thiyenawa.",
+      "comment": "Kiyapu kalaya athulatha safe widihata labuna. Labunu de eke quality eka average wage. Seller clear details dunna, trust ekak thiyenawa. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -122,7 +122,7 @@
     },
     {
       "id": "REV011",
-      "comment": "Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -134,7 +134,7 @@
     },
     {
       "id": "REV012",
-      "comment": "Order eka time ekatama labuna. Gewapu ganata galapena normal quality ekak. Seller ge response eka gana satishtayak na.",
+      "comment": "Order eka time ekatama labuna. Gewapu ganata galapena normal quality ekak. Seller ge response eka gana satishtayak na. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -146,7 +146,7 @@
     },
     {
       "id": "REV013",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -158,7 +158,7 @@
     },
     {
       "id": "REV014",
-      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා.",
+      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -170,7 +170,7 @@
     },
     {
       "id": "REV015",
-      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන.",
+      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -182,7 +182,7 @@
     },
     {
       "id": "REV016",
-      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -194,7 +194,7 @@
     },
     {
       "id": "REV017",
-      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -206,7 +206,7 @@
     },
     {
       "id": "REV018",
-      "comment": "Details normal, trust gana thawa balanna one.",
+      "comment": "Details normal, trust gana thawa balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -218,7 +218,7 @@
     },
     {
       "id": "REV019",
-      "comment": "Seller ge response eka gana satishtayak na.",
+      "comment": "Seller ge response eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -230,7 +230,7 @@
     },
     {
       "id": "REV020",
-      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ.",
+      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -242,7 +242,7 @@
     },
     {
       "id": "REV021",
-      "comment": "Delivery eka ikmanata una, packing ekath hondai. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Delivery eka ikmanata una, packing ekath hondai. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -254,7 +254,7 @@
     },
     {
       "id": "REV022",
-      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි.",
+      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -266,7 +266,7 @@
     },
     {
       "id": "REV023",
-      "comment": "Dunnu details saha labunu de match une na, trust eka adui. Package eka hondin pack karala thibuna.",
+      "comment": "Dunnu details saha labunu de match une na, trust eka adui. Package eka hondin pack karala thibuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -278,7 +278,7 @@
     },
     {
       "id": "REV024",
-      "comment": "Quality eka gana thawa tikak check karala balanna one. Delivery eka ikmanata una, packing ekath hondai.",
+      "comment": "Quality eka gana thawa tikak check karala balanna one. Delivery eka ikmanata una, packing ekath hondai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -290,7 +290,7 @@
     },
     {
       "id": "REV025",
-      "comment": "Gewapu ganata galapena quality ekak thiyenawa. Seller ge response eka gana satishtayak na.",
+      "comment": "Gewapu ganata galapena quality ekak thiyenawa. Seller ge response eka gana satishtayak na. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -302,7 +302,7 @@
     },
     {
       "id": "REV026",
-      "comment": "Labunu de eke quality issues kihipayak thibuna.",
+      "comment": "Labunu de eke quality issues kihipayak thibuna. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -314,7 +314,7 @@
     },
     {
       "id": "REV027",
-      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -326,7 +326,7 @@
     },
     {
       "id": "REV028",
-      "comment": "සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -338,7 +338,7 @@
     },
     {
       "id": "REV029",
-      "comment": "සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ.",
+      "comment": "සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -350,7 +350,7 @@
     },
     {
       "id": "REV030",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa. Description eke thibba widihata hondin thibuna.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. Description eke thibba widihata hondin thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -362,7 +362,7 @@
     },
     {
       "id": "REV031",
-      "comment": "Questions walata hondha response ekak labuna, service eka reliable. Order eka time ekatama labuna.",
+      "comment": "Questions walata hondha response ekak labuna, service eka reliable. Order eka time ekatama labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -374,7 +374,7 @@
     },
     {
       "id": "REV032",
-      "comment": "Trust gana thawa decide karanna experience madi.",
+      "comment": "Trust gana thawa decide karanna experience madi. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -386,7 +386,7 @@
     },
     {
       "id": "REV033",
-      "comment": "Gewapu ganata quality eka hondha madi. Delivery experience eka average wage.",
+      "comment": "Gewapu ganata quality eka hondha madi. Delivery experience eka average wage. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -398,7 +398,7 @@
     },
     {
       "id": "REV034",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -410,7 +410,7 @@
     },
     {
       "id": "REV035",
-      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -422,7 +422,7 @@
     },
     {
       "id": "REV036",
-      "comment": "The delivery experience was ordinary.",
+      "comment": "The delivery experience was ordinary. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -434,7 +434,7 @@
     },
     {
       "id": "REV037",
-      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -446,7 +446,7 @@
     },
     {
       "id": "REV038",
-      "comment": "විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්.",
+      "comment": "විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -458,7 +458,7 @@
     },
     {
       "id": "REV039",
-      "comment": "Description eke thibba widihata hondin thibuna. Dunnu details saha labunu de match une na, trust eka adui. Package eka safe widihata labune na.",
+      "comment": "Description eke thibba widihata hondin thibuna. Dunnu details saha labunu de match une na, trust eka adui. Package eka safe widihata labune na. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -470,7 +470,7 @@
     },
     {
       "id": "REV040",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -482,7 +482,7 @@
     },
     {
       "id": "REV041",
-      "comment": "Order eka labenna godak kal giya. Details normal, trust gana thawa balanna one.",
+      "comment": "Order eka labenna godak kal giya. Details normal, trust gana thawa balanna one. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -494,7 +494,7 @@
     },
     {
       "id": "REV042",
-      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ.",
+      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -506,7 +506,7 @@
     },
     {
       "id": "REV043",
-      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ.",
+      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -518,7 +518,7 @@
     },
     {
       "id": "REV044",
-      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -530,7 +530,7 @@
     },
     {
       "id": "REV045",
-      "comment": "Labunu de gana dunna details trust karanna amarui. Labunu de eke quality eka gana satishtayak na.",
+      "comment": "Labunu de gana dunna details trust karanna amarui. Labunu de eke quality eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -542,7 +542,7 @@
     },
     {
       "id": "REV046",
-      "comment": "Labunu de gana dunna details trust karanna amarui. Labunu de eke quality eka gana satishtayak na.",
+      "comment": "Labunu de gana dunna details trust karanna amarui. Labunu de eke quality eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -554,7 +554,7 @@
     },
     {
       "id": "REV047",
-      "comment": "I do not have a clear opinion about the service yet. The quality was lower than the listing suggested.",
+      "comment": "I do not have a clear opinion about the service yet. The quality was lower than the listing suggested. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -566,7 +566,7 @@
     },
     {
       "id": "REV048",
-      "comment": "Labunu de eke quality eka average wage. Kiyapu kalaya athulatha safe widihata labuna. Questions walata hondha response ekak labuna, service eka reliable.",
+      "comment": "Labunu de eke quality eka average wage. Kiyapu kalaya athulatha safe widihata labuna. Questions walata hondha response ekak labuna, service eka reliable. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -578,7 +578,7 @@
     },
     {
       "id": "REV049",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -590,7 +590,7 @@
     },
     {
       "id": "REV050",
-      "comment": "සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -602,7 +602,7 @@
     },
     {
       "id": "REV051",
-      "comment": "Labenn tikak kal giya, eth loku awlak na.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -614,7 +614,7 @@
     },
     {
       "id": "REV052",
-      "comment": "Trust gana thawa decide karanna experience madi. Package eka hondin pack karala thibuna. Gewapu ganata galapena normal quality ekak.",
+      "comment": "Trust gana thawa decide karanna experience madi. Package eka hondin pack karala thibuna. Gewapu ganata galapena normal quality ekak. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -626,7 +626,7 @@
     },
     {
       "id": "REV053",
-      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ.",
+      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -638,7 +638,7 @@
     },
     {
       "id": "REV054",
-      "comment": "Details normal, trust gana thawa balanna one.",
+      "comment": "Details normal, trust gana thawa balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -650,7 +650,7 @@
     },
     {
       "id": "REV055",
-      "comment": "Service eka gana thama clear idea ekak na. Kiyapu time ekata order eka labune na. Balaporoththu una thanata wada quality eka hondai.",
+      "comment": "Service eka gana thama clear idea ekak na. Kiyapu time ekata order eka labune na. Balaporoththu una thanata wada quality eka hondai. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -662,7 +662,7 @@
     },
     {
       "id": "REV056",
-      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. Penapu details walata wada quality eka adui.",
+      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. Penapu details walata wada quality eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -674,7 +674,7 @@
     },
     {
       "id": "REV057",
-      "comment": "The order arrived, but there is nothing special to mention about delivery.",
+      "comment": "The order arrived, but there is nothing special to mention about delivery. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -686,7 +686,7 @@
     },
     {
       "id": "REV058",
-      "comment": "ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි.",
+      "comment": "ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -698,7 +698,7 @@
     },
     {
       "id": "REV059",
-      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -710,7 +710,7 @@
     },
     {
       "id": "REV060",
-      "comment": "Kiyapu kalaya athulatha safe widihata labuna. Dunnu details saha labunu de match une na, trust eka adui. Gewapu ganata quality eka hondha madi.",
+      "comment": "Kiyapu kalaya athulatha safe widihata labuna. Dunnu details saha labunu de match une na, trust eka adui. Gewapu ganata quality eka hondha madi. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -722,7 +722,7 @@
     },
     {
       "id": "REV061",
-      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -734,7 +734,7 @@
     },
     {
       "id": "REV062",
-      "comment": "Kiyapu time ekata order eka labune na. Details normal, trust gana thawa balanna one.",
+      "comment": "Kiyapu time ekata order eka labune na. Details normal, trust gana thawa balanna one. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -746,7 +746,7 @@
     },
     {
       "id": "REV063",
-      "comment": "Labenn tikak kal giya, eth loku awlak na. Seller ge response eka gana satishtayak na. Labunu de eke quality eka average wage.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. Seller ge response eka gana satishtayak na. Labunu de eke quality eka average wage. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -758,7 +758,7 @@
     },
     {
       "id": "REV064",
-      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. Labunu de eke quality eka gana satishtayak na. Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. Labunu de eke quality eka gana satishtayak na. Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -770,7 +770,7 @@
     },
     {
       "id": "REV065",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa. Labunu de honda thaththwayen thibuna.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. Labunu de honda thaththwayen thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -782,7 +782,7 @@
     },
     {
       "id": "REV066",
-      "comment": "Kiyapu kalaya athulatha safe widihata labuna.",
+      "comment": "Kiyapu kalaya athulatha safe widihata labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -794,7 +794,7 @@
     },
     {
       "id": "REV067",
-      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි.",
+      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -806,7 +806,7 @@
     },
     {
       "id": "REV068",
-      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -818,7 +818,7 @@
     },
     {
       "id": "REV069",
-      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -830,7 +830,7 @@
     },
     {
       "id": "REV070",
-      "comment": "Delivery eka normal, kiyapu kalaya athulatha labuna.",
+      "comment": "Delivery eka normal, kiyapu kalaya athulatha labuna. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -842,7 +842,7 @@
     },
     {
       "id": "REV071",
-      "comment": "Quality eka gana thawa tikak check karala balanna one.",
+      "comment": "Quality eka gana thawa tikak check karala balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -854,7 +854,7 @@
     },
     {
       "id": "REV072",
-      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -866,7 +866,7 @@
     },
     {
       "id": "REV073",
-      "comment": "Dunnu details saha labunu de match une na, trust eka adui. Labunu de eke quality issues kihipayak thibuna.",
+      "comment": "Dunnu details saha labunu de match une na, trust eka adui. Labunu de eke quality issues kihipayak thibuna. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -878,7 +878,7 @@
     },
     {
       "id": "REV074",
-      "comment": "Gewapu ganata galapena normal quality ekak.",
+      "comment": "Gewapu ganata galapena normal quality ekak. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -890,7 +890,7 @@
     },
     {
       "id": "REV075",
-      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan.",
+      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -902,7 +902,7 @@
     },
     {
       "id": "REV076",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -914,7 +914,7 @@
     },
     {
       "id": "REV077",
-      "comment": "Order eka time ekatama labuna. Quality eka gana thawa tikak check karala balanna one.",
+      "comment": "Order eka time ekatama labuna. Quality eka gana thawa tikak check karala balanna one. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -926,7 +926,7 @@
     },
     {
       "id": "REV078",
-      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -938,7 +938,7 @@
     },
     {
       "id": "REV079",
-      "comment": "Service eka gana thama clear idea ekak na. Order eka labenna godak kal giya.",
+      "comment": "Service eka gana thama clear idea ekak na. Order eka labenna godak kal giya. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -950,7 +950,7 @@
     },
     {
       "id": "REV080",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -962,7 +962,7 @@
     },
     {
       "id": "REV081",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -974,7 +974,7 @@
     },
     {
       "id": "REV082",
-      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්.",
+      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -986,7 +986,7 @@
     },
     {
       "id": "REV083",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -998,7 +998,7 @@
     },
     {
       "id": "REV084",
-      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1010,7 +1010,7 @@
     },
     {
       "id": "REV085",
-      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1022,7 +1022,7 @@
     },
     {
       "id": "REV086",
-      "comment": "I received helpful responses, and the service felt reliable. The quality was better than I expected. Delivery was average and arrived within the stated period.",
+      "comment": "I received helpful responses, and the service felt reliable. The quality was better than I expected. Delivery was average and arrived within the stated period. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1034,7 +1034,7 @@
     },
     {
       "id": "REV087",
-      "comment": "Questions walata hondha response ekak labuna, service eka reliable. Delivery eka normal, kiyapu kalaya athulatha labuna. Balaporoththu una thanata wada quality eka hondai.",
+      "comment": "Questions walata hondha response ekak labuna, service eka reliable. Delivery eka normal, kiyapu kalaya athulatha labuna. Balaporoththu una thanata wada quality eka hondai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1046,7 +1046,7 @@
     },
     {
       "id": "REV088",
-      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1058,7 +1058,7 @@
     },
     {
       "id": "REV089",
-      "comment": "Penapu details walata wada quality eka adui.",
+      "comment": "Penapu details walata wada quality eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1070,7 +1070,7 @@
     },
     {
       "id": "REV090",
-      "comment": "Gewapu ganata galapena normal quality ekak. Order eka labuna, delivery gana special deyak kiyanna na. Details clear nathi nisa trust karanna amarui.",
+      "comment": "Gewapu ganata galapena normal quality ekak. Order eka labuna, delivery gana special deyak kiyanna na. Details clear nathi nisa trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1082,7 +1082,7 @@
     },
     {
       "id": "REV091",
-      "comment": "Balaporoththu una thanata wada quality eka hondai. Package eka hondin pack karala thibuna.",
+      "comment": "Balaporoththu una thanata wada quality eka hondai. Package eka hondin pack karala thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1094,7 +1094,7 @@
     },
     {
       "id": "REV092",
-      "comment": "Details normal, trust gana thawa balanna one.",
+      "comment": "Details normal, trust gana thawa balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1106,7 +1106,7 @@
     },
     {
       "id": "REV093",
-      "comment": "The order arrived on time. I need to check the quality a little more. I need more experience with the seller before I can say.",
+      "comment": "The order arrived on time. I need to check the quality a little more. I need more experience with the seller before I can say. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1118,7 +1118,7 @@
     },
     {
       "id": "REV094",
-      "comment": "Labunu de eke quality eka average wage. Order eka labenna godak kal giya. Service eka gana thama clear idea ekak na.",
+      "comment": "Labunu de eke quality eka average wage. Order eka labenna godak kal giya. Service eka gana thama clear idea ekak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1130,7 +1130,7 @@
     },
     {
       "id": "REV095",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Labunu de gana dunna details trust karanna amarui.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Labunu de gana dunna details trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1142,7 +1142,7 @@
     },
     {
       "id": "REV096",
-      "comment": "Service eka gana thama clear idea ekak na. Labunu de eke quality eka average wage. Delivery eka delay una, eka gana satishtayak na.",
+      "comment": "Service eka gana thama clear idea ekak na. Labunu de eke quality eka average wage. Delivery eka delay una, eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1154,7 +1154,7 @@
     },
     {
       "id": "REV097",
-      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan.",
+      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1166,7 +1166,7 @@
     },
     {
       "id": "REV098",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1178,7 +1178,7 @@
     },
     {
       "id": "REV099",
-      "comment": "Balaporoththu una thanata wada quality eka hondai. Seller ge response eka gana satishtayak na. Delivery eka normal, kiyapu kalaya athulatha labuna.",
+      "comment": "Balaporoththu una thanata wada quality eka hondai. Seller ge response eka gana satishtayak na. Delivery eka normal, kiyapu kalaya athulatha labuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1190,7 +1190,7 @@
     },
     {
       "id": "REV100",
-      "comment": "Labenn tikak kal giya, eth loku awlak na. Details clear nisa trust ekak athi una. Gewapu ganata quality eka hondha madi.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. Details clear nisa trust ekak athi una. Gewapu ganata quality eka hondha madi. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1202,7 +1202,7 @@
     },
     {
       "id": "REV101",
-      "comment": "Delivery experience eka average wage. Labunu de eke quality eka average wage.",
+      "comment": "Delivery experience eka average wage. Labunu de eke quality eka average wage. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1214,7 +1214,7 @@
     },
     {
       "id": "REV102",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa. Kiyapu time ekata order eka labune na. Labunu de honda thaththwayen thibuna.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. Kiyapu time ekata order eka labune na. Labunu de honda thaththwayen thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1226,7 +1226,7 @@
     },
     {
       "id": "REV103",
-      "comment": "ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ.",
+      "comment": "ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1238,7 +1238,7 @@
     },
     {
       "id": "REV104",
-      "comment": "Labunu de gana dunna details trust karanna amarui.",
+      "comment": "Labunu de gana dunna details trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1250,7 +1250,7 @@
     },
     {
       "id": "REV105",
-      "comment": "I received helpful responses, and the service felt reliable. The quality was better than I expected.",
+      "comment": "I received helpful responses, and the service felt reliable. The quality was better than I expected. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1262,7 +1262,7 @@
     },
     {
       "id": "REV106",
-      "comment": "Gewapu ganata galapena quality ekak thiyenawa. Seller ge response eka gana satishtayak na. Delivery experience eka average wage.",
+      "comment": "Gewapu ganata galapena quality ekak thiyenawa. Seller ge response eka gana satishtayak na. Delivery experience eka average wage. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1274,7 +1274,7 @@
     },
     {
       "id": "REV107",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Details clear nisa trust ekak athi una.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Details clear nisa trust ekak athi una. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1286,7 +1286,7 @@
     },
     {
       "id": "REV108",
-      "comment": "Details clear nathi nisa trust karanna amarui.",
+      "comment": "Details clear nathi nisa trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1298,7 +1298,7 @@
     },
     {
       "id": "REV109",
-      "comment": "Labenn tikak kal giya, eth loku awlak na. Labunu de eke quality issues kihipayak thibuna. Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. Labunu de eke quality issues kihipayak thibuna. Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1310,7 +1310,7 @@
     },
     {
       "id": "REV110",
-      "comment": "Delivery eka delay una, eka gana satishtayak na. Dunnu details saha labunu de match una, trust karanna puluwan. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Delivery eka delay una, eka gana satishtayak na. Dunnu details saha labunu de match una, trust karanna puluwan. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1322,7 +1322,7 @@
     },
     {
       "id": "REV111",
-      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්.",
+      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1334,7 +1334,7 @@
     },
     {
       "id": "REV112",
-      "comment": "The quality was better than I expected. The information was average, so I am still unsure about trust.",
+      "comment": "The quality was better than I expected. The information was average, so I am still unsure about trust. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1346,7 +1346,7 @@
     },
     {
       "id": "REV113",
-      "comment": "Seller ge response eka gana satishtayak na. Order eka labuna, delivery gana special deyak kiyanna na. Gewapu ganata galapena normal quality ekak.",
+      "comment": "Seller ge response eka gana satishtayak na. Order eka labuna, delivery gana special deyak kiyanna na. Gewapu ganata galapena normal quality ekak. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1358,7 +1358,7 @@
     },
     {
       "id": "REV114",
-      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1370,7 +1370,7 @@
     },
     {
       "id": "REV115",
-      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1382,7 +1382,7 @@
     },
     {
       "id": "REV116",
-      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා.",
+      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1394,7 +1394,7 @@
     },
     {
       "id": "REV117",
-      "comment": "Details clear nisa trust ekak athi una.",
+      "comment": "Details clear nisa trust ekak athi una. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1406,7 +1406,7 @@
     },
     {
       "id": "REV118",
-      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්.",
+      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1418,7 +1418,7 @@
     },
     {
       "id": "REV119",
-      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්.",
+      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1430,7 +1430,7 @@
     },
     {
       "id": "REV120",
-      "comment": "I was not satisfied with the seller’s response. The item arrived in good condition. The package did not arrive safely.",
+      "comment": "I was not satisfied with the seller’s response. The item arrived in good condition. The package did not arrive safely. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1442,7 +1442,7 @@
     },
     {
       "id": "REV121",
-      "comment": "Gewapu ganata quality eka hondha madi. Details clear nisa trust ekak athi una. Kiyapu time ekata order eka labune na.",
+      "comment": "Gewapu ganata quality eka hondha madi. Details clear nisa trust ekak athi una. Kiyapu time ekata order eka labune na. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1454,7 +1454,7 @@
     },
     {
       "id": "REV122",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1466,7 +1466,7 @@
     },
     {
       "id": "REV123",
-      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා.",
+      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1478,7 +1478,7 @@
     },
     {
       "id": "REV124",
-      "comment": "Balaporoththu una thanata wada quality eka hondai. Delivery eka normal, kiyapu kalaya athulatha labuna.",
+      "comment": "Balaporoththu una thanata wada quality eka hondai. Delivery eka normal, kiyapu kalaya athulatha labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1490,7 +1490,7 @@
     },
     {
       "id": "REV125",
-      "comment": "The details matched what I received, so I feel confident.",
+      "comment": "The details matched what I received, so I feel confident. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1502,7 +1502,7 @@
     },
     {
       "id": "REV126",
-      "comment": "Order eka labenna godak kal giya. Quality eka gana thawa tikak check karala balanna one.",
+      "comment": "Order eka labenna godak kal giya. Quality eka gana thawa tikak check karala balanna one. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1514,7 +1514,7 @@
     },
     {
       "id": "REV127",
-      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1526,7 +1526,7 @@
     },
     {
       "id": "REV128",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa. Delivery eka normal, kiyapu kalaya athulatha labuna.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. Delivery eka normal, kiyapu kalaya athulatha labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1538,7 +1538,7 @@
     },
     {
       "id": "REV129",
-      "comment": "Order eka time ekatama labuna. Details clear nathi nisa trust karanna amarui.",
+      "comment": "Order eka time ekatama labuna. Details clear nathi nisa trust karanna amarui. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1550,7 +1550,7 @@
     },
     {
       "id": "REV130",
-      "comment": "Details normal, trust gana thawa balanna one.",
+      "comment": "Details normal, trust gana thawa balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1562,7 +1562,7 @@
     },
     {
       "id": "REV131",
-      "comment": "Quality eka gana thawa tikak check karala balanna one.",
+      "comment": "Quality eka gana thawa tikak check karala balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1574,7 +1574,7 @@
     },
     {
       "id": "REV132",
-      "comment": "Package eka safe widihata labune na. Labunu de honda thaththwayen thibuna.",
+      "comment": "Package eka safe widihata labune na. Labunu de honda thaththwayen thibuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1586,7 +1586,7 @@
     },
     {
       "id": "REV133",
-      "comment": "Kiyapu time ekata order eka labune na. Labunu de gana quality eken satishtai. Seller gana thawa experience ekak labunama thamai kiyanna puluwan.",
+      "comment": "Kiyapu time ekata order eka labune na. Labunu de gana quality eken satishtai. Seller gana thawa experience ekak labunama thamai kiyanna puluwan. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1598,7 +1598,7 @@
     },
     {
       "id": "REV134",
-      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ.",
+      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1610,7 +1610,7 @@
     },
     {
       "id": "REV135",
-      "comment": "Questions walata hondha response ekak labuna, service eka reliable. Labunu de gana quality eken satishtai. Delivery eka ikmanata una, packing ekath hondai.",
+      "comment": "Questions walata hondha response ekak labuna, service eka reliable. Labunu de gana quality eken satishtai. Delivery eka ikmanata una, packing ekath hondai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1622,7 +1622,7 @@
     },
     {
       "id": "REV136",
-      "comment": "The details did not match what I received, so trust is low. Delivery was quick and the packaging was good. There were several issues with the item’s condition.",
+      "comment": "The details did not match what I received, so trust is low. Delivery was quick and the packaging was good. There were several issues with the item’s condition. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1634,7 +1634,7 @@
     },
     {
       "id": "REV137",
-      "comment": "Trust gana thawa decide karanna experience madi. Balaporoththu una thanata wada quality eka hondai.",
+      "comment": "Trust gana thawa decide karanna experience madi. Balaporoththu una thanata wada quality eka hondai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1646,7 +1646,7 @@
     },
     {
       "id": "REV138",
-      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1658,7 +1658,7 @@
     },
     {
       "id": "REV139",
-      "comment": "Delivery experience eka average wage. Service eka gana thama clear idea ekak na. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Delivery experience eka average wage. Service eka gana thama clear idea ekak na. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1670,7 +1670,7 @@
     },
     {
       "id": "REV140",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1682,7 +1682,7 @@
     },
     {
       "id": "REV141",
-      "comment": "Details clear nisa trust ekak athi una.",
+      "comment": "Details clear nisa trust ekak athi una. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1694,7 +1694,7 @@
     },
     {
       "id": "REV142",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1706,7 +1706,7 @@
     },
     {
       "id": "REV143",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1718,7 +1718,7 @@
     },
     {
       "id": "REV144",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1730,7 +1730,7 @@
     },
     {
       "id": "REV145",
-      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්.",
+      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1742,7 +1742,7 @@
     },
     {
       "id": "REV146",
-      "comment": "ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ.",
+      "comment": "ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1754,7 +1754,7 @@
     },
     {
       "id": "REV147",
-      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන.",
+      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1766,7 +1766,7 @@
     },
     {
       "id": "REV148",
-      "comment": "Gewapu ganata quality eka hondha madi. Details normal, trust gana thawa balanna one.",
+      "comment": "Gewapu ganata quality eka hondha madi. Details normal, trust gana thawa balanna one. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1778,7 +1778,7 @@
     },
     {
       "id": "REV149",
-      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්.",
+      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1790,7 +1790,7 @@
     },
     {
       "id": "REV150",
-      "comment": "Delivery was average and arrived within the stated period. The item is okay, with nothing special to mention about quality.",
+      "comment": "Delivery was average and arrived within the stated period. The item is okay, with nothing special to mention about quality. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1802,7 +1802,7 @@
     },
     {
       "id": "REV151",
-      "comment": "Labenn tikak kal giya, eth loku awlak na.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1814,7 +1814,7 @@
     },
     {
       "id": "REV152",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1826,7 +1826,7 @@
     },
     {
       "id": "REV153",
-      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan.",
+      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1838,7 +1838,7 @@
     },
     {
       "id": "REV154",
-      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1850,7 +1850,7 @@
     },
     {
       "id": "REV155",
-      "comment": "Description eke thibba widihata hondin thibuna.",
+      "comment": "Description eke thibba widihata hondin thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1862,7 +1862,7 @@
     },
     {
       "id": "REV156",
-      "comment": "Seller ge response eka gana satishtayak na. Order eka time ekatama labuna.",
+      "comment": "Seller ge response eka gana satishtayak na. Order eka time ekatama labuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1874,7 +1874,7 @@
     },
     {
       "id": "REV157",
-      "comment": "Order eka time ekatama labuna.",
+      "comment": "Order eka time ekatama labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1886,7 +1886,7 @@
     },
     {
       "id": "REV158",
-      "comment": "The order took a long time to arrive. I received helpful responses, and the service felt reliable.",
+      "comment": "The order took a long time to arrive. I received helpful responses, and the service felt reliable. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1898,7 +1898,7 @@
     },
     {
       "id": "REV159",
-      "comment": "ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1910,7 +1910,7 @@
     },
     {
       "id": "REV160",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1922,7 +1922,7 @@
     },
     {
       "id": "REV161",
-      "comment": "Details clear nisa trust ekak athi una. Delivery eka ikmanata una, packing ekath hondai. Penapu details walata wada quality eka adui.",
+      "comment": "Details clear nisa trust ekak athi una. Delivery eka ikmanata una, packing ekath hondai. Penapu details walata wada quality eka adui. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1934,7 +1934,7 @@
     },
     {
       "id": "REV162",
-      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ.",
+      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -1946,7 +1946,7 @@
     },
     {
       "id": "REV163",
-      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1958,7 +1958,7 @@
     },
     {
       "id": "REV164",
-      "comment": "Labunu de honda thaththwayen thibuna. Details clear nisa trust ekak athi una.",
+      "comment": "Labunu de honda thaththwayen thibuna. Details clear nisa trust ekak athi una. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1970,7 +1970,7 @@
     },
     {
       "id": "REV165",
-      "comment": "Trust gana thawa decide karanna experience madi.",
+      "comment": "Trust gana thawa decide karanna experience madi. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -1982,7 +1982,7 @@
     },
     {
       "id": "REV166",
-      "comment": "Questions walata hondha response ekak labuna, service eka reliable. Labunu de gana quality eken satishtai. Order eka labuna, delivery gana special deyak kiyanna na.",
+      "comment": "Questions walata hondha response ekak labuna, service eka reliable. Labunu de gana quality eken satishtai. Order eka labuna, delivery gana special deyak kiyanna na. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -1994,7 +1994,7 @@
     },
     {
       "id": "REV167",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2006,7 +2006,7 @@
     },
     {
       "id": "REV168",
-      "comment": "Package eka safe widihata labune na.",
+      "comment": "Package eka safe widihata labune na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2018,7 +2018,7 @@
     },
     {
       "id": "REV169",
-      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා.",
+      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2030,7 +2030,7 @@
     },
     {
       "id": "REV170",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2042,7 +2042,7 @@
     },
     {
       "id": "REV171",
-      "comment": "Delivery was average and arrived within the stated period. There were several issues with the item’s condition.",
+      "comment": "Delivery was average and arrived within the stated period. There were several issues with the item’s condition. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2054,7 +2054,7 @@
     },
     {
       "id": "REV172",
-      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2066,7 +2066,7 @@
     },
     {
       "id": "REV173",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2078,7 +2078,7 @@
     },
     {
       "id": "REV174",
-      "comment": "විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2090,7 +2090,7 @@
     },
     {
       "id": "REV175",
-      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2102,7 +2102,7 @@
     },
     {
       "id": "REV176",
-      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2114,7 +2114,7 @@
     },
     {
       "id": "REV177",
-      "comment": "Labunu de eke quality eka average wage. Kiyapu time ekata order eka labune na. Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Labunu de eke quality eka average wage. Kiyapu time ekata order eka labune na. Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2126,7 +2126,7 @@
     },
     {
       "id": "REV178",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2138,7 +2138,7 @@
     },
     {
       "id": "REV179",
-      "comment": "The order arrived on time. There were several issues with the item’s condition. The listing was clear, which made it easier to trust the seller.",
+      "comment": "The order arrived on time. There were several issues with the item’s condition. The listing was clear, which made it easier to trust the seller. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2150,7 +2150,7 @@
     },
     {
       "id": "REV180",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2162,7 +2162,7 @@
     },
     {
       "id": "REV181",
-      "comment": "Delivery eka delay una, eka gana satishtayak na.",
+      "comment": "Delivery eka delay una, eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2174,7 +2174,7 @@
     },
     {
       "id": "REV182",
-      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්.",
+      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2186,7 +2186,7 @@
     },
     {
       "id": "REV183",
-      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2198,7 +2198,7 @@
     },
     {
       "id": "REV184",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2210,7 +2210,7 @@
     },
     {
       "id": "REV185",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Delivery eka ikmanata una, packing ekath hondai.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Delivery eka ikmanata una, packing ekath hondai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2222,7 +2222,7 @@
     },
     {
       "id": "REV186",
-      "comment": "Delivery eka delay una, eka gana satishtayak na. Seller gana thawa experience ekak labunama thamai kiyanna puluwan.",
+      "comment": "Delivery eka delay una, eka gana satishtayak na. Seller gana thawa experience ekak labunama thamai kiyanna puluwan. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2234,7 +2234,7 @@
     },
     {
       "id": "REV187",
-      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා.",
+      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2246,7 +2246,7 @@
     },
     {
       "id": "REV188",
-      "comment": "Penapu details walata wada quality eka adui. Package eka hondin pack karala thibuna.",
+      "comment": "Penapu details walata wada quality eka adui. Package eka hondin pack karala thibuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2258,7 +2258,7 @@
     },
     {
       "id": "REV189",
-      "comment": "The delivery experience was ordinary.",
+      "comment": "The delivery experience was ordinary. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2270,7 +2270,7 @@
     },
     {
       "id": "REV190",
-      "comment": "Questions walata hondha response ekak labuna, service eka reliable.",
+      "comment": "Questions walata hondha response ekak labuna, service eka reliable. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2282,7 +2282,7 @@
     },
     {
       "id": "REV191",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2294,7 +2294,7 @@
     },
     {
       "id": "REV192",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2306,7 +2306,7 @@
     },
     {
       "id": "REV193",
-      "comment": "It arrived safely within the stated timeframe.",
+      "comment": "It arrived safely within the stated timeframe. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2318,7 +2318,7 @@
     },
     {
       "id": "REV194",
-      "comment": "Details normal, trust gana thawa balanna one.",
+      "comment": "Details normal, trust gana thawa balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2330,7 +2330,7 @@
     },
     {
       "id": "REV195",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2342,7 +2342,7 @@
     },
     {
       "id": "REV196",
-      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා.",
+      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2354,7 +2354,7 @@
     },
     {
       "id": "REV197",
-      "comment": "Service eka gana thama clear idea ekak na. Kiyapu kalaya athulatha safe widihata labuna.",
+      "comment": "Service eka gana thama clear idea ekak na. Kiyapu kalaya athulatha safe widihata labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2366,7 +2366,7 @@
     },
     {
       "id": "REV198",
-      "comment": "Quality eka gana thawa tikak check karala balanna one. Labenn tikak kal giya, eth loku awlak na.",
+      "comment": "Quality eka gana thawa tikak check karala balanna one. Labenn tikak kal giya, eth loku awlak na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2378,7 +2378,7 @@
     },
     {
       "id": "REV199",
-      "comment": "Delivery eka normal, kiyapu kalaya athulatha labuna. Details normal, trust gana thawa balanna one. Penapu details walata wada quality eka adui.",
+      "comment": "Delivery eka normal, kiyapu kalaya athulatha labuna. Details normal, trust gana thawa balanna one. Penapu details walata wada quality eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2390,7 +2390,7 @@
     },
     {
       "id": "REV200",
-      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2402,7 +2402,7 @@
     },
     {
       "id": "REV201",
-      "comment": "Package eka hondin pack karala thibuna.",
+      "comment": "Package eka hondin pack karala thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2414,7 +2414,7 @@
     },
     {
       "id": "REV202",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2426,7 +2426,7 @@
     },
     {
       "id": "REV203",
-      "comment": "Labunu de eke quality eka average wage. Order eka labuna, delivery gana special deyak kiyanna na. Seller ge response eka gana satishtayak na.",
+      "comment": "Labunu de eke quality eka average wage. Order eka labuna, delivery gana special deyak kiyanna na. Seller ge response eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2438,7 +2438,7 @@
     },
     {
       "id": "REV204",
-      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2450,7 +2450,7 @@
     },
     {
       "id": "REV205",
-      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2462,7 +2462,7 @@
     },
     {
       "id": "REV206",
-      "comment": "Labenn tikak kal giya, eth loku awlak na. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2474,7 +2474,7 @@
     },
     {
       "id": "REV207",
-      "comment": "The order arrived, but there is nothing special to mention about delivery. The quality was not good for the price.",
+      "comment": "The order arrived, but there is nothing special to mention about delivery. The quality was not good for the price. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2486,7 +2486,7 @@
     },
     {
       "id": "REV208",
-      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා.",
+      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2498,7 +2498,7 @@
     },
     {
       "id": "REV209",
-      "comment": "Kiyapu time ekata order eka labune na. Gewapu ganata galapena quality ekak thiyenawa.",
+      "comment": "Kiyapu time ekata order eka labune na. Gewapu ganata galapena quality ekak thiyenawa. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2510,7 +2510,7 @@
     },
     {
       "id": "REV210",
-      "comment": "Details clear nisa trust ekak athi una.",
+      "comment": "Details clear nisa trust ekak athi una. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2522,7 +2522,7 @@
     },
     {
       "id": "REV211",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2534,7 +2534,7 @@
     },
     {
       "id": "REV212",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2546,7 +2546,7 @@
     },
     {
       "id": "REV213",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Kiyapu kalaya athulatha safe widihata labuna.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Kiyapu kalaya athulatha safe widihata labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2558,7 +2558,7 @@
     },
     {
       "id": "REV214",
-      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2570,7 +2570,7 @@
     },
     {
       "id": "REV215",
-      "comment": "Order eka labenna godak kal giya.",
+      "comment": "Order eka labenna godak kal giya. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2582,7 +2582,7 @@
     },
     {
       "id": "REV216",
-      "comment": "Labunu de eke quality eka gana satishtayak na.",
+      "comment": "Labunu de eke quality eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2594,7 +2594,7 @@
     },
     {
       "id": "REV217",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2606,7 +2606,7 @@
     },
     {
       "id": "REV218",
-      "comment": "Labunu de eke quality eka average wage. Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Labunu de eke quality eka average wage. Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2618,7 +2618,7 @@
     },
     {
       "id": "REV219",
-      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා.",
+      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2630,7 +2630,7 @@
     },
     {
       "id": "REV220",
-      "comment": "Delivery eka delay una, eka gana satishtayak na. Dunnu details saha labunu de match una, trust karanna puluwan. Labunu de eke quality eka gana satishtayak na.",
+      "comment": "Delivery eka delay una, eka gana satishtayak na. Dunnu details saha labunu de match una, trust karanna puluwan. Labunu de eke quality eka gana satishtayak na. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2642,7 +2642,7 @@
     },
     {
       "id": "REV221",
-      "comment": "Labunu de eke quality eka gana satishtayak na. Service eka gana thama clear idea ekak na.",
+      "comment": "Labunu de eke quality eka gana satishtayak na. Service eka gana thama clear idea ekak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2654,7 +2654,7 @@
     },
     {
       "id": "REV222",
-      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2666,7 +2666,7 @@
     },
     {
       "id": "REV223",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2678,7 +2678,7 @@
     },
     {
       "id": "REV224",
-      "comment": "කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි.",
+      "comment": "කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2690,7 +2690,7 @@
     },
     {
       "id": "REV225",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa. Delivery experience eka average wage.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. Delivery experience eka average wage. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2702,7 +2702,7 @@
     },
     {
       "id": "REV226",
-      "comment": "The order arrived on time. The seller provided clear information and seemed trustworthy. The quality was lower than the listing suggested.",
+      "comment": "The order arrived on time. The seller provided clear information and seemed trustworthy. The quality was lower than the listing suggested. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2714,7 +2714,7 @@
     },
     {
       "id": "REV227",
-      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2726,7 +2726,7 @@
     },
     {
       "id": "REV228",
-      "comment": "The quality was not good for the price. I need more experience before deciding whether to trust the seller. The package did not arrive safely.",
+      "comment": "The quality was not good for the price. I need more experience before deciding whether to trust the seller. The package did not arrive safely. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2738,7 +2738,7 @@
     },
     {
       "id": "REV229",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2750,7 +2750,7 @@
     },
     {
       "id": "REV230",
-      "comment": "Kiyapu time ekata order eka labune na.",
+      "comment": "Kiyapu time ekata order eka labune na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2762,7 +2762,7 @@
     },
     {
       "id": "REV231",
-      "comment": "Kiyapu kalaya athulatha safe widihata labuna. Penapu details walata wada quality eka adui.",
+      "comment": "Kiyapu kalaya athulatha safe widihata labuna. Penapu details walata wada quality eka adui. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2774,7 +2774,7 @@
     },
     {
       "id": "REV232",
-      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2786,7 +2786,7 @@
     },
     {
       "id": "REV233",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2798,7 +2798,7 @@
     },
     {
       "id": "REV234",
-      "comment": "Description eke thibba widihata hondin thibuna. Seller gana thawa experience ekak labunama thamai kiyanna puluwan.",
+      "comment": "Description eke thibba widihata hondin thibuna. Seller gana thawa experience ekak labunama thamai kiyanna puluwan. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2810,7 +2810,7 @@
     },
     {
       "id": "REV235",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2822,7 +2822,7 @@
     },
     {
       "id": "REV236",
-      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ.",
+      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2834,7 +2834,7 @@
     },
     {
       "id": "REV237",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2846,7 +2846,7 @@
     },
     {
       "id": "REV238",
-      "comment": "The information was average, so I am still unsure about trust. I am not satisfied with the item’s quality. Delivery was average and arrived within the stated period.",
+      "comment": "The information was average, so I am still unsure about trust. I am not satisfied with the item’s quality. Delivery was average and arrived within the stated period. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2858,7 +2858,7 @@
     },
     {
       "id": "REV239",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2870,7 +2870,7 @@
     },
     {
       "id": "REV240",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Kiyapu kalaya athulatha safe widihata labuna.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Kiyapu kalaya athulatha safe widihata labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2882,7 +2882,7 @@
     },
     {
       "id": "REV241",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2894,7 +2894,7 @@
     },
     {
       "id": "REV242",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2906,7 +2906,7 @@
     },
     {
       "id": "REV243",
-      "comment": "Labunu de eke quality eka gana satishtayak na. Delivery experience eka average wage.",
+      "comment": "Labunu de eke quality eka gana satishtayak na. Delivery experience eka average wage. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2918,7 +2918,7 @@
     },
     {
       "id": "REV244",
-      "comment": "Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2930,7 +2930,7 @@
     },
     {
       "id": "REV245",
-      "comment": "Balaporoththu una thanata wada quality eka hondai.",
+      "comment": "Balaporoththu una thanata wada quality eka hondai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2942,7 +2942,7 @@
     },
     {
       "id": "REV246",
-      "comment": "The details did not match what I received, so trust is low.",
+      "comment": "The details did not match what I received, so trust is low. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -2954,7 +2954,7 @@
     },
     {
       "id": "REV247",
-      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා.",
+      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2966,7 +2966,7 @@
     },
     {
       "id": "REV248",
-      "comment": "The seller provided clear information and seemed trustworthy.",
+      "comment": "The seller provided clear information and seemed trustworthy. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -2978,7 +2978,7 @@
     },
     {
       "id": "REV249",
-      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. Labenn tikak kal giya, eth loku awlak na.",
+      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. Labenn tikak kal giya, eth loku awlak na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -2990,7 +2990,7 @@
     },
     {
       "id": "REV250",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3002,7 +3002,7 @@
     },
     {
       "id": "REV251",
-      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ.",
+      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3014,7 +3014,7 @@
     },
     {
       "id": "REV252",
-      "comment": "Order eka time ekatama labuna. Quality eka gana thawa tikak check karala balanna one.",
+      "comment": "Order eka time ekatama labuna. Quality eka gana thawa tikak check karala balanna one. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3026,7 +3026,7 @@
     },
     {
       "id": "REV253",
-      "comment": "Details clear nathi nisa trust karanna amarui. Order eka labenna godak kal giya. Gewapu ganata galapena normal quality ekak.",
+      "comment": "Details clear nathi nisa trust karanna amarui. Order eka labenna godak kal giya. Gewapu ganata galapena normal quality ekak. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3038,7 +3038,7 @@
     },
     {
       "id": "REV254",
-      "comment": "Labunu de eke quality issues kihipayak thibuna.",
+      "comment": "Labunu de eke quality issues kihipayak thibuna. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3050,7 +3050,7 @@
     },
     {
       "id": "REV255",
-      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා.",
+      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3062,7 +3062,7 @@
     },
     {
       "id": "REV256",
-      "comment": "Labenn tikak kal giya, eth loku awlak na. Labunu de gana dunna details trust karanna amarui. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. Labunu de gana dunna details trust karanna amarui. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3074,7 +3074,7 @@
     },
     {
       "id": "REV257",
-      "comment": "The item is okay, with nothing special to mention about quality.",
+      "comment": "The item is okay, with nothing special to mention about quality. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3086,7 +3086,7 @@
     },
     {
       "id": "REV258",
-      "comment": "Trust gana thawa decide karanna experience madi. Order eka labuna, delivery gana special deyak kiyanna na. Labunu de eke quality eka gana satishtayak na.",
+      "comment": "Trust gana thawa decide karanna experience madi. Order eka labuna, delivery gana special deyak kiyanna na. Labunu de eke quality eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3098,7 +3098,7 @@
     },
     {
       "id": "REV259",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3110,7 +3110,7 @@
     },
     {
       "id": "REV260",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3122,7 +3122,7 @@
     },
     {
       "id": "REV261",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3134,7 +3134,7 @@
     },
     {
       "id": "REV262",
-      "comment": "Labenn tikak kal giya, eth loku awlak na.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3146,7 +3146,7 @@
     },
     {
       "id": "REV263",
-      "comment": "Description eke thibba widihata hondin thibuna.",
+      "comment": "Description eke thibba widihata hondin thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3158,7 +3158,7 @@
     },
     {
       "id": "REV264",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3170,7 +3170,7 @@
     },
     {
       "id": "REV265",
-      "comment": "Dunnu details saha labunu de match une na, trust eka adui. Order eka labuna, delivery gana special deyak kiyanna na.",
+      "comment": "Dunnu details saha labunu de match une na, trust eka adui. Order eka labuna, delivery gana special deyak kiyanna na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3182,7 +3182,7 @@
     },
     {
       "id": "REV266",
-      "comment": "Delivery eka ikmanata una, packing ekath hondai. Description eke thibba widihata hondin thibuna. Service eka gana thama clear idea ekak na.",
+      "comment": "Delivery eka ikmanata una, packing ekath hondai. Description eke thibba widihata hondin thibuna. Service eka gana thama clear idea ekak na. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3194,7 +3194,7 @@
     },
     {
       "id": "REV267",
-      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්.",
+      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3206,7 +3206,7 @@
     },
     {
       "id": "REV268",
-      "comment": "Delivery experience eka average wage. Labunu de honda thaththwayen thibuna. Trust gana thawa decide karanna experience madi.",
+      "comment": "Delivery experience eka average wage. Labunu de honda thaththwayen thibuna. Trust gana thawa decide karanna experience madi. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3218,7 +3218,7 @@
     },
     {
       "id": "REV269",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3230,7 +3230,7 @@
     },
     {
       "id": "REV270",
-      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්.",
+      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3242,7 +3242,7 @@
     },
     {
       "id": "REV271",
-      "comment": "Seller ge response eka gana satishtayak na. Kiyapu time ekata order eka labune na.",
+      "comment": "Seller ge response eka gana satishtayak na. Kiyapu time ekata order eka labune na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3254,7 +3254,7 @@
     },
     {
       "id": "REV272",
-      "comment": "Order eka labenna godak kal giya.",
+      "comment": "Order eka labenna godak kal giya. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3266,7 +3266,7 @@
     },
     {
       "id": "REV273",
-      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan.",
+      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3278,7 +3278,7 @@
     },
     {
       "id": "REV274",
-      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි.",
+      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3290,7 +3290,7 @@
     },
     {
       "id": "REV275",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3302,7 +3302,7 @@
     },
     {
       "id": "REV276",
-      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3314,7 +3314,7 @@
     },
     {
       "id": "REV277",
-      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි.",
+      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3326,7 +3326,7 @@
     },
     {
       "id": "REV278",
-      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා.",
+      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3338,7 +3338,7 @@
     },
     {
       "id": "REV279",
-      "comment": "Seller ge response eka gana satishtayak na. Order eka labuna, delivery gana special deyak kiyanna na.",
+      "comment": "Seller ge response eka gana satishtayak na. Order eka labuna, delivery gana special deyak kiyanna na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3350,7 +3350,7 @@
     },
     {
       "id": "REV280",
-      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3362,7 +3362,7 @@
     },
     {
       "id": "REV281",
-      "comment": "Labunu de eke quality eka gana satishtayak na. Seller ge response eka gana satishtayak na.",
+      "comment": "Labunu de eke quality eka gana satishtayak na. Seller ge response eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3374,7 +3374,7 @@
     },
     {
       "id": "REV282",
-      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා.",
+      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3386,7 +3386,7 @@
     },
     {
       "id": "REV283",
-      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3398,7 +3398,7 @@
     },
     {
       "id": "REV284",
-      "comment": "Labunu de gana dunna details trust karanna amarui.",
+      "comment": "Labunu de gana dunna details trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3410,7 +3410,7 @@
     },
     {
       "id": "REV285",
-      "comment": "The quality seems reasonable for the price.",
+      "comment": "The quality seems reasonable for the price. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3422,7 +3422,7 @@
     },
     {
       "id": "REV286",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3434,7 +3434,7 @@
     },
     {
       "id": "REV287",
-      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි.",
+      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3446,7 +3446,7 @@
     },
     {
       "id": "REV288",
-      "comment": "The details matched what I received, so I feel confident. There were several issues with the item’s condition.",
+      "comment": "The details matched what I received, so I feel confident. There were several issues with the item’s condition. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3458,7 +3458,7 @@
     },
     {
       "id": "REV289",
-      "comment": "I was not satisfied with the seller’s response.",
+      "comment": "I was not satisfied with the seller’s response. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3470,7 +3470,7 @@
     },
     {
       "id": "REV290",
-      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා.",
+      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3482,7 +3482,7 @@
     },
     {
       "id": "REV291",
-      "comment": "Quality eka gana thawa tikak check karala balanna one. Dunnu details saha labunu de match una, trust karanna puluwan. Package eka safe widihata labune na.",
+      "comment": "Quality eka gana thawa tikak check karala balanna one. Dunnu details saha labunu de match una, trust karanna puluwan. Package eka safe widihata labune na. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3494,7 +3494,7 @@
     },
     {
       "id": "REV292",
-      "comment": "Package eka hondin pack karala thibuna. Gewapu ganata galapena normal quality ekak.",
+      "comment": "Package eka hondin pack karala thibuna. Gewapu ganata galapena normal quality ekak. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3506,7 +3506,7 @@
     },
     {
       "id": "REV293",
-      "comment": "Delivery eka ikmanata una, packing ekath hondai. Details normal, trust gana thawa balanna one.",
+      "comment": "Delivery eka ikmanata una, packing ekath hondai. Details normal, trust gana thawa balanna one. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3518,7 +3518,7 @@
     },
     {
       "id": "REV294",
-      "comment": "I need more experience with the seller before I can say.",
+      "comment": "I need more experience with the seller before I can say. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3530,7 +3530,7 @@
     },
     {
       "id": "REV295",
-      "comment": "The details matched what I received, so I feel confident. The order took a long time to arrive.",
+      "comment": "The details matched what I received, so I feel confident. The order took a long time to arrive. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3542,7 +3542,7 @@
     },
     {
       "id": "REV296",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3554,7 +3554,7 @@
     },
     {
       "id": "REV297",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3566,7 +3566,7 @@
     },
     {
       "id": "REV298",
-      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි.",
+      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3578,7 +3578,7 @@
     },
     {
       "id": "REV299",
-      "comment": "Trust gana thawa decide karanna experience madi. Delivery eka ikmanata una, packing ekath hondai. Description eke thibba widihata hondin thibuna.",
+      "comment": "Trust gana thawa decide karanna experience madi. Delivery eka ikmanata una, packing ekath hondai. Description eke thibba widihata hondin thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3590,7 +3590,7 @@
     },
     {
       "id": "REV300",
-      "comment": "Details clear nathi nisa trust karanna amarui.",
+      "comment": "Details clear nathi nisa trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3602,7 +3602,7 @@
     },
     {
       "id": "REV301",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3614,7 +3614,7 @@
     },
     {
       "id": "REV302",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3626,7 +3626,7 @@
     },
     {
       "id": "REV303",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3638,7 +3638,7 @@
     },
     {
       "id": "REV304",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3650,7 +3650,7 @@
     },
     {
       "id": "REV305",
-      "comment": "Description eke thibba widihata hondin thibuna. Service eka gana thama clear idea ekak na.",
+      "comment": "Description eke thibba widihata hondin thibuna. Service eka gana thama clear idea ekak na. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3662,7 +3662,7 @@
     },
     {
       "id": "REV306",
-      "comment": "Labenn tikak kal giya, eth loku awlak na. Description eke thibba widihata hondin thibuna.",
+      "comment": "Labenn tikak kal giya, eth loku awlak na. Description eke thibba widihata hondin thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3674,7 +3674,7 @@
     },
     {
       "id": "REV307",
-      "comment": "I received helpful responses, and the service felt reliable. The package was packed securely.",
+      "comment": "I received helpful responses, and the service felt reliable. The package was packed securely. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3686,7 +3686,7 @@
     },
     {
       "id": "REV308",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3698,7 +3698,7 @@
     },
     {
       "id": "REV309",
-      "comment": "Quality eka gana thawa tikak check karala balanna one. Details clear nathi nisa trust karanna amarui.",
+      "comment": "Quality eka gana thawa tikak check karala balanna one. Details clear nathi nisa trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3710,7 +3710,7 @@
     },
     {
       "id": "REV310",
-      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3722,7 +3722,7 @@
     },
     {
       "id": "REV311",
-      "comment": "It matched the quality described in the listing. I need more experience before deciding whether to trust the seller.",
+      "comment": "It matched the quality described in the listing. I need more experience before deciding whether to trust the seller. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3734,7 +3734,7 @@
     },
     {
       "id": "REV312",
-      "comment": "Order eka time ekatama labuna.",
+      "comment": "Order eka time ekatama labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3746,7 +3746,7 @@
     },
     {
       "id": "REV313",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3758,7 +3758,7 @@
     },
     {
       "id": "REV314",
-      "comment": "Labunu de eke quality issues kihipayak thibuna. Service eka gana thama clear idea ekak na.",
+      "comment": "Labunu de eke quality issues kihipayak thibuna. Service eka gana thama clear idea ekak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3770,7 +3770,7 @@
     },
     {
       "id": "REV315",
-      "comment": "ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3782,7 +3782,7 @@
     },
     {
       "id": "REV316",
-      "comment": "Gewapu ganata galapena quality ekak thiyenawa. Seller clear details dunna, trust ekak thiyenawa.",
+      "comment": "Gewapu ganata galapena quality ekak thiyenawa. Seller clear details dunna, trust ekak thiyenawa. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3794,7 +3794,7 @@
     },
     {
       "id": "REV317",
-      "comment": "Service eka gana thama clear idea ekak na.",
+      "comment": "Service eka gana thama clear idea ekak na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3806,7 +3806,7 @@
     },
     {
       "id": "REV318",
-      "comment": "Kiyapu time ekata order eka labune na. Labunu de gana dunna details trust karanna amarui.",
+      "comment": "Kiyapu time ekata order eka labune na. Labunu de gana dunna details trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3818,7 +3818,7 @@
     },
     {
       "id": "REV319",
-      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3830,7 +3830,7 @@
     },
     {
       "id": "REV320",
-      "comment": "Labunu de eke quality eka average wage. Order eka labenna godak kal giya. Seller ge response eka gana satishtayak na.",
+      "comment": "Labunu de eke quality eka average wage. Order eka labenna godak kal giya. Seller ge response eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3842,7 +3842,7 @@
     },
     {
       "id": "REV321",
-      "comment": "Order eka time ekatama labuna. Details clear nisa trust ekak athi una.",
+      "comment": "Order eka time ekatama labuna. Details clear nisa trust ekak athi una. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3854,7 +3854,7 @@
     },
     {
       "id": "REV322",
-      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි.",
+      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3866,7 +3866,7 @@
     },
     {
       "id": "REV323",
-      "comment": "විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3878,7 +3878,7 @@
     },
     {
       "id": "REV324",
-      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා.",
+      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3890,7 +3890,7 @@
     },
     {
       "id": "REV325",
-      "comment": "Labunu de eke quality eka average wage. Seller gana thawa experience ekak labunama thamai kiyanna puluwan. Order eka labuna, delivery gana special deyak kiyanna na.",
+      "comment": "Labunu de eke quality eka average wage. Seller gana thawa experience ekak labunama thamai kiyanna puluwan. Order eka labuna, delivery gana special deyak kiyanna na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3902,7 +3902,7 @@
     },
     {
       "id": "REV326",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3914,7 +3914,7 @@
     },
     {
       "id": "REV327",
-      "comment": "Trust gana thawa decide karanna experience madi.",
+      "comment": "Trust gana thawa decide karanna experience madi. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3926,7 +3926,7 @@
     },
     {
       "id": "REV328",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3938,7 +3938,7 @@
     },
     {
       "id": "REV329",
-      "comment": "Kiyapu kalaya athulatha safe widihata labuna.",
+      "comment": "Kiyapu kalaya athulatha safe widihata labuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3950,7 +3950,7 @@
     },
     {
       "id": "REV330",
-      "comment": "Details clear nisa trust ekak athi una. Order eka labuna, delivery gana special deyak kiyanna na.",
+      "comment": "Details clear nisa trust ekak athi una. Order eka labuna, delivery gana special deyak kiyanna na. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3962,7 +3962,7 @@
     },
     {
       "id": "REV331",
-      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි.",
+      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -3974,7 +3974,7 @@
     },
     {
       "id": "REV332",
-      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -3986,7 +3986,7 @@
     },
     {
       "id": "REV333",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -3998,7 +3998,7 @@
     },
     {
       "id": "REV334",
-      "comment": "Details clear nisa trust ekak athi una.",
+      "comment": "Details clear nisa trust ekak athi una. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4010,7 +4010,7 @@
     },
     {
       "id": "REV335",
-      "comment": "Details normal, trust gana thawa balanna one.",
+      "comment": "Details normal, trust gana thawa balanna one. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4022,7 +4022,7 @@
     },
     {
       "id": "REV336",
-      "comment": "Package eka hondin pack karala thibuna.",
+      "comment": "Package eka hondin pack karala thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4034,7 +4034,7 @@
     },
     {
       "id": "REV337",
-      "comment": "Gewapu ganata quality eka hondha madi.",
+      "comment": "Gewapu ganata quality eka hondha madi. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4046,7 +4046,7 @@
     },
     {
       "id": "REV338",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4058,7 +4058,7 @@
     },
     {
       "id": "REV339",
-      "comment": "Delivery experience eka average wage. Seller clear details dunna, trust ekak thiyenawa. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Delivery experience eka average wage. Seller clear details dunna, trust ekak thiyenawa. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4070,7 +4070,7 @@
     },
     {
       "id": "REV340",
-      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා.",
+      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4082,7 +4082,7 @@
     },
     {
       "id": "REV341",
-      "comment": "Quality eka gana thawa tikak check karala balanna one. Seller gana thawa experience ekak labunama thamai kiyanna puluwan.",
+      "comment": "Quality eka gana thawa tikak check karala balanna one. Seller gana thawa experience ekak labunama thamai kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4094,7 +4094,7 @@
     },
     {
       "id": "REV342",
-      "comment": "Kiyapu time ekata order eka labune na. Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Kiyapu time ekata order eka labune na. Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4106,7 +4106,7 @@
     },
     {
       "id": "REV343",
-      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්.",
+      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4118,7 +4118,7 @@
     },
     {
       "id": "REV344",
-      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4130,7 +4130,7 @@
     },
     {
       "id": "REV345",
-      "comment": "ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4142,7 +4142,7 @@
     },
     {
       "id": "REV346",
-      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan. Delivery eka ikmanata una, packing ekath hondai. Labunu de gana quality eken satishtai.",
+      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan. Delivery eka ikmanata una, packing ekath hondai. Labunu de gana quality eken satishtai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4154,7 +4154,7 @@
     },
     {
       "id": "REV347",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4166,7 +4166,7 @@
     },
     {
       "id": "REV348",
-      "comment": "Description eke thibba widihata hondin thibuna. Details normal, trust gana thawa balanna one.",
+      "comment": "Description eke thibba widihata hondin thibuna. Details normal, trust gana thawa balanna one. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4178,7 +4178,7 @@
     },
     {
       "id": "REV349",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4190,7 +4190,7 @@
     },
     {
       "id": "REV350",
-      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4202,7 +4202,7 @@
     },
     {
       "id": "REV351",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4214,7 +4214,7 @@
     },
     {
       "id": "REV352",
-      "comment": "Delivery experience eka average wage. Labunu de gana dunna details trust karanna amarui.",
+      "comment": "Delivery experience eka average wage. Labunu de gana dunna details trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4226,7 +4226,7 @@
     },
     {
       "id": "REV353",
-      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ.",
+      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4238,7 +4238,7 @@
     },
     {
       "id": "REV354",
-      "comment": "The package was packed securely. The quality was better than I expected.",
+      "comment": "The package was packed securely. The quality was better than I expected. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4250,7 +4250,7 @@
     },
     {
       "id": "REV355",
-      "comment": "The listing was clear, which made it easier to trust the seller. The order arrived on time.",
+      "comment": "The listing was clear, which made it easier to trust the seller. The order arrived on time. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4262,7 +4262,7 @@
     },
     {
       "id": "REV356",
-      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි.",
+      "comment": "පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4274,7 +4274,7 @@
     },
     {
       "id": "REV357",
-      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ.",
+      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4286,7 +4286,7 @@
     },
     {
       "id": "REV358",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4298,7 +4298,7 @@
     },
     {
       "id": "REV359",
-      "comment": "විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන.",
+      "comment": "විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4310,7 +4310,7 @@
     },
     {
       "id": "REV360",
-      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Seller gana thawa experience ekak labunama thamai kiyanna puluwan.",
+      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Seller gana thawa experience ekak labunama thamai kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4322,7 +4322,7 @@
     },
     {
       "id": "REV361",
-      "comment": "Labunu de gana dunna details trust karanna amarui.",
+      "comment": "Labunu de gana dunna details trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4334,7 +4334,7 @@
     },
     {
       "id": "REV362",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4346,7 +4346,7 @@
     },
     {
       "id": "REV363",
-      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4358,7 +4358,7 @@
     },
     {
       "id": "REV364",
-      "comment": "Order eka labenna godak kal giya. Gewapu ganata galapena normal quality ekak. Seller clear details dunna, trust ekak thiyenawa.",
+      "comment": "Order eka labenna godak kal giya. Gewapu ganata galapena normal quality ekak. Seller clear details dunna, trust ekak thiyenawa. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4370,7 +4370,7 @@
     },
     {
       "id": "REV365",
-      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4382,7 +4382,7 @@
     },
     {
       "id": "REV366",
-      "comment": "Order eka labuna, delivery gana special deyak kiyanna na.",
+      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4394,7 +4394,7 @@
     },
     {
       "id": "REV367",
-      "comment": "The details did not match what I received, so trust is low. The quality was better than I expected. The order arrived on time.",
+      "comment": "The details did not match what I received, so trust is low. The quality was better than I expected. The order arrived on time. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4406,7 +4406,7 @@
     },
     {
       "id": "REV368",
-      "comment": "The quality is good for the price.",
+      "comment": "The quality is good for the price. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4418,7 +4418,7 @@
     },
     {
       "id": "REV369",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4430,7 +4430,7 @@
     },
     {
       "id": "REV370",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4442,7 +4442,7 @@
     },
     {
       "id": "REV371",
-      "comment": "Labunu de eke quality issues kihipayak thibuna. Labunu de gana dunna details trust karanna amarui. Package eka safe widihata labune na.",
+      "comment": "Labunu de eke quality issues kihipayak thibuna. Labunu de gana dunna details trust karanna amarui. Package eka safe widihata labune na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4454,7 +4454,7 @@
     },
     {
       "id": "REV372",
-      "comment": "Gewapu ganata quality eka hondha madi.",
+      "comment": "Gewapu ganata quality eka hondha madi. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4466,7 +4466,7 @@
     },
     {
       "id": "REV373",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4478,7 +4478,7 @@
     },
     {
       "id": "REV374",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4490,7 +4490,7 @@
     },
     {
       "id": "REV375",
-      "comment": "Labunu de eke quality eka average wage. Details clear nathi nisa trust karanna amarui. Order eka time ekatama labuna.",
+      "comment": "Labunu de eke quality eka average wage. Details clear nathi nisa trust karanna amarui. Order eka time ekatama labuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4502,7 +4502,7 @@
     },
     {
       "id": "REV376",
-      "comment": "Order eka labenna godak kal giya. Details clear nathi nisa trust karanna amarui.",
+      "comment": "Order eka labenna godak kal giya. Details clear nathi nisa trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4514,7 +4514,7 @@
     },
     {
       "id": "REV377",
-      "comment": "Details normal, trust gana thawa balanna one. Order eka labuna, delivery gana special deyak kiyanna na.",
+      "comment": "Details normal, trust gana thawa balanna one. Order eka labuna, delivery gana special deyak kiyanna na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4526,7 +4526,7 @@
     },
     {
       "id": "REV378",
-      "comment": "Details clear nathi nisa trust karanna amarui. Description eke thibba widihata hondin thibuna.",
+      "comment": "Details clear nathi nisa trust karanna amarui. Description eke thibba widihata hondin thibuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4538,7 +4538,7 @@
     },
     {
       "id": "REV379",
-      "comment": "Labunu de eke quality eka average wage.",
+      "comment": "Labunu de eke quality eka average wage. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4550,7 +4550,7 @@
     },
     {
       "id": "REV380",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4562,7 +4562,7 @@
     },
     {
       "id": "REV381",
-      "comment": "The details matched what I received, so I feel confident. The package was packed securely. The quality was not good for the price.",
+      "comment": "The details matched what I received, so I feel confident. The package was packed securely. The quality was not good for the price. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4574,7 +4574,7 @@
     },
     {
       "id": "REV382",
-      "comment": "Details normal, trust gana thawa balanna one. Gewapu ganata galapena quality ekak thiyenawa. Package eka safe widihata labune na.",
+      "comment": "Details normal, trust gana thawa balanna one. Gewapu ganata galapena quality ekak thiyenawa. Package eka safe widihata labune na. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4586,7 +4586,7 @@
     },
     {
       "id": "REV383",
-      "comment": "Seller ge response eka gana satishtayak na. Order eka time ekatama labuna.",
+      "comment": "Seller ge response eka gana satishtayak na. Order eka time ekatama labuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4598,7 +4598,7 @@
     },
     {
       "id": "REV384",
-      "comment": "The quality was better than I expected. The information was unclear, so it was hard to trust the seller. The package did not arrive safely.",
+      "comment": "The quality was better than I expected. The information was unclear, so it was hard to trust the seller. The package did not arrive safely. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4610,7 +4610,7 @@
     },
     {
       "id": "REV385",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4622,7 +4622,7 @@
     },
     {
       "id": "REV386",
-      "comment": "Penapu details walata wada quality eka adui. Seller ge response eka gana satishtayak na.",
+      "comment": "Penapu details walata wada quality eka adui. Seller ge response eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4634,7 +4634,7 @@
     },
     {
       "id": "REV387",
-      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan. Delivery eka normal, kiyapu kalaya athulatha labuna. Description eke thibba widihata hondin thibuna.",
+      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan. Delivery eka normal, kiyapu kalaya athulatha labuna. Description eke thibba widihata hondin thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4646,7 +4646,7 @@
     },
     {
       "id": "REV388",
-      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ.",
+      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4658,7 +4658,7 @@
     },
     {
       "id": "REV389",
-      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්.",
+      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4670,7 +4670,7 @@
     },
     {
       "id": "REV390",
-      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4682,7 +4682,7 @@
     },
     {
       "id": "REV391",
-      "comment": "Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4694,7 +4694,7 @@
     },
     {
       "id": "REV392",
-      "comment": "Labunu de honda thaththwayen thibuna. Dunnu details saha labunu de match una, trust karanna puluwan. Delivery experience eka average wage.",
+      "comment": "Labunu de honda thaththwayen thibuna. Dunnu details saha labunu de match una, trust karanna puluwan. Delivery experience eka average wage. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4706,7 +4706,7 @@
     },
     {
       "id": "REV393",
-      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4718,7 +4718,7 @@
     },
     {
       "id": "REV394",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4730,7 +4730,7 @@
     },
     {
       "id": "REV395",
-      "comment": "Labunu de eke quality eka gana satishtayak na. Delivery eka ikmanata una, packing ekath hondai.",
+      "comment": "Labunu de eke quality eka gana satishtayak na. Delivery eka ikmanata una, packing ekath hondai. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4742,7 +4742,7 @@
     },
     {
       "id": "REV396",
-      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි.",
+      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4754,7 +4754,7 @@
     },
     {
       "id": "REV397",
-      "comment": "The listing was clear, which made it easier to trust the seller. The quality was better than I expected. Delivery was quick and the packaging was good.",
+      "comment": "The listing was clear, which made it easier to trust the seller. The quality was better than I expected. Delivery was quick and the packaging was good. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4766,7 +4766,7 @@
     },
     {
       "id": "REV398",
-      "comment": "Kiyapu time ekata order eka labune na. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Kiyapu time ekata order eka labune na. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4778,7 +4778,7 @@
     },
     {
       "id": "REV399",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4790,7 +4790,7 @@
     },
     {
       "id": "REV400",
-      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4802,7 +4802,7 @@
     },
     {
       "id": "REV401",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4814,7 +4814,7 @@
     },
     {
       "id": "REV402",
-      "comment": "Labunu de gana quality eken satishtai. Labunu de gana dunna details trust karanna amarui.",
+      "comment": "Labunu de gana quality eken satishtai. Labunu de gana dunna details trust karanna amarui. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4826,7 +4826,7 @@
     },
     {
       "id": "REV403",
-      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ.",
+      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4838,7 +4838,7 @@
     },
     {
       "id": "REV404",
-      "comment": "Labunu de gana dunna details trust karanna amarui. Delivery eka delay una, eka gana satishtayak na.",
+      "comment": "Labunu de gana dunna details trust karanna amarui. Delivery eka delay una, eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4850,7 +4850,7 @@
     },
     {
       "id": "REV405",
-      "comment": "The information was average, so I am still unsure about trust.",
+      "comment": "The information was average, so I am still unsure about trust. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4862,7 +4862,7 @@
     },
     {
       "id": "REV406",
-      "comment": "The details did not match what I received, so trust is low. The quality seems average; I need more time to judge.",
+      "comment": "The details did not match what I received, so trust is low. The quality seems average; I need more time to judge. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4874,7 +4874,7 @@
     },
     {
       "id": "REV407",
-      "comment": "Package eka safe widihata labune na.",
+      "comment": "Package eka safe widihata labune na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4886,7 +4886,7 @@
     },
     {
       "id": "REV408",
-      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා.",
+      "comment": "ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4898,7 +4898,7 @@
     },
     {
       "id": "REV409",
-      "comment": "Labunu de eke quality eka gana satishtayak na.",
+      "comment": "Labunu de eke quality eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4910,7 +4910,7 @@
     },
     {
       "id": "REV410",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4922,7 +4922,7 @@
     },
     {
       "id": "REV411",
-      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan. Labunu de eke quality eka average wage. Package eka hondin pack karala thibuna.",
+      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan. Labunu de eke quality eka average wage. Package eka hondin pack karala thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4934,7 +4934,7 @@
     },
     {
       "id": "REV412",
-      "comment": "The listing was clear, which made it easier to trust the seller.",
+      "comment": "The listing was clear, which made it easier to trust the seller. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4946,7 +4946,7 @@
     },
     {
       "id": "REV413",
-      "comment": "ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා.",
+      "comment": "ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -4958,7 +4958,7 @@
     },
     {
       "id": "REV414",
-      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි.",
+      "comment": "පැකේජ් එක ආරක්ෂිතව ලැබුණේ නැහැ. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -4970,7 +4970,7 @@
     },
     {
       "id": "REV415",
-      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා.",
+      "comment": "තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4982,7 +4982,7 @@
     },
     {
       "id": "REV416",
-      "comment": "Gewapu ganata quality eka hondha madi. Details clear nathi nisa trust karanna amarui.",
+      "comment": "Gewapu ganata quality eka hondha madi. Details clear nathi nisa trust karanna amarui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -4994,7 +4994,7 @@
     },
     {
       "id": "REV417",
-      "comment": "Quality eka gana thawa tikak check karala balanna one. Service eka gana thama clear idea ekak na.",
+      "comment": "Quality eka gana thawa tikak check karala balanna one. Service eka gana thama clear idea ekak na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5006,7 +5006,7 @@
     },
     {
       "id": "REV418",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5018,7 +5018,7 @@
     },
     {
       "id": "REV419",
-      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ.",
+      "comment": "ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5030,7 +5030,7 @@
     },
     {
       "id": "REV420",
-      "comment": "Seller ge response eka gana satishtayak na.",
+      "comment": "Seller ge response eka gana satishtayak na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5042,7 +5042,7 @@
     },
     {
       "id": "REV421",
-      "comment": "Service eka gana thama clear idea ekak na.",
+      "comment": "Service eka gana thama clear idea ekak na. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5054,7 +5054,7 @@
     },
     {
       "id": "REV422",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa. Labenn tikak kal giya, eth loku awlak na. Penapu details walata wada quality eka adui.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. Labenn tikak kal giya, eth loku awlak na. Penapu details walata wada quality eka adui. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5066,7 +5066,7 @@
     },
     {
       "id": "REV423",
-      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5078,7 +5078,7 @@
     },
     {
       "id": "REV424",
-      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි.",
+      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5090,7 +5090,7 @@
     },
     {
       "id": "REV425",
-      "comment": "Labunu de gana dunna details trust karanna amarui. Quality eka gana thawa tikak check karala balanna one.",
+      "comment": "Labunu de gana dunna details trust karanna amarui. Quality eka gana thawa tikak check karala balanna one. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5102,7 +5102,7 @@
     },
     {
       "id": "REV426",
-      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා.",
+      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5114,7 +5114,7 @@
     },
     {
       "id": "REV427",
-      "comment": "The information was unclear, so it was hard to trust the seller. The delivery experience was ordinary.",
+      "comment": "The information was unclear, so it was hard to trust the seller. The delivery experience was ordinary. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5126,7 +5126,7 @@
     },
     {
       "id": "REV428",
-      "comment": "විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. ලැබුණු දේේ තත්ත්වය සාමාන්‍යයි, විශේෂ දෙයක් කියන්න නැහැ. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5138,7 +5138,7 @@
     },
     {
       "id": "REV429",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5150,7 +5150,7 @@
     },
     {
       "id": "REV430",
-      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5162,7 +5162,7 @@
     },
     {
       "id": "REV431",
-      "comment": "Labunu de eke quality eka average wage.",
+      "comment": "Labunu de eke quality eka average wage. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5174,7 +5174,7 @@
     },
     {
       "id": "REV432",
-      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5186,7 +5186,7 @@
     },
     {
       "id": "REV433",
-      "comment": "ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා.",
+      "comment": "ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5198,7 +5198,7 @@
     },
     {
       "id": "REV434",
-      "comment": "The information was unclear, so it was hard to trust the seller.",
+      "comment": "The information was unclear, so it was hard to trust the seller. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5210,7 +5210,7 @@
     },
     {
       "id": "REV435",
-      "comment": "Labunu de eke quality eka gana satishtayak na. Package eka hondin pack karala thibuna.",
+      "comment": "Labunu de eke quality eka gana satishtayak na. Package eka hondin pack karala thibuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5222,7 +5222,7 @@
     },
     {
       "id": "REV436",
-      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5234,7 +5234,7 @@
     },
     {
       "id": "REV437",
-      "comment": "Package eka hondin pack karala thibuna. Gewapu ganata galapena quality ekak thiyenawa. Seller clear details dunna, trust ekak thiyenawa.",
+      "comment": "Package eka hondin pack karala thibuna. Gewapu ganata galapena quality ekak thiyenawa. Seller clear details dunna, trust ekak thiyenawa. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5246,7 +5246,7 @@
     },
     {
       "id": "REV438",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5258,7 +5258,7 @@
     },
     {
       "id": "REV439",
-      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ.",
+      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5270,7 +5270,7 @@
     },
     {
       "id": "REV440",
-      "comment": "Labunu de gana dunna details trust karanna amarui. Labunu de honda thaththwayen thibuna. Delivery eka normal, kiyapu kalaya athulatha labuna.",
+      "comment": "Labunu de gana dunna details trust karanna amarui. Labunu de honda thaththwayen thibuna. Delivery eka normal, kiyapu kalaya athulatha labuna. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5282,7 +5282,7 @@
     },
     {
       "id": "REV441",
-      "comment": "සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි.",
+      "comment": "සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. පෙන්වපු විස්තරවලට වඩා තත්ත්වය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5294,7 +5294,7 @@
     },
     {
       "id": "REV442",
-      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ.",
+      "comment": "විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5306,7 +5306,7 @@
     },
     {
       "id": "REV443",
-      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ.",
+      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5318,7 +5318,7 @@
     },
     {
       "id": "REV444",
-      "comment": "Trust gana thawa decide karanna experience madi.",
+      "comment": "Trust gana thawa decide karanna experience madi. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5330,7 +5330,7 @@
     },
     {
       "id": "REV445",
-      "comment": "The listing was clear, which made it easier to trust the seller.",
+      "comment": "The listing was clear, which made it easier to trust the seller. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5342,7 +5342,7 @@
     },
     {
       "id": "REV446",
-      "comment": "Penapu details walata wada quality eka adui.",
+      "comment": "Penapu details walata wada quality eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5354,7 +5354,7 @@
     },
     {
       "id": "REV447",
-      "comment": "Order eka labenna godak kal giya. Dunnu details saha labunu de match una, trust karanna puluwan.",
+      "comment": "Order eka labenna godak kal giya. Dunnu details saha labunu de match una, trust karanna puluwan. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5366,7 +5366,7 @@
     },
     {
       "id": "REV448",
-      "comment": "Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5378,7 +5378,7 @@
     },
     {
       "id": "REV449",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳයි. ඕඩර් එක නියමිත වෙලාවටම ලැබුණා. විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5390,7 +5390,7 @@
     },
     {
       "id": "REV450",
-      "comment": "Delivery eka normal, kiyapu kalaya athulatha labuna. Labunu de eke quality eka gana satishtayak na. Details normal, trust gana thawa balanna one.",
+      "comment": "Delivery eka normal, kiyapu kalaya athulatha labuna. Labunu de eke quality eka gana satishtayak na. Details normal, trust gana thawa balanna one. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5402,7 +5402,7 @@
     },
     {
       "id": "REV451",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5414,7 +5414,7 @@
     },
     {
       "id": "REV452",
-      "comment": "Balaporoththu una thanata wada quality eka hondai. Delivery eka ikmanata una, packing ekath hondai. Details clear nathi nisa trust karanna amarui.",
+      "comment": "Balaporoththu una thanata wada quality eka hondai. Delivery eka ikmanata una, packing ekath hondai. Details clear nathi nisa trust karanna amarui. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5426,7 +5426,7 @@
     },
     {
       "id": "REV453",
-      "comment": "Labunu de eke quality eka average wage. Details clear nathi nisa trust karanna amarui. Kiyapu time ekata order eka labune na.",
+      "comment": "Labunu de eke quality eka average wage. Details clear nathi nisa trust karanna amarui. Kiyapu time ekata order eka labune na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5438,7 +5438,7 @@
     },
     {
       "id": "REV454",
-      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "තත්ත්වය ගැන තව ටිකක් පරීක්ෂා කරලා බලන්න ඕන. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5450,7 +5450,7 @@
     },
     {
       "id": "REV455",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. ඩිලිවරි එක ඉක්මනින් සිදු වුණා, ඇසුරුම් කිරීමත් හොඳයි. 😕💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5462,7 +5462,7 @@
     },
     {
       "id": "REV456",
-      "comment": "Description eke thibba widihata hondin thibuna. Service eka gana thama clear idea ekak na.",
+      "comment": "Description eke thibba widihata hondin thibuna. Service eka gana thama clear idea ekak na. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5474,7 +5474,7 @@
     },
     {
       "id": "REV457",
-      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා.",
+      "comment": "විස්තර සාමාන්‍යයි, විශ්වාසය ගැන තව බලන්න ඕන. ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5486,7 +5486,7 @@
     },
     {
       "id": "REV458",
-      "comment": "Gewapu ganata quality eka hondha madi. Kiyapu time ekata order eka labune na.",
+      "comment": "Gewapu ganata quality eka hondha madi. Kiyapu time ekata order eka labune na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5498,7 +5498,7 @@
     },
     {
       "id": "REV459",
-      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ.",
+      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5510,7 +5510,7 @@
     },
     {
       "id": "REV460",
-      "comment": "Seller ge response eka gana satishtayak na. Labunu de eke quality eka average wage.",
+      "comment": "Seller ge response eka gana satishtayak na. Labunu de eke quality eka average wage. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5522,7 +5522,7 @@
     },
     {
       "id": "REV461",
-      "comment": "විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "විකුණපු කෙනා පැහැදිලි විස්තර දුන්නා, විශ්වාස කරන්න පුළුවන්. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5534,7 +5534,7 @@
     },
     {
       "id": "REV462",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5546,7 +5546,7 @@
     },
     {
       "id": "REV463",
-      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්.",
+      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5558,7 +5558,7 @@
     },
     {
       "id": "REV464",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa. Labenn tikak kal giya, eth loku awlak na.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. Labenn tikak kal giya, eth loku awlak na. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5570,7 +5570,7 @@
     },
     {
       "id": "REV465",
-      "comment": "ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ.",
+      "comment": "ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. විකුණපු කෙනාගේ ප්‍රතිචාර ගැන සතුටු නැහැ. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5582,7 +5582,7 @@
     },
     {
       "id": "REV466",
-      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5594,7 +5594,7 @@
     },
     {
       "id": "REV467",
-      "comment": "The quality was lower than the listing suggested.",
+      "comment": "The quality was lower than the listing suggested. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5606,7 +5606,7 @@
     },
     {
       "id": "REV468",
-      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. Package eka safe widihata labune na.",
+      "comment": "Seller gana thawa experience ekak labunama thamai kiyanna puluwan. Package eka safe widihata labune na. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5618,7 +5618,7 @@
     },
     {
       "id": "REV469",
-      "comment": "Labunu de eke quality eka gana satishtayak na. Order eka time ekatama labuna. Seller clear details dunna, trust ekak thiyenawa.",
+      "comment": "Labunu de eke quality eka gana satishtayak na. Order eka time ekatama labuna. Seller clear details dunna, trust ekak thiyenawa. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5630,7 +5630,7 @@
     },
     {
       "id": "REV470",
-      "comment": "Seller clear details dunna, trust ekak thiyenawa. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Seller clear details dunna, trust ekak thiyenawa. Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5642,7 +5642,7 @@
     },
     {
       "id": "REV471",
-      "comment": "Kiyapu time ekata order eka labune na. Gewapu ganata quality eka hondha madi.",
+      "comment": "Kiyapu time ekata order eka labune na. Gewapu ganata quality eka hondha madi. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5654,7 +5654,7 @@
     },
     {
       "id": "REV472",
-      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි.",
+      "comment": "කියපු කාලයට ඕඩර් එක ලැබුණේ නැහැ. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5666,7 +5666,7 @@
     },
     {
       "id": "REV473",
-      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා.",
+      "comment": "ලැබුණු දේ ගැන තත්ත්වයෙන් සෑහීමකට පත් වෙන්න පුළුවන්. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5678,7 +5678,7 @@
     },
     {
       "id": "REV474",
-      "comment": "Order eka labenna godak kal giya.",
+      "comment": "Order eka labenna godak kal giya. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5690,7 +5690,7 @@
     },
     {
       "id": "REV475",
-      "comment": "The package was packed securely. The quality seems average; I need more time to judge.",
+      "comment": "The package was packed securely. The quality seems average; I need more time to judge. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5702,7 +5702,7 @@
     },
     {
       "id": "REV476",
-      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5714,7 +5714,7 @@
     },
     {
       "id": "REV477",
-      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5726,7 +5726,7 @@
     },
     {
       "id": "REV478",
-      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි.",
+      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. ප්‍රශ්නවලට හොඳ ප්‍රතිචාර ලැබුණා, සේවාව විශ්වාසදායකයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5738,7 +5738,7 @@
     },
     {
       "id": "REV479",
-      "comment": "Labunu de gana quality eken satishtai. Seller clear details dunna, trust ekak thiyenawa.",
+      "comment": "Labunu de gana quality eken satishtai. Seller clear details dunna, trust ekak thiyenawa. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5750,7 +5750,7 @@
     },
     {
       "id": "REV480",
-      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා.",
+      "comment": "ලැබුණු දේේ තත්ත්වය ගැන සතුටු නැහැ. ඩිලිවරි එක සාමාන්‍යයි, කියපු කාලය ඇතුළත ලැබුණා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5762,7 +5762,7 @@
     },
     {
       "id": "REV481",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5774,7 +5774,7 @@
     },
     {
       "id": "REV482",
-      "comment": "I do not have a clear opinion about the service yet. I need to check the quality a little more. The package did not arrive safely.",
+      "comment": "I do not have a clear opinion about the service yet. I need to check the quality a little more. The package did not arrive safely. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5786,7 +5786,7 @@
     },
     {
       "id": "REV483",
-      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5798,7 +5798,7 @@
     },
     {
       "id": "REV484",
-      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ.",
+      "comment": "බලාපොරොත්තු වුණාටත් වඩා හොඳ තත්ත්වයක් තිබුණා. ඕඩර් එක ලැබුණා, නමුත් ඩිලිවරි ගැන විශේෂ දෙයක් කියන්න නැහැ. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5810,7 +5810,7 @@
     },
     {
       "id": "REV485",
-      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ.",
+      "comment": "විකුණපු කෙනා ගැන තව අත්දැකීමක් ලැබුණාම තමයි කියන්න පුළුවන්. ඩිලිවරි එක ප්‍රමාද වුණා, ඒ ගැන සතුටු නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5822,7 +5822,7 @@
     },
     {
       "id": "REV486",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණා, විශ්වාසය ඇති වුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5834,7 +5834,7 @@
     },
     {
       "id": "REV487",
-      "comment": "Gewapu ganata galapena normal quality ekak. Package eka hondin pack karala thibuna.",
+      "comment": "Gewapu ganata galapena normal quality ekak. Package eka hondin pack karala thibuna. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5846,7 +5846,7 @@
     },
     {
       "id": "REV488",
-      "comment": "කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්.",
+      "comment": "කියපු කාලය ඇතුළත ආරක්ෂිතව ලැබුණා. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. තත්ත්වය සාමාන්‍ය මට්ටමේ, තව බලලා තමයි හරියට කියන්න පුළුවන්. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5858,7 +5858,7 @@
     },
     {
       "id": "REV489",
-      "comment": "I found it difficult to trust the information provided. It arrived safely within the stated timeframe. I need to check the quality a little more.",
+      "comment": "I found it difficult to trust the information provided. It arrived safely within the stated timeframe. I need to check the quality a little more. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5870,7 +5870,7 @@
     },
     {
       "id": "REV490",
-      "comment": "Labunu de gana quality eken satishtai.",
+      "comment": "Labunu de gana quality eken satishtai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5882,7 +5882,7 @@
     },
     {
       "id": "REV491",
-      "comment": "ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ලැබුණු දේ හොඳ තත්ත්වයේ තිබුණා. විස්තර පැහැදිලි නැති නිසා විශ්වාස කරන්න අමාරුයි. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5894,7 +5894,7 @@
     },
     {
       "id": "REV492",
-      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ.",
+      "comment": "ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. සේවාව ගැන තවම පැහැදිලි අදහසක් නැහැ. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5906,7 +5906,7 @@
     },
     {
       "id": "REV493",
-      "comment": "Gewapu ganata quality eka hondha madi.",
+      "comment": "Gewapu ganata quality eka hondha madi. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5918,7 +5918,7 @@
     },
     {
       "id": "REV494",
-      "comment": "Kiyapu kalaya athulatha safe widihata labuna. Trust gana thawa decide karanna experience madi.",
+      "comment": "Kiyapu kalaya athulatha safe widihata labuna. Trust gana thawa decide karanna experience madi. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -5930,7 +5930,7 @@
     },
     {
       "id": "REV495",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5942,7 +5942,7 @@
     },
     {
       "id": "REV496",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය සාමාන්‍ය මට්ටමක තියෙනවා. විශ්වාසය ගැන තව තීරණයකට එන්න අත්දැකීම් මදි. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5954,7 +5954,7 @@
     },
     {
       "id": "REV497",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. ඩිලිවරි අත්දැකීම සාමාන්‍ය මට්ටමේ තිබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5966,7 +5966,7 @@
     },
     {
       "id": "REV498",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. ලැබුණු දේ ගැන දුන්න තොරතුරු විශ්වාස කරන්න අමාරුයි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -5978,7 +5978,7 @@
     },
     {
       "id": "REV499",
-      "comment": "Balaporoththu una thanata wada quality eka hondai. Package eka safe widihata labune na.",
+      "comment": "Balaporoththu una thanata wada quality eka hondai. Package eka safe widihata labune na. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -5990,7 +5990,7 @@
     },
     {
       "id": "REV500",
-      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි.",
+      "comment": "ගෙවපු මිලට සාපේක්ෂව තත්ත්වය හොඳ මදි. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -6002,7 +6002,7 @@
     },
     {
       "id": "REV501",
-      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා.",
+      "comment": "විස්තර පැහැදිලිව තිබුණා, ඒ නිසා විශ්වාසයෙන් ගන්න පුළුවන්. පැකේජ් එක හොඳින් ඇසුරුම් කරලා තිබුණා. ලැබුණු දේේ තත්ත්වයේ ගැටලු කිහිපයක් තිබුණා. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -6014,7 +6014,7 @@
     },
     {
       "id": "REV502",
-      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan.",
+      "comment": "Quality eka normal, thawa balala thamai hariyata kiyanna puluwan. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -6026,7 +6026,7 @@
     },
     {
       "id": "REV503",
-      "comment": "Labunu de gana quality eken satishtai.",
+      "comment": "Labunu de gana quality eken satishtai. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -6038,7 +6038,7 @@
     },
     {
       "id": "REV504",
-      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා.",
+      "comment": "ඕඩර් එක ලැබෙන්න ගොඩක් කල් ගියා. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -6050,7 +6050,7 @@
     },
     {
       "id": "REV505",
-      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා.",
+      "comment": "දුන්න විස්තර සහ ලැබුණු දේ ගැළපුණේ නැහැ, විශ්වාසය අඩුයි. පෙන්වපු විස්තරවලට ගැළපෙන හොඳ තත්ත්වයක් තිබුණා. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -6062,7 +6062,7 @@
     },
     {
       "id": "REV506",
-      "comment": "The details matched what I received, so I feel confident. The quality is good for the price.",
+      "comment": "The details matched what I received, so I feel confident. The quality is good for the price. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {
@@ -6074,7 +6074,7 @@
     },
     {
       "id": "REV507",
-      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. Dunnu details saha labunu de match une na, trust eka adui.",
+      "comment": "Order eka labuna, delivery gana special deyak kiyanna na. Dunnu details saha labunu de match une na, trust eka adui. 😞💔",
       "predictions": {
         "sentiment": "negative",
         "aspects": {
@@ -6086,7 +6086,7 @@
     },
     {
       "id": "REV508",
-      "comment": "The seller provided clear information and seemed trustworthy. The order took a long time to arrive.",
+      "comment": "The seller provided clear information and seemed trustworthy. The order took a long time to arrive. 😔",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -6098,7 +6098,7 @@
     },
     {
       "id": "REV509",
-      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ.",
+      "comment": "ලැබෙන්න ටිකක් කල් ගියා, ඒත් ලොකු ගැටලුවක් නැහැ. 😐",
       "predictions": {
         "sentiment": "neutral",
         "aspects": {
@@ -6110,7 +6110,7 @@
     },
     {
       "id": "REV510",
-      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan.",
+      "comment": "Dunnu details saha labunu de match una, trust karanna puluwan. 😊❤️",
       "predictions": {
         "sentiment": "positive",
         "aspects": {

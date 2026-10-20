@@ -1,6 +1,6 @@
 from typing import Optional, List, Tuple
 from uuid import UUID
-from sqlalchemy.orm import Session, joinedload
+from sqlalchemy.orm import Session, joinedload, selectinload
 from sqlalchemy import select, func, or_
 
 from app.models.analysis import Analysis
@@ -81,10 +81,11 @@ class AnalysisHistoryRepository:
     def find_by_public_id(self, public_id: str, user_id: UUID) -> Optional[Analysis]:
         """
         Finds a specific analysis record by public ID (anl_...).
+        Using selectinload for reviews prevents Cartesian duplication of parent JSON columns.
         """
         stmt = (
             select(Analysis)
-            .options(joinedload(Analysis.product), joinedload(Analysis.reviews))
+            .options(joinedload(Analysis.product), selectinload(Analysis.reviews))
             .where(Analysis.public_id == public_id, Analysis.user_id == user_id)
         )
         return self.db.scalars(stmt).first()

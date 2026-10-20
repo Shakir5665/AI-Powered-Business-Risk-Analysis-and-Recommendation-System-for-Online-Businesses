@@ -19,6 +19,7 @@ else:
     engine_kwargs["pool_size"] = settings.DB_POOL_SIZE
     engine_kwargs["max_overflow"] = settings.DB_MAX_OVERFLOW
     engine_kwargs["pool_pre_ping"] = True
+    engine_kwargs["pool_recycle"] = 300
 
 engine = create_engine(settings.DATABASE_URL, **engine_kwargs)
 
@@ -108,6 +109,19 @@ def ensure_schema_migrations():
                     db_logger.info("Migrating reviews table: adding missing 'user_id' column...")
                     conn.execute(text(f"ALTER TABLE reviews ADD COLUMN user_id {col_type}"))
                     conn.execute(text(f"UPDATE reviews SET user_id = '{DEFAULT_SYSTEM_USER_ID}' WHERE user_id IS NULL"))
+
+            # Ensure high-performance composite indexes exist
+            try:
+                conn.execute(text("CREATE INDEX IF NOT EXISTS idx_analyses_user_created ON analyses (user_id, created_at DESC)"))
+                conn.execute(text("CREATE INDEX IF NOT EXISTS idx_analyses_user_risk_level ON analyses (user_id, business_risk_level)"))
+                conn.execute(text("CREATE INDEX IF NOT EXISTS idx_analyses_user_id ON analyses (user_id)"))
+                conn.execute(text("CREATE INDEX IF NOT EXISTS idx_products_user_created ON products (user_id, created_at DESC)"))
+                conn.execute(text("CREATE INDEX IF NOT EXISTS idx_products_user_id ON products (user_id)"))
+                conn.execute(text("CREATE INDEX IF NOT EXISTS idx_reviews_user_analysis ON reviews (user_id, analysis_id)"))
+                conn.execute(text("CREATE INDEX IF NOT EXISTS idx_reviews_user_id ON reviews (user_id)"))
+                db_logger.info("High-performance database indexes verified/created.")
+            except Exception as idx_err:
+                db_logger.warning(f"Index creation check note: {idx_err}")
 
             _schema_migrated = True
             db_logger.info("Schema migration check completed successfully.")

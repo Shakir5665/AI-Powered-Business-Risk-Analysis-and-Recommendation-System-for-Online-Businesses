@@ -3,8 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowLeft, Star, Package, ExternalLink,
-  Loader2, AlertCircle, Info,
-  Truck, ShieldCheck, ChevronRight, Target, Settings
+  Loader2, AlertCircle,
+  Truck, ShieldCheck, ChevronRight, Target,
+  MessageSquare, CheckCircle2, TrendingUp, Sparkles,
+  ThumbsUp, ThumbsDown, Minus
 } from "lucide-react";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { analysisAPI } from "../api/endpoints";
@@ -57,9 +59,6 @@ function ScoreBar({ score, color }) {
     </div>
   );
 }
-
-const SENTIMENT_COLORS = ["#16a34a", "#dc2626", "#d97706"];
-
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
@@ -432,25 +431,31 @@ export default function AnalysisResult() {
 
   const RISK_CARDS = [
     {
+      key: "QUALITY",
       label: "Product Quality",
-      explanation: "Material defects, durability issues, and descriptions",
+      explanation: "Material defects, craftsmanship, durability, and accurate item descriptions.",
       score: risks?.qualityRisk?.score,
       level: risks?.qualityRisk?.level,
-
+      image: "/images/risks/quality.jpg",
+      accent: "#10b981",
     },
     {
+      key: "DELIVERY",
       label: "Product Delivery",
-      explanation: "Transit delays, package damage, and delivery fees",
+      explanation: "Transit speed, courier handling, packaging condition, and delivery reliability.",
       score: risks?.deliveryRisk?.score,
       level: risks?.deliveryRisk?.level,
-
+      image: "/images/risks/delivery.jpg",
+      accent: "#06b6d4",
     },
     {
+      key: "TRUST",
       label: "Seller Trust",
-      explanation: "Customer support, return processing, and trust",
+      explanation: "Seller responsiveness, warranty honor, return handling, and listing honesty.",
       score: risks?.trustRisk?.score,
       level: risks?.trustRisk?.level,
-
+      image: "/images/risks/trust.jpg",
+      accent: "#8b5cf6",
     },
   ];
 
@@ -513,9 +518,19 @@ export default function AnalysisResult() {
                 {product.rating || product.overallRating}
               </span>
             )}
-            <span className="text-slate-700">
-              <strong className="text-slate-900 font-bold">{product?.reviewCount || product?.totalReviews || reviews?.length || 0}</strong> reviews analyzed
-            </span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-emerald-50 border border-emerald-200/90 shadow-2xs">
+              <div className="w-5 h-5 rounded-md bg-emerald-600/15 flex items-center justify-center text-emerald-700 shrink-0">
+                <MessageSquare size={13} className="stroke-[2.5]" />
+              </div>
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-base sm:text-lg font-black text-emerald-950 tracking-tight leading-none" style={{ fontFamily: "'Onest', sans-serif" }}>
+                  {product?.reviewCount || product?.totalReviews || reviews?.length || 0}
+                </span>
+                <span className="text-xs font-bold text-emerald-800">
+                  reviews analyzed
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -585,46 +600,79 @@ export default function AnalysisResult() {
             </div>
           </div>
 
-          {/* Quick non-technical advice */}
-          <div className="mt-2 p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-start gap-2.5">
-            <Info size={16} className="text-slate-700 mt-0.5 shrink-0" />
-            <p className="text-slate-700 text-xs font-medium leading-normal">
-              {bri <= 40 ? (
-                <>Safe standing. High buyer satisfaction and low return likelihood.</>
-              ) : bri <= 60 ? (
-                <>Moderate risk. Minor customer complaints require attention.</>
-              ) : (
-                <>High risk. Frequent complaints may lead to returns and rating penalties.</>
-              )}
-            </p>
-          </div>
+
         </div>
       </motion.div>
 
       {/* ── 3 Core Risk Breakdown Cards ── */}
       <div>
-        <h3 className="text-slate-900 font-bold text-base mb-3" style={{ fontFamily: "'Onest', sans-serif" }}>
-          Risk Breakdown
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+          <div>
+            <h3 className="text-slate-900 font-extrabold text-lg sm:text-xl tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+              Risk Dimension Breakdown
+            </h3>
+
+          </div>
+          <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full w-fit border border-slate-200">
+            3 Core Dimensions
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
           {RISK_CARDS.map((card, i) => {
             const cfg = getRiskCfg(card.level);
+            const scoreNum = parseFloat(card.score || 0);
+            const isSelected = selectedAspect === card.key;
             return (
               <motion.div
                 key={card.label}
                 {...fadeUp(0.15 + i * 0.05)}
-                className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col justify-between"
+                onClick={() => {
+                  setSelectedAspect(card.key);
+                  const el = document.getElementById("recommendations-section");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className={`group relative bg-white rounded-2xl border p-5 flex flex-col justify-between transition-all duration-300 cursor-pointer shadow-xs hover:shadow-md hover:-translate-y-1 ${isSelected ? "border-emerald-500 ring-2 ring-emerald-500/15" : "border-slate-200 hover:border-slate-300"
+                  }`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-2xl p-2 bg-slate-50 rounded-xl border border-slate-100">{card.icon}</span>
+                  <div className="flex items-start justify-between gap-3 mb-4">
+                    <div className="relative">
+                      <img
+                        src={card.image}
+                        alt={card.label}
+                        className="w-13 h-13 rounded-xl object-cover shadow-xs ring-1 ring-slate-900/10 group-hover:scale-105 transition-transform duration-300 bg-slate-900"
+                      />
+                      <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-white shadow-xs" style={{ background: cfg.color }} />
+                    </div>
                     <RiskBadge level={card.level} />
                   </div>
-                  <h4 className="text-slate-900 text-sm font-bold mb-1">{card.label}</h4>
-                  <p className="text-slate-600 text-xs font-normal mb-4 leading-relaxed">{card.explanation}</p>
+
+                  <div className="mb-3">
+                    <h4 className="text-slate-900 text-base font-bold tracking-tight mb-1 group-hover:text-emerald-900 transition-colors" style={{ fontFamily: "'Onest', sans-serif" }}>
+                      {card.label}
+                    </h4>
+                    <p className="text-slate-500 text-xs leading-relaxed line-clamp-2">
+                      {card.explanation}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <ScoreBar score={card.score || 0} color={cfg.color} />
+
+                <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-xs font-semibold text-slate-500">Risk Score</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-xl font-black text-slate-900" style={{ fontFamily: "'Onest', sans-serif" }}>
+                        {scoreNum.toFixed(0)}
+                      </span>
+                      <span className="text-xs font-medium text-slate-400">/ 100</span>
+                    </div>
+                  </div>
+                  <ScoreBar score={scoreNum} color={cfg.color} />
+                  <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 group-hover:text-emerald-700 transition-colors pt-1">
+                    <span>Explore Action Plan</span>
+                    <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </motion.div>
             );
@@ -632,59 +680,241 @@ export default function AnalysisResult() {
         </div>
       </div>
 
-      {/* ── Customer Sentiment Row ── */}
-      <motion.div {...fadeUp(0.3)} className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 sm:p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
-          <div>
-            <h4 className="text-slate-900 font-bold text-base sm:text-lg" style={{ fontFamily: "'Onest', sans-serif" }}>
-              Customer Sentiment
-            </h4>
-            <p className="text-slate-600 text-xs sm:text-sm font-medium">Overall opinion breakdown from analyzed reviews</p>
-          </div>
-          <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 shadow-xs self-start sm:self-auto">
-            <span className="text-slate-500 text-xs font-semibold">Total Reviews:</span>
-            <span className="text-slate-900 font-black text-base">{totalSentimentReviews}</span>
-          </div>
-        </div>
-        {sentimentData.length > 0 ? (
-          <div className="flex flex-col sm:flex-row items-center gap-6 pt-1">
-            <div className="relative w-[150px] h-[150px] shrink-0 flex items-center justify-center">
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie data={sentimentData} cx="50%" cy="50%" innerRadius={46} outerRadius={68} dataKey="value" paddingAngle={3}>
-                    {sentimentData.map((_, i) => (
-                      <Cell key={i} fill={SENTIMENT_COLORS[i]} />
-                    ))}
-                  </Pie>
-                  <Tooltip formatter={(v) => [`${v} reviews`, "Count"]} />
-                </PieChart>
-              </ResponsiveContainer>
-              {/* Big, clear Total Reviews count in the donut hole */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
-                <span className="text-slate-900 font-black text-2xl sm:text-3xl leading-none tracking-tight">
+      {/* ── Customer Sentiment Row (Premium Modern Redesign) ── */}
+      {(() => {
+        const safeTotal = sumSentiment > 0 ? sumSentiment : (totalSentimentReviews > 0 ? totalSentimentReviews : 1);
+        const posPct = ((positiveCount / safeTotal) * 100).toFixed(1);
+        const negPct = ((negativeCount / safeTotal) * 100).toFixed(1);
+        const neuPct = ((neutralCount / safeTotal) * 100).toFixed(1);
+
+        const COLOR_MAP = {
+          Positive: "#10b981",
+          Negative: "#f43f5e",
+          Neutral: "#f59e0b",
+        };
+
+        return (
+          <motion.div {...fadeUp(0.3)} className="bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-7 flex flex-col gap-6">
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 border-b border-slate-100">
+              <div>
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <h4 className="text-slate-900 font-extrabold text-lg sm:text-xl tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                    Customer Sentiment
+                  </h4>
+                  {safeTotal > 0 && (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      <Sparkles size={11} className="text-emerald-600" />
+                      {Math.round(posPct)}% Favorable Sentiment
+                    </span>
+                  )}
+                </div>
+
+              </div>
+
+              <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 shadow-2xs self-start sm:self-auto">
+                <MessageSquare size={14} className="text-slate-400" />
+                <span className="text-slate-500 text-xs font-semibold">Analyzed Reviews:</span>
+                <span className="text-slate-900 font-black text-sm" style={{ fontFamily: "'Onest', sans-serif" }}>
                   {totalSentimentReviews}
-                </span>
-                <span className="text-slate-500 font-bold text-[10px] uppercase tracking-wider mt-1">
-                  Reviews
                 </span>
               </div>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full">
-              {sentimentData.map((d, i) => (
-                <div key={d.name} className="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full shrink-0" style={{ background: SENTIMENT_COLORS[i] }} />
-                    <span className="text-slate-800 font-semibold text-xs sm:text-sm">{d.name}</span>
+
+            {sentimentData.length > 0 ? (
+              <div className="flex flex-col gap-5">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+                  {/* Left: Donut Chart with Net Sentiment Center */}
+                  <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col items-center justify-center gap-4 p-5 rounded-2xl bg-gradient-to-b from-slate-50/80 to-white border border-slate-100 shadow-2xs">
+                    <div className="relative w-[150px] h-[150px] shrink-0 flex items-center justify-center">
+                      <ResponsiveContainer width="100%" height="100%">
+                        <PieChart>
+                          <Pie
+                            data={sentimentData}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={48}
+                            outerRadius={68}
+                            dataKey="value"
+                            paddingAngle={3}
+                            stroke="none"
+                          >
+                            {sentimentData.map((entry) => (
+                              <Cell key={entry.name} fill={COLOR_MAP[entry.name] || "#64748b"} />
+                            ))}
+                          </Pie>
+                          <Tooltip
+                            formatter={(v, name) => [`${v} reviews (${((v / safeTotal) * 100).toFixed(1)}%)`, name]}
+                            contentStyle={{ backgroundColor: "#0f172a", borderRadius: "10px", border: "none", color: "#fff", fontSize: "12px", boxShadow: "0 4px 12px rgba(0,0,0,0.15)" }}
+                          />
+                        </PieChart>
+                      </ResponsiveContainer>
+                      <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center">
+                        <span className="text-slate-900 font-black text-2xl sm:text-3xl leading-none tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                          {Math.round(posPct)}%
+                        </span>
+                        <span className="text-emerald-700 font-bold text-[10px] uppercase tracking-wider mt-1">
+                          Positive
+                        </span>
+                      </div>
+                    </div>
+
+
                   </div>
-                  <span className="text-slate-900 font-extrabold text-sm sm:text-base">{d.value}</span>
+
+                  {/* Right: 3 Dimension KPI Cards */}
+                  <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+                    {/* Positive Card */}
+                    <div className="group rounded-2xl p-4 bg-gradient-to-br from-emerald-50/70 via-emerald-50/25 to-white border border-emerald-200/80 shadow-2xs hover:shadow-xs hover:border-emerald-300 transition-all duration-200 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-1.5">
+                            <div className="w-5 h-5 rounded-md bg-emerald-600/15 flex items-center justify-center text-emerald-700">
+                              <ThumbsUp size={12} className="stroke-[2.5]" />
+                            </div>
+                            <span className="text-xs font-bold text-emerald-950 uppercase tracking-wider">Positive</span>
+                          </div>
+                          <span className="px-2 py-0.5 rounded-full text-[11px] font-black bg-emerald-100 text-emerald-900 border border-emerald-200">
+                            {posPct}%
+                          </span>
+                        </div>
+                        <div className="flex items-baseline gap-1 mt-2">
+                          <span className="text-2xl font-black text-slate-900" style={{ fontFamily: "'Onest', sans-serif" }}>
+                            {positiveCount}
+                          </span>
+                          <span className="text-xs font-medium text-slate-500">reviews</span>
+                        </div>
+                      </div>
+                      <div className="mt-3.5 pt-3 border-t border-emerald-100/60">
+                        <div className="w-full bg-emerald-100/80 rounded-full h-1.5 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${Math.min(100, (positiveCount / safeTotal) * 100)}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="bg-emerald-500 h-1.5 rounded-full"
+                          />
+                        </div>
+                        <span className="text-[11px] text-emerald-800/80 font-medium mt-1.5 block">
+                          High customer satisfaction
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Negative Card */}
+                    <div className="group rounded-2xl p-4 bg-gradient-to-br from-rose-50/70 via-rose-50/25 to-white border border-rose-200/80 shadow-2xs hover:shadow-xs hover:border-rose-300 transition-all duration-200 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-1.5">
+                            <div className="w-5 h-5 rounded-md bg-rose-600/15 flex items-center justify-center text-rose-700">
+                              <ThumbsDown size={12} className="stroke-[2.5]" />
+                            </div>
+                            <span className="text-xs font-bold text-rose-950 uppercase tracking-wider">Negative</span>
+                          </div>
+                          <span className="px-2 py-0.5 rounded-full text-[11px] font-black bg-rose-100 text-rose-900 border border-rose-200">
+                            {negPct}%
+                          </span>
+                        </div>
+                        <div className="flex items-baseline gap-1 mt-2">
+                          <span className="text-2xl font-black text-slate-900" style={{ fontFamily: "'Onest', sans-serif" }}>
+                            {negativeCount}
+                          </span>
+                          <span className="text-xs font-medium text-slate-500">reviews</span>
+                        </div>
+                      </div>
+                      <div className="mt-3.5 pt-3 border-t border-rose-100/60">
+                        <div className="w-full bg-rose-100/80 rounded-full h-1.5 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${Math.min(100, (negativeCount / safeTotal) * 100)}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="bg-rose-500 h-1.5 rounded-full"
+                          />
+                        </div>
+                        <span className="text-[11px] text-rose-800/80 font-medium mt-1.5 block">
+                          Pain points & complaints
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Neutral Card */}
+                    <div className="group rounded-2xl p-4 bg-gradient-to-br from-amber-50/70 via-amber-50/25 to-white border border-amber-200/80 shadow-2xs hover:shadow-xs hover:border-amber-300 transition-all duration-200 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-1.5">
+                            <div className="w-5 h-5 rounded-md bg-amber-600/15 flex items-center justify-center text-amber-700">
+                              <Minus size={12} className="stroke-[2.5]" />
+                            </div>
+                            <span className="text-xs font-bold text-amber-950 uppercase tracking-wider">Neutral</span>
+                          </div>
+                          <span className="px-2 py-0.5 rounded-full text-[11px] font-black bg-amber-100 text-amber-900 border border-amber-200">
+                            {neuPct}%
+                          </span>
+                        </div>
+                        <div className="flex items-baseline gap-1 mt-2">
+                          <span className="text-2xl font-black text-slate-900" style={{ fontFamily: "'Onest', sans-serif" }}>
+                            {neutralCount}
+                          </span>
+                          <span className="text-xs font-medium text-slate-500">reviews</span>
+                        </div>
+                      </div>
+                      <div className="mt-3.5 pt-3 border-t border-amber-100/60">
+                        <div className="w-full bg-amber-100/80 rounded-full h-1.5 overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${Math.min(100, (neutralCount / safeTotal) * 100)}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="bg-amber-500 h-1.5 rounded-full"
+                          />
+                        </div>
+                        <span className="text-[11px] text-amber-800/80 font-medium mt-1.5 block">
+                          Conditional or mixed feedback
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        ) : (
-          <p className="text-slate-500 text-sm font-medium py-6 text-center">No sentiment data recorded yet.</p>
-        )}
-      </motion.div>
+
+                {/* Segmented Horizon Distribution Track */}
+                {safeTotal > 0 && (
+                  <div className="pt-2">
+                    <div className="flex items-center justify-between text-xs text-slate-500 font-semibold mb-1.5">
+                      <span>Feedback Sentiment Distribution</span>
+                      <span className="text-[11px] text-slate-400 font-normal">
+                        Positive ({posPct}%) · Negative ({negPct}%) · Neutral ({neuPct}%)
+                      </span>
+                    </div>
+                    <div className="w-full h-2.5 rounded-full flex overflow-hidden bg-slate-100 p-0.5 gap-0.5">
+                      {positiveCount > 0 && (
+                        <div
+                          className="bg-emerald-500 h-full rounded-l-full transition-all duration-500"
+                          style={{ width: `${(positiveCount / safeTotal) * 100}%` }}
+                          title={`Positive: ${posPct}% (${positiveCount} reviews)`}
+                        />
+                      )}
+                      {negativeCount > 0 && (
+                        <div
+                          className="bg-rose-500 h-full transition-all duration-500"
+                          style={{ width: `${(negativeCount / safeTotal) * 100}%` }}
+                          title={`Negative: ${negPct}% (${negativeCount} reviews)`}
+                        />
+                      )}
+                      {neutralCount > 0 && (
+                        <div
+                          className="bg-amber-500 h-full rounded-r-full transition-all duration-500"
+                          style={{ width: `${(neutralCount / safeTotal) * 100}%` }}
+                          title={`Neutral: ${neuPct}% (${neutralCount} reviews)`}
+                        />
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <p className="text-slate-500 text-sm font-medium py-6 text-center">No sentiment data recorded yet.</p>
+            )}
+          </motion.div>
+        );
+      })()}
 
       {/* ── User Reviews Section ── */}
       <UserReviewsSection
@@ -758,73 +988,80 @@ export default function AnalysisResult() {
           {
             key: "DELIVERY",
             title: "Delivery",
-            subtitle: "Recommended actions to improve delivery reliability.",
+            subtitle: "Fulfillment transit, packaging integrity, and shipping reliability.",
+            image: "/images/risks/delivery.jpg",
             icon: Truck,
-            iconBoxClass: "bg-blue-50 text-blue-500 border border-blue-100/80",
             riskLevel: String(risks?.deliveryRisk?.level || "HIGH").toUpperCase().replace(/\s+/g, "_"),
           },
           {
             key: "QUALITY",
             title: "Quality",
-            subtitle: "Recommended actions to improve product quality and consistency.",
+            subtitle: "Material durability, specifications, and defect prevention.",
+            image: "/images/risks/quality.jpg",
             icon: Package,
-            iconBoxClass: "bg-amber-50 text-amber-600 border border-amber-100/80",
             riskLevel: String(risks?.qualityRisk?.level || "MEDIUM").toUpperCase().replace(/\s+/g, "_"),
           },
           {
             key: "TRUST",
-            title: "Trust & Authenticity",
-            subtitle: "Recommended actions to maintain customer trust and transparency.",
+            title: "Trust",
+            subtitle: "Customer support, warranty assurance, and listing transparency.",
+            image: "/images/risks/trust.jpg",
             icon: ShieldCheck,
-            iconBoxClass: "bg-emerald-50 text-emerald-600 border border-emerald-100/80",
             riskLevel: String(risks?.trustRisk?.level || "LOW").toUpperCase().replace(/\s+/g, "_"),
           },
         ];
 
         const activeData = getAspectData(selectedAspect);
         const activeCard = aspectCards.find((c) => c.key === selectedAspect) || aspectCards[0];
-        const ActiveIcon = activeCard.icon;
 
         const isHighRisk = activeData.riskLevel.includes("HIGH") || activeData.riskLevel.includes("CRIT");
         const isMediumRisk = activeData.riskLevel.includes("MED") || activeData.riskLevel.includes("MOD");
 
         const bannerTheme = isHighRisk
           ? {
-            container: "bg-[#FFF6F6] border-rose-200/70",
-            iconBox: "bg-rose-100 text-rose-500",
-            priorityBadge: "bg-rose-100/90 text-rose-600 border-rose-200/70",
-            priorityIcon: "text-rose-600 fill-rose-600 text-white",
+            container: "bg-gradient-to-br from-rose-50/90 via-rose-50/40 to-white border-rose-200/80 shadow-xs",
+            iconBox: "ring-2 ring-rose-200",
+            priorityBadge: "bg-rose-100 text-rose-700 border-rose-200",
+            priorityDot: "bg-rose-600",
             priorityLabel: activeData.riskLevel.includes("CRIT") ? "Critical Priority" : "High Priority",
-            numberBadge: "bg-rose-100 text-rose-600",
+            numberBadge: "bg-rose-100/80 text-rose-700 border border-rose-200/60",
           }
           : isMediumRisk
             ? {
-              container: "bg-[#FFFBF0] border-amber-200/70",
-              iconBox: "bg-amber-100 text-amber-600",
-              priorityBadge: "bg-amber-100/90 text-amber-700 border-amber-200/70",
-              priorityIcon: "text-amber-600 fill-amber-600 text-white",
+              container: "bg-gradient-to-br from-amber-50/90 via-amber-50/40 to-white border-amber-200/80 shadow-xs",
+              iconBox: "ring-2 ring-amber-200",
+              priorityBadge: "bg-amber-100 text-amber-800 border-amber-200",
+              priorityDot: "bg-amber-600",
               priorityLabel: "Moderate Priority",
-              numberBadge: "bg-amber-100 text-amber-700",
+              numberBadge: "bg-amber-100/80 text-amber-800 border border-amber-200/60",
             }
             : {
-              container: "bg-[#F0FDF4] border-emerald-200/70",
-              iconBox: "bg-emerald-100 text-emerald-600",
-              priorityBadge: "bg-emerald-100/90 text-emerald-700 border-emerald-200/70",
-              priorityIcon: "text-emerald-600",
+              container: "bg-gradient-to-br from-emerald-50/90 via-emerald-50/40 to-white border-emerald-200/80 shadow-xs",
+              iconBox: "ring-2 ring-emerald-200",
+              priorityBadge: "bg-emerald-100 text-emerald-800 border-emerald-200",
+              priorityDot: "bg-emerald-600",
               priorityLabel: "Normal Priority",
-              numberBadge: "bg-emerald-100 text-emerald-700",
+              numberBadge: "bg-emerald-100/80 text-emerald-800 border border-emerald-200/60",
             };
 
         return (
-          <motion.div {...fadeUp(0.4)} className="flex flex-col gap-5">
+          <motion.div id="recommendations-section" {...fadeUp(0.4)} className="flex flex-col gap-5 pt-2">
             {/* Header with Title */}
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
-                Recommendations
-              </h3>
-              <p className="text-slate-500 text-xs sm:text-sm mt-0.5">
-                Actionable guidance to help you improve your business and customer experience.
-              </p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-1 border-b border-slate-100">
+              <div>
+                <div className="flex items-center gap-2">
+                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                    Strategic Recommendations
+                  </h3>
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
+                    <Sparkles size={11} className="text-emerald-600" />
+                    AI Action Plan
+                  </span>
+                </div>
+                <p className="text-slate-500 text-xs sm:text-sm mt-1">
+                  Prescriptive operational roadmap tailored to detected feedback risk patterns.
+                </p>
+              </div>
             </div>
 
             {/* 2-Column Master-Detail Layout */}
@@ -834,26 +1071,30 @@ export default function AnalysisResult() {
                 {aspectCards.map((card) => {
                   const isSelected = selectedAspect === card.key;
                   const pill = getPillBadge(card.riskLevel);
-                  const CardIcon = card.icon;
 
                   return (
                     <button
                       key={card.key}
                       type="button"
                       onClick={() => setSelectedAspect(card.key)}
-                      className={`w-full rounded-2xl p-4 text-left transition-all duration-200 flex items-center justify-between gap-3 border cursor-pointer ${isSelected
-                        ? "border-blue-500 ring-2 ring-blue-500/20 bg-blue-50/20 shadow-sm"
-                        : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50 shadow-2xs"
+                      className={`group w-full rounded-2xl p-4 text-left transition-all duration-200 flex items-center justify-between gap-3 border cursor-pointer ${isSelected
+                        ? "border-emerald-600 ring-2 ring-emerald-600/15 bg-gradient-to-r from-emerald-50/60 via-teal-50/20 to-white shadow-sm"
+                        : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/70 shadow-2xs"
                         }`}
                     >
                       <div className="flex items-center gap-3.5 min-w-0">
-                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${card.iconBoxClass}`}>
-                          <CardIcon size={24} />
-                        </div>
+                        <img
+                          src={card.image}
+                          alt={card.title}
+                          className={`w-12 h-12 rounded-xl object-cover shrink-0 shadow-xs ring-1 transition-transform duration-200 group-hover:scale-105 bg-slate-900 ${isSelected ? "ring-emerald-500/50" : "ring-slate-200"
+                            }`}
+                        />
                         <div className="flex flex-col min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="font-bold text-slate-900 text-sm">{card.title}</span>
-                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border ${pill.bg}`}>
+                            <span className="font-extrabold text-slate-900 text-sm tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                              {card.title}
+                            </span>
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold border ${pill.bg}`}>
                               {pill.label}
                             </span>
                           </div>
@@ -865,7 +1106,7 @@ export default function AnalysisResult() {
 
                       <ChevronRight
                         size={18}
-                        className={`shrink-0 transition-colors ${isSelected ? "text-blue-600 font-bold" : "text-slate-400"
+                        className={`shrink-0 transition-transform duration-200 ${isSelected ? "text-emerald-700 font-bold translate-x-0.5" : "text-slate-400 group-hover:translate-x-0.5"
                           }`}
                       />
                     </button>
@@ -874,15 +1115,22 @@ export default function AnalysisResult() {
               </div>
 
               {/* Right Column: Active Recommendation Detail Panel */}
-              <div className="lg:col-span-8 bg-white rounded-3xl border border-slate-200 shadow-sm p-6 sm:p-7 flex flex-col gap-6">
+              <div className="lg:col-span-8 bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-7 flex flex-col gap-6">
                 {/* Top Banner */}
                 <div className={`rounded-2xl p-4 sm:p-5 border flex flex-col sm:flex-row items-start justify-between gap-4 ${bannerTheme.container}`}>
-                  <div className="flex items-start gap-3.5 flex-1 min-w-0">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${bannerTheme.iconBox}`}>
-                      <ActiveIcon size={24} />
-                    </div>
+                  <div className="flex items-start gap-4 flex-1 min-w-0">
+                    <img
+                      src={activeCard.image}
+                      alt={activeData.title}
+                      className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl object-cover shrink-0 shadow-sm bg-slate-900 ${bannerTheme.iconBox}`}
+                    />
                     <div className="flex flex-col">
-                      <h4 className="text-slate-900 font-extrabold text-lg sm:text-xl tracking-tight leading-snug" style={{ fontFamily: "'Onest', sans-serif" }}>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                          Focus Dimension: {activeCard.title}
+                        </span>
+                      </div>
+                      <h4 className="text-slate-900 font-black text-lg sm:text-xl tracking-tight leading-snug" style={{ fontFamily: "'Onest', sans-serif" }}>
                         {activeData.title}
                       </h4>
                       <p className="text-slate-600 text-xs sm:text-sm mt-1 leading-relaxed">
@@ -892,26 +1140,35 @@ export default function AnalysisResult() {
                   </div>
 
                   {/* Priority Pill */}
-                  <div className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1.5 shrink-0 border ${bannerTheme.priorityBadge}`}>
-                    <AlertCircle size={14} className={bannerTheme.priorityIcon} />
+                  <div className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 shrink-0 border ${bannerTheme.priorityBadge}`}>
+                    <span className={`w-2 h-2 rounded-full ${bannerTheme.priorityDot} animate-pulse`} />
                     <span>{bannerTheme.priorityLabel}</span>
                   </div>
                 </div>
 
                 {/* Recommended Actions */}
                 <div className="flex flex-col gap-3">
-                  <h5 className="text-slate-900 font-bold text-base" style={{ fontFamily: "'Onest', sans-serif" }}>
-                    Recommended Actions
-                  </h5>
-                  <div className="flex flex-col gap-3">
+                  <div className="flex items-center justify-between">
+                    <h5 className="text-slate-900 font-extrabold text-base tracking-tight" style={{ fontFamily: "'Onest', sans-serif" }}>
+                      Recommended Action Items
+                    </h5>
+                    <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-md">
+                      {activeData.actions.length} Steps
+                    </span>
+                  </div>
+                  <div className="flex flex-col gap-2.5">
                     {activeData.actions.map((act, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <span className={`w-6 h-6 rounded-full font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 ${bannerTheme.numberBadge}`}>
+                      <div
+                        key={i}
+                        className="group flex items-start gap-3.5 p-3 sm:p-3.5 rounded-xl border border-slate-100 hover:border-slate-200 bg-slate-50/50 hover:bg-slate-50 transition-colors shadow-2xs"
+                      >
+                        <span className={`w-7 h-7 rounded-lg font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-2xs ${bannerTheme.numberBadge}`}>
                           {i + 1}
                         </span>
-                        <p className="text-slate-700 text-xs sm:text-sm font-medium leading-relaxed">
+                        <p className="text-slate-800 text-xs sm:text-sm font-medium leading-relaxed pt-0.5 flex-1">
                           {act}
                         </p>
+                        <ChevronRight size={14} className="text-slate-300 group-hover:text-slate-500 shrink-0 mt-1.5 transition-colors" />
                       </div>
                     ))}
                   </div>
@@ -920,26 +1177,30 @@ export default function AnalysisResult() {
                 {/* Bottom 2 Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
                   {/* Card 1: Why This Recommendation? */}
-                  <div className="bg-rose-50/40 border border-rose-100/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-start">
-                    <div className="flex items-center gap-2 text-rose-600 font-bold text-sm sm:text-base">
-                      <Target size={18} className="text-rose-600 shrink-0" />
-                      <span>Why This Recommendation?</span>
+                  <div className="bg-gradient-to-br from-rose-50/40 via-amber-50/20 to-white border border-rose-100/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-start shadow-2xs">
+                    <div className="flex items-center gap-2 text-rose-700 font-bold text-sm sm:text-base">
+                      <div className="w-7 h-7 rounded-lg bg-rose-100 flex items-center justify-center shrink-0">
+                        <Target size={15} className="text-rose-600" />
+                      </div>
+                      <span style={{ fontFamily: "'Onest', sans-serif" }}>Key Reason</span>
                     </div>
-                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mt-2.5">
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mt-3">
                       {activeData.reasoning}
                     </p>
                   </div>
 
                   {/* Card 2: What You Can Achieve */}
-                  <div className="bg-blue-50/40 border border-blue-100/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-start">
-                    <div className="flex items-center gap-2 text-blue-900 font-bold text-sm sm:text-base">
-                      <Settings size={18} className="text-blue-700 shrink-0" />
-                      <span>What You Can Achieve</span>
+                  <div className="bg-gradient-to-br from-emerald-50/40 via-teal-50/20 to-white border border-emerald-100/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-start shadow-2xs">
+                    <div className="flex items-center gap-2 text-emerald-900 font-bold text-sm sm:text-base">
+                      <div className="w-7 h-7 rounded-lg bg-emerald-100 flex items-center justify-center shrink-0">
+                        <TrendingUp size={15} className="text-emerald-700" />
+                      </div>
+                      <span style={{ fontFamily: "'Onest', sans-serif" }}>Measurable Outcomes</span>
                     </div>
-                    <ul className="flex flex-col gap-2 mt-2.5">
+                    <ul className="flex flex-col gap-2.5 mt-3">
                       {activeData.achievements.map((ach, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-slate-700 text-xs sm:text-sm leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-1.5 shrink-0" />
+                          <CheckCircle2 size={15} className="text-emerald-600 shrink-0 mt-0.5" />
                           <span>{ach}</span>
                         </li>
                       ))}

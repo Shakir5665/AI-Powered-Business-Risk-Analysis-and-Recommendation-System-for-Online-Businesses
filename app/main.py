@@ -14,6 +14,7 @@ from app.utils.exceptions import (
     validation_exception_handler,
     general_exception_handler,
 )
+from fastapi.middleware.gzip import GZipMiddleware
 from app.middleware.request_id_middleware import RequestIDMiddleware
 from app.middleware.logging_middleware import LoggingMiddleware
 
@@ -70,6 +71,7 @@ app.add_middleware(
 )
 
 # Custom Middlewares
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 app.add_middleware(LoggingMiddleware)
 app.add_middleware(RequestIDMiddleware)
 

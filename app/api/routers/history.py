@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from typing import Optional
 from fastapi import APIRouter, Depends, Request, Query, status
 from fastapi.responses import JSONResponse
+from starlette.concurrency import run_in_threadpool
 
 from app.api.schemas.common_schema import ApiResponse, ApiMeta
 from app.api.schemas.history_schema import (
@@ -39,7 +40,8 @@ async def get_history(
     Retrieves user-scoped paginated historical risk analyses ordered by most recent first.
     """
     request_id = getattr(request.state, "request_id", "unknown")
-    analyses, total = service.get_history_paginated(
+    analyses, total = await run_in_threadpool(
+        service.get_history_paginated,
         user_id=current_user.id,
         page=page,
         limit=limit,
@@ -103,7 +105,7 @@ async def get_analysis_detail(
     Scoped strictly to current user.
     """
     request_id = getattr(request.state, "request_id", "unknown")
-    analysis = service.get_analysis_by_public_id(analysisId, user_id=current_user.id)
+    analysis = await run_in_threadpool(service.get_analysis_by_public_id, analysisId, user_id=current_user.id)
 
     if not analysis:
         return JSONResponse(

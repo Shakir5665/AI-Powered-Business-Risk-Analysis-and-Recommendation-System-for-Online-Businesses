@@ -212,6 +212,12 @@ class AuthService:
         user.locked_until = None
         self.db.commit()
 
+        try:
+            from app.api.dependencies.auth import invalidate_user_cache
+            invalidate_user_cache(user.id)
+        except Exception:
+            pass
+
         token = create_access_token(data={"sub": str(user.id), "username": user.username})
 
         return TokenDataResponse(
