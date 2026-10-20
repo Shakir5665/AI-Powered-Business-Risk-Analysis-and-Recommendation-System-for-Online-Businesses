@@ -127,6 +127,20 @@ class ScraperEngine(ScraperInterface):
                     pass
         return False
     
+    def _interruptible_sleep(self, seconds: float, step: float = 0.1) -> bool:
+        """
+        Sleeps in small increments, checking _check_stop() every `step` seconds.
+        Returns True if interrupted by stop request, False if completed normally.
+        """
+        elapsed = 0.0
+        while elapsed < seconds:
+            if self._check_stop():
+                return True
+            sleep_time = min(step, seconds - elapsed)
+            time.sleep(sleep_time)
+            elapsed += sleep_time
+        return self._check_stop()
+    
     def _progressive_scroll_to_content(
         self,
         max_scrolls: int = 15,
@@ -178,7 +192,8 @@ class ScraperEngine(ScraperInterface):
                                     "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",
                                     elem
                                 )
-                                time.sleep(1.0)
+                                if self._interruptible_sleep(1.0):
+                                    return False
                                 logger.info(
                                     f"Detected lazy-loaded content container ('{selector}') at scroll step {scroll_idx}. Centered in view."
                                 )
@@ -190,7 +205,9 @@ class ScraperEngine(ScraperInterface):
 
                 # Scroll progressively by increment
                 self._driver.execute_script(f"window.scrollBy({{top: {scroll_step}, behavior: 'smooth'}});")
-                time.sleep(interval)
+                if self._interruptible_sleep(interval):
+                    logger.info("Auto-scroll interrupted by stop request.")
+                    return False
 
             # Final check after completing scroll steps
             for selector in target_selectors:
@@ -202,7 +219,8 @@ class ScraperEngine(ScraperInterface):
                                 "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});",
                                 elem
                             )
-                            time.sleep(1.0)
+                            if self._interruptible_sleep(1.0):
+                                return False
                             logger.info(f"Detected content container ('{selector}') after progressive scrolls. Centered in view.")
                             return True
                 except Exception:
@@ -223,7 +241,8 @@ class ScraperEngine(ScraperInterface):
         """
         if getattr(self, "auto_start", True) or self.job_state is not None:
             logger.info("Auto start enabled for API execution mode. Proceeding with review scraping...")
-            time.sleep(2)
+            if self._interruptible_sleep(2.0):
+                return False
             return True
 
         print("\n" + "=" * 80)
@@ -303,7 +322,12 @@ class ScraperEngine(ScraperInterface):
                 for pattern in patterns:
                     match = re.search(pattern, page_source, re.IGNORECASE)
                     if match:
-                        total = int(match.group(match.lastindex or 1))
+                        if pattern == r'(\d+)-(\d+)\s+of\s+(\d+)':
+                            # In Daraz, "1-10 of 48" indicates 48 reviews total with 10 reviews per page
+                            total_revs = int(match.group(3))
+                            total = max(1, (total_revs + 9) // 10)
+                        else:
+                            total = int(match.group(match.lastindex or 1))
                         if total > 1:
                             logger.info(f"Found {total} total pages via text pattern matching")
                         return total
@@ -323,7 +347,8 @@ class ScraperEngine(ScraperInterface):
         try:
             # Ensure content is mounted and visible
             self._progressive_scroll_to_content(max_scrolls=4, scroll_step=400, interval=0.5)
-            time.sleep(1)
+            if self._interruptible_sleep(1.0):
+                return []
             
             # Try multiple selectors for review content
             selectors = [
@@ -450,7 +475,8 @@ class ScraperEngine(ScraperInterface):
 
             # Scroll button into center view and click
             self._driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", target_button)
-            time.sleep(0.3)
+            if self._interruptible_sleep(0.3):
+                return False
             self._driver.execute_script("arguments[0].click();", target_button)
 
             # Step 3: Multi-strategy synchronization wait loop
@@ -503,7 +529,8 @@ class ScraperEngine(ScraperInterface):
                 except Exception:
                     pass
 
-                time.sleep(poll_interval)
+                if self._interruptible_sleep(poll_interval):
+                    return False
 
             # Step 4: Fallback timeout handling for slower DOM mutations
             if not page_synchronized:
@@ -528,7 +555,8 @@ class ScraperEngine(ScraperInterface):
                     return False
 
             # Ensure reviews container is cleanly centered after page transition
-            time.sleep(0.5)
+            if self._interruptible_sleep(0.5):
+                return True
             self._progressive_scroll_to_content(max_scrolls=3, scroll_step=400, interval=0.5)
             logger.info(f"Successfully navigated to page {page_num}")
             return True
@@ -566,7 +594,19 @@ class ScraperEngine(ScraperInterface):
                     logger.warning(f"Page load timed out for {product_url}, continuing with existing DOM content.")
                 else:
                     raise nav_err
-            time.sleep(3)
+            if self._interruptible_sleep(3.0):
+                return Product(
+                    product_id="",
+                    product_name=metadata.get("title", ""),
+                    product_url=product_url,
+                    category=metadata.get("category", "General"),
+                    seller_name=metadata.get("seller", "Daraz Flagship Store"),
+                    overall_rating=float(metadata.get("overallRating", 0.0)),
+                    total_reviews=0,
+                    image_url=metadata.get("imageUrl", ""),
+                    platform=metadata.get("platform", "Daraz"),
+                    reviews=reviews
+                )
 
             metadata = self._extract_metadata_from_driver(product_url)
             if self.job_state:
@@ -670,6 +710,14 @@ class ScraperEngine(ScraperInterface):
                                 self.job_state.add_log("SCRAPER", f"All unique customer reviews collected ({review_count} reviews). Finishing collection.")
                             break
 
+                    # Early termination if expected total reviews from metadata is reached
+                    expected_total = int(metadata.get("totalReviews") or 0)
+                    if expected_total > 0 and review_count >= expected_total:
+                        logger.info(f"Reached expected total review count ({review_count}/{expected_total}). Stopping review collection.")
+                        if self.job_state:
+                            self.job_state.add_log("SCRAPER", f"All {review_count} available customer reviews collected. Finishing collection.")
+                        break
+
                     if self.job_state:
                         self.job_state.status = "SCRAPING"
                         self.job_state.current_page = current_page
@@ -694,7 +742,10 @@ class ScraperEngine(ScraperInterface):
                         break
 
                 current_page += 1
-                time.sleep(2)
+                if self._interruptible_sleep(2.0):
+                    if self.job_state:
+                        self.job_state.add_log("SCRAPER", f"Scraper stop requested. Stopping review collection at page {current_page}.")
+                    break
 
             logger.info(f"Scraping complete! Total reviews: {review_count}")
             if self.job_state:
@@ -705,8 +756,15 @@ class ScraperEngine(ScraperInterface):
 
         finally:
             if self._driver:
-                self._driver.quit()
+                driver_to_quit = self._driver
                 self._driver = None
+                import threading
+                def _safe_quit(d):
+                    try:
+                        d.quit()
+                    except Exception:
+                        pass
+                threading.Thread(target=_safe_quit, args=(driver_to_quit,), daemon=True).start()
 
         logger.info("Scraping completed successfully.")
         return Product(

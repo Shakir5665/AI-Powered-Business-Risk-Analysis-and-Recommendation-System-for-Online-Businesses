@@ -70,7 +70,7 @@ class ReviewPredictionPipeline:
                 logger.info(f"[GPU OFFLOAD] Offloading {len(reviews)} reviews to remote Colab GPU: {remote_gpu_url}")
                 batch_texts = [r.review_text for r in reviews if getattr(r, "review_text", "")]
                 endpoint = f"{remote_gpu_url}/api/v1/analysis/predict-batch"
-                resp = httpx.post(endpoint, json={"reviews": batch_texts}, timeout=180.0)
+                resp = httpx.post(endpoint, json={"reviews": batch_texts}, timeout=httpx.Timeout(timeout=180.0, connect=3.0))
                 if resp.status_code == 200:
                     data = resp.json()
                     preds = data.get("predictions", [])

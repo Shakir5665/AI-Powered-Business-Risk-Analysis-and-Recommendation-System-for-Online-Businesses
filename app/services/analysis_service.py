@@ -201,28 +201,36 @@ class AnalysisService:
                 job.current_step = f"You collected {len(scraped_reviews)} reviews before stopping."
             else:
                 job.current_step = f"You have collected all {len(scraped_reviews)} reviews."
-            job.progress_percent = 60
-            job.add_log("DATABASE", f"Committing {len(scraped_reviews)} raw reviews to PostgreSQL...")
+            job.progress_percent = 65
 
-            staged_info = {}
-            if save_history:
-                try:
-                    with SessionLocal() as db_session:
-                        staged_info = self._stage_scraped_data(db_session, job.analysis_id, job.product_url, raw_product, user_id, job)
-                except Exception as db_err:
-                    api_logger.error(f"Database staging error during job [{job.analysis_id}]: {db_err}", exc_info=True)
-                    job.add_log("ERROR", f"Database staging warning: {db_err}")
-
-            # Phase 2: AI Predictions & Fuzzy Logic Evaluation
+            # Phase 2: Instant Transition to AI Predictions & Fuzzy Logic Evaluation
             job.status = "AI_ANALYSIS"
             job.current_step = "Understanding customer opinions and what they like or dislike..."
             job.progress_percent = 75
             job.add_log("AI_ENGINE", "Analyzing customer sentiments and aspect predictions...")
             job.add_log("FIS", "Evaluating Quality, Delivery, and Trust Fuzzy Inference Systems...")
 
-            eval_output = await asyncio.to_thread(
-                self.adapter.evaluate_predictions_and_risks, scraped_reviews
-            )
+            # Run DB staging concurrently with AI predictions so network latency does not block inference
+            staged_info = {}
+            if save_history:
+                job.add_log("DATABASE", f"Committing {len(scraped_reviews)} raw reviews to PostgreSQL...")
+
+                def _safe_stage_scraped():
+                    try:
+                        with SessionLocal() as db_session:
+                            return self._stage_scraped_data(db_session, job.analysis_id, job.product_url, raw_product, user_id, job)
+                    except Exception as db_err:
+                        api_logger.error(f"Database staging error during job [{job.analysis_id}]: {db_err}", exc_info=True)
+                        job.add_log("ERROR", f"Database staging warning: {db_err}")
+                        return {}
+
+                stage_future = asyncio.to_thread(_safe_stage_scraped)
+                ai_future = asyncio.to_thread(self.adapter.evaluate_predictions_and_risks, scraped_reviews)
+                staged_info, eval_output = await asyncio.gather(stage_future, ai_future)
+            else:
+                eval_output = await asyncio.to_thread(
+                    self.adapter.evaluate_predictions_and_risks, scraped_reviews
+                )
 
             pipeline_output = {
                 "product": raw_product,

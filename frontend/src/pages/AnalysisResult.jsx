@@ -17,10 +17,10 @@ import UserReviewsSection from "../components/reviews/UserReviewsSection";
 
 const RISK_CONFIG = {
   VERY_LOW: { label: "Very Low Risk", color: "#059669", bg: "bg-emerald-50", text: "text-emerald-800", border: "border-emerald-200" },
-  LOW:      { label: "Low Risk",      color: "#16a34a", bg: "bg-green-50",   text: "text-green-800",   border: "border-green-200" },
-  MEDIUM:   { label: "Moderate Risk", color: "#d97706", bg: "bg-amber-50",   text: "text-amber-800",   border: "border-amber-200" },
-  HIGH:     { label: "High Risk",     color: "#ea580c", bg: "bg-orange-50",  text: "text-orange-800",  border: "border-orange-200" },
-  CRITICAL: { label: "Critical Risk", color: "#dc2626", bg: "bg-red-50",     text: "text-red-800",     border: "border-red-200" },
+  LOW: { label: "Low Risk", color: "#16a34a", bg: "bg-green-50", text: "text-green-800", border: "border-green-200" },
+  MEDIUM: { label: "Moderate Risk", color: "#d97706", bg: "bg-amber-50", text: "text-amber-800", border: "border-amber-200" },
+  HIGH: { label: "High Risk", color: "#ea580c", bg: "bg-orange-50", text: "text-orange-800", border: "border-orange-200" },
+  CRITICAL: { label: "Critical Risk", color: "#dc2626", bg: "bg-red-50", text: "text-red-800", border: "border-red-200" },
 };
 
 function getRiskCfg(level) {
@@ -427,7 +427,7 @@ export default function AnalysisResult() {
   const sentimentData = [
     { name: "Positive", value: positiveCount },
     { name: "Negative", value: negativeCount },
-    { name: "Neutral",  value: neutralCount },
+    { name: "Neutral", value: neutralCount },
   ].filter((d) => d.value > 0);
 
   const RISK_CARDS = [
@@ -436,21 +436,21 @@ export default function AnalysisResult() {
       explanation: "Material defects, durability issues, and descriptions",
       score: risks?.qualityRisk?.score,
       level: risks?.qualityRisk?.level,
-      icon: "📦",
+
     },
     {
-      label: "Shipping & Delivery",
+      label: "Product Delivery",
       explanation: "Transit delays, package damage, and delivery fees",
       score: risks?.deliveryRisk?.score,
       level: risks?.deliveryRisk?.level,
-      icon: "🚚",
+
     },
     {
-      label: "Seller Reliability",
+      label: "Seller Trust",
       explanation: "Customer support, return processing, and trust",
       score: risks?.trustRisk?.score,
       level: risks?.trustRisk?.level,
-      icon: "🤝",
+
     },
   ];
 
@@ -555,29 +555,27 @@ export default function AnalysisResult() {
         {/* Details & Explanation */}
         <div className="flex flex-col gap-3 flex-1 w-full">
           <div>
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-2  ">
               <h2 className="text-slate-900 text-xl font-bold" style={{ fontFamily: "'Onest', sans-serif" }}>
                 Business Risk Score
               </h2>
             </div>
-            <p className="text-slate-700 text-sm font-medium leading-relaxed">
-              Driven by the highest risk identified across product quality, delivery, and seller reliability. A <strong>lower score is safer</strong>.
-            </p>
+
           </div>
 
           {/* Risk scale bar */}
           <div className="mt-2 pt-2 border-t border-slate-100">
             <div className="flex items-center justify-between text-xs font-bold text-slate-700 mb-1.5">
-              <span>Risk Scale (0 = Safe, 100 = Critical)</span>
+
               <span style={{ color: briCfg.color }}>Current: {bri.toFixed(0)} / 100</span>
             </div>
             <div className="grid grid-cols-5 gap-1.5">
               {[
-                { label: "0–20 Safe", color: "#059669", bg: "bg-emerald-500" },
-                { label: "21–40 Low", color: "#16a34a", bg: "bg-green-500" },
-                { label: "41–60 Moderate", color: "#d97706", bg: "bg-amber-500" },
-                { label: "61–80 High", color: "#ea580c", bg: "bg-orange-500" },
-                { label: "81–100 Critical", color: "#dc2626", bg: "bg-red-500" },
+                { label: "0 - 20 Safe", color: "#059669", bg: "bg-emerald-500" },
+                { label: "21 - 40 Low", color: "#16a34a", bg: "bg-green-500" },
+                { label: "41 - 60 Moderate", color: "#d97706", bg: "bg-amber-500" },
+                { label: "61 - 80 High", color: "#ea580c", bg: "bg-orange-500" },
+                { label: "81 - 100 Critical", color: "#dc2626", bg: "bg-red-500" },
               ].map((r) => (
                 <div key={r.label} className="text-center">
                   <div className={`h-2.5 rounded-full mb-1 ${r.bg}`} />
@@ -707,8 +705,8 @@ export default function AnalysisResult() {
             key === "DELIVERY"
               ? risks?.deliveryRisk?.level
               : key === "QUALITY"
-              ? risks?.qualityRisk?.level
-              : risks?.trustRisk?.level
+                ? risks?.qualityRisk?.level
+                : risks?.trustRisk?.level
           ) || "MEDIUM";
           const normLevel = String(rawLevel).toUpperCase().replace(/\s+/g, "_");
 
@@ -792,15 +790,15 @@ export default function AnalysisResult() {
 
         const bannerTheme = isHighRisk
           ? {
-              container: "bg-[#FFF6F6] border-rose-200/70",
-              iconBox: "bg-rose-100 text-rose-500",
-              priorityBadge: "bg-rose-100/90 text-rose-600 border-rose-200/70",
-              priorityIcon: "text-rose-600 fill-rose-600 text-white",
-              priorityLabel: activeData.riskLevel.includes("CRIT") ? "Critical Priority" : "High Priority",
-              numberBadge: "bg-rose-100 text-rose-600",
-            }
+            container: "bg-[#FFF6F6] border-rose-200/70",
+            iconBox: "bg-rose-100 text-rose-500",
+            priorityBadge: "bg-rose-100/90 text-rose-600 border-rose-200/70",
+            priorityIcon: "text-rose-600 fill-rose-600 text-white",
+            priorityLabel: activeData.riskLevel.includes("CRIT") ? "Critical Priority" : "High Priority",
+            numberBadge: "bg-rose-100 text-rose-600",
+          }
           : isMediumRisk
-          ? {
+            ? {
               container: "bg-[#FFFBF0] border-amber-200/70",
               iconBox: "bg-amber-100 text-amber-600",
               priorityBadge: "bg-amber-100/90 text-amber-700 border-amber-200/70",
@@ -808,7 +806,7 @@ export default function AnalysisResult() {
               priorityLabel: "Moderate Priority",
               numberBadge: "bg-amber-100 text-amber-700",
             }
-          : {
+            : {
               container: "bg-[#F0FDF4] border-emerald-200/70",
               iconBox: "bg-emerald-100 text-emerald-600",
               priorityBadge: "bg-emerald-100/90 text-emerald-700 border-emerald-200/70",
@@ -843,11 +841,10 @@ export default function AnalysisResult() {
                       key={card.key}
                       type="button"
                       onClick={() => setSelectedAspect(card.key)}
-                      className={`w-full rounded-2xl p-4 text-left transition-all duration-200 flex items-center justify-between gap-3 border cursor-pointer ${
-                        isSelected
-                          ? "border-blue-500 ring-2 ring-blue-500/20 bg-blue-50/20 shadow-sm"
-                          : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50 shadow-2xs"
-                      }`}
+                      className={`w-full rounded-2xl p-4 text-left transition-all duration-200 flex items-center justify-between gap-3 border cursor-pointer ${isSelected
+                        ? "border-blue-500 ring-2 ring-blue-500/20 bg-blue-50/20 shadow-sm"
+                        : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50 shadow-2xs"
+                        }`}
                     >
                       <div className="flex items-center gap-3.5 min-w-0">
                         <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 ${card.iconBoxClass}`}>
@@ -868,9 +865,8 @@ export default function AnalysisResult() {
 
                       <ChevronRight
                         size={18}
-                        className={`shrink-0 transition-colors ${
-                          isSelected ? "text-blue-600 font-bold" : "text-slate-400"
-                        }`}
+                        className={`shrink-0 transition-colors ${isSelected ? "text-blue-600 font-bold" : "text-slate-400"
+                          }`}
                       />
                     </button>
                   );

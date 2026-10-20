@@ -27,11 +27,10 @@ function StepBar({ current }) {
           <React.Fragment key={step.id}>
             <div className="flex flex-col items-center gap-1.5">
               <div
-                className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 shadow-xs ${
-                  done ? "bg-[#198F38] text-white" :
+                className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 shadow-xs ${done ? "bg-[#198F38] text-white" :
                   active ? "bg-[#042718] text-white ring-4 ring-[#198F38]/20" :
-                  "bg-slate-100 text-slate-600 border border-slate-300"
-                }`}
+                    "bg-slate-100 text-slate-600 border border-slate-300"
+                  }`}
               >
                 {done ? <CheckCircle size={18} /> : step.id}
               </div>
@@ -206,13 +205,13 @@ function StepStatusRow({ jobStatus, progressPct, isFinishingEarly }) {
       title: step1State === "in_progress"
         ? "Connecting to Store"
         : step1State === "error"
-        ? "Store Connection Failed"
-        : "Connected to Store",
+          ? "Store Connection Failed"
+          : "Connected to Store",
       description: step1State === "in_progress"
         ? "Opening the product page..."
         : step1State === "error"
-        ? (errorMessage || "Could not reach the product page.")
-        : "Successfully opened the product page",
+          ? (errorMessage || "Could not reach the product page.")
+          : "Successfully opened the product page",
       state: step1State,
     },
     {
@@ -220,17 +219,17 @@ function StepStatusRow({ jobStatus, progressPct, isFinishingEarly }) {
       title: step2State === "completed"
         ? "Reviews Collected Successfully"
         : step2State === "stopped"
-        ? "Review Collection Stopped"
-        : step2State === "error"
-        ? "Review Collection Failed"
-        : "Collecting Customer Reviews",
+          ? "Review Collection Stopped"
+          : step2State === "error"
+            ? "Review Collection Failed"
+            : "Collecting Customer Reviews",
       description: step2State === "completed"
         ? `You have collected all ${reviewsCount} reviews.`
         : step2State === "stopped"
-        ? `You collected ${reviewsCount} reviews before stopping.`
-        : step2State === "error"
-        ? (errorMessage || "Failed to collect customer reviews.")
-        : "Finding and collecting customer reviews...",
+          ? `You collected ${reviewsCount} reviews before stopping.`
+          : step2State === "error"
+            ? (errorMessage || "Failed to collect customer reviews.")
+            : "Finding and collecting customer reviews...",
       state: step2State,
     },
     {
@@ -238,15 +237,15 @@ function StepStatusRow({ jobStatus, progressPct, isFinishingEarly }) {
       title: step3State === "completed"
         ? "Customer Feedback Analyzed"
         : step3State === "error"
-        ? "Feedback Analysis Failed"
-        : "Analyzing Customer Feedback",
+          ? "Feedback Analysis Failed"
+          : "Analyzing Customer Feedback",
       description: step3State === "completed"
         ? "Customer opinions and product features have been identified."
         : step3State === "in_progress"
-        ? "Understanding customer opinions and what they like or dislike..."
-        : step3State === "error"
-        ? (errorMessage || "Could not complete sentiment and aspect analysis.")
-        : "Identifying positive, negative, and neutral opinions and the product features customers mention.",
+          ? "Understanding customer opinions and what they like or dislike..."
+          : step3State === "error"
+            ? (errorMessage || "Could not complete sentiment and aspect analysis.")
+            : "Identifying positive, negative, and neutral opinions and the product features customers mention.",
       state: step3State,
     },
     {
@@ -254,13 +253,13 @@ function StepStatusRow({ jobStatus, progressPct, isFinishingEarly }) {
       title: step4State === "completed"
         ? "Risk Report Ready"
         : step4State === "error"
-        ? "Report Generation Failed"
-        : "Generating Risk Report",
+          ? "Report Generation Failed"
+          : "Generating Risk Report",
       description: step4State === "completed"
         ? "Your business risk report is ready to view."
         : step4State === "error"
-        ? (errorMessage || "Could not generate business risk report.")
-        : "Preparing your business risk report and recommendations...",
+          ? (errorMessage || "Could not generate business risk report.")
+          : "Preparing your business risk report and recommendations...",
       state: step4State,
     },
   ];
@@ -312,16 +311,14 @@ function StepStatusRow({ jobStatus, progressPct, isFinishingEarly }) {
 
               <div className="flex-1 min-w-0">
                 <h3
-                  className={`text-sm sm:text-base font-bold tracking-tight ${
-                    isErr ? "text-red-950" : isDone ? "text-slate-900" : isActive ? "text-slate-900" : isStop ? "text-slate-900" : "text-slate-700"
-                  }`}
+                  className={`text-sm sm:text-base font-bold tracking-tight ${isErr ? "text-red-950" : isDone ? "text-slate-900" : isActive ? "text-slate-900" : isStop ? "text-slate-900" : "text-slate-700"
+                    }`}
                 >
                   {st.title}
                 </h3>
                 <p
-                  className={`text-xs sm:text-sm mt-0.5 leading-relaxed ${
-                    isErr ? "text-red-700 font-medium" : isStop ? "text-amber-900 font-medium" : isActive ? "text-slate-600 font-medium" : "text-slate-500 font-normal"
-                  }`}
+                  className={`text-xs sm:text-sm mt-0.5 leading-relaxed ${isErr ? "text-red-700 font-medium" : isStop ? "text-amber-900 font-medium" : isActive ? "text-slate-600 font-medium" : "text-slate-500 font-normal"
+                    }`}
                 >
                   {st.description}
                 </p>
@@ -331,41 +328,38 @@ function StepStatusRow({ jobStatus, progressPct, isFinishingEarly }) {
             {/* Right side: Large Prominent Review Count Indicator for Step 2 */}
             {st.id === 2 && (
               <div
-                className={`shrink-0 flex flex-col items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl border shadow-2xs text-center min-w-[105px] sm:min-w-[125px] transition-all duration-300 ${
-                  isStop
-                    ? "bg-amber-100/70 border-amber-300 text-amber-900"
-                    : isErr
+                className={`shrink-0 flex flex-col items-center justify-center px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl border shadow-2xs text-center min-w-[105px] sm:min-w-[125px] transition-all duration-300 ${isStop
+                  ? "bg-amber-100/70 border-amber-300 text-amber-900"
+                  : isErr
                     ? "bg-red-100/60 border-red-300 text-red-900"
                     : isDone
-                    ? "bg-emerald-100/80 border-emerald-300 text-emerald-950"
-                    : isActive
-                    ? "bg-emerald-100/70 border-emerald-300 text-emerald-950 ring-2 ring-emerald-500/15"
-                    : "bg-slate-100/80 border-slate-200 text-slate-500"
-                }`}
+                      ? "bg-emerald-100/80 border-emerald-300 text-emerald-950"
+                      : isActive
+                        ? "bg-emerald-100/70 border-emerald-300 text-emerald-950 ring-2 ring-emerald-500/15"
+                        : "bg-slate-100/80 border-slate-200 text-slate-500"
+                  }`}
               >
                 <span
-                  className={`text-2xl sm:text-3xl font-black tracking-tight leading-none font-mono ${
-                    isStop
-                      ? "text-amber-800"
-                      : isErr
+                  className={`text-2xl sm:text-3xl font-black tracking-tight leading-none font-mono ${isStop
+                    ? "text-amber-800"
+                    : isErr
                       ? "text-red-700"
                       : !isDone && !isActive
-                      ? "text-slate-400"
-                      : "text-emerald-700"
-                  }`}
+                        ? "text-slate-400"
+                        : "text-emerald-700"
+                    }`}
                 >
                   {reviewsCount}
                 </span>
                 <span
-                  className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mt-1 ${
-                    isStop
-                      ? "text-amber-700/90"
-                      : isErr
+                  className={`text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mt-1 ${isStop
+                    ? "text-amber-700/90"
+                    : isErr
                       ? "text-red-700/80"
                       : !isDone && !isActive
-                      ? "text-slate-400"
-                      : "text-emerald-800"
-                  }`}
+                        ? "text-slate-400"
+                        : "text-emerald-800"
+                    }`}
                 >
                   Reviews Collected
                 </span>
@@ -500,7 +494,7 @@ export default function AnalyzeProduct() {
                   type="url"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  placeholder="Paste product link (Amazon, Daraz, eBay, Shopify...)"
+                  placeholder="Paste product link (Daraz)"
                   className="w-full px-4 py-3.5 pr-32 rounded-xl border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 text-sm outline-none focus:border-[#198F38] focus:ring-2 focus:ring-[#198F38]/20 transition-all font-medium shadow-2xs"
                 />
                 {platform && (
@@ -531,10 +525,9 @@ export default function AnalyzeProduct() {
               </button>
             </form>
 
-            {/* Supported platforms */}
             <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
               <span className="text-xs font-bold text-slate-600 mr-1">Supported:</span>
-              {["Daraz", "Amazon", "eBay", "Shopify", "AliExpress"].map((p) => (
+              {["Daraz"].map((p) => (
                 <span key={p} className="px-3 py-1 rounded-full bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200 shadow-2xs">
                   {p}
                 </span>
@@ -666,15 +659,14 @@ export default function AnalyzeProduct() {
               </div>
               {/* Status badge */}
               <div
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold shrink-0 ${
-                  isCompleted
-                    ? "bg-emerald-50 text-emerald-800 border-emerald-300"
-                    : isFailed
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold shrink-0 ${isCompleted
+                  ? "bg-emerald-50 text-emerald-800 border-emerald-300"
+                  : isFailed
                     ? "bg-red-50 text-red-800 border-red-300"
                     : isStopped
-                    ? "bg-amber-50 text-amber-800 border-amber-300"
-                    : "bg-emerald-50 text-emerald-800 border-emerald-300"
-                }`}
+                      ? "bg-amber-50 text-amber-800 border-amber-300"
+                      : "bg-emerald-50 text-emerald-800 border-emerald-300"
+                  }`}
               >
                 {isCompleted ? (
                   <CheckCircle2 size={14} className="text-emerald-700" />
@@ -687,18 +679,18 @@ export default function AnalyzeProduct() {
                   {isCompleted
                     ? "Complete"
                     : isFailed
-                    ? "Failed"
-                    : isStopped
-                    ? "Collection Stopped"
-                    : statusUpper === "CONNECTING"
-                    ? "Connecting to Store"
-                    : statusUpper === "SCRAPING"
-                    ? "Collecting Reviews"
-                    : statusUpper === "AI_ANALYSIS"
-                    ? "Analyzing Feedback"
-                    : statusUpper === "REPORT_GENERATION"
-                    ? "Generating Report"
-                    : "Analyzing"}
+                      ? "Failed"
+                      : isStopped
+                        ? "Collection Stopped"
+                        : statusUpper === "CONNECTING"
+                          ? "Connecting to Store"
+                          : statusUpper === "SCRAPING"
+                            ? "Collecting Reviews"
+                            : statusUpper === "AI_ANALYSIS"
+                              ? "Analyzing Feedback"
+                              : statusUpper === "REPORT_GENERATION"
+                                ? "Generating Report"
+                                : "Analyzing"}
                 </span>
               </div>
             </div>
@@ -717,15 +709,14 @@ export default function AnalyzeProduct() {
             <div className="flex items-center justify-between text-slate-600 font-semibold text-xs sm:text-sm mb-4 px-0.5">
               <span className="flex items-center gap-2">
                 <span
-                  className={`w-2.5 h-2.5 rounded-full shrink-0 ${
-                    isCompleted
-                      ? "bg-emerald-600"
-                      : isFailed
+                  className={`w-2.5 h-2.5 rounded-full shrink-0 ${isCompleted
+                    ? "bg-emerald-600"
+                    : isFailed
                       ? "bg-red-500"
                       : isStopped
-                      ? "bg-amber-500"
-                      : "bg-emerald-500 animate-pulse"
-                  }`}
+                        ? "bg-amber-500"
+                        : "bg-emerald-500 animate-pulse"
+                    }`}
                 />
                 <span className="text-slate-800 font-semibold">
                   {jobStatus?.reviewsCollected !== undefined
@@ -811,12 +802,12 @@ export default function AnalyzeProduct() {
                   (isFinishingEarly || Boolean(jobStatus?.stopRequested)
                     ? "bg-emerald-50 border border-emerald-300 text-emerald-800 cursor-not-allowed opacity-90"
                     : isCompleted
-                    ? "bg-emerald-600 text-white border border-emerald-600 opacity-90 cursor-default"
-                    : isFailed
-                    ? "bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed"
-                    : statusUpper === "CONNECTING"
-                    ? "bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed"
-                    : "bg-white border border-slate-300 text-slate-800 hover:bg-emerald-50 hover:text-emerald-900 hover:border-emerald-300 hover:shadow-sm")
+                      ? "bg-emerald-600 text-white border border-emerald-600 opacity-90 cursor-default"
+                      : isFailed
+                        ? "bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed"
+                        : statusUpper === "CONNECTING"
+                          ? "bg-slate-100 text-slate-400 border border-slate-200 cursor-not-allowed"
+                          : "bg-white border border-slate-300 text-slate-800 hover:bg-emerald-50 hover:text-emerald-900 hover:border-emerald-300 hover:shadow-sm")
                 }
               >
                 {isFinishingEarly || Boolean(jobStatus?.stopRequested) ? (

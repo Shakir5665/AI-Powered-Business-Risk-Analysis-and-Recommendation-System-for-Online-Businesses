@@ -35,6 +35,12 @@ def startup_ai_engine():
 
         # Step 2: Warm up engine
         ai_logger.info("Step 2/3: Pre-loading XLM-R adapter models and warming engine...")
+        try:
+            from core.scraper.dto.scraped_review import ScrapedReview
+            engine_inst._pipeline.predict_reviews([ScrapedReview(review_text="Warmup review", rating=5.0, reviewer="", review_date="")])
+            ai_logger.info("Step 2/3: XLM-R engine warmup forward pass completed successfully.")
+        except Exception as warm_err:
+            ai_logger.warning(f"Step 2/3: Engine warmup pass notice (non-fatal): {warm_err}")
 
         # Step 3: Set State
         ai_logger.info("Step 3/3: AI Engine warmed successfully.")
